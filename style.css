@@ -146,12 +146,14 @@ img {
   margin-bottom: 30px;
 }
 
-.hero_actions {
+.hero_actions,
+.skills_actions {
   display: flex;
   gap: 10px;
 }
 
-.hero_actions .btn {
+.hero_actions .btn,
+.skills_actions .btn {
   padding: 6px 20px;
   font-size: 12px;
   font-weight: 500;
@@ -175,4 +177,69 @@ img {
   padding: 8px;
   border-radius: 50%;
   transition: all 0.5s ease;
+}
+
+.skills {
+  padding: 60px;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.skills_description,
+.skills_stats {
+  width: 50%;
+}
+
+.skills_description {
+  padding-right: 80px;
+}
+
+.skills_description h3 {
+  font-size: 30px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.skills_description p {
+  color: #6b7280;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+.skills_stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.skills_stats i {
+  font-size: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.skill_info {
+  background: #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.skill_info h5 {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.skill_info p {
+  width: 50%;
+  text-align: center;
+  font-size: 14px;
+  color: #7a7a7a;
+  font-weight: 500;
 }
