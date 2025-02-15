@@ -16,6 +16,10 @@ img {
   object-fit: cover;
 }
 
+body {
+  background: #f3f4f6;
+}
+
 .btn {
   border: 2px solid #1f2937;
   background: #1f2937;
@@ -382,4 +386,76 @@ img {
 
 .project-card .btn:hover {
   background: #000;
+}
+
+.career {
+  padding: 60px 60px 80px;
+  display: flex;
+  align-items: center;
+  gap: 100px;
+}
+
+.career_jobs,
+.career_awards {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.career h3 {
+  font-size: 32px;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+.job,
+.award {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.job i,
+.award div i {
+  font-size: 20px;
+  padding: 10px;
+  background: #fff;
+  border-radius: 10px;
+  font-weight: bold;
+  box-shadow: 0 10px 30pxm rgba(0, 0, 0, 0.1);
+}
+
+.award {
+  justify-content: space-between;
+}
+
+.award > div {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.job_info h5,
+.award_info h5 {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.job_info h5 span,
+.award_info h5 span {
+  font-weight: 600;
+}
+
+.job_info p,
+.award_info p {
+  font-size: 13px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.award a i {
+  font-size: 24px;
 }
