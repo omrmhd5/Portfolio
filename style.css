@@ -66,18 +66,21 @@ body {
   font-size: 30px;
 }
 
-.navbar_menu {
+.navbar_menu,
+.footer_links {
   display: flex;
   gap: 20px;
 }
 
-.navbar_link {
+.navbar_link,
+.footer_links a {
   font-size: 14px;
   font-weight: 500;
   transition: all 0.5 ease;
 }
 
-.navbar_link:hover {
+.navbar_link:hover,
+.footer_links:hover {
   color: #000;
 }
 
@@ -495,4 +498,28 @@ body {
   color: #1f2937;
   font-weight: 600;
   font-size: 13px;
+}
+
+.footer {
+  padding: 20px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer_brand {
+  display: flex;
+  align-items: flex-end;
+  gap: 30px;
+}
+
+.footer_brand a {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.footer_brand p {
+  font-size: 13px;
+  color: #6b7280;
+  font-weight: 500;
 }
