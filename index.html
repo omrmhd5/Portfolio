@@ -3,60 +3,75 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="assets/favicon.svg?v2" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
     <link rel="stylesheet" href="style.css" />
-    <title>Omar's Personal Portfolio</title>
+    <title>Omar's Portfolio</title>
   </head>
   <body>
     <nav class="navbar">
-      <a href="#" class="navbar_logo"
-        ><i class="ri-code-s-slash-line"></i> Logo.</a
+      <a href="#" class="navbar_logo animate__animated animate__fadeInDown"
+        ><i class="ri-code-s-slash-line"></i>Omar Mahmoud</a
       >
 
       <div class="navbar_menu">
-        <a href="#" class="navbar_link">Home</a>
-        <a href="#" class="navbar_link">Projects</a>
-        <a href="#" class="navbar_link">Skills</a>
-        <a href="#" class="navbar_link">About</a>
+        <a href="#hero" class="navbar_link">Profile</a>
+        <a href="#skills" class="navbar_link">Skills</a>
+        <a href="#career" class="navbar_link">Experience</a>
+        <a href="#projects" class="navbar_link">Projects</a>
+        <a href="#" class="navbar_link">Education</a>
+        <a href="#contact" class="navbar_link">About</a>
       </div>
 
       <div class="navbar_actions">
-        <div class="navbar_location">
-          <h5>Cairo, Egypt</h5>
-          <p>6:18:31 pm</p>
+        <div class="navbar_socials">
+          <a href="https://github.com/omrmhd5" target="_blank"
+            ><i class="ri-github-line"></i
+          ></a>
+          <a href="https://www.linkedin.com/in/omrmhd5/" target="_blank"
+            ><i class="ri-linkedin-box-line"></i
+          ></a>
         </div>
-        <button class="btn">Get A Quote</button>
       </div>
     </nav>
 
-    <section class="hero">
+    <section class="hero" id="hero">
       <div class="hero_content">
-        <img src="assets/profile.png" alt="Profile Image" class="hero_image" />
+        <img src="assets/profile.jpg" alt="Profile Image" class="hero_image" />
         <h2>Hello! I'm Omar Mahmoud</h2>
       </div>
 
       <div class="hero_intro">
         <h3>Software Engineer Based in Cairo, Egypt</h3>
-        <p>Frontend</p>
+        <p>
+          A passionate Software Engineer with a strong interest in AI
+          Engineering and Full-Stack Development. Currently pursuing a BSc in
+          Informatics & Computer Science at the British University in Egypt, I
+          thrive on solving complex problems through innovative software
+          solutions.
+        </p>
         <div class="hero_actions">
-          <button class="btn">Work With Me</button>
-          <button class="btn btn-secondary">See My Portfolio</button>
+          <a href="https://flowcv.com/resume/9ws090uw2t" target="_blank">
+            <button class="btn">View My Resume</button></a
+          >
+          <a href="projects"
+            ><button class="btn btn-secondary">See My Portfolio</button></a
+          >
         </div>
-      </div>
-
-      <div class="hero_socials">
-        <a href="#"><i class="ri-github-fill"></i></a>
-        <a href="#"><i class="ri-linkedin-box-fill"></i></a>
       </div>
     </section>
 
-    <section class="skills">
+    <section class="skills" id="skills">
       <div class="skills_desc">
-        <h3>Experienced</h3>
-        <p>Bringing</p>
+        <h3>My Skills</h3>
+        <p>Only a few highlighted ones..</p>
         <div class="skills_actions">
           <button class="btn">Work With Me</button>
           <button class="btn btn-secondary">Send Email</button>
@@ -64,26 +79,24 @@
       </div>
 
       <div class="skills_stats">
-        <i class="ri-html5-fill"></i>
+        <i class="ri-html5-line" style="color: #e34c26"></i>
         <div class="skill_info">
-          <h5>50+</h5>
-          <p>JS</p>
+          <i class="ri-css3-line" style="color: #2965f1"></i>
         </div>
-        <i class="ri-css3-fill"></i>
+        <i class="ri-javascript-fill" style="color: #f0db4f"></i>
         <div class="skill_info">
-          <h5>40+</h5>
-          <p>REACT</p>
+          <i class="ri-bootstrap-fill" style="color: #59287a"></i>
         </div>
         <div class="skill_info">
-          <h5>20+</h5>
-          <p>HTML</p>
+          <i class="ri-reactjs-fill" style="color: #88dded"></i>
         </div>
-        <i class="ri-javascript-fill"></i>
+        <i class="ri-angularjs-fill" style="color: #d4173b"></i>
         <div class="skill_info">
-          <h5>10+</h5>
-          <p>CSS</p>
+          <i class="ri-nodejs-fill" style="color: #68a063"></i>
         </div>
-        <i class="ri-reactjs-fill"></i>
+        <i class="ri-php-fill" style="color: #8993be"></i>
+        <i class="fa-brands fa-laravel"></i>
+        <i class="fa fa-postgresql" aria-hidden="true"></i>
       </div>
     </section>
 
