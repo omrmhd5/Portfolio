@@ -20,12 +20,12 @@
       >
 
       <div class="navbar_menu">
-        <a href="#hero" class="navbar_link">Profile</a>
+        <a href="#hero" class="navbar_link">Home</a>
+        <a href="#education" class="navbar_link">Education</a>
         <a href="#skills" class="navbar_link">Skills</a>
-        <a href="#career" class="navbar_link">Experience</a>
         <a href="#projects" class="navbar_link">Projects</a>
-        <a href="#" class="navbar_link">Education</a>
-        <a href="#contact" class="navbar_link">About</a>
+        <a href="#experience" class="navbar_link">Experience</a>
+        <a href="#contact" class="navbar_link">Contact</a>
       </div>
 
       <div class="navbar_actions">
@@ -37,13 +37,17 @@
             ><i class="ri-linkedin-box-line"></i
           ></a>
         </div>
+        <div class="theme-switch">
+          <i class="ri-sun-line"></i>
+          <i class="ri-moon-line"></i>
+        </div>
       </div>
     </nav>
 
     <section class="hero" id="hero">
       <div class="hero_content">
         <img src="assets/profile.jpg" alt="Profile Image" class="hero_image" />
-        <h2>Hello! I'm Omar Mahmoud</h2>
+        <h2>Hello! I'm <span class="typing-text"></span></h2>
       </div>
 
       <div class="hero_intro">
@@ -59,359 +63,298 @@
           <a href="https://flowcv.com/resume/9ws090uw2t" target="_blank">
             <button class="btn">View My Resume</button></a
           >
-          <a href="projects"
-            ><button class="btn btn-secondary">See My Portfolio</button></a
+          <a href="#projects"
+            ><button class="btn btn-secondary">See My Work</button></a
           >
         </div>
       </div>
     </section>
 
+    <section class="education" id="education">
+      <h2 class="section-title">Education & Training</h2>
+      <div class="education-container">
+        <div class="education-card">
+          <div class="education-header">
+            <i class="ri-graduation-cap-line"></i>
+            <h3>British University in Egypt</h3>
+          </div>
+          <div class="education-content">
+            <h4>BSc in Informatics & Computer Science</h4>
+            <p class="date">2021 - Present</p>
+            <p class="description">
+              Currently pursuing my degree with focus on Software Engineering
+              and AI
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="training-container">
+        <div class="training-card">
+          <div class="training-header">
+            <i class="ri-certificate-line"></i>
+            <h3>Advanced Web Development</h3>
+            <i class="ri-udacity-line training-icon"></i>
+          </div>
+          <div class="training-content">
+            <p class="provider">Udacity</p>
+            <p class="date">January 2024</p>
+            <a href="#" class="certificate-link">
+              <i class="ri-external-link-line"></i> View Certificate
+            </a>
+          </div>
+        </div>
+
+        <div class="training-card">
+          <div class="training-header">
+            <i class="ri-certificate-line"></i>
+            <h3>Machine Learning Specialization</h3>
+            <i class="ri-coursera-line training-icon"></i>
+          </div>
+          <div class="training-content">
+            <p class="provider">Coursera</p>
+            <p class="date">December 2023</p>
+            <a href="#" class="certificate-link">
+              <i class="ri-external-link-line"></i> View Certificate
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="skills" id="skills">
-      <div class="skills_desc">
-        <h3>My Skills</h3>
-        <p>Only a few highlighted ones..</p>
-        <div class="skills_actions">
-          <button class="btn">Work With Me</button>
-          <button class="btn btn-secondary">Send Email</button>
-        </div>
-      </div>
-
-      <!-- <img src="assets/MERN.png" class="mern" alt=""> -->
-      <div class="skills_stats">
-        <div class="skill_info">
-          <i class="ri-html5-line" style="color: #e34c26"></i>
-        </div>
-        <i class="ri-css3-line" style="color: #2965f1"></i>
-        <div class="skill_info">
-          <i class="ri-javascript-fill" style="color: #f0db4f"></i>
-        </div>
-        <i class="ri-tailwind-css-fill" style="color: #06b6d4"></i>
-        <i class="ri-reactjs-fill" style="color: #88dded"></i>
-        <div class="skill_info">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            x="50px"
-            y="50px"
-            width="100"
-            height="100"
-            viewBox="0 0 48 48">
-            <path
-              fill="#212121"
-              d="M23.697,37.56h1.18c0.84,0,1.631-0.392,2.139-1.061l7.485-9.847l7.485,9.847	c0.508,0.668,1.299,1.061,2.139,1.061h1.18L35.756,25l9.121-12h-1.18c-0.84,0-1.631,0.392-2.139,1.061L34.5,23.347l-7.059-9.287	C26.933,13.392,26.142,13,25.302,13h-1.18l9.121,12L23.697,37.56z"></path>
-            <path
-              fill="#212121"
-              d="M24,26v-3c0-6.675-5.945-11.961-12.829-10.852C5.812,13.011,2,17.857,2,23.284L2,24v2v0.142	c0,6.553,4.777,11.786,10.868,11.858c5.092,0.06,9.389-3.344,10.707-7.999h-1.028c-0.62,0-1.182,0.355-1.451,0.913	c-1.739,3.595-5.789,5.862-10.228,4.842C6.776,34.815,4,30.981,4,26.783V26H24z M4,23.71c0-4.708,2.804-8.557,6.924-9.478	C16.798,12.92,22,17.352,22,23v1H4V23.71z"></path>
-          </svg>
-        </div>
-        <i class="ri-nodejs-fill" style="color: #68a063"></i>
-        <div class="skill_info">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            x="0px"
-            y="0px"
-            width="100"
-            height="100"
-            viewBox="0 0 48 48">
-            <path
-              fill="#5d4037"
-              d="M42,17.3C42,37.8,24,44,24,44S6,37.8,6,17.3c0-2.5,0.2-4.6,0.4-6.3c0.3-2.5,2-4.5,4.4-5.1 C13.9,5,18.8,4,24,4s10.1,1,13.3,1.9c2.4,0.6,4.1,2.7,4.4,5.1C41.8,12.7,42,14.9,42,17.3z"></path>
-            <path
-              fill="#4caf50"
-              d="M24,7c4.9,0,9.5,1,12.5,1.8c1.2,0.3,2,1.3,2.2,2.6c0.2,1.9,0.3,3.9,0.3,5.9c0,15.6-11.5,21.9-15,23.4 c-3.5-1.6-15-7.9-15-23.4c0-2,0.1-4,0.3-5.9c0.1-1.3,1-2.3,2.2-2.6C14.5,8,19.1,7,24,7 M24,4c-5.2,0-10.1,1-13.3,1.9 C8.4,6.5,6.6,8.6,6.4,11C6.2,12.7,6,14.9,6,17.3C6,37.8,24,44,24,44s18-6.2,18-26.7c0-2.5-0.2-4.6-0.4-6.3c-0.3-2.5-2-4.5-4.4-5.1 C34.1,5,29.2,4,24,4L24,4z"></path>
-            <path fill="#dcedc8" d="M23 28H25V36H23z"></path>
-            <path
-              fill="#4caf50"
-              d="M24,10c0,0-6,5-6,13c0,5.2,3.3,8.5,5,10l1-3l1,3c1.7-1.5,5-4.8,5-10C30,15,24,10,24,10z"></path>
-            <path
-              fill="#81c784"
-              d="M24,10c0,0-6,5-6,13c0,5.2,3.3,8.5,5,10l1-3V10z"></path>
-          </svg>
-        </div>
-        <div class="skill_info">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="100"
-            height="100"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#ff3b30"
-            stroke-width="1"
-            stroke-linecap="round"
-            stroke-linejoin="round">
-            <path
-              d="M3 17l8 5l7 -4v-8l-4 -2.5l4 -2.5l4 2.5v4l-11 6.5l-4 -2.5v-7.5l-4 -2.5z" />
-            <path d="M11 18v4" />
-            <path d="M7 15.5l7 -4" />
-            <path d="M14 7.5v4" />
-            <path d="M14 11.5l4 2.5" />
-            <path d="M11 13v-7.5l-4 -2.5l-4 2.5" />
-            <path d="M7 8l4 -2.5" />
-            <path d="M18 10l4 -2.5" />
-          </svg>
-        </div>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          x="0px"
-          y="0px"
-          width="100"
-          height="100"
-          viewBox="0 0 24 24">
-          <path
-            d="M 13 2 C 9.28125 2 8.316406 4.828125 7.992188 6.46875 C 8.4375 6.277344 9.535156 6 10 6 L 10.019531 6 C 11.164063 6.007813 11.519531 6.332031 11.75 7.390625 C 11.917969 8.167969 12.003906 9.378906 12 10 C 11.996094 11.359375 11.667969 12.296875 11.425781 12.925781 L 11.347656 13.128906 C 11.289063 13.296875 11.21875 13.453125 11.15625 13.597656 C 11.09375 13.75 11.039063 13.882813 11 14 C 11.242188 14.054688 11.433594 14.132813 11.5625 14.1875 L 11.636719 14.222656 C 11.660156 14.234375 11.683594 14.242188 11.703125 14.257813 C 12.128906 14.515625 12 15.109375 12 15.578125 C 12 15.96875 12.011719 17.523438 12 19.003906 C 12.042969 19.644531 12.207031 20.183594 12.347656 20.578125 C 12.554688 21.132813 13.019531 21.957031 14 22 C 14.773438 22.035156 15.890625 21.628906 16 20.003906 L 16 16.003906 C 16.074219 14.667969 17.605469 14.136719 18 13.84375 C 17.945313 13.769531 17.734375 13.117188 17.511719 12.769531 L 17.46875 12.6875 C 17.4375 12.609375 17.355469 12.46875 17.253906 12.28125 C 16.664063 11.210938 15.429688 8.464844 16.273438 7.058594 C 16.640625 6.441406 17 6.085938 18 6 C 17.59375 4.839844 16.46875 2.058594 13 2 Z M 6.4375 2 C 4.566406 2.070313 2 3.230469 2 7.011719 C 2 9.574219 3.742188 17 6.492188 17 C 6.617188 17 6.742188 16.957031 6.871094 16.890625 C 6.628906 16.679688 6.453125 16.40625 6.429688 16.046875 C 6.386719 15.320313 6.914063 14.808594 8.050781 14.519531 C 8.105469 14.511719 8.394531 14.425781 9.03125 14.066406 C 8.695313 13.921875 8.34375 13.726563 8.054688 13.425781 C 7.261719 12.597656 6.859375 11.4375 7.007813 10.394531 C 7.148438 9.378906 7.066406 8.382813 7.023438 7.851563 L 7.019531 7.800781 L 7.007813 7.625 L 6.984375 7.257813 L 7.015625 6.273438 C 7.339844 4.609375 8.019531 3.320313 9 2.429688 C 8.257813 2.1875 7.324219 1.96875 6.4375 2 Z M 16.933594 2.003906 C 16.742188 2.007813 16.5625 2.023438 16.386719 2.042969 C 17.390625 2.742188 18.3125 3.871094 18.941406 5.671875 L 18.984375 7.046875 C 18.988281 7.09375 18.996094 7.140625 19.003906 7.1875 C 19.035156 7.359375 19.074219 7.59375 19.042969 7.875 C 19.003906 8.195313 18.964844 8.523438 18.953125 8.851563 C 18.945313 9.175781 18.988281 9.492188 19.035156 9.828125 C 19.121094 10.425781 19.074219 11.03125 18.886719 11.679688 L 18.59375 12.6875 C 18.671875 12.859375 18.746094 13.035156 18.820313 13.21875 C 18.835938 13.265625 18.851563 13.300781 18.863281 13.332031 L 19.191406 13.785156 C 20.957031 12.230469 22 8.976563 22 5.625 C 22 4.976563 21.824219 4.476563 21.597656 4.1875 C 20.257813 2.472656 18.402344 1.980469 16.933594 2.003906 Z M 10 7 C 9.71875 7 8.75 7.230469 8.382813 7.386719 L 8.023438 7.539063 C 8.015625 7.546875 8.007813 7.554688 8.003906 7.5625 C 8.007813 7.617188 8.015625 7.683594 8.023438 7.765625 C 8.066406 8.339844 8.152344 9.40625 7.996094 10.535156 C 7.890625 11.277344 8.191406 12.121094 8.78125 12.734375 C 9.117188 13.085938 9.71875 13.316406 10.15625 13.414063 C 10.183594 13.34375 10.207031 13.285156 10.238281 13.207031 C 10.292969 13.074219 10.355469 12.933594 10.414063 12.777344 L 10.492188 12.566406 C 10.667969 12.109375 10.996094 11.253906 11 9.996094 C 11.003906 9.582031 10.957031 8.828125 10.871094 8.183594 C 10.859375 8.199219 10.851563 8.199219 10.84375 8.21875 C 10.695313 8.367188 10.464844 8.5 10.210938 8.460938 C 9.796875 8.394531 9.480469 7.890625 9.5 7.703125 C 9.523438 7.519531 9.878906 7.421875 10.292969 7.488281 C 10.433594 7.511719 10.566406 7.554688 10.675781 7.601563 C 10.714844 7.632813 10.746094 7.652344 10.78125 7.675781 C 10.777344 7.652344 10.777344 7.625 10.769531 7.601563 C 10.675781 7.160156 10.597656 7.078125 10.59375 7.074219 C 10.589844 7.070313 10.484375 7.003906 10 7 Z M 17.984375 7.011719 C 17.5 7.070313 17.363281 7.199219 17.1875 7.484375 C 17.527344 7.484375 17.773438 7.597656 17.800781 7.808594 C 17.828125 7.988281 17.675781 8.160156 17.609375 8.226563 C 17.46875 8.359375 17.292969 8.449219 17.117188 8.46875 C 17.085938 8.476563 17.054688 8.476563 17.019531 8.476563 C 17.011719 8.476563 17.007813 8.472656 17 8.472656 C 17.058594 9.296875 17.429688 10.410156 17.925781 11.402344 C 18.0625 10.925781 18.117188 10.460938 18.046875 9.96875 C 17.996094 9.605469 17.941406 9.230469 17.953125 8.820313 C 17.96875 8.449219 18.007813 8.101563 18.046875 7.761719 C 18.078125 7.5 17.976563 7.257813 17.984375 7.011719 Z M 20.179688 14.53125 C 20.101563 14.519531 19.992188 14.527344 19.859375 14.554688 C 19.230469 14.683594 18.8125 14.71875 18.503906 14.699219 C 18.394531 14.773438 18.28125 14.84375 18.140625 14.921875 C 17.578125 15.230469 17.078125 15.550781 17.011719 16 L 17.011719 16.582031 C 17.671875 16.613281 18.554688 16.203125 19.0625 15.96875 C 20.019531 15.527344 20.738281 14.605469 20.179688 14.53125 Z M 9.835938 14.761719 C 9.285156 15.089844 8.664063 15.414063 8.25 15.5 C 6.78125 15.890625 7.691406 16.347656 8.210938 16.398438 C 8.765625 16.535156 10.125 16.84375 11 16.128906 C 11 16.128906 11 16.128906 11 16.125 L 11 15.578125 C 11 15.472656 11.003906 15.367188 11.011719 15.253906 C 11.011719 15.195313 11.015625 15.117188 11.015625 15.046875 C 10.949219 15.019531 10.867188 14.996094 10.777344 14.972656 Z"></path>
-        </svg>
-      </div>
-    </section>
-
-    <section class="showcase">
-      <div class="showcase_header">
-        <h3>I Can Help You With:</h3>
-        <button class="btn">See My Work</button>
-      </div>
-
-      <div class="showcase_categories">
-        <section class="category">
-          <div class="category_header">
-            <div class="category_title">
-              <i class="ri-macbook-line"></i>
-              <h4>Portfolio Website</h4>
-            </div>
-            <div class="category_desc">
-              <p>Designing</p>
-              <a href="#">
-                <i class="ri-share-circle-line"></i>
-              </a>
-            </div>
+      <h2 class="section-title">Technical Skills</h2>
+      <div class="skills-container">
+        <div class="skill-group">
+          <div class="skill-group-header">
+            <i class="ri-layout-2-line"></i>
+            <h3>Frontend Development</h3>
           </div>
-
-          <div class="category_projects">
-            <div class="project-card">
-              <img src="" alt="Portfolio 1" class="project-card_image" />
-              <div class="project-card_info">
-                <h5>Portfolio-1</h5>
-                <p>August 2023</p>
-              </div>
-              <p class="project-card_desc">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et
-                minima quia nesciunt vero sit nemo consequuntur.
-              </p>
-              <button class="btn">View Live Demo</button>
+          <div class="skill-items">
+            <div class="skill-item">
+              <i class="ri-html5-line" style="color: #e34c26"></i>
+              <span>HTML5</span>
             </div>
-
-            <div class="project-card">
-              <img src="" alt="Portfolio 2" class="project-card_image" />
-              <div class="project-card_info">
-                <h5>Portfolio-2</h5>
-                <p>July 2023</p>
-              </div>
-              <p class="project-card_desc">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et
-                minima quia nesciunt vero sit nemo consequuntur.
-              </p>
-              <button class="btn">View Live Demo</button>
+            <div class="skill-item">
+              <i class="ri-css3-line" style="color: #2965f1"></i>
+              <span>CSS3</span>
             </div>
-
-            <div class="project-card">
-              <img src="" alt="Portfolio 3" class="project-card_image" />
-              <div class="project-card_info">
-                <h5>Portfolio-3</h5>
-                <p>June 2023</p>
-              </div>
-              <p class="project-card_desc">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et
-                minima quia nesciunt vero sit nemo consequuntur.
-              </p>
-              <button class="btn">View Live Demo</button>
+            <div class="skill-item">
+              <i class="ri-javascript-fill" style="color: #f0db4f"></i>
+              <span>JavaScript</span>
             </div>
-
-            <div class="project-card">
-              <img src="" alt="Portfolio 4" class="project-card_image" />
-              <div class="project-card_info">
-                <h5>Portfolio-4</h5>
-                <p>May 2023</p>
-              </div>
-              <p class="project-card_desc">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et
-                minima quia nesciunt vero sit nemo consequuntur.
-              </p>
-              <button class="btn">View Live Demo</button>
+            <div class="skill-item">
+              <i class="ri-reactjs-fill" style="color: #88dded"></i>
+              <span>React</span>
             </div>
-          </div>
-        </section>
-
-        <section class="category">
-          <div class="category_header">
-            <div class="category_title">
-              <i class="ri-group-2-line"></i>
-              <h4>Website Development</h4>
-            </div>
-            <div class="category_desc">
-              <p>end</p>
-              <a href="#">
-                <i class="ri-share-circle-line"></i>
-              </a>
-            </div>
-          </div>
-          <div class="category_projects">
-            <div class="project-card">
-              <img src="" alt="Portfolio 1" class="project-card_image" />
-              <div class="project-card_info">
-                <h5>Portfolio-1</h5>
-                <p>August 2023</p>
-              </div>
-              <p class="project-card_desc">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et
-                minima quia nesciunt vero sit nemo consequuntur.
-              </p>
-              <button class="btn">View Live Demo</button>
-            </div>
-
-            <div class="project-card">
-              <img src="" alt="Portfolio 2" class="project-card_image" />
-              <div class="project-card_info">
-                <h5>Portfolio-2</h5>
-                <p>July 2023</p>
-              </div>
-              <p class="project-card_desc">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et
-                minima quia nesciunt vero sit nemo consequuntur.
-              </p>
-              <button class="btn">View Live Demo</button>
-            </div>
-
-            <div class="project-card">
-              <img src="" alt="Portfolio 3" class="project-card_image" />
-              <div class="project-card_info">
-                <h5>Portfolio-3</h5>
-                <p>June 2023</p>
-              </div>
-              <p class="project-card_desc">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et
-                minima quia nesciunt vero sit nemo consequuntur.
-              </p>
-              <button class="btn">View Live Demo</button>
-            </div>
-
-            <div class="project-card">
-              <img src="" alt="Portfolio 4" class="project-card_image" />
-              <div class="project-card_info">
-                <h5>Portfolio-4</h5>
-                <p>May 2023</p>
-              </div>
-              <p class="project-card_desc">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Et
-                minima quia nesciunt vero sit nemo consequuntur.
-              </p>
-              <button class="btn">View Live Demo</button>
-            </div>
-          </div>
-        </section>
-      </div>
-    </section>
-
-    <section class="showcase"></section>
-
-    <section class="career">
-      <div class="career_jobs">
-        <h3>Work Experience</h3>
-        <div class="job">
-          <i class="ri-pen-nib-fill"></i>
-          <div class="job_info">
-            <h5>Frontend Developer at <span>NFQ</span></h5>
-            <p>February 2020 - Present</p>
           </div>
         </div>
 
-        <div class="job">
-          <i class="ri-pen-nib-fill"></i>
-          <div class="job_info">
-            <h5>Frontend Developer at <span>NFQ</span></h5>
-            <p>February 2020 - Present</p>
+        <div class="skill-group">
+          <div class="skill-group-header">
+            <i class="ri-server-line"></i>
+            <h3>Backend Development</h3>
           </div>
-        </div>
-
-        <div class="job">
-          <i class="ri-pen-nib-fill"></i>
-          <div class="job_info">
-            <h5>Frontend Developer at <span>NFQ</span></h5>
-            <p>February 2020 - Present</p>
-          </div>
-        </div>
-
-        <div class="job">
-          <i class="ri-pen-nib-fill"></i>
-          <div class="job_info">
-            <h5>Frontend Developer at <span>NFQ</span></h5>
-            <p>February 2020 - Present</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="career_awards">
-        <h3>Awards & Recognition</h3>
-        <div class="award">
-          <div>
-            <i class="ri-award-fill"></i>
-            <div class="award_info">
-              <h5>Frontend of The Year <span>Dev Awards</span></h5>
-              <p>November 2023</p>
+          <div class="skill-items">
+            <div class="skill-item">
+              <i class="ri-nodejs-fill" style="color: #68a063"></i>
+              <span>Node.js</span>
+            </div>
+            <div class="skill-item">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="#212121">
+                <path
+                  d="M23.697,37.56h1.18c0.84,0,1.631-0.392,2.139-1.061l7.485-9.847l7.485,9.847c0.508,0.668,1.299,1.061,2.139,1.061h1.18L35.756,25l9.121-12h-1.18c-0.84,0-1.631,0.392-2.139,1.061L34.5,23.347l-7.059-9.287C26.933,13.392,26.142,13,25.302,13h-1.18l9.121,12L23.697,37.56z"></path>
+              </svg>
+              <span>Express.js</span>
             </div>
           </div>
-          <a href="#"><i class="ri-external-link-fill"></i></a>
         </div>
 
-        <div class="award">
-          <div>
-            <i class="ri-award-fill"></i>
-            <div class="award_info">
-              <h5>Frontend of The Year <span>Dev Awards</span></h5>
-              <p>November 2023</p>
+        <div class="skill-group">
+          <div class="skill-group-header">
+            <i class="ri-database-2-line"></i>
+            <h3>Database & Tools</h3>
+          </div>
+          <div class="skill-items">
+            <div class="skill-item">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="#5d4037">
+                <path
+                  d="M42,17.3C42,37.8,24,44,24,44S6,37.8,6,17.3c0-2.5,0.2-4.6,0.4-6.3c0.3-2.5,2-4.5,4.4-5.1 C13.9,5,18.8,4,24,4s10.1,1,13.3,1.9c2.4,0.6,4.1,2.7,4.4,5.1C41.8,12.7,42,14.9,42,17.3z"></path>
+              </svg>
+              <span>MongoDB</span>
+            </div>
+            <div class="skill-item">
+              <i class="ri-git-branch-line" style="color: #f05032"></i>
+              <span>Git</span>
             </div>
           </div>
-          <a href="#"><i class="ri-external-link-fill"></i></a>
-        </div>
-
-        <div class="award">
-          <div>
-            <i class="ri-award-fill"></i>
-            <div class="award_info">
-              <h5>Frontend of The Year <span>Dev Awards</span></h5>
-              <p>November 2023</p>
-            </div>
-          </div>
-          <a href="#"><i class="ri-external-link-fill"></i></a>
-        </div>
-
-        <div class="award">
-          <div>
-            <i class="ri-award-fill"></i>
-            <div class="award_info">
-              <h5>Frontend of The Year <span>Dev Awards</span></h5>
-              <p>November 2023</p>
-            </div>
-          </div>
-          <a href="#"><i class="ri-external-link-fill"></i></a>
         </div>
       </div>
     </section>
 
-    <section class="contact">
-      <h5>Got a Project?</h5>
-      <h2>Let's Work Together!</h2>
-      <button class="btn">Send Message</button>
-      <p>Phone: <span>+20 127 673 1105</span></p>
+    <section class="projects" id="projects">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="projects-container">
+        <div class="project-card">
+          <div class="project-image">
+            <img src="assets/project1.jpg" alt="Project 1" />
+          </div>
+          <div class="project-content">
+            <h3>E-Commerce Platform</h3>
+            <p>
+              A full-stack e-commerce platform with user authentication, product
+              management, and payment integration.
+            </p>
+            <div class="project-tech">
+              <span>React</span>
+              <span>Node.js</span>
+              <span>MongoDB</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="btn btn-secondary"
+                ><i class="ri-github-line"></i> Code</a
+              >
+              <a href="#" class="btn"
+                ><i class="ri-external-link-line"></i> Live Demo</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-image">
+            <img src="assets/project2.jpg" alt="Project 2" />
+          </div>
+          <div class="project-content">
+            <h3>AI Image Generator</h3>
+            <p>
+              An AI-powered application that generates images based on text
+              descriptions using OpenAI's DALL-E API.
+            </p>
+            <div class="project-tech">
+              <span>Python</span>
+              <span>TensorFlow</span>
+              <span>OpenAI API</span>
+            </div>
+            <div class="project-links">
+              <a href="#" class="btn btn-secondary"
+                ><i class="ri-github-line"></i> Code</a
+              >
+              <a href="#" class="btn"
+                ><i class="ri-external-link-line"></i> Live Demo</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="experience" id="experience">
+      <h2 class="section-title">Professional Experience</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <i class="ri-briefcase-line"></i>
+              <h3>Software Engineer</h3>
+            </div>
+            <h4>Tech Company Name</h4>
+            <p class="date">January 2023 - Present</p>
+            <p class="description">
+              Led the development of multiple web applications using React and
+              Node.js. Implemented CI/CD pipelines and improved application
+              performance by 40%.
+            </p>
+            <a href="#" class="certificate-link">
+              <i class="ri-external-link-line"></i> View Certificate
+            </a>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <i class="ri-briefcase-line"></i>
+              <h3>Frontend Developer</h3>
+            </div>
+            <h4>Previous Company</h4>
+            <p class="date">June 2022 - December 2022</p>
+            <p class="description">
+              Developed responsive web interfaces and collaborated with UX
+              designers to implement modern design patterns and improve user
+              experience.
+            </p>
+            <a href="#" class="certificate-link">
+              <i class="ri-external-link-line"></i> View Certificate
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <h2 class="section-title">Get In Touch</h2>
+      <div class="contact-container">
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="ri-mail-line"></i>
+            <p>omrmhd5@gmail.com</p>
+          </div>
+          <div class="contact-item">
+            <i class="ri-phone-line"></i>
+            <p>+20 127 673 1105</p>
+          </div>
+          <div class="contact-item">
+            <i class="ri-map-pin-line"></i>
+            <p>Cairo, Egypt</p>
+          </div>
+        </div>
+        <div class="contact-socials">
+          <a
+            href="https://github.com/omrmhd5"
+            target="_blank"
+            class="social-link">
+            <i class="ri-github-line"></i>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/omrmhd5/"
+            target="_blank"
+            class="social-link">
+            <i class="ri-linkedin-box-line"></i>
+          </a>
+          <a href="#" target="_blank" class="social-link">
+            <i class="ri-twitter-line"></i>
+          </a>
+        </div>
+      </div>
     </section>
 
     <footer class="footer">
-      <div class="footer_brand">
-        <a href="#">Logo.</a>
-        <p>Omar Mahmoud</p>
-      </div>
-      <div class="footer_links">
-        <a href="#">Home</a>
-        <a href="#">Projects</a>
-        <a href="#">Skills</a>
-        <a href="#">About</a>
+      <div class="footer-content">
+        <p>&copy; 2024 Omar Mahmoud. All rights reserved.</p>
+        <div class="footer-links">
+          <a href="#hero">Home</a>
+          <a href="#education">Education</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#experience">Experience</a>
+          <a href="#contact">Contact</a>
+        </div>
       </div>
     </footer>
+
+    <script src="script.js"></script>
   </body>
 </html>
