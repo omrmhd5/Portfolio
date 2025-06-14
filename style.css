@@ -204,7 +204,8 @@ body {
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
-.skills_stats i {
+.skills_stats i,
+svg {
   font-size: 60px;
   display: flex;
   align-items: center;
@@ -537,6 +538,10 @@ body {
 
   .skills_stats i {
     font-size: 50px;
+  }
+
+  .skills img {
+    width: 60px;
   }
 
   .skill_info h5 {
