@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 :root {
   --primary-color: #2563eb;
   --secondary-color: #1e40af;
@@ -27,7 +26,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
+  font-family: "Lora", sans-serif;
 }
 
 html {
@@ -254,6 +253,8 @@ img {
 
 .education-card,
 .training-card {
+  display: flex;
+  justify-content: space-between;
   background: var(--card-bg, white);
   border-radius: 15px;
   padding: 2rem;
@@ -284,21 +285,62 @@ img {
 .education-header,
 .training-header {
   display: flex;
+  flex-direction: column;
+}
+
+.education-school {
+  display: flex;
   align-items: center;
   gap: 1rem;
   margin-bottom: 1.5rem;
 }
 
-.education-header i,
+.education-school h1 {
+  font-size: 1.3rem;
+}
+
+.education-header img {
+  width: 40px;
+}
+
 .training-header i {
   font-size: 2rem;
   color: var(--primary-color);
 }
 
-.education-content h4 {
-  font-size: 1.2rem;
-  font-weight: 600;
+.degree {
+  display: flex;
+  gap: 0.5rem;
+  align-items: baseline;
+}
+
+.degree i {
+  font-size: 1.5rem;
+  color: var(--primary-color);
   margin-bottom: 0.5rem;
+}
+
+.education-content h3 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.education-content span {
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.education-content .description {
+  font-weight: 500;
+  background-color: #9ca3af;
+  padding: 5px 10px;
+  border-radius: 10px;
+  width: fit-content;
+}
+
+.education-card .date {
+  font-size: 1.4rem;
 }
 
 .date {
