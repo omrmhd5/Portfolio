@@ -268,6 +268,38 @@ const projects = [
   },
 ];
 
+const experience = [
+  {
+    title: "Digital Innovation Intern",
+    company: "Arab African International Bank",
+    date: "September 2024 - October 2024",
+    description: `Worked on a customer feedback survey using Microsoft Customer Voice, integrated with CRM. Analyzed and cleaned data with SQL to support strategic decisions and contributed to fintech innovation in banking.`,
+    link: "https://drive.google.com/file/d/15cIVfs0xZJi1iK8hmRtecFDVj1W1nQ5M/view?usp=drive_link",
+  },
+  {
+    title: "Software Development Intern",
+    company: "NFQ | Egypt",
+    date: "July 2024 - August 2024",
+    description: `Developed a full-stack To-Do web app using React.js, Laravel, and MySQL with responsive design, MVC architecture, and API integration. Streamlined deployments via CI/CD, applied clean code and SOLID principles, and collaborated using Git for efficient, high-quality delivery.`,
+    link: "https://drive.google.com/file/d/1My0sywzeGF-LG_9OgunB21p17_KY3WrA/view?usp=drive_link",
+  },
+  {
+    title: "Backend Development Trainee",
+    company: "AITB",
+    date: "August 2023 - September 2023",
+    description: `Executed two back-end projects utilizing Node.js and MongoDB, demonstrating strong backend development skills.`,
+    link: "https://drive.google.com/file/d/1w-8GRllgd8t3u4vNwUGExnTfN1_16wYC/view?usp=drive_link",
+  },
+  {
+    title: "Frontend Development Trainee",
+    company: "AITB",
+    date: "July 2023 - August 2023",
+    description: `Completed five front-end projectsleveraging Angular Framework and Bootstrap, highlighting
+expertise in HTML, CSS, and JavaScript.`,
+    link: "https://drive.google.com/file/d/1HQmkwRnrOYgAbJhLKxBqwCvTodYQ1PXf/view?usp=drive_link",
+  },
+];
+
 document.addEventListener("DOMContentLoaded", () => {
   const container = document.querySelector(".course-container");
   const frontEndContainer = document.getElementsByClassName("skill-items")[0];
@@ -359,5 +391,26 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>`;
 
     projectContainer.innerHTML += projectCard;
+  });
+
+  experience.forEach((exp) => {
+    const experienceItem = `
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-header">
+          <i class="ri-briefcase-line"></i>
+          <h3>${exp.title}</h3>
+        </div>
+        <h4>${exp.company}</h4>
+        <p class="date">${exp.date}</p>
+        <p class="description">${exp.description}</p>
+        <a href="${exp.link}" class="btn" target="_blank">
+          <i class="fa-solid fa-certificate"></i> View Certificate
+        </a>
+      </div>
+    </div>`;
+
+    experienceContainer.innerHTML += experienceItem;
   });
 });
