@@ -147,6 +147,7 @@ const frontEndSkills = [
   { logo: "ri-tailwind-css-fill", name: "Tailwind CSS", color: "#38bdf8" },
 ];
 
+// Back End Skills Object
 const backEndSkills = [
   {
     logo: `<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0,0,255.99536,255.99536">
@@ -176,6 +177,7 @@ const backEndSkills = [
   },
 ];
 
+// Database and Tools Object
 const databaseAndTools = [
   {
     logo: `<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0 0 48 48">
@@ -211,10 +213,71 @@ const databaseAndTools = [
   },
 ];
 
-document.addEventListener("DOMContentLoaded", () => {
-  courses.forEach((course) => {
-    const container = document.querySelector(".course-container");
+const projects = [
+  {
+    title: "Development Solutions Real Estate",
+    image: "assets/DSRE.png",
+    description: `DSRE is a fully responsive real estate website built with the MERN stack and supports both Arabic and English. It offers dark/light modes, smooth performance across all devices, and direct contact with property owners. The admin dashboard allows secure management of listings—uploading, editing, deleting, and viewing properties with multiple images and detailed info.`,
+    technologies: [
+      "React.js",
+      "TailwindCSS",
+      "Express.js",
+      "Node.js",
+      "MongoDB",
+    ],
+    links: {
+      code: "https://github.com/omrmhd5/DSRE",
+      live: "https://dsre.up.railway.app/",
+    },
+  },
+  {
+    title: "OSTR - Ecommerce Fashion Website",
+    image: "assets/OSTR.png",
+    description: `OSTR is an interactive fashion website built with the MERN stack, offering a seamless shopping experience. It features secure JWT login, user/admin roles, and a full admin dashboard for managing products. Users can browse men’s, women’s, and kids’ categories, design custom outfits, and shop via a complete cart, wishlist, and order system. The site includes responsive dark mode support, a secure checkout, and real-time database updates for all interactions.`,
+    technologies: [
+      "React.js",
+      "TailwindCSS",
+      "Express.js",
+      "Node.js",
+      "MongoDB",
+    ],
+    links: {
+      code: "https://github.com/omrmhd5/OSTR",
+      live: "#",
+    },
+  },
+  {
+    title: "NFQ To-Do App",
+    image: "assets/NFQ.png",
+    description: `NFQ To-Do App is a full-stack task management web application built with React.js, Laravel, and MySQL. It features a responsive, interactive UI with real-time task updates to help users efficiently manage daily activities. The app follows MVC architecture, integrates APIs, and applies SOLID principles and clean code for scalable, maintainable development. CI/CD pipelines were used to streamline deployment, and version control was handled via Git in a collaborative environment to ensure high-quality delivery.`,
+    technologies: ["React.js", "CSS", "PHP", "Laravel", "MySQL"],
+    links: {
+      code: "https://github.com/omrmhd5/internship-todo-app",
+      live: "https://omar--omar-todo-application.netlify.app/",
+    },
+  },
+  {
+    title: "Gemini Clone",
+    image: "assets/Gemini.png",
+    description: `Gemini Clone is an AI chatbot inspired by Google Gemini, built using HTML, CSS, and JavaScript. It integrates the official Gemini API to deliver smooth, interactive conversations. The project features a clean, user-friendly chat interface with dark mode support, typing indicators, and smooth scrolling for an enhanced user experience.`,
+    technologies: ["HTML", "CSS", "JavaScript", "Gemini API Integration"],
+    links: {
+      code: "https://github.com/omrmhd5/Gemini-Clone",
+      live: "https://omrmhd5.github.io/Gemini-Clone/",
+    },
+  },
+];
 
+document.addEventListener("DOMContentLoaded", () => {
+  const container = document.querySelector(".course-container");
+  const frontEndContainer = document.getElementsByClassName("skill-items")[0];
+  const backEndContainer = document.getElementsByClassName("skill-items")[1];
+  const databaseAndToolsContainer =
+    document.getElementsByClassName("skill-items")[2];
+  const projectContainer = document.querySelector(".projects-container");
+  const experienceContainer = document.querySelector(".timeline");
+
+  courses.forEach((course) => {
     const courseCard = `<div class="course-card">
           <div class="course-header">
             <div class="course-title">
@@ -241,8 +304,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   frontEndSkills.forEach((skill) => {
-    const frontEndContainer = document.getElementsByClassName("skill-items")[0];
-
     const skillCard = `<div class="skill-item">
           <i class="${skill.logo}" style="color: ${skill.color}"></i>
           <span>${skill.name}</span>
@@ -252,8 +313,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   backEndSkills.forEach((skill) => {
-    const backEndContainer = document.getElementsByClassName("skill-items")[1];
-
     const skillCard = `<div class="skill-item">
           ${skill.logo}
           <span>${skill.name}</span>
@@ -263,14 +322,42 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   databaseAndTools.forEach((skill) => {
-    const databaseAndToolsContainer =
-      document.getElementsByClassName("skill-items")[2];
-
     const skillCard = `<div class="skill-item">
           ${skill.logo}
           <span>${skill.name}</span>
         </div>`;
 
     databaseAndToolsContainer.innerHTML += skillCard;
+  });
+
+  projects.forEach((project) => {
+    const hasLiveDemo = project.links.live !== "#";
+    const projectCard = `
+    <div class="project-card">
+    <div class="project-image">
+      <img src="${project.image}" alt="${project.title}" />
+    </div>
+    <div class="project-content">
+      <h3>${project.title}</h3>
+      <p>${project.description}</p>
+      <div class="project-tech">
+      ${project.technologies.map((tech) => `<span>${tech}</span>`).join("")}
+      </div>
+      <div class="project-links">
+      <a href="${project.links.code}" class="btn btn-secondary" target="_blank">
+        <i class="ri-github-line"></i> Code
+      </a>
+      ${
+        hasLiveDemo
+          ? `<a href="${project.links.live}" class="btn" target="_blank">
+          <i class="ri-external-link-line"></i> Live Demo
+          </a>`
+          : ""
+      }
+      </div>
+    </div>
+    </div>`;
+
+    projectContainer.innerHTML += projectCard;
   });
 });

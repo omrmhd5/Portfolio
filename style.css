@@ -498,9 +498,7 @@ img {
 }
 
 .project-image {
-  width: 100%;
-  height: 250px;
-  overflow: hidden;
+  object-fit: cover;
 }
 
 .project-image img {
@@ -632,6 +630,10 @@ img {
 .timeline-content .date {
   color: var(--text-light);
   font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.timeline-content .description {
   margin-bottom: 1rem;
 }
 
