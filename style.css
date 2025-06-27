@@ -385,6 +385,7 @@ img {
 }
 
 .certificate-link {
+  white-space: nowrap;
   display: inline-flex;
   align-items: center;
   gap: 0.2rem;
@@ -796,6 +797,10 @@ img {
     justify-content: center;
   }
 
+  .course-header {
+    flex: 0;
+  }
+
   .timeline::before {
     left: 20px;
   }
@@ -808,9 +813,25 @@ img {
     width: calc(100% - 60px);
     margin-left: 60px !important;
   }
+
+  .projects-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .project-card {
+    margin: 0 1rem;
+  }
+
+  .skills-container {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media screen and (max-width: 768px) {
+  .btn {
+    padding: 0.5rem 0.6rem;
+  }
+
   .navbar {
     padding: 1rem;
   }
@@ -824,7 +845,7 @@ img {
   }
 
   .hero_content h2 {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 
   .hero_intro h3 {
@@ -858,6 +879,43 @@ img {
   .theme-switch i {
     font-size: 1.1rem;
   }
+
+  .projects-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .project-content {
+    padding: 1.5rem;
+  }
+  .project-card {
+    margin: 0 0.5rem;
+  }
+  .skills-container {
+    grid-template-columns: 1fr;
+  }
+  .skill-items {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 1rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .project-card {
+    margin: 0 0.2rem;
+  }
+  .project-content {
+    padding: 1.1rem;
+  }
+  .project-image img {
+    border-radius: 10px 10px 0 0;
+  }
+  .section-title {
+    font-size: 1.3rem;
+  }
+  .hero_image {
+    width: 180px;
+    height: 180px;
+  }
 }
 
 @media screen and (max-width: 480px) {
@@ -866,12 +924,32 @@ img {
     height: 300px;
   }
 
-  .project-card {
-    margin: 0 1rem;
-  }
-
-  .contact-info {
+  .projects-container {
     grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .project-card {
+    margin: 0 0.1rem;
+    border-radius: 10px;
+  }
+  .project-content {
+    padding: 0.5rem;
+  }
+  .project-image img {
+    border-radius: 8px 8px 0 0;
+  }
+  .skills-container {
+    grid-template-columns: 1fr;
+  }
+  .skill-items {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+  .timeline-content {
+    padding: 1rem;
+  }
+  .timeline-header img {
+    width: 2rem;
   }
 }
 
