@@ -300,7 +300,7 @@ const experience = [
   {
     title: "Backend Development Trainee",
     company: "AITB",
-    logo: "assets/AITB.jpeg",
+    logo: "assets/AITB.png",
     date: "August 2023 - September 2023",
     description: `Executed two back-end projects utilizing Node.js and MongoDB, demonstrating strong backend development skills.`,
     link: "https://drive.google.com/file/d/1w-8GRllgd8t3u4vNwUGExnTfN1_16wYC/view?usp=drive_link",
@@ -308,7 +308,7 @@ const experience = [
   {
     title: "Frontend Development Trainee",
     company: "AITB",
-    logo: "assets/AITB.jpeg",
+    logo: "assets/AITB.png",
     date: "July 2023 - August 2023",
     description: `Completed five front-end projects leveraging Angular Framework and Bootstrap, highlighting
 expertise in HTML, CSS, and JavaScript.`,
