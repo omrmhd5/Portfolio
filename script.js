@@ -229,11 +229,12 @@ const projects = [
       code: "https://github.com/omrmhd5/DSRE",
       live: "https://dsre.up.railway.app/",
     },
+    video: "assets/DSRE.mp4",
   },
   {
     title: "OSTR - Ecommerce Fashion Website",
     image: "assets/OSTR.png",
-    description: `OSTR is an interactive fashion website built with the MERN stack, offering a seamless shopping experience. It features secure JWT login, user/admin roles, and a full admin dashboard for managing products. Users can browse men’s, women’s, and kids’ categories, design custom outfits, and shop via a complete cart, wishlist, and order system. The site includes responsive dark mode support, a secure checkout, and real-time database updates for all interactions.`,
+    description: `OSTR is an interactive fashion website built with the MERN stack, offering a seamless shopping experience. It features secure JWT login, user/admin roles, and a full admin dashboard for managing products. Users can browse men's, women's, and kids' categories, design custom outfits, and shop via a complete cart, wishlist, and order system. The site includes responsive dark mode support, a secure checkout, and real-time database updates for all interactions.`,
     technologies: [
       "React.js",
       "TailwindCSS",
@@ -245,16 +246,18 @@ const projects = [
       code: "https://github.com/omrmhd5/OSTR",
       live: "#",
     },
+    video: "assets/OSTR.mp4",
   },
   {
-    title: "NFQ To-Do App",
+    title: "To-Do App",
     image: "assets/NFQ.png",
-    description: `NFQ To-Do App is a full-stack task management web application built with React.js, Laravel, and MySQL. It features a responsive, interactive UI with real-time task updates to help users efficiently manage daily activities. The app follows MVC architecture, integrates APIs, and applies SOLID principles and clean code for scalable, maintainable development. CI/CD pipelines were used to streamline deployment, and version control was handled via Git in a collaborative environment to ensure high-quality delivery.`,
+    description: `To-Do App is a full-stack task management web application built with React.js, Laravel, and MySQL. It features a responsive, interactive UI with real-time task updates to help users efficiently manage daily activities. The app follows MVC architecture, integrates APIs, and applies SOLID principles and clean code for scalable, maintainable development. CI/CD pipelines were used to streamline deployment, and version control was handled via Git in a collaborative environment to ensure high-quality delivery.`,
     technologies: ["React.js", "CSS", "PHP", "Laravel", "MySQL"],
     links: {
       code: "https://github.com/omrmhd5/internship-todo-app",
       live: "https://omar--omar-todo-application.netlify.app/",
     },
+    video: "#",
   },
   {
     title: "Gemini Clone",
@@ -265,20 +268,31 @@ const projects = [
       code: "https://github.com/omrmhd5/Gemini-Clone",
       live: "https://omrmhd5.github.io/Gemini-Clone/",
     },
+    video: "assets/Gemini Clone.mp4",
   },
 ];
 
 const experience = [
   {
+    title: "Contract",
+    company: "Freelancer",
+    icon: `<i class="ri-contract-line"></i>`,
+    date: "April 2025 - Present",
+    description: `Delivered multiple full-stack websites using the MERN stack, featuring JWT authentication, admin dashboard, and responsive design. Implemented real-time database updates and secure payment integration.`,
+    link: "#",
+  },
+  {
     title: "Digital Innovation Intern",
     company: "Arab African International Bank",
+    logo: "assets/AAIB.png",
     date: "September 2024 - October 2024",
     description: `Worked on a customer feedback survey using Microsoft Customer Voice, integrated with CRM. Analyzed and cleaned data with SQL to support strategic decisions and contributed to fintech innovation in banking.`,
     link: "https://drive.google.com/file/d/15cIVfs0xZJi1iK8hmRtecFDVj1W1nQ5M/view?usp=drive_link",
   },
   {
-    title: "Software Development Intern",
-    company: "NFQ | Egypt",
+    title: "Software Engineering Intern",
+    company: ".NFQ",
+    logo: "assets/NFQL.png",
     date: "July 2024 - August 2024",
     description: `Developed a full-stack To-Do web app using React.js, Laravel, and MySQL with responsive design, MVC architecture, and API integration. Streamlined deployments via CI/CD, applied clean code and SOLID principles, and collaborated using Git for efficient, high-quality delivery.`,
     link: "https://drive.google.com/file/d/1My0sywzeGF-LG_9OgunB21p17_KY3WrA/view?usp=drive_link",
@@ -286,6 +300,7 @@ const experience = [
   {
     title: "Backend Development Trainee",
     company: "AITB",
+    logo: "assets/AITB.jpeg",
     date: "August 2023 - September 2023",
     description: `Executed two back-end projects utilizing Node.js and MongoDB, demonstrating strong backend development skills.`,
     link: "https://drive.google.com/file/d/1w-8GRllgd8t3u4vNwUGExnTfN1_16wYC/view?usp=drive_link",
@@ -293,8 +308,9 @@ const experience = [
   {
     title: "Frontend Development Trainee",
     company: "AITB",
+    logo: "assets/AITB.jpeg",
     date: "July 2023 - August 2023",
-    description: `Completed five front-end projectsleveraging Angular Framework and Bootstrap, highlighting
+    description: `Completed five front-end projects leveraging Angular Framework and Bootstrap, highlighting
 expertise in HTML, CSS, and JavaScript.`,
     link: "https://drive.google.com/file/d/1HQmkwRnrOYgAbJhLKxBqwCvTodYQ1PXf/view?usp=drive_link",
   },
@@ -362,8 +378,9 @@ document.addEventListener("DOMContentLoaded", () => {
     databaseAndToolsContainer.innerHTML += skillCard;
   });
 
-  projects.forEach((project) => {
+  projects.forEach((project, idx) => {
     const hasLiveDemo = project.links.live !== "#";
+    const hasVideo = project.video !== "#";
     const projectCard = `
     <div class="project-card">
     <div class="project-image">
@@ -386,6 +403,11 @@ document.addEventListener("DOMContentLoaded", () => {
           </a>`
           : ""
       }
+      ${
+        hasVideo
+          ? `<a class="btn btn-video-preview" data-project-idx="${idx}"><i class="ri-play-circle-line"></i> Video Preview</a>`
+          : ""
+      }
       </div>
     </div>
     </div>`;
@@ -394,23 +416,70 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   experience.forEach((exp) => {
+    const hasCertificate = exp.link !== "#";
     const experienceItem = `
     <div class="timeline-item">
       <div class="timeline-dot"></div>
       <div class="timeline-content">
         <div class="timeline-header">
-          <i class="ri-briefcase-line"></i>
-          <h3>${exp.title}</h3>
+        ${exp.icon ? exp.icon : `<img src="${exp.logo}" alt="${exp.company}"> `}
+          <h3>${exp.company}</h3>
         </div>
-        <h4>${exp.company}</h4>
+        <h4>${exp.title}</h4>
         <p class="date">${exp.date}</p>
         <p class="description">${exp.description}</p>
-        <a href="${exp.link}" class="btn" target="_blank">
-          <i class="fa-solid fa-certificate"></i> View Certificate
-        </a>
+        ${
+          hasCertificate
+            ? `
+            <a href="${exp.link}" class="btn" target="_blank">
+              <i class="fa-solid fa-certificate"></i> View Certificate
+            </a>`
+            : ""
+        }
       </div>
     </div>`;
 
     experienceContainer.innerHTML += experienceItem;
   });
+
+  // Modal for video preview
+  const videoModal = document.createElement("div");
+  videoModal.className = "video-modal";
+  videoModal.innerHTML = `
+    <div class="video-modal-overlay"></div>
+    <div class="video-modal-content">
+      <button class="video-modal-close">&times;</button>
+      <div class="video-modal-body"></div>
+    </div>`;
+  document.body.appendChild(videoModal);
+
+  function openVideoModal(idx) {
+    const project = projects[idx];
+    const modalBody = videoModal.querySelector(".video-modal-body");
+    if (project.video) {
+      modalBody.innerHTML = `<video src="${project.video}" controls style="max-width:100%; max-height:60vh; border-radius:12px; background:#000;"></video>`;
+    } else {
+      modalBody.innerHTML = `<div class="video-placeholder">Video preview coming soon...</div>`;
+    }
+    videoModal.classList.add("open");
+  }
+
+  function closeVideoModal() {
+    videoModal.classList.remove("open");
+    videoModal.querySelector(".video-modal-body").innerHTML = "";
+  }
+
+  document.querySelectorAll(".btn-video-preview").forEach((btn) => {
+    btn.addEventListener("click", function (e) {
+      const idx = this.getAttribute("data-project-idx");
+      openVideoModal(idx);
+    });
+  });
+
+  videoModal
+    .querySelector(".video-modal-close")
+    .addEventListener("click", closeVideoModal);
+  videoModal
+    .querySelector(".video-modal-overlay")
+    .addEventListener("click", closeVideoModal);
 });

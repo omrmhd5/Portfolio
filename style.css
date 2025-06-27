@@ -74,7 +74,7 @@ img {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 0.75rem 1.5rem;
+  padding: 0.5rem 1.2rem;
   border-radius: 8px;
   font-weight: 500;
   transition: var(--transition);
@@ -110,7 +110,7 @@ img {
   align-items: center;
   justify-content: space-between;
   padding: 1rem 5%;
-  background: var(--navbar-bg, rgba(255, 255, 255, 0.95));
+  background: transparent;
   backdrop-filter: blur(10px);
   z-index: 1000;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -611,14 +611,22 @@ img {
 }
 
 .timeline-header i {
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: var(--primary-color);
+}
+
+.timeline-header img {
+  width: 3rem;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  background: #fff;
 }
 
 .timeline-content h3 {
   font-size: 1.5rem;
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  /* margin-bottom: 0.5rem; */
 }
 
 .timeline-content h4 {
@@ -934,4 +942,73 @@ img {
   50% {
     border-color: var(--primary-color);
   }
+}
+
+/* Video Preview Modal */
+.video-modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+.video-modal.open {
+  display: flex;
+}
+.video-modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+}
+.video-modal-content {
+  position: relative;
+  z-index: 2;
+  background: var(--card-bg, #fff);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  padding: 2rem;
+  min-width: 320px;
+  max-width: 90vw;
+  min-height: 180px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.video-modal-close {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: var(--primary-color);
+  cursor: pointer;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 3;
+  transition: color 0.2s;
+}
+.video-modal-close:hover {
+  color: var(--secondary-color);
+}
+.video-modal-body {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 150px;
+  margin-top: 2rem;
+}
+.video-placeholder {
+  color: var(--text-light);
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 2rem;
 }
