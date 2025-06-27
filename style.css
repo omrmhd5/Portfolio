@@ -151,6 +151,11 @@ img {
   width: 100%;
 }
 
+.navbar_link.active::after {
+  width: 100%;
+  background: var(--secondary-color);
+}
+
 .navbar_socials {
   display: flex;
   gap: 1rem;
@@ -621,7 +626,7 @@ img {
   object-fit: cover;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
-  background: #fff;
+  background: var(--bg-secondary);
 }
 
 .timeline-content h3 {

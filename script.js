@@ -483,3 +483,29 @@ document.addEventListener("DOMContentLoaded", () => {
     .querySelector(".video-modal-overlay")
     .addEventListener("click", closeVideoModal);
 });
+
+// Navbar active section highlight
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".navbar_link");
+
+function activateNavLink() {
+  let currentSection = sections[0];
+  let scrollY = window.scrollY + 120; // Offset for fixed navbar
+  sections.forEach((section) => {
+    if (
+      section.offsetTop <= scrollY &&
+      section.offsetTop + section.offsetHeight > scrollY
+    ) {
+      currentSection = section;
+    }
+  });
+  navLinks.forEach((link) => {
+    link.classList.remove("active");
+    if (link.getAttribute("href") === `#${currentSection.id}`) {
+      link.classList.add("active");
+    }
+  });
+}
+
+window.addEventListener("scroll", activateNavLink);
+window.addEventListener("DOMContentLoaded", activateNavLink);
