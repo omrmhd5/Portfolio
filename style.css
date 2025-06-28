@@ -833,10 +833,6 @@ img {
 }
 
 @media screen and (max-width: 768px) {
-  .btn {
-    padding: 0.5rem 0.6rem;
-  }
-
   .navbar {
     padding: 1rem;
   }
@@ -849,17 +845,20 @@ img {
     font-size: 2rem;
   }
 
+  .hero_content {
+    margin-bottom: -4rem;
+  }
+
   .hero_content h2 {
-    font-size: 2rem;
+    font-size: 1.7rem;
   }
 
   .hero_intro h3 {
     font-size: 1.5rem;
   }
 
-  .course-card {
-    padding: 2rem;
-    justify-content: space-between;
+  .hero_actions button {
+    padding: 1rem 1.2rem;
   }
 
   .footer-content {
@@ -905,6 +904,74 @@ img {
 }
 
 @media screen and (max-width: 600px) {
+  .hero_content {
+    text-align: center;
+  }
+
+  .hero_actions .btn {
+    font-size: 1rem;
+  }
+
+  .project-links {
+    gap: 0.6rem;
+  }
+
+  .project-links .btn {
+    font-size: 0.8rem;
+    padding: 0.5rem 0.5rem;
+  }
+
+  .education-card {
+    padding: 1.2rem;
+  }
+
+  .education-school {
+    white-space: nowrap;
+  }
+
+  .education-card > .date {
+    position: absolute;
+    right: 1rem;
+    top: 40%;
+    font-size: 1rem;
+  }
+
+  .education-content {
+    margin-top: 1.5rem;
+  }
+
+  .degree {
+    align-items: center;
+  }
+
+  .education-card h1,
+  .education-header h3,
+  .education-content p {
+    font-size: 1rem;
+  }
+
+  .course-title {
+    width: 100%;
+  }
+  /* 
+  .course-header {
+    flex: 0;
+  } */
+  /* .course-card {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  } */
+
+  .course-card .date {
+    position: absolute;
+    right: 2rem;
+  }
+
+  .skill-item {
+    white-space: nowrap;
+  }
+
   .project-card {
     margin: 0 0.2rem;
   }
