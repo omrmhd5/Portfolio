@@ -381,6 +381,13 @@ document.addEventListener("DOMContentLoaded", () => {
   projects.forEach((project, idx) => {
     const hasLiveDemo = project.links.live !== "#";
     const hasVideo = project.video !== "#";
+
+    // Check if description is long enough to need "read more"
+    const isLongDescription = project.description.length > 100;
+    const shortDescription = isLongDescription
+      ? project.description.substring(0, 100) + "..."
+      : project.description;
+
     const projectCard = `
     <div class="project-card">
     <div class="project-image">
@@ -388,7 +395,11 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
     <div class="project-content">
       <h3>${project.title}</h3>
-      <p>${project.description}</p>
+      <p>${shortDescription}${
+      isLongDescription
+        ? ` <button class="read-more-btn" data-type="project" data-index="${idx}">Read More</button>`
+        : ""
+    }</p>
       <div class="project-tech">
       ${project.technologies.map((tech) => `<span>${tech}</span>`).join("")}
       </div>
@@ -415,8 +426,15 @@ document.addEventListener("DOMContentLoaded", () => {
     projectContainer.innerHTML += projectCard;
   });
 
-  experience.forEach((exp) => {
+  experience.forEach((exp, idx) => {
     const hasCertificate = exp.link !== "#";
+
+    // Check if description is long enough to need "read more"
+    const isLongDescription = exp.description.length > 100;
+    const shortDescription = isLongDescription
+      ? exp.description.substring(0, 100) + "..."
+      : exp.description;
+
     const experienceItem = `
     <div class="timeline-item">
       <div class="timeline-dot"></div>
@@ -427,7 +445,11 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
         <h4>${exp.title}</h4>
         <p class="date">${exp.date}</p>
-        <p class="description">${exp.description}</p>
+        <p class="description">${shortDescription}${
+      isLongDescription
+        ? ` <button class="read-more-btn" data-type="experience" data-index="${idx}">Read More</button>`
+        : ""
+    }</p>
         ${
           hasCertificate
             ? `
@@ -482,6 +504,133 @@ document.addEventListener("DOMContentLoaded", () => {
   videoModal
     .querySelector(".video-modal-overlay")
     .addEventListener("click", closeVideoModal);
+
+  // Modal for read more content
+  const readMoreModal = document.createElement("div");
+  readMoreModal.className = "read-more-modal";
+  readMoreModal.innerHTML = `
+    <div class="read-more-modal-overlay"></div>
+    <div class="read-more-modal-content">
+      <button class="read-more-modal-close">&times;</button>
+      <div class="read-more-modal-body"></div>
+    </div>`;
+  document.body.appendChild(readMoreModal);
+
+  function openReadMoreModal(type, index) {
+    const modalBody = readMoreModal.querySelector(".read-more-modal-body");
+
+    if (type === "project") {
+      const project = projects[index];
+      const hasLiveDemo = project.links.live !== "#";
+      const hasVideo = project.video !== "#";
+
+      modalBody.innerHTML = `
+        <div class="read-more-project">
+          <div class="read-more-header">
+            <img src="${project.image}" alt="${project.title}" />
+            <div class="read-more-title">
+              <h2>${project.title}</h2>
+              <div class="read-more-tech">
+                ${project.technologies
+                  .map((tech) => `<span>${tech}</span>`)
+                  .join("")}
+              </div>
+            </div>
+          </div>
+          <div class="read-more-description">
+            <p>${project.description}</p>
+          </div>
+          <div class="read-more-links">
+            <a href="${
+              project.links.code
+            }" class="btn btn-secondary" target="_blank">
+              <i class="ri-github-line"></i> View Code
+            </a>
+            ${
+              hasLiveDemo
+                ? `<a href="${project.links.live}" class="btn" target="_blank">
+              <i class="ri-external-link-line"></i> Live Demo
+            </a>`
+                : ""
+            }
+            ${
+              hasVideo
+                ? `<a class="btn btn-video-preview-modal" data-project-idx="${index}">
+              <i class="ri-play-circle-line"></i> Video Preview
+            </a>`
+                : ""
+            }
+          </div>
+        </div>
+      `;
+    } else if (type === "experience") {
+      const exp = experience[index];
+      const hasCertificate = exp.link !== "#";
+
+      modalBody.innerHTML = `
+        <div class="read-more-experience">
+          <div class="read-more-header">
+            ${
+              exp.icon
+                ? exp.icon
+                : `<img src="${exp.logo}" alt="${exp.company}">`
+            }
+            <div class="read-more-title">
+              <h2>${exp.company}</h2>
+              <h3>${exp.title}</h3>
+              <p class="date">${exp.date}</p>
+            </div>
+          </div>
+          <div class="read-more-description">
+            <p>${exp.description}</p>
+          </div>
+          ${
+            hasCertificate
+              ? `
+          <div class="read-more-links">
+            <a href="${exp.link}" class="btn" target="_blank">
+              <i class="fa-solid fa-certificate"></i> View Certificate
+            </a>
+          </div>
+          `
+              : ""
+          }
+        </div>
+      `;
+    }
+
+    readMoreModal.classList.add("open");
+  }
+
+  function closeReadMoreModal() {
+    readMoreModal.classList.remove("open");
+    readMoreModal.querySelector(".read-more-modal-body").innerHTML = "";
+  }
+
+  // Event listeners for read more buttons
+  document.addEventListener("click", function (e) {
+    if (e.target.classList.contains("read-more-btn")) {
+      const type = e.target.getAttribute("data-type");
+      const index = e.target.getAttribute("data-index");
+      openReadMoreModal(type, parseInt(index));
+    }
+  });
+
+  // Event listeners for video preview in modal
+  document.addEventListener("click", function (e) {
+    if (e.target.classList.contains("btn-video-preview-modal")) {
+      const idx = e.target.getAttribute("data-project-idx");
+      closeReadMoreModal();
+      setTimeout(() => openVideoModal(idx), 300);
+    }
+  });
+
+  readMoreModal
+    .querySelector(".read-more-modal-close")
+    .addEventListener("click", closeReadMoreModal);
+  readMoreModal
+    .querySelector(".read-more-modal-overlay")
+    .addEventListener("click", closeReadMoreModal);
 });
 
 // Navbar active section highlight
