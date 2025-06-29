@@ -79,25 +79,30 @@ function type() {
 
   setTimeout(type, typingDelay);
 }
-
 // Start typing effect when page loads
 window.addEventListener("load", type);
-
 // Course Object
 const courses = [
+  {
+    logo: "fa-brands fa-node-js",
+    title: "Node.js Back-end Development",
+    provider: "AITB",
+    link: "https://drive.google.com/file/d/1w-8GRllgd8t3u4vNwUGExnTfN1_16wYC/view?usp=drive_link",
+    date: "September 2023",
+  },
+  {
+    logo: "fa-brands fa-angular",
+    title: "Web Design (Front-end) Training",
+    provider: "AITB",
+    link: "https://drive.google.com/file/d/1HQmkwRnrOYgAbJhLKxBqwCvTodYQ1PXf/view?usp=drive_link",
+    date: "August 2023",
+  },
   {
     logo: "fa-solid fa-laptop-code",
     title: "ITIDA + GIGS - Web Development",
     provider: "ITIDA",
-    link: "",
+    link: "https://drive.google.com/file/d/1syM-z1bwTZE77mHhSwDLmKtPFGEOgG1w/view?usp=drive_link",
     date: "May 2025",
-  },
-  {
-    logo: "fa-solid fa-terminal",
-    title: "SprintUp - Introduction To Testing",
-    provider: "SprintUp",
-    link: "https://drive.google.com/file/d/1CT1EuLilkaJM5TQ0xFYGe1dwzf-YTvxd/view?usp=drive_link",
-    date: "February 2025",
   },
   {
     logo: "fa-brands fa-python",
@@ -114,6 +119,13 @@ const courses = [
     date: "January 2025",
   },
   {
+    logo: "fa-solid fa-code",
+    title: "Introduction to Software Engineering",
+    provider: "SprintUp",
+    link: "https://www.coursera.org/account/accomplishments/verify/LS358STKH46T",
+    date: "July 2024",
+  },
+  {
     logo: "ri-ai-generate-2",
     title: "ALX AiCE - AI Career Essentials",
     provider: "ALX",
@@ -121,11 +133,11 @@ const courses = [
     date: "August 2024",
   },
   {
-    logo: "fa-solid fa-code",
-    title: "Introduction to Software Engineering",
+    logo: "fa-solid fa-terminal",
+    title: "SprintUp - Introduction To Testing",
     provider: "SprintUp",
-    link: "https://www.coursera.org/account/accomplishments/verify/LS358STKH46T",
-    date: "July 2024",
+    link: "https://drive.google.com/file/d/1CT1EuLilkaJM5TQ0xFYGe1dwzf-YTvxd/view?usp=drive_link",
+    date: "February 2025",
   },
   {
     logo: "fa-solid fa-briefcase",
@@ -217,13 +229,13 @@ const projects = [
   {
     title: "Development Solutions Real Estate",
     image: "assets/DSRE.png",
-    description: `DSRE is a fully responsive real estate website built with the MERN stack and supports both Arabic and English. It offers dark/light modes, smooth performance across all devices, and direct contact with property owners. The admin dashboard allows secure management of listings—uploading, editing, deleting, and viewing properties with multiple images and detailed info.`,
+    description: `DSRE is a fully responsive real estate website built with the MERN stack supporting 100+ property listings, with both Arabic and English support. It offers dark/light modes, smooth performance across all devices, and direct contact with property owners. The admin dashboard allows secure management of listings—uploading, editing, deleting, and viewing properties with multiple images and detailed info.`,
     technologies: [
+      "MongoDB",
+      "Express.js",
       "React.js",
       "TailwindCSS",
-      "Express.js",
       "Node.js",
-      "MongoDB",
     ],
     links: {
       code: "https://github.com/omrmhd5/DSRE",
@@ -234,13 +246,13 @@ const projects = [
   {
     title: "OSTR - Ecommerce Fashion Website",
     image: "assets/OSTR.png",
-    description: `OSTR is an interactive fashion website built with the MERN stack, offering a seamless shopping experience. It features secure JWT login, user/admin roles, and a full admin dashboard for managing products. Users can browse men's, women's, and kids' categories, design custom outfits, and shop via a complete cart, wishlist, and order system. The site includes responsive dark mode support, a secure checkout, and real-time database updates for all interactions.`,
+    description: `OSTR is an interactive fashion website built with the MERN stack, offering a seamless shopping experience supporting 200+ products. It features secure JWT login, user/admin roles, and a full admin dashboard for managing products. Users can browse men's, women's, and kids' categories, design custom outfits, and shop via a complete cart, wishlist, and order system. The site includes responsive dark mode support, a secure checkout, and real-time database updates for all interactions.`,
     technologies: [
+      "MongoDB",
+      "Express.js",
       "React.js",
       "TailwindCSS",
-      "Express.js",
       "Node.js",
-      "MongoDB",
     ],
     links: {
       code: "https://github.com/omrmhd5/OSTR",
@@ -278,7 +290,7 @@ const experience = [
     company: "Freelancer",
     icon: `<i class="ri-contract-line"></i>`,
     date: "April 2025 - Present",
-    description: `Delivered multiple full-stack websites using the MERN stack, featuring JWT authentication, admin dashboard, and responsive design. Implemented real-time database updates and secure payment integration.`,
+    description: `Engineered and delivered 3+ full-stack web applications for clients using the MERN stack, providing responsive, secure, and scalable solutions. Designed user-friendly interfaces with React and TailwindCSS, improving client engagement by up to 30%, and implemented Node.js RESTful APIs with MongoDB to support dynamic features. Consulted directly with clients to define requirements, align expectations, and consistently deliver high-quality projects on time and within scope. Maintained clean, maintainable code through Git and applied SOLID principles to ensure long-term scalability and quality.`,
     link: "#",
   },
   {
@@ -286,7 +298,7 @@ const experience = [
     company: "Arab African International Bank",
     logo: "assets/AAIB.png",
     date: "September 2024 - October 2024",
-    description: `Worked on a customer feedback survey using Microsoft Customer Voice, integrated with CRM. Analyzed and cleaned data with SQL to support strategic decisions and contributed to fintech innovation in banking.`,
+    description: `Partnered with cross-functional teams to build and deploy a customer feedback survey using Microsoft Customer Voice, integrated with CRM systems to generate strategic insights from over 2,000 responses. Cleaned and analyzed datasets of 200,000+ records with SQL to support stakeholder decision-making. Also contributed to digital transformation efforts by sharing fintech innovation ideas across banking departments.`,
     link: "https://drive.google.com/file/d/15cIVfs0xZJi1iK8hmRtecFDVj1W1nQ5M/view?usp=drive_link",
   },
   {
@@ -294,25 +306,8 @@ const experience = [
     company: ".NFQ",
     logo: "assets/NFQL.png",
     date: "July 2024 - August 2024",
-    description: `Developed a full-stack To-Do web app using React.js, Laravel, and MySQL with responsive design, MVC architecture, and API integration. Streamlined deployments via CI/CD, applied clean code and SOLID principles, and collaborated using Git for efficient, high-quality delivery.`,
+    description: `Developed a full-stack To-Do web application using React, Laravel, and MySQL, implementing a responsive design with MVC architecture, DOM manipulation, and API integrations. Enhanced the deployment process through CI/CD pipelines, and applied clean code practices with SOLID principles to ensure a maintainable and scalable solution. Collaborated effectively with a team, leveraging clear communication and Git version control to deliver high-quality results efficiently.`,
     link: "https://drive.google.com/file/d/1My0sywzeGF-LG_9OgunB21p17_KY3WrA/view?usp=drive_link",
-  },
-  {
-    title: "Backend Development Trainee",
-    company: "AITB",
-    logo: "assets/AITB.png",
-    date: "August 2023 - September 2023",
-    description: `Executed two back-end projects utilizing Node.js and MongoDB, demonstrating strong backend development skills.`,
-    link: "https://drive.google.com/file/d/1w-8GRllgd8t3u4vNwUGExnTfN1_16wYC/view?usp=drive_link",
-  },
-  {
-    title: "Frontend Development Trainee",
-    company: "AITB",
-    logo: "assets/AITB.png",
-    date: "July 2023 - August 2023",
-    description: `Completed five front-end projects leveraging Angular Framework and Bootstrap, highlighting
-expertise in HTML, CSS, and JavaScript.`,
-    link: "https://drive.google.com/file/d/1HQmkwRnrOYgAbJhLKxBqwCvTodYQ1PXf/view?usp=drive_link",
   },
 ];
 
