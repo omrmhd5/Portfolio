@@ -261,9 +261,9 @@ const projects = [
     video: "assets/OSTR.mp4",
   },
   {
-    title: "To-Do App",
+    title: ".NFQ To-Do App",
     image: "assets/NFQ.png",
-    description: `To-Do App is a full-stack task management web application built with React.js, Laravel, and MySQL. It features a responsive, interactive UI with real-time task updates to help users efficiently manage daily activities. The app follows MVC architecture, integrates APIs, and applies SOLID principles and clean code for scalable, maintainable development. CI/CD pipelines were used to streamline deployment, and version control was handled via Git in a collaborative environment to ensure high-quality delivery.`,
+    description: `.NFQ To-Do App is a full-stack task management web application built with React.js, Laravel, and MySQL. It features a responsive, interactive UI with real-time task updates to help users efficiently manage daily activities. The app follows MVC architecture, integrates APIs, and applies SOLID principles and clean code for scalable, maintainable development. CI/CD pipelines were used to streamline deployment, and version control was handled via Git in a collaborative environment to ensure high-quality delivery.`,
     technologies: ["React.js", "CSS", "PHP", "Laravel", "MySQL"],
     links: {
       code: "https://github.com/omrmhd5/internship-todo-app",
@@ -286,8 +286,8 @@ const projects = [
 
 const experience = [
   {
-    title: "Contract",
-    company: "Freelancer",
+    title: "Freelancer",
+    company: "Full-Stack Software Engineer",
     icon: `<i class="ri-contract-line"></i>`,
     date: "April 2025 - Present",
     description: `Engineered and delivered 3+ full-stack web applications for clients using the MERN stack, providing responsive, secure, and scalable solutions. Designed user-friendly interfaces with React and TailwindCSS, improving client engagement by up to 30%, and implemented Node.js RESTful APIs with MongoDB to support dynamic features. Consulted directly with clients to define requirements, align expectations, and consistently deliver high-quality projects on time and within scope. Maintained clean, maintainable code through Git and applied SOLID principles to ensure long-term scalability and quality.`,
@@ -474,7 +474,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const project = projects[idx];
     const modalBody = videoModal.querySelector(".video-modal-body");
     if (project.video) {
-      modalBody.innerHTML = `<video src="${project.video}" controls style="max-width:100%; max-height:60vh; border-radius:12px; background:#000;"></video>`;
+      modalBody.innerHTML = `<video src="${project.video}" controls autoplay style="max-width:100%; max-height:60vh; border-radius:12px; background:#000;"></video>`;
     } else {
       modalBody.innerHTML = `<div class="video-placeholder">Video preview coming soon...</div>`;
     }
