@@ -229,7 +229,7 @@ const projects = [
   {
     title: "Pest Control Reporting System",
     image: "assets/TW.png",
-    description: `Developed a fully integrated web-based reporting system for Takween Al Watan, a Saudi company providing pest control services for government projects in Makkah. Delivered in just three days, the system digitized field reporting and replaced manual Excel workflows with a smart, automated solution. It allows field workers to submit structured inspection data, while admins access a secure dashboard with real-time statistics, advanced filters, and multi-format Excel export (daily, weekly, monthly). The platform improved data accuracy, eliminated 100% of manual tracking, and reduced daily processing time by over 60%, giving supervisors real-time visibility over field operations.`,
+    description: `Developed a fully integrated web-based reporting system for Takween Al Watan, a Saudi company providing pest control services for government projects in Makkah. Delivered in just three days, the system digitized field reporting and replaced manual Excel workflows with a smart, automated solution. It allows 10+ field workers to submit structured inspection data, while admins access a secure dashboard with real-time statistics, advanced filters, and multi-format Excel export (daily, weekly, monthly). The platform improved data accuracy, eliminated 100% of manual tracking, and reduced daily processing time by over 60%, giving supervisors real-time visibility over field operations.`,
     technologies: [
       "MongoDB",
       "Express.js",
