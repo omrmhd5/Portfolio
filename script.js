@@ -274,7 +274,7 @@ const projects = [
     ],
     links: {
       code: "https://github.com/omrmhd5/OSTR",
-      live: "#",
+      live: "https://ostr-store.vercel.app/",
     },
     video: "assets/OSTR.mp4",
   },
