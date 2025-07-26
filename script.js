@@ -245,9 +245,9 @@ const projects = [
     video: "assets/TW.mp4",
   },
   {
-    title: "Development Solutions Real Estate",
-    image: "assets/DSRE.png",
-    description: `DSRE is a fully responsive real estate website built with the MERN stack supporting 100+ property listings, with both Arabic and English support. It offers dark/light modes, smooth performance across all devices, and direct contact with property owners. The admin dashboard allows secure management of listings—uploading, editing, deleting, and viewing properties with multiple images and detailed info.`,
+    title: "Continental Premium Properties",
+    image: "assets/CPP.png",
+    description: `Continental Premium Properties is a fully responsive real estate website built with the MERN stack supporting 100+ property listings, with both Arabic and English support. It offers dark/light modes, smooth performance across all devices, and direct contact with property owners. The admin dashboard allows secure management of listings—uploading, editing, deleting, and viewing properties with multiple images and detailed info.`,
     technologies: [
       "MongoDB",
       "Express.js",
@@ -256,10 +256,10 @@ const projects = [
       "TailwindCSS",
     ],
     links: {
-      code: "https://github.com/omrmhd5/DSRE",
-      live: "https://dsre.up.railway.app/",
+      code: "https://github.com/omrmhd5/Continental-Premium-Properties",
+      live: "https://www.continentalpremiumproperties.ae/",
     },
-    video: "assets/DSRE.mp4",
+    video: "assets/CPP.mp4",
   },
   {
     title: "OSTR - Ecommerce Fashion Website",
