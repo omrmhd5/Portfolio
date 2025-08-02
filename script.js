@@ -39,7 +39,7 @@ const observer = new IntersectionObserver((entries) => {
 // Add fade-in class to elements and observe them
 document
   .querySelectorAll(
-    ".section-title, .education-card, .course-card, .skill-group, .project-card, .timeline-item, .contact-item"
+    ".section-title, .education-card, .course-card, .skill-group, .project-card, .timeline-item, .contact-item, .testimonial-card"
   )
   .forEach((element) => {
     element.classList.add("fade-in");
@@ -329,6 +329,31 @@ const experience = [
   },
 ];
 
+// Testimonials Object
+const testimonials = [
+  {
+    name: "Abdullah Mahmoud",
+    position: "Property Manager, Continental Premium Properties",
+    avatar: "assets/Abdullah.jpg",
+    text: "Truly excellent work — exceeded expectations. Omar is both highly professional and incredibly respectful.",
+    rating: 5,
+  },
+  {
+    name: "Basheer Shubeir Ahmed",
+    position: "Technical Office Manager, Takween Al Watan",
+    avatar: "#",
+    text: "Outstanding and impressive work — truly exceptional. I pray for continued blessings in Omar Mahmoud’s efforts and commend his dedication and precision. I highly recommend working with him; his pricing is fair, and the value delivered far exceeds expectations. He deserves the very best.",
+    rating: 5,
+  },
+  {
+    name: "Ahmad A.",
+    position: "CEO, Development Solutions Real Estate",
+    avatar: "#",
+    text: "Thank you, Omar. Your dedication and effort truly stood out.",
+    rating: 5,
+  },
+];
+
 document.addEventListener("DOMContentLoaded", () => {
   const container = document.querySelector(".course-container");
   const frontEndContainer = document.getElementsByClassName("skill-items")[0];
@@ -337,6 +362,8 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementsByClassName("skill-items")[2];
   const projectContainer = document.querySelector(".projects-container");
   const experienceContainer = document.querySelector(".timeline");
+  const testimonialsTrack = document.querySelector(".testimonials-track");
+  const testimonialsDots = document.querySelector(".testimonials-dots");
 
   courses.forEach((course) => {
     const courseCard = `<div class="course-card">
@@ -395,7 +422,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const hasLiveDemo = project.links.live !== "#";
     const hasVideo = project.video !== "#";
 
-    // Check if description is long enough to need "read more"
     const isLongDescription = project.description.length > 100;
     const shortDescription = isLongDescription
       ? project.description.substring(0, 100) + "..."
@@ -442,7 +468,6 @@ document.addEventListener("DOMContentLoaded", () => {
   experience.forEach((exp, idx) => {
     const hasCertificate = exp.link !== "#";
 
-    // Check if description is long enough to need "read more"
     const isLongDescription = exp.description.length > 100;
     const shortDescription = isLongDescription
       ? exp.description.substring(0, 100) + "..."
@@ -644,6 +669,88 @@ document.addEventListener("DOMContentLoaded", () => {
   readMoreModal
     .querySelector(".read-more-modal-overlay")
     .addEventListener("click", closeReadMoreModal);
+
+  // Testimonials Slider Variables
+  let currentTestimonialIndex = 0;
+  const totalTestimonials = testimonials.length;
+
+  // Create testimonials cards
+  testimonials.forEach((testimonial, index) => {
+    const avatarElement =
+      testimonial.avatar === "#"
+        ? `<div class="testimonial-avatar-svg">
+           <i class="ri-user-line"></i>
+         </div>`
+        : `<img src="${testimonial.avatar}" alt="${testimonial.name}" class="testimonial-avatar" 
+           onerror="this.src='https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&h=150&fit=crop&crop=face'">`;
+
+    const positionElement =
+      testimonial.position === "#" ? "" : `<p>${testimonial.position}</p>`;
+
+    const testimonialCard = `
+      <div class="testimonial-card" data-index="${index}">
+        ${avatarElement}
+        <div class="testimonial-content">
+          <div class="testimonial-rating">
+            ${Array(testimonial.rating)
+              .fill('<i class="ri-star-fill"></i>')
+              .join("")}
+          </div>
+          <p class="testimonial-text">${testimonial.text}</p>
+          <div class="testimonial-author">
+            <h4>${testimonial.name}</h4>
+            ${positionElement}
+          </div>
+        </div>
+      </div>
+    `;
+    testimonialsTrack.innerHTML += testimonialCard;
+
+    // Create dots
+    const dot = document.createElement("div");
+    dot.className = `testimonial-dot ${index === 0 ? "active" : ""}`;
+    dot.addEventListener("click", () => goToTestimonial(index));
+    testimonialsDots.appendChild(dot);
+  });
+
+  // Testimonials Slider Functions
+  function goToTestimonial(index) {
+    if (index < 0 || index >= totalTestimonials) return;
+
+    currentTestimonialIndex = index;
+    updateTestimonialsSlider();
+  }
+
+  function nextTestimonial() {
+    goToTestimonial((currentTestimonialIndex + 1) % totalTestimonials);
+  }
+
+  function prevTestimonial() {
+    goToTestimonial(
+      currentTestimonialIndex === 0
+        ? totalTestimonials - 1
+        : currentTestimonialIndex - 1
+    );
+  }
+
+  function updateTestimonialsSlider() {
+    testimonialsTrack.style.transform = `translateX(-${
+      currentTestimonialIndex * 100
+    }%)`;
+
+    document.querySelectorAll(".testimonial-dot").forEach((dot, index) => {
+      dot.classList.toggle("active", index === currentTestimonialIndex);
+    });
+  }
+
+  document
+    .querySelector(".next-btn")
+    .addEventListener("click", nextTestimonial);
+  document
+    .querySelector(".prev-btn")
+    .addEventListener("click", prevTestimonial);
+
+  setInterval(nextTestimonial, 5000);
 });
 
 // Navbar active section highlight
@@ -652,7 +759,7 @@ const navLinks = document.querySelectorAll(".navbar_link");
 
 function activateNavLink() {
   let currentSection = sections[0];
-  let scrollY = window.scrollY + 120; // Offset for fixed navbar
+  let scrollY = window.scrollY + 120;
   sections.forEach((section) => {
     if (
       section.offsetTop <= scrollY &&
@@ -668,6 +775,51 @@ function activateNavLink() {
     }
   });
 }
+
+// Mobile Navbar Functionality
+const navbarToggle = document.querySelector(".navbar_toggle");
+const mobileMenu = document.querySelector(".mobile_menu");
+const mobileLinks = document.querySelectorAll(".mobile_link");
+
+function toggleMobileMenu() {
+  navbarToggle.classList.toggle("active");
+  mobileMenu.classList.toggle("active");
+
+  // Prevent body scroll when menu is open
+  if (mobileMenu.classList.contains("active")) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "";
+  }
+}
+
+function closeMobileMenu() {
+  navbarToggle.classList.remove("active");
+  mobileMenu.classList.remove("active");
+  document.body.style.overflow = "";
+}
+
+// Event listeners for mobile navbar
+navbarToggle.addEventListener("click", toggleMobileMenu);
+
+// Close mobile menu when clicking on a link
+mobileLinks.forEach((link) => {
+  link.addEventListener("click", closeMobileMenu);
+});
+
+// Close mobile menu when clicking outside
+mobileMenu.addEventListener("click", (e) => {
+  if (e.target === mobileMenu) {
+    closeMobileMenu();
+  }
+});
+
+// Close mobile menu on window resize (if screen becomes larger)
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 768) {
+    closeMobileMenu();
+  }
+});
 
 window.addEventListener("scroll", activateNavLink);
 window.addEventListener("DOMContentLoaded", activateNavLink);
