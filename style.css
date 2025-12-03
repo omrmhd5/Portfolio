@@ -1175,6 +1175,18 @@ img {
   transform: scale(1.2);
 }
 
+.contact-link {
+  color: var(--text-color);
+  text-decoration: none;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.contact-link:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
 .contact-socials {
   display: flex;
   justify-content: center;
