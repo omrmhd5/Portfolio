@@ -81,6 +81,50 @@ function type() {
 }
 // Start typing effect when page loads
 window.addEventListener("load", type);
+
+// Loading Bar Functionality
+const loadingOverlay = document.getElementById("loadingOverlay");
+const loadingProgress = document.getElementById("loadingProgress");
+
+// Simulate loading progress
+let progress = 0;
+const loadingInterval = setInterval(() => {
+  progress += Math.random() * 15;
+  if (progress > 90) {
+    progress = 90; // Don't complete until everything is loaded
+  }
+  loadingProgress.style.width = progress + "%";
+}, 100);
+
+// Wait for all resources to load
+window.addEventListener("load", () => {
+  // Complete the progress bar
+  loadingProgress.style.width = "100%";
+
+  // Wait a bit for the animation, then hide
+  setTimeout(() => {
+    loadingOverlay.classList.add("hidden");
+    // Remove from DOM after transition
+    setTimeout(() => {
+      loadingOverlay.style.display = "none";
+      clearInterval(loadingInterval);
+    }, 500);
+  }, 1000);
+});
+
+// Fallback: Hide loading after maximum wait time (6 seconds)
+setTimeout(() => {
+  if (loadingOverlay && !loadingOverlay.classList.contains("hidden")) {
+    loadingProgress.style.width = "100%";
+    setTimeout(() => {
+      loadingOverlay.classList.add("hidden");
+      setTimeout(() => {
+        loadingOverlay.style.display = "none";
+        clearInterval(loadingInterval);
+      }, 500);
+    }, 1000);
+  }
+}, 6000);
 // Course Object
 const courses = [
   {
