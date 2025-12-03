@@ -39,7 +39,7 @@ const observer = new IntersectionObserver((entries) => {
 // Add fade-in class to elements and observe them
 document
   .querySelectorAll(
-    ".section-title, .education-card, .course-card, .skill-group, .project-card, .timeline-item, .contact-item, .testimonial-card"
+    ".section-title, .education-card, .course-card, .skill-group, .project-card, .timeline-item, .contact-item, .testimonial-card, .award-card"
   )
   .forEach((element) => {
     element.classList.add("fade-in");
@@ -98,6 +98,13 @@ const courses = [
     date: "August 2023",
   },
   {
+    logo: "ri-flutter-fill",
+    title: "Mobile Development using Flutter (120 hrs.)",
+    provider: "ITI",
+    link: "https://drive.google.com/file/d/1RwjWu_w0GuVuw19b0hScd-DFLORep5jt/view",
+    date: "October 2025",
+  },
+  {
     logo: "fa-solid fa-laptop-code",
     title: "ITIDA + GIGS - Web Development",
     provider: "ITIDA",
@@ -139,13 +146,6 @@ const courses = [
     link: "https://drive.google.com/file/d/1CT1EuLilkaJM5TQ0xFYGe1dwzf-YTvxd/view?usp=drive_link",
     date: "February 2025",
   },
-  {
-    logo: "fa-solid fa-briefcase",
-    title: "Digital Business Services Job Simulation",
-    provider: "HSBC",
-    link: "https://drive.google.com/file/d/1UKT8GxVV5APy8ZofwMz0McCQJ3zGoTAN/view",
-    date: "June 2024",
-  },
 ];
 
 // Front End Skills Object
@@ -157,6 +157,18 @@ const frontEndSkills = [
   { logo: "fa-brands fa-angular", name: "Angular", color: "#dd0031" },
   { logo: "fa-brands fa-bootstrap", name: "Bootstrap", color: "#7952b3" },
   { logo: "ri-tailwind-css-fill", name: "Tailwind CSS", color: "#38bdf8" },
+  {
+    logo: `<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0 0 48 48">
+<polygon fill="#40c4ff" points="26,4 6,24 12,30 38,4"></polygon><polygon fill="#40c4ff" points="38,22 27,33 21,27 26,22"></polygon><rect width="8.485" height="8.485" x="16.757" y="28.757" fill="#03a9f4" transform="rotate(-45.001 21 33)"></rect><polygon fill="#01579b" points="38,44 26,44 21,39 27,33"></polygon><polygon fill="#084994" points="21,39 30,36 27,33"></polygon>
+</svg>`,
+    name: "Flutter",
+  },
+  {
+    logo: `<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0 0 48 48">
+<path fill="#1565c0" d="M10,12l3,25l-8.019-8.019c-1.189-1.189-1.508-2.996-0.796-4.52L10,12z"></path><path fill="#42a5f5" d="M27.319,6.319C26.474,5.474,25.329,5,24.135,5c-0.745,0-1.479,0.185-2.135,0.538L10,12v20.343 c0,1.061,0.421,2.078,1.172,2.828L13,37h22v-5l7-11L27.319,6.319z"></path><path fill="#1565c0" d="M10,12h21.343c1.061,0,2.078,0.421,2.828,1.172L42,21v16h-7L10,12z"></path><polygon fill="#85cbf8" points="35,37 13,37 19,43 35,43"></polygon>
+</svg>`,
+    name: "Dart",
+  },
 ];
 
 // Back End Skills Object
@@ -186,6 +198,18 @@ const backEndSkills = [
   {
     logo: `<svg width="64px" height="64px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><title>file_type_django</title><path d="M14.135,4H18.1V22.169a26.218,26.218,0,0,1-5.143.535c-4.842-.005-7.362-2.168-7.362-6.322,0-4,2.673-6.6,6.816-6.6a6.448,6.448,0,0,1,1.724.2V4Zm0,9.142a3.992,3.992,0,0,0-1.337-.2c-2,0-3.163,1.223-3.163,3.366,0,2.087,1.107,3.239,3.138,3.239a9.355,9.355,0,0,0,1.362-.1v-6.3Z" style="fill:#44b78b"></path><path d="M24.4,10.059v9.1c0,3.133-.235,4.639-.923,5.938A6.316,6.316,0,0,1,20.237,28l-3.678-1.733A5.708,5.708,0,0,0,19.7,23.638c.566-1.121.745-2.42.745-5.837V10.059Z" style="fill:#44b78b"></path><rect x="20.441" y="4.02" width="3.964" height="4.028" style="fill:#44b78b"></rect></g></svg>`,
     name: "Django",
+  },
+  {
+    logo: `<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0 0 48 48">
+<path fill="#0277BD" d="M24.047,5c-1.555,0.005-2.633,0.142-3.936,0.367c-3.848,0.67-4.549,2.077-4.549,4.67V14h9v2H15.22h-4.35c-2.636,0-4.943,1.242-5.674,4.219c-0.826,3.417-0.863,5.557,0,9.125C5.851,32.005,7.294,34,9.931,34h3.632v-5.104c0-2.966,2.686-5.896,5.764-5.896h7.236c2.523,0,5-1.862,5-4.377v-8.586c0-2.439-1.759-4.263-4.218-4.672C27.406,5.359,25.589,4.994,24.047,5z M19.063,9c0.821,0,1.5,0.677,1.5,1.502c0,0.833-0.679,1.498-1.5,1.498c-0.837,0-1.5-0.664-1.5-1.498C17.563,9.68,18.226,9,19.063,9z"></path><path fill="#FFC107" d="M23.078,43c1.555-0.005,2.633-0.142,3.936-0.367c3.848-0.67,4.549-2.077,4.549-4.67V34h-9v-2h9.343h4.35c2.636,0,4.943-1.242,5.674-4.219c0.826-3.417,0.863-5.557,0-9.125C41.274,15.995,39.831,14,37.194,14h-3.632v5.104c0,2.966-2.686,5.896-5.764,5.896h-7.236c-2.523,0-5,1.862-5,4.377v8.586c0,2.439,1.759,4.263,4.218,4.672C19.719,42.641,21.536,43.006,23.078,43z M28.063,39c-0.821,0-1.5-0.677-1.5-1.502c0-0.833,0.679-1.498,1.5-1.498c0.837,0,1.5,0.664,1.5,1.498C29.563,38.32,28.899,39,28.063,39z"></path>
+</svg>`,
+    name: "Python",
+  },
+  {
+    logo: `<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="64" height="64" viewBox="0 0 48 48">
+<path fill="#F44336" d="M23.65,24.898c-0.998-1.609-1.722-2.943-2.725-5.455C19.229,15.2,31.24,11.366,26.37,3.999c2.111,5.089-7.577,8.235-8.477,12.473C17.07,20.37,23.645,24.898,23.65,24.898z"></path><path fill="#F44336" d="M23.878,17.27c-0.192,2.516,2.229,3.857,2.299,5.695c0.056,1.496-1.447,2.743-1.447,2.743s2.728-0.536,3.579-2.818c0.945-2.534-1.834-4.269-1.548-6.298c0.267-1.938,6.031-5.543,6.031-5.543S24.311,11.611,23.878,17.27z"></path><g><path fill="#1565C0" d="M32.084 25.055c1.754-.394 3.233.723 3.233 2.01 0 2.901-4.021 5.643-4.021 5.643s6.225-.742 6.225-5.505C37.521 24.053 34.464 23.266 32.084 25.055zM29.129 27.395c0 0 1.941-1.383 2.458-1.902-4.763 1.011-15.638 1.147-15.638.269 0-.809 3.507-1.638 3.507-1.638s-7.773-.112-7.773 2.181C11.683 28.695 21.858 28.866 29.129 27.395z"></path><path fill="#1565C0" d="M27.935,29.571c-4.509,1.499-12.814,1.02-10.354-0.993c-1.198,0-2.974,0.963-2.974,1.889c0,1.857,8.982,3.291,15.63,0.572L27.935,29.571z"></path><path fill="#1565C0" d="M18.686,32.739c-1.636,0-2.695,1.054-2.695,1.822c0,2.391,9.76,2.632,13.627,0.205l-2.458-1.632C24.271,34.404,17.014,34.579,18.686,32.739z"></path><path fill="#1565C0" d="M36.281,36.632c0-0.936-1.055-1.377-1.433-1.588c2.228,5.373-22.317,4.956-22.317,1.784c0-0.721,1.807-1.427,3.477-1.093l-1.42-0.839C11.26,34.374,9,35.837,9,37.017C9,42.52,36.281,42.255,36.281,36.632z"></path><path fill="#1565C0" d="M39,38.604c-4.146,4.095-14.659,5.587-25.231,3.057C24.341,46.164,38.95,43.628,39,38.604z"></path></g>
+</svg>`,
+    name: "Java",
   },
 ];
 
@@ -223,9 +247,30 @@ const databaseAndTools = [
     logo: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="50" height="50" fill="currentColor"><path d="M20.5624 10.1875C20.8124 9.5 20.8749 8.8125 20.8124 8.125C20.7499 7.4375 20.4999 6.75 20.1874 6.125C19.6249 5.1875 18.8124 4.4375 17.8749 4C16.8749 3.5625 15.8124 3.4375 14.7499 3.6875C14.2499 3.1875 13.6874 2.75 13.0624 2.4375C12.4374 2.125 11.6874 2 10.9999 2C9.9374 2 8.8749 2.3125 7.9999 2.9375C7.1249 3.5625 6.4999 4.4375 6.1874 5.4375C5.4374 5.625 4.8124 5.9375 4.1874 6.3125C3.6249 6.75 3.1874 7.3125 2.8124 7.875C2.24991 8.8125 2.06241 9.875 2.18741 10.9375C2.31241 12 2.7499 13 3.4374 13.8125C3.1874 14.5 3.1249 15.1875 3.1874 15.875C3.2499 16.5625 3.4999 17.25 3.8124 17.875C4.3749 18.8125 5.1874 19.5625 6.1249 20C7.1249 20.4375 8.1874 20.5625 9.2499 20.3125C9.7499 20.8125 10.3124 21.25 10.9374 21.5625C11.5624 21.875 12.3124 22 12.9999 22C14.0624 22 15.1249 21.6875 15.9999 21.0625C16.8749 20.4375 17.4999 19.5625 17.8124 18.5625C18.4999 18.4375 19.1874 18.125 19.7499 17.6875C20.3124 17.25 20.8124 16.75 21.1249 16.125C21.6874 15.1875 21.8749 14.125 21.7499 13.0625C21.6249 12 21.2499 11 20.5624 10.1875ZM13.0624 20.6875C12.0624 20.6875 11.3124 20.375 10.6249 19.8125C10.6249 19.8125 10.6874 19.75 10.7499 19.75L14.7499 17.4375C14.8749 17.375 14.9374 17.3125 14.9999 17.1875C15.0624 17.0625 15.0624 17 15.0624 16.875V11.25L16.7499 12.25V16.875C16.8124 19.0625 15.0624 20.6875 13.0624 20.6875ZM4.9999 17.25C4.5624 16.5 4.3749 15.625 4.5624 14.75C4.5624 14.75 4.6249 14.8125 4.6874 14.8125L8.6874 17.125C8.8124 17.1875 8.8749 17.1875 8.9999 17.1875C9.1249 17.1875 9.2499 17.1875 9.3124 17.125L14.1874 14.3125V16.25L10.1249 18.625C9.2499 19.125 8.2499 19.25 7.3124 19C6.3124 18.75 5.4999 18.125 4.9999 17.25ZM3.9374 8.5625C4.3749 7.8125 5.0624 7.25 5.8749 6.9375V7.0625V11.6875C5.8749 11.8125 5.8749 11.9375 5.9374 12C5.9999 12.125 6.0624 12.1875 6.1874 12.25L11.0624 15.0625L9.3749 16.0625L5.3749 13.75C4.4999 13.25 3.8749 12.4375 3.6249 11.5C3.3749 10.5625 3.4374 9.4375 3.9374 8.5625ZM17.7499 11.75L12.8749 8.9375L14.5624 7.9375L18.5624 10.25C19.1874 10.625 19.6874 11.125 19.9999 11.75C20.3124 12.375 20.4999 13.0625 20.4374 13.8125C20.3749 14.5 20.1249 15.1875 19.6874 15.75C19.2499 16.3125 18.6874 16.75 17.9999 17V12.25C17.9999 12.125 17.9999 12 17.9374 11.9375C17.9374 11.9375 17.8749 11.8125 17.7499 11.75ZM19.4374 9.25C19.4374 9.25 19.3749 9.1875 19.3124 9.1875L15.3124 6.875C15.1874 6.8125 15.1249 6.8125 14.9999 6.8125C14.8749 6.8125 14.7499 6.8125 14.6874 6.875L9.8124 9.6875V7.75L13.8749 5.375C14.4999 5 15.1874 4.875 15.9374 4.875C16.6249 4.875 17.3124 5.125 17.9374 5.5625C18.4999 6 18.9999 6.5625 19.2499 7.1875C19.4999 7.8125 19.5624 8.5625 19.4374 9.25ZM8.9374 12.75L7.2499 11.75V7.0625C7.2499 6.375 7.4374 5.625 7.8124 5.0625C8.1874 4.4375 8.7499 4 9.3749 3.6875C9.9999 3.375 10.7499 3.25 11.4374 3.375C12.1249 3.4375 12.8124 3.75 13.3749 4.1875C13.3749 4.1875 13.3124 4.25 13.2499 4.25L9.2499 6.5625C9.1249 6.625 9.0624 6.6875 8.9999 6.8125C8.9374 6.9375 8.9374 7 8.9374 7.125V12.75ZM9.8124 10.75L11.9999 9.5L14.1874 10.75V13.25L11.9999 14.5L9.8124 13.25V10.75Z"></path></svg>`,
     name: "AI Integration",
   },
+  {
+    logo: `<svg width="64px" height="64px" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M30 16C30 23.728 23.735 30 16 30C8.265 30 2 23.728 2 16C2 8.265 8.265 2 16 2C23.735 2 30 8.265 30 16Z" fill="#E95420"></path> <path d="M6.82154 14.1563C5.81185 14.1563 5 14.9865 5 16.0035C5 17.0205 5.81867 17.8507 6.82154 17.8507C7.82442 17.8507 8.64309 17.0205 8.64309 16.0035C8.64309 14.9795 7.82442 14.1563 6.82154 14.1563ZM19.8316 22.5482C18.9583 23.0602 18.665 24.1879 19.163 25.0734C19.6679 25.959 20.7799 26.2634 21.6531 25.7514C22.5264 25.2395 22.8197 24.1118 22.3217 23.2262C21.8101 22.3476 20.698 22.0432 19.8316 22.5482ZM10.7785 16.0035C10.7785 14.177 11.6722 12.565 13.0434 11.5896L11.7131 9.32725C10.1167 10.4065 8.93645 12.06 8.43842 13.9902C9.01149 14.4676 9.37989 15.194 9.37989 16.0035C9.37989 16.8129 9.01149 17.5393 8.43842 18.0167C8.92962 19.9469 10.1167 21.6004 11.7131 22.6797L13.0434 20.4174C11.6722 19.4419 10.7785 17.8299 10.7785 16.0035ZM16.0998 10.6071C18.8833 10.6071 21.1619 12.7657 21.4007 15.5261L24 15.4846C23.8704 13.4506 22.9971 11.6241 21.6463 10.282C20.9504 10.5449 20.1522 10.5034 19.4632 10.1021C18.7673 9.69393 18.3375 9.01593 18.2147 8.26875C17.5393 8.08195 16.8298 7.97817 16.0998 7.97817C14.8377 7.97817 13.6506 8.27566 12.5932 8.80838L13.8621 11.1053C14.5375 10.787 15.3016 10.6071 16.0998 10.6071ZM16.0998 21.3998C15.3016 21.3998 14.5375 21.2199 13.8553 20.9017L12.5864 23.1985C13.6438 23.7313 14.8377 24.0287 16.093 24.0287C16.823 24.0287 17.5325 23.925 18.2079 23.7382C18.3239 22.9979 18.7605 22.313 19.4564 21.9048C20.1454 21.4966 20.9504 21.462 21.6395 21.7249C22.9835 20.3828 23.8636 18.5563 23.9932 16.5223L21.3939 16.4808C21.1619 19.2343 18.8833 21.3998 16.0998 21.3998ZM19.8248 9.45178C20.698 9.96374 21.8101 9.65933 22.3149 8.77378C22.8197 7.88824 22.5196 6.76054 21.6463 6.24859C20.7731 5.73663 19.661 6.04104 19.1562 6.92659C18.6582 7.81213 18.9583 8.93983 19.8248 9.45178Z" fill="white"></path> </g></svg>`,
+    name: "Linux VPS (Ubuntu)",
+  },
 ];
 
 const projects = [
+  {
+    title: "Huraymila Healthy City",
+    image: "assets/Huraymila.png",
+    description: `Huraymila Healthy City is a fully digital healthy-city management platform built for the city of Huraymila in Saudi Arabia to replace all paper-based standard submissions with a modern, centralized MERN-based system. The platform enables government agencies to upload compliance documents, track approval status, and manage all required standards through a unified Governor dashboard. It includes secure JWT-protected REST APIs with role-based access (Governor / Agency / Volunteer), a modern bilingual interface, and complete initiative and file management capabilities.The system introduced measurable improvements across operations—improving document retrieval by over 70%, raising agency submission efficiency by 50%, and cutting approval review time by more than 60% through a streamlined dashboard and centralized workflow. With real-time updates, interactive health indicators, a volunteer participation module, and an initiative management system, the platform provides a scalable digital foundation for healthy-city programs across multiple municipalities.`,
+    technologies: [
+      "MongoDB",
+      "Express.js",
+      "React.js",
+      "Node.js",
+      "TailwindCSS",
+    ],
+    links: {
+      code: "https://github.com/omrmhd5/Huraymila",
+      live: "https://huraymila.vercel.app/",
+    },
+    video: "assets/Huraymila.mp4",
+  },
   {
     title: "Pest Control Reporting System",
     image: "assets/TW.png",
@@ -304,11 +349,19 @@ const projects = [
 
 const experience = [
   {
+    title: " Cross Platform Mobile App Developer",
+    company: "Digital Egypt Pioneers Initiative - DEPI",
+    logo: "assets/DEPI.png",
+    date: "June 2025 - Present",
+    description: "",
+    link: "#",
+  },
+  {
     title: "Freelancer",
     company: "Full-Stack Software Engineer",
     icon: `<i class="ri-contract-line"></i>`,
     date: "April 2025 - Present",
-    description: `Engineered and delivered 3+ full-stack web applications for clients using the MERN stack, providing responsive, secure, and scalable solutions. Designed user-friendly interfaces with React and TailwindCSS, improving client engagement by up to 30%, and implemented Node.js RESTful APIs with MongoDB to support dynamic features. Consulted directly with clients to define requirements, align expectations, and consistently deliver high-quality projects on time and within scope. Maintained clean, maintainable code through Git and applied SOLID principles to ensure long-term scalability and quality.`,
+    description: `Engineered and delivered 4+ full-stack web applications for clients using the MERN stack, providing responsive, secure, and scalable solutions. Designed user-friendly interfaces with React and TailwindCSS, improving client engagement by up to 30%, and implemented Node.js RESTful APIs with MongoDB to support dynamic features. Consulted directly with clients to define requirements, align expectations, and consistently deliver high-quality projects on time and within scope. Maintained clean, maintainable code through Git and applied SOLID principles to ensure long-term scalability and quality.`,
     link: "#",
   },
   {
@@ -332,25 +385,69 @@ const experience = [
 // Testimonials Object
 const testimonials = [
   {
-    name: "Abdullah Mahmoud",
-    position: "Property Manager, Continental Premium Properties",
-    avatar: "assets/Abdullah.jpg",
-    text: "Truly excellent work — exceeded expectations. Omar is both highly professional and incredibly respectful.",
-    rating: 5,
-  },
-  {
-    name: "Basheer Shubeir Ahmed",
-    position: "Technical Office Manager, Takween Al Watan",
-    avatar: "#",
-    text: "Outstanding and impressive work — truly exceptional. I pray for continued blessings in Omar Mahmoud’s efforts and commend his dedication and precision. I highly recommend working with him; his pricing is fair, and the value delivered far exceeds expectations. He deserves the very best.",
-    rating: 5,
-  },
-  {
     name: "Ahmad A.",
     position: "CEO, Development Solutions Real Estate",
     avatar: "#",
     text: "Thank you, Omar. Your dedication and effort truly stood out.",
     rating: 5,
+    link: "https://mostaql.com/u/OMRMHD5/reviews/8662443",
+  },
+
+  {
+    name: "Basheer Shubeir Ahmed",
+    position: "Technical Office Manager, Takween Al Watan",
+    avatar: "assets/Basheer.png",
+    text: "Outstanding and impressive work — truly exceptional. I pray for continued blessings in Omar Mahmoud's efforts and commend his dedication and precision. I highly recommend working with him; his pricing is fair, and the value delivered far exceeds expectations. He deserves the very best.",
+    rating: 5,
+    link: "https://mostaql.com/u/OMRMHD5/reviews/8934162",
+  },
+  {
+    name: "Abdullah Mahmoud",
+    position: "Property Manager, Continental Premium Properties",
+    avatar: "assets/Abdullah.jpg",
+    text: "Truly excellent work — exceeded expectations. Omar is both highly professional and incredibly respectful.",
+    rating: 5,
+    link: "https://mostaql.com/u/OMRMHD5/reviews/8860709",
+  },
+  {
+    name: "Saleh A.",
+    position: "Accountant Manager, Moktamel",
+    avatar: "#",
+    text: "Engineer Omar is more than wonderful and a very practical person, God bless him, and trustworthy. I recommend everyone to benefit from his experience and high skills. He excelled in a project that I did not expect would be delivered in the way that Engineer Omar presented it. Thank you is not enough, Engineer Omar.",
+    rating: 5,
+    link: "https://mostaql.com/u/OMRMHD5/reviews/9051898",
+  },
+  {
+    name: "Yacine M.",
+    position: "CEO, Lokalo",
+    avatar: "#",
+    text: "Rarely do I give such a review, but I noticed from Mr. Omar all professionalism in work, great care to work extra hours to deliver on time, great attention to the smallest details, and adding details I was unaware of that improve the quality of the project in general. Things I missed during my dealings with other freelancers. May God bless you, my brother Omar, and this is not the last dealing at all, and not out of courtesy, but I recommend everyone to deal with Omar without hesitation.",
+    rating: 5,
+    link: "https://mostaql.com/u/OMRMHD5/reviews/9135750",
+  },
+  {
+    name: "Muhammad bin Ali A.",
+    position: "Province Coordinator, Huraymila",
+    avatar: "#",
+    text: "I dealt with Mr. Omar and I recommend dealing with him. He is a respectful and professional person.",
+    rating: 5,
+    link: "https://mostaql.com/u/OMRMHD5/reviews/9068686",
+  },
+];
+
+const awards = [
+  {
+    title: "Amazon Transcend Semi-Finalist",
+    organization: "Amazon",
+    date: "February 2025",
+    description: [
+      "Analyzed limitations in Amazon's current forecasting model amid macroeconomic shifts",
+      "Proposed a machine learning forecasting system integrating real-time macroeconomic indicators",
+      "Created a dynamic, region-specific framework to improve long-term accuracy and agility",
+      "Planned full implementation strategy including data processing, model training, evaluation, and deployment",
+    ],
+    certificate:
+      "https://drive.google.com/file/d/1MAImNQz7kj9RNUIEet8h_oLjCAMP87AU/view",
   },
 ];
 
@@ -392,8 +489,14 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   frontEndSkills.forEach((skill) => {
+    const isSvg =
+      skill.logo.trim().startsWith("<svg") ||
+      skill.logo.trim().startsWith("<SVG");
+    const iconElement = isSvg
+      ? skill.logo
+      : `<i class="${skill.logo}" style="color: ${skill.color || ""}"></i>`;
     const skillCard = `<div class="skill-item">
-          <i class="${skill.logo}" style="color: ${skill.color}"></i>
+          ${iconElement}
           <span>${skill.name}</span>
         </div>`;
 
@@ -410,7 +513,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   databaseAndTools.forEach((skill) => {
-    const skillCard = `<div class="skill-item">
+    const isCentered = skill.name === "Linux VPS (Ubuntu)";
+    const centerStyle = isCentered ? ' style="text-align: center;"' : "";
+    const skillCard = `<div class="skill-item"${centerStyle}>
           ${skill.logo}
           <span>${skill.name}</span>
         </div>`;
@@ -687,6 +792,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const positionElement =
       testimonial.position === "#" ? "" : `<p>${testimonial.position}</p>`;
 
+    const hasLink = testimonial.link && testimonial.link !== "#";
+    const linkButton = hasLink
+      ? `<a href="${testimonial.link}" target="_blank" class="testimonial-link-btn" style="background-color: #3b82f6; color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; margin-top: 1rem; transition: background-color 0.3s;">
+          <i class="ri-feedback-line"></i> View Review
+        </a>`
+      : "";
+
     const testimonialCard = `
       <div class="testimonial-card" data-index="${index}">
         ${avatarElement}
@@ -701,6 +813,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <h4>${testimonial.name}</h4>
             ${positionElement}
           </div>
+          ${linkButton}
         </div>
       </div>
     `;
@@ -750,7 +863,75 @@ document.addEventListener("DOMContentLoaded", () => {
     .querySelector(".prev-btn")
     .addEventListener("click", prevTestimonial);
 
-  setInterval(nextTestimonial, 5000);
+  // Auto-advance testimonials
+  let testimonialInterval = setInterval(nextTestimonial, 5000);
+  let isPaused = false;
+
+  // Create pause/play button
+  const testimonialsControls = document.querySelector(".testimonials-controls");
+  const pausePlayBtn = document.createElement("button");
+  pausePlayBtn.className = "testimonial-btn pause-play-btn";
+  pausePlayBtn.innerHTML = '<i class="ri-pause-line"></i>';
+  pausePlayBtn.setAttribute("aria-label", "Pause testimonials");
+
+  // Insert pause button before the dots
+  const dotsContainer = document.querySelector(".testimonials-dots");
+  if (testimonialsControls && dotsContainer) {
+    testimonialsControls.insertBefore(pausePlayBtn, dotsContainer);
+  }
+
+  // Pause/Play functionality
+  pausePlayBtn.addEventListener("click", () => {
+    if (isPaused) {
+      // Resume
+      testimonialInterval = setInterval(nextTestimonial, 5000);
+      pausePlayBtn.innerHTML = '<i class="ri-pause-line"></i>';
+      pausePlayBtn.setAttribute("aria-label", "Pause testimonials");
+      isPaused = false;
+    } else {
+      // Pause
+      clearInterval(testimonialInterval);
+      pausePlayBtn.innerHTML = '<i class="ri-play-line"></i>';
+      pausePlayBtn.setAttribute("aria-label", "Play testimonials");
+      isPaused = true;
+    }
+  });
+
+  // Render Awards
+  const awardsContainer = document.querySelector(".awards-container");
+  if (awardsContainer) {
+    awards.forEach((award) => {
+      const descriptionList = award.description
+        .map((item) => `<li>${item}</li>`)
+        .join("");
+
+      const organizationIcon =
+        award.organization === "Amazon"
+          ? '<i class="fa-brands fa-amazon"></i>'
+          : "";
+
+      const awardCard = `
+        <div class="award-card">
+          <div class="award-header">
+            <div class="award-title-section">
+              <h3>${award.title}</h3>
+              <p class="award-organization">${organizationIcon} ${award.organization}</p>
+            </div>
+            <p class="award-date">${award.date}</p>
+          </div>
+          <div class="award-content">
+            <ul class="award-description">
+              ${descriptionList}
+            </ul>
+            <a href="${award.certificate}" target="_blank" class="btn award-certificate-btn">
+              <i class="ri-file-certificate-line"></i> View Certificate
+            </a>
+          </div>
+        </div>
+      `;
+      awardsContainer.innerHTML += awardCard;
+    });
+  }
 });
 
 // Navbar active section highlight
