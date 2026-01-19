@@ -393,7 +393,7 @@ const projects = [
     ],
     links: {
       code: "https://github.com/omrmhd5/Continental-Premium-Properties",
-      live: "https://www.continentalpremiumproperties.ae/",
+      live: "https://continental-premium-properties.vercel.app/",
     },
     video: "assets/CPP.mp4",
   },
