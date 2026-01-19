@@ -282,6 +282,15 @@ const databaseAndTools = [
     name: "PostgreSQL",
   },
   {
+    logo: `<svg xmlns="http://www.w3.org/2000/svg" width="50" height="48" viewBox="0 0 600 600" fill="none">
+  <path d="M213.918 560.499C237.166 569.856 262.387 575.408 288.87 576.333C324.71 577.585 358.792 570.175 389.261 556.099C352.724 541.744 319.634 520.751 291.392 494.651C273.086 523.961 246.01 547.113 213.918 560.499Z" fill="#FF9100"/>
+  <path d="M291.389 494.66C226.923 435.038 187.815 348.743 191.12 254.092C191.228 251.019 191.39 247.947 191.58 244.876C180.034 241.89 167.98 240.068 155.576 239.635C137.821 239.015 120.626 241.217 104.393 245.788C87.1838 275.933 76.7989 310.521 75.5051 347.569C72.1663 443.18 130.027 526.723 213.914 560.508C246.007 547.121 273.082 523.998 291.389 494.66Z" fill="#FFC400"/>
+  <path d="M291.39 494.657C306.378 470.671 315.465 442.551 316.523 412.254C319.306 332.559 265.731 264.003 191.581 244.873C191.391 247.944 191.229 251.016 191.121 254.089C187.816 348.74 226.924 435.035 291.39 494.657Z" fill="#FF9100"/>
+  <path d="M308.231 20.8584C266 54.6908 232.652 99.302 212.475 150.693C200.924 180.129 193.665 211.748 191.546 244.893C265.696 264.023 319.272 332.579 316.489 412.273C315.431 442.57 306.317 470.663 291.355 494.677C319.595 520.804 352.686 541.77 389.223 556.124C462.56 522.224 514.593 449.278 517.606 362.997C519.558 307.096 498.08 257.273 467.731 215.219C435.68 170.742 308.231 20.8584 308.231 20.8584Z" fill="#DD2C00"/>
+  </svg>`,
+    name: "Firebase",
+  },
+  {
     logo: `<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0 0 48 48">
 <path fill="#F4511E" d="M42.2,22.1L25.9,5.8C25.4,5.3,24.7,5,24,5c0,0,0,0,0,0c-0.7,0-1.4,0.3-1.9,0.8l-3.5,3.5l4.1,4.1c0.4-0.2,0.8-0.3,1.3-0.3c1.7,0,3,1.3,3,3c0,0.5-0.1,0.9-0.3,1.3l4,4c0.4-0.2,0.8-0.3,1.3-0.3c1.7,0,3,1.3,3,3s-1.3,3-3,3c-1.7,0-3-1.3-3-3c0-0.5,0.1-0.9,0.3-1.3l-4-4c-0.1,0-0.2,0.1-0.3,0.1v10.4c1.2,0.4,2,1.5,2,2.8c0,1.7-1.3,3-3,3s-3-1.3-3-3c0-1.3,0.8-2.4,2-2.8V18.8c-1.2-0.4-2-1.5-2-2.8c0-0.5,0.1-0.9,0.3-1.3l-4.1-4.1L5.8,22.1C5.3,22.6,5,23.3,5,24c0,0.7,0.3,1.4,0.8,1.9l16.3,16.3c0,0,0,0,0,0c0.5,0.5,1.2,0.8,1.9,0.8s1.4-0.3,1.9-0.8l16.3-16.3c0.5-0.5,0.8-1.2,0.8-1.9C43,23.3,42.7,22.6,42.2,22.1z"></path>
 </svg>`,
@@ -340,21 +349,19 @@ const projects = [
     video: "assets/TW.mp4",
   },
   {
-    title: "Continental Premium Properties",
-    image: "assets/CPP.png",
-    description: `Continental Premium Properties is a fully responsive real estate website built with the MERN stack supporting 100+ property listings, with both Arabic and English support. It offers dark/light modes, smooth performance across all devices, and direct contact with property owners. The admin dashboard allows secure management of listings—uploading, editing, deleting, and viewing properties with multiple images and detailed info.`,
+    title: "Abdullah Bukhari and Partners Company",
+    image: "assets/Bukhari.png",
+    description: `Abdullah Bukhari Transport & Logistics is a modern, multilingual corporate website built to present the company’s transport and logistics services across Saudi Arabia. The platform showcases seven core services, including transport, logistics, Hajj and Umrah buses, heavy transport, car rental, logistics management, and digital marketing, through a responsive, bilingual (AR/EN) interface with dark/light mode support. Designed with a clean, SEO-friendly structure and smooth animations, the website improves content clarity and service discoverability, enhances user engagement, and provides a scalable digital presence aligned with enterprise branding and future growth.`,
     technologies: [
-      "MongoDB",
-      "Express.js",
-      "React.js",
-      "Node.js",
+      "TypeScript",
+      "React.tsx",
       "TailwindCSS",
     ],
     links: {
-      code: "https://github.com/omrmhd5/Continental-Premium-Properties",
-      live: "https://www.continentalpremiumproperties.ae/",
+      code: "https://github.com/omrmhd5/Bukhari",
+      live: "https://www.logistics-as.com/",
     },
-    video: "assets/CPP.mp4",
+    video: "assets/Bukhari.mp4",
   },
   {
     title: "OSTR - Ecommerce Fashion Website",
@@ -372,6 +379,23 @@ const projects = [
       live: "https://ostr-store.vercel.app/",
     },
     video: "assets/OSTR.mp4",
+  },
+  {
+    title: "Continental Premium Properties",
+    image: "assets/CPP.png",
+    description: `Continental Premium Properties is a fully responsive real estate website built with the MERN stack supporting 100+ property listings, with both Arabic and English support. It offers dark/light modes, smooth performance across all devices, and direct contact with property owners. The admin dashboard allows secure management of listings—uploading, editing, deleting, and viewing properties with multiple images and detailed info.`,
+    technologies: [
+      "MongoDB",
+      "Express.js",
+      "React.js",
+      "Node.js",
+      "TailwindCSS",
+    ],
+    links: {
+      code: "https://github.com/omrmhd5/Continental-Premium-Properties",
+      live: "https://www.continentalpremiumproperties.ae/",
+    },
+    video: "assets/CPP.mp4",
   },
   {
     title: ".NFQ To-Do App",
