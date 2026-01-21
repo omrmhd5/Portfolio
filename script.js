@@ -423,20 +423,20 @@ const projects = [
 
 const experience = [
   {
-    title: " Cross Platform Mobile App Developer",
-    company: "Digital Egypt Pioneers Initiative - DEPI",
-    logo: "assets/DEPI.png",
-    date: "June 2025 - Present",
-    description: "",
-    link: "#",
-  },
-  {
     title: "Freelancer",
     company: "Full-Stack Software Engineer",
     icon: `<i class="ri-contract-line"></i>`,
     date: "April 2025 - Present",
     description: `Engineered and delivered 4+ full-stack web applications for clients using the MERN stack, providing responsive, secure, and scalable solutions. Designed user-friendly interfaces with React and TailwindCSS, improving client engagement by up to 30%, and implemented Node.js RESTful APIs with MongoDB to support dynamic features. Consulted directly with clients to define requirements, align expectations, and consistently deliver high-quality projects on time and within scope. Maintained clean, maintainable code through Git and applied SOLID principles to ensure long-term scalability and quality.`,
     link: "#",
+  },
+  {
+    title: " Cross Platform Mobile App Developer",
+    company: "Digital Egypt Pioneers Initiative - DEPI",
+    logo: "assets/DEPI.png",
+    date: "July 2025 - December 2025",
+    description: "Developed cross-platform mobile applications using Flutter and Dart, delivering responsive, production-ready solutions for Android and iOS. Implemented backend services and real-time features using Firebase, while applying clean code, unit testing, and Git/GitHub workflows. Designed intuitive mobile interfaces based on UX/UI principles, ensuring consistent performance and strong user experience across devices. Strengthened professional readiness through Business English, freelancing skills, and career coaching, including portfolio building, proposal writing, and client communication.",
+    link: "https://drive.google.com/file/d/1Tuo1JlRFoBJJTteGq9pHqOt7lDW7RJc2/view?usp=sharing",
   },
   {
     title: "Digital Innovation Intern",
