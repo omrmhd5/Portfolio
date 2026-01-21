@@ -435,7 +435,7 @@ const experience = [
     company: "Digital Egypt Pioneers Initiative - DEPI",
     logo: "assets/DEPI.png",
     date: "July 2025 - December 2025",
-    description: "Developed cross-platform mobile applications using Flutter and Dart, delivering responsive, production-ready solutions for Android and iOS. Implemented backend services and real-time features using Firebase, while applying clean code, unit testing, and Git/GitHub workflows. Designed intuitive mobile interfaces based on UX/UI principles, ensuring consistent performance and strong user experience across devices. Strengthened professional readiness through Business English, freelancing skills, and career coaching, including portfolio building, proposal writing, and client communication.",
+    description: "Developed cross-platform mobile apps using Flutter and Dart for Android and iOS. Implemented backend and real-time features with Firebase, applying clean code, unit testing, and Git/GitHub. Designed intuitive, responsive mobile interfaces based on UX/UI principles. Built professional readiness through Business English, freelancing skills, and career coaching, including portfolio building, proposal writing, and client communication.",
     link: "https://drive.google.com/file/d/1Tuo1JlRFoBJJTteGq9pHqOt7lDW7RJc2/view?usp=sharing",
   },
   {
