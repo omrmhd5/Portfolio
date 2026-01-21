@@ -427,7 +427,7 @@ const experience = [
     company: "Full-Stack Software Engineer",
     icon: `<i class="ri-contract-line"></i>`,
     date: "April 2025 - Present",
-    description: `Engineered and delivered 4+ full-stack web applications for clients using the MERN stack, providing responsive, secure, and scalable solutions. Designed user-friendly interfaces with React and TailwindCSS, improving client engagement by up to 30%, and implemented Node.js RESTful APIs with MongoDB to support dynamic features. Consulted directly with clients to define requirements, align expectations, and consistently deliver high-quality projects on time and within scope. Maintained clean, maintainable code through Git and applied SOLID principles to ensure long-term scalability and quality.`,
+    description: `Engineered 6+ web applications for clients using the MERN stack, delivering responsive, secure, and scalable solutions. Designed user-friendly responsive UIs with React and TailwindCSS, improving client user engagement by up to 30%. Created Node.js RESTful APIs and MongoDB database structures for client projects. Consulted with 7+ clients to define requirements, align expectations, and ensure 100% delivery of high-quality projects on time and within scope through clear communication. Maintained clean, maintainable code with Git and SOLID best practices.`,
     link: "#",
   },
   {
