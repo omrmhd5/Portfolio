@@ -314,6 +314,23 @@ const databaseAndTools = [
 
 const projects = [
   {
+    title: "Huraymila Healthy City",
+    image: "assets/Huraymila.png",
+    description: `Huraymila Healthy City is a fully digital healthy-city management platform built for the city of Huraymila in Saudi Arabia to replace all paper-based standard submissions with a modern, centralized MERN-based system. The platform enables government agencies to upload compliance documents, track approval status, and manage all required standards through a unified Governor dashboard. It includes secure JWT-protected REST APIs with role-based access (Governor / Agency / Volunteer), a modern bilingual interface, and complete initiative and file management capabilities.The system introduced measurable improvements across operations—improving document retrieval by over 70%, raising agency submission efficiency by 50%, and cutting approval review time by more than 60% through a streamlined dashboard and centralized workflow. With real-time updates, interactive health indicators, a volunteer participation module, and an initiative management system, the platform provides a scalable digital foundation for healthy-city programs across multiple municipalities.`,
+    technologies: [
+      "MongoDB",
+      "Express.js",
+      "React.js",
+      "Node.js",
+      "TailwindCSS",
+    ],
+    links: {
+      code: "https://github.com/omrmhd5/Huraymila",
+      live: "https://huraymila.vercel.app/",
+    },
+    video: "assets/Huraymila.mp4",
+  },
+  {
     title: "Audoria – AI Educational Mobile App",
     image: "assets/Audoria.png",
     description: `Audoria is an AI-powered mobile educational assistant built to enable visually impaired students to learn independently through a fully voice-first experience. Developed using Flutter and Firebase, the app converts printed and digital materials into audio lessons using OCR and Text-to-Speech, while leveraging AI to generate summaries, quizzes, and real-time Q&A. Audoria features 100% hands-free navigation, a parent–child system with QR-based login, and performance insights for guardians, transforming inaccessible learning materials into an inclusive, interactive, and scalable learning platform.`,
@@ -331,23 +348,6 @@ const projects = [
         "https://drive.google.com/file/d/15hZDXk2ryQgsCmCrcAHeXQC4WE9NCx_K/view?usp=sharing",
     },
     video: "#",
-  },
-  {
-    title: "Huraymila Healthy City",
-    image: "assets/Huraymila.png",
-    description: `Huraymila Healthy City is a fully digital healthy-city management platform built for the city of Huraymila in Saudi Arabia to replace all paper-based standard submissions with a modern, centralized MERN-based system. The platform enables government agencies to upload compliance documents, track approval status, and manage all required standards through a unified Governor dashboard. It includes secure JWT-protected REST APIs with role-based access (Governor / Agency / Volunteer), a modern bilingual interface, and complete initiative and file management capabilities.The system introduced measurable improvements across operations—improving document retrieval by over 70%, raising agency submission efficiency by 50%, and cutting approval review time by more than 60% through a streamlined dashboard and centralized workflow. With real-time updates, interactive health indicators, a volunteer participation module, and an initiative management system, the platform provides a scalable digital foundation for healthy-city programs across multiple municipalities.`,
-    technologies: [
-      "MongoDB",
-      "Express.js",
-      "React.js",
-      "Node.js",
-      "TailwindCSS",
-    ],
-    links: {
-      code: "https://github.com/omrmhd5/Huraymila",
-      live: "https://huraymila.vercel.app/",
-    },
-    video: "assets/Huraymila.mp4",
   },
   {
     title: "Pest Control Reporting System",
@@ -624,7 +624,7 @@ document.addEventListener("DOMContentLoaded", () => {
       : project.description;
 
     const projectCard = `
-    <div class="project-card">
+    <div class="project-card" data-project-index="${idx}">
     <div class="project-image">
       <img src="${project.image}" alt="${project.title}" />
     </div>
@@ -665,6 +665,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
     projectContainer.innerHTML += projectCard;
   });
+
+  // Show only first 4 projects initially
+  const projectCards = document.querySelectorAll(".project-card");
+  projectCards.forEach((card, idx) => {
+    if (idx >= 4) {
+      card.style.display = "none";
+      card.classList.add("hidden-project");
+    }
+  });
+
+  // Add Show More button
+  if (projectCards.length > 4) {
+    const showMoreBtn = document.createElement("div");
+    showMoreBtn.style.textAlign = "center";
+    showMoreBtn.style.marginTop = "2rem";
+    showMoreBtn.innerHTML = `<button class="btn show-more-projects-btn" style="font-size: 1rem; padding: 0.75rem 2rem;">Show More Projects</button>`;
+    projectContainer.parentNode.insertBefore(
+      showMoreBtn,
+      projectContainer.nextSibling,
+    );
+
+    document
+      .querySelector(".show-more-projects-btn")
+      .addEventListener("click", function () {
+        projectCards.forEach((card) => {
+          card.style.display = "";
+          card.classList.remove("hidden-project");
+        });
+        this.parentElement.style.display = "none";
+      });
+  }
 
   experience.forEach((exp, idx) => {
     const hasCertificate = exp.link !== "#";
