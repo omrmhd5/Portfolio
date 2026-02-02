@@ -39,7 +39,7 @@ const observer = new IntersectionObserver((entries) => {
 // Add fade-in class to elements and observe them
 document
   .querySelectorAll(
-    ".section-title, .education-card, .course-card, .skill-group, .project-card, .timeline-item, .contact-item, .testimonial-card, .award-card"
+    ".section-title, .education-card, .course-card, .skill-group, .project-card, .timeline-item, .contact-item, .testimonial-card, .award-card",
   )
   .forEach((element) => {
     element.classList.add("fade-in");
@@ -314,6 +314,25 @@ const databaseAndTools = [
 
 const projects = [
   {
+    title: "Audoria – AI Educational Mobile App",
+    image: "assets/Audoria.png",
+    description: `Audoria is an AI-powered mobile educational assistant built to enable visually impaired students to learn independently through a fully voice-first experience. Developed using Flutter and Firebase, the app converts printed and digital materials into audio lessons using OCR and Text-to-Speech, while leveraging AI to generate summaries, quizzes, and real-time Q&A. Audoria features 100% hands-free navigation, a parent–child system with QR-based login, and performance insights for guardians, transforming inaccessible learning materials into an inclusive, interactive, and scalable learning platform.`,
+    technologies: [
+      "Flutter",
+      "Firebase",
+      "Google ML Kit OCR",
+      "Speech Recognition",
+      "Text-to-Speech",
+    ],
+    links: {
+      code: "https://github.com/malak-0/Audoria",
+      live: "#",
+      video:
+        "https://drive.google.com/file/d/15hZDXk2ryQgsCmCrcAHeXQC4WE9NCx_K/view?usp=sharing",
+    },
+    video: "#",
+  },
+  {
     title: "Huraymila Healthy City",
     image: "assets/Huraymila.png",
     description: `Huraymila Healthy City is a fully digital healthy-city management platform built for the city of Huraymila in Saudi Arabia to replace all paper-based standard submissions with a modern, centralized MERN-based system. The platform enables government agencies to upload compliance documents, track approval status, and manage all required standards through a unified Governor dashboard. It includes secure JWT-protected REST APIs with role-based access (Governor / Agency / Volunteer), a modern bilingual interface, and complete initiative and file management capabilities.The system introduced measurable improvements across operations—improving document retrieval by over 70%, raising agency submission efficiency by 50%, and cutting approval review time by more than 60% through a streamlined dashboard and centralized workflow. With real-time updates, interactive health indicators, a volunteer participation module, and an initiative management system, the platform provides a scalable digital foundation for healthy-city programs across multiple municipalities.`,
@@ -352,11 +371,7 @@ const projects = [
     title: "Abdullah Bukhari and Partners Company",
     image: "assets/Bukhari.png",
     description: `Abdullah Bukhari Transport & Logistics is a modern, multilingual corporate website built to present the company’s transport and logistics services across Saudi Arabia. The platform showcases seven core services, including transport, logistics, Hajj and Umrah buses, heavy transport, car rental, logistics management, and digital marketing, through a responsive, bilingual (AR/EN) interface with dark/light mode support. Designed with a clean, SEO-friendly structure and smooth animations, the website improves content clarity and service discoverability, enhances user engagement, and provides a scalable digital presence aligned with enterprise branding and future growth.`,
-    technologies: [
-      "TypeScript",
-      "React.tsx",
-      "TailwindCSS",
-    ],
+    technologies: ["TypeScript", "React.tsx", "TailwindCSS"],
     links: {
       code: "https://github.com/omrmhd5/Bukhari",
       live: "https://www.logistics-as.com/",
@@ -435,7 +450,8 @@ const experience = [
     company: "Digital Egypt Pioneers Initiative - DEPI",
     logo: "assets/DEPI.png",
     date: "July 2025 - December 2025",
-    description: "Developed cross-platform mobile apps using Flutter and Dart for Android and iOS. Implemented backend and real-time features with Firebase, applying clean code, unit testing, and Git/GitHub. Designed intuitive, responsive mobile interfaces based on UX/UI principles. Built professional readiness through Business English, freelancing skills, and career coaching, including portfolio building, proposal writing, and client communication.",
+    description:
+      "Developed cross-platform mobile apps using Flutter and Dart for Android and iOS. Implemented backend and real-time features with Firebase, applying clean code, unit testing, and Git/GitHub. Designed intuitive, responsive mobile interfaces based on UX/UI principles. Built professional readiness through Business English, freelancing skills, and career coaching, including portfolio building, proposal writing, and client communication.",
     link: "https://drive.google.com/file/d/1Tuo1JlRFoBJJTteGq9pHqOt7lDW7RJc2/view?usp=sharing",
   },
   {
@@ -600,6 +616,7 @@ document.addEventListener("DOMContentLoaded", () => {
   projects.forEach((project, idx) => {
     const hasLiveDemo = project.links.live !== "#";
     const hasVideo = project.video !== "#";
+    const hasVideoLink = project.links.video && project.links.video !== "#";
 
     const isLongDescription = project.description.length > 100;
     const shortDescription = isLongDescription
@@ -614,10 +631,10 @@ document.addEventListener("DOMContentLoaded", () => {
     <div class="project-content">
       <h3>${project.title}</h3>
       <p>${shortDescription}${
-      isLongDescription
-        ? ` <button class="read-more-btn" data-type="project" data-index="${idx}">Read More</button>`
-        : ""
-    }</p>
+        isLongDescription
+          ? ` <button class="read-more-btn" data-type="project" data-index="${idx}">Read More</button>`
+          : ""
+      }</p>
       <div class="project-tech">
       ${project.technologies.map((tech) => `<span>${tech}</span>`).join("")}
       </div>
@@ -635,6 +652,11 @@ document.addEventListener("DOMContentLoaded", () => {
       ${
         hasVideo
           ? `<a class="btn btn-video-preview" data-project-idx="${idx}"><i class="ri-play-circle-line"></i> Video Preview</a>`
+          : ""
+      }
+      ${
+        hasVideoLink
+          ? `<a href="${project.links.video}" class="btn" target="_blank"><i class="ri-play-circle-line"></i> Video</a>`
           : ""
       }
       </div>
@@ -663,10 +685,10 @@ document.addEventListener("DOMContentLoaded", () => {
         <h4>${exp.title}</h4>
         <p class="date">${exp.date}</p>
         <p class="description">${shortDescription}${
-      isLongDescription
-        ? ` <button class="read-more-btn" data-type="experience" data-index="${idx}">Read More</button>`
-        : ""
-    }</p>
+          isLongDescription
+            ? ` <button class="read-more-btn" data-type="experience" data-index="${idx}">Read More</button>`
+            : ""
+        }</p>
         ${
           hasCertificate
             ? `
@@ -916,7 +938,7 @@ document.addEventListener("DOMContentLoaded", () => {
     goToTestimonial(
       currentTestimonialIndex === 0
         ? totalTestimonials - 1
-        : currentTestimonialIndex - 1
+        : currentTestimonialIndex - 1,
     );
   }
 
