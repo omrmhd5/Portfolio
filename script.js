@@ -527,6 +527,28 @@ const testimonials = [
 
 const awards = [
   {
+    title: "Certificate of Recognition: Top Performer",
+    organization: "Digital Egypt Pioneers Initiative - DEPI",
+    date: "Apr 2026",
+    description: [
+      "Recognized by the Ministry of Communications and Information Technology (MCIT) for outstanding achievement as a top-performing student across the Cairo governorate",
+      "Ranked among the top tier of 24,000 students nationwide within the Digital Egypt Pioneers Initiative",
+    ],
+    certificate:
+      "https://drive.google.com/file/d/1cWYc3K1GlTZp7u_q5KlqUc-Uw8wTxM6X/view",
+  },
+  {
+    title: "Certificate of Appreciation: Team Leader",
+    organization: "Digital Egypt Pioneers Initiative - DEPI",
+    date: "Jan 2026",
+    description: [
+      "Awarded for outstanding leadership and exceptional contributions as a Team Leader from June to December 2025",
+      "Directed team coordination and communication to ensure project alignment and successful delivery in an industry-focused environment",
+    ],
+    certificate:
+      "https://drive.google.com/file/d/1XFGgQiGEcp9t3XdgwslEnrvHVTqdjH4j/view",
+  },
+  {
     title: "Amazon Transcend Semi-Finalist",
     organization: "Amazon",
     date: "February 2025",
@@ -1032,10 +1054,15 @@ document.addEventListener("DOMContentLoaded", () => {
         .map((item) => `<li>${item}</li>`)
         .join("");
 
-      const organizationIcon =
-        award.organization === "Amazon"
-          ? '<i class="fa-brands fa-amazon"></i>'
-          : "";
+      let organizationIcon = "";
+      if (award.organization === "Amazon") {
+        organizationIcon = '<i class="fa-brands fa-amazon"></i>';
+      } else if (
+        award.organization.includes("Digital Egypt Pioneers Initiative")
+      ) {
+        organizationIcon =
+          '<img src="assets/DEPI.png" alt="DEPI" class="award-icon" />';
+      }
 
       const awardCard = `
         <div class="award-card">
@@ -1051,7 +1078,7 @@ document.addEventListener("DOMContentLoaded", () => {
               ${descriptionList}
             </ul>
             <a href="${award.certificate}" target="_blank" class="btn award-certificate-btn">
-              <i class="ri-file-certificate-line"></i> View Certificate
+              <i class="fa-solid fa-certificate"></i> View Certificate
             </a>
           </div>
         </div>

@@ -63,7 +63,9 @@ body {
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  transition: opacity 0.5s ease, visibility 0.5s ease;
+  transition:
+    opacity 0.5s ease,
+    visibility 0.5s ease;
 }
 
 .loading-overlay.hidden {
@@ -1168,6 +1170,14 @@ img {
   font-size: 5rem;
 }
 
+.award-icon {
+  width: 4rem;
+  height: 4rem;
+  object-fit: contain;
+  display: flex;
+  align-items: center;
+}
+
 .award-date {
   color: var(--text-light);
   font-size: 0.9rem;
@@ -1369,7 +1379,9 @@ img {
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
 }
 
 .fade-in.visible {
