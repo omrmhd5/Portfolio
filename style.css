@@ -1618,19 +1618,66 @@ img {
   .course-title {
     width: 100%;
   }
-  /* 
+
+  /* Course/Certificate Cards - 2x2 Grid Layout */
+  .course-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .course-card {
+    padding: 0.8rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
   .course-header {
-    flex: 0;
-  } */
-  /* .course-card {
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-  } */
+  }
+
+  .course-title {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+
+  .course-title i {
+    margin-left: 0;
+    font-size: 1.2rem;
+  }
+
+  .course-title h3 {
+    font-size: 0.85rem;
+    line-height: 1.2;
+  }
+
+  .course-content {
+    flex-direction: column;
+    gap: 0.3rem;
+    margin-top: 0.3rem;
+    width: 100%;
+  }
+
+  .provider {
+    font-size: 0.85rem;
+  }
+
+  .provider p {
+    font-size: 0.85rem;
+  }
+
+  .certificate-link {
+    font-size: 0.75rem;
+  }
+
+  .certificate-link i {
+    font-size: 1rem;
+  }
 
   .course-card .date {
-    position: absolute;
-    right: 2rem;
+    position: static;
+    font-size: 0.75rem;
   }
 
   .skill-item {
