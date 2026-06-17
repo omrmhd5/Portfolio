@@ -48,7 +48,7 @@ document
 
 // Typing Effect
 const typingText = document.querySelector(".typing-text");
-const text = "Omar Mahmoud";
+const text = "Omar Ahmed";
 let isDeleting = false;
 let charIndex = 0;
 let typingDelay = 100;
@@ -326,7 +326,7 @@ const projects = [
     ],
     links: {
       code: "https://github.com/omrmhd5/Huraymila",
-      live: "https://huraymila.vercel.app/",
+      live: "https://huraymilahealth.com/",
     },
     video: "assets/Huraymila.mp4",
   },
@@ -412,28 +412,28 @@ const projects = [
     },
     video: "assets/CPP.mp4",
   },
-  {
-    title: ".NFQ To-Do App",
-    image: "assets/NFQ.png",
-    description: `.NFQ To-Do App is a full-stack task management web application built with React.js, Laravel, and MySQL. It features a responsive, interactive UI with real-time task updates to help users efficiently manage daily activities. The app follows MVC architecture, integrates APIs, and applies SOLID principles and clean code for scalable, maintainable development. CI/CD pipelines were used to streamline deployment, and version control was handled via Git in a collaborative environment to ensure high-quality delivery.`,
-    technologies: ["React.js", "CSS", "PHP", "Laravel", "MySQL"],
-    links: {
-      code: "https://github.com/omrmhd5/internship-todo-app",
-      live: "https://omar--omar-todo-application.netlify.app/",
-    },
-    video: "#",
-  },
-  {
-    title: "Gemini Clone",
-    image: "assets/Gemini.png",
-    description: `Gemini Clone is an AI chatbot inspired by Google Gemini, built using HTML, CSS, and JavaScript. It integrates the official Gemini API to deliver smooth, interactive conversations. The project features a clean, user-friendly chat interface with dark mode support, typing indicators, and smooth scrolling for an enhanced user experience.`,
-    technologies: ["HTML", "CSS", "JavaScript", "Gemini API Integration"],
-    links: {
-      code: "https://github.com/omrmhd5/Gemini-Clone",
-      live: "https://omrmhd5.github.io/Gemini-Clone/",
-    },
-    video: "assets/Gemini Clone.mp4",
-  },
+  // {
+  //   title: ".NFQ To-Do App",
+  //   image: "assets/NFQ.png",
+  //   description: `.NFQ To-Do App is a full-stack task management web application built with React.js, Laravel, and MySQL. It features a responsive, interactive UI with real-time task updates to help users efficiently manage daily activities. The app follows MVC architecture, integrates APIs, and applies SOLID principles and clean code for scalable, maintainable development. CI/CD pipelines were used to streamline deployment, and version control was handled via Git in a collaborative environment to ensure high-quality delivery.`,
+  //   technologies: ["React.js", "CSS", "PHP", "Laravel", "MySQL"],
+  //   links: {
+  //     code: "https://github.com/omrmhd5/internship-todo-app",
+  //     live: "https://omar--omar-todo-application.netlify.app/",
+  //   },
+  //   video: "#",
+  // },
+  // {
+  //   title: "Gemini Clone",
+  //   image: "assets/Gemini.png",
+  //   description: `Gemini Clone is an AI chatbot inspired by Google Gemini, built using HTML, CSS, and JavaScript. It integrates the official Gemini API to deliver smooth, interactive conversations. The project features a clean, user-friendly chat interface with dark mode support, typing indicators, and smooth scrolling for an enhanced user experience.`,
+  //   technologies: ["HTML", "CSS", "JavaScript", "Gemini API Integration"],
+  //   links: {
+  //     code: "https://github.com/omrmhd5/Gemini-Clone",
+  //     live: "https://omrmhd5.github.io/Gemini-Clone/",
+  //   },
+  //   video: "assets/Gemini Clone.mp4",
+  // },
 ];
 
 const experience = [
