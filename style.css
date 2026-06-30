@@ -737,18 +737,21 @@ img {
 
 .skill-items {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
   gap: 1.5rem;
+  align-items: start;
 }
 
 .skill-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
-  padding: 1rem;
+  gap: 0.8rem;
+  padding: 1rem 0.5rem;
   border-radius: 10px;
   transition: var(--transition);
+  min-width: 0;
+  width: 100%;
 }
 
 .skill-item:hover {
@@ -756,12 +759,48 @@ img {
   transform: translateY(-3px);
 }
 
-.skill-item i {
+.skill-item i, .skill-item svg {
   font-size: 2.5rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .skill-item span {
   font-weight: 500;
+  text-align: center;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  width: 100%;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+@media screen and (max-width: 768px) {
+  .skills-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .skill-group {
+    padding: 1.5rem;
+  }
+
+  .skill-items {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .skill-items {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 /* Projects Section */
