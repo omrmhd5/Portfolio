@@ -418,7 +418,13 @@ const projects = [
   {
     title: "AmanCity",
     badge: `<i class="fa-solid fa-graduation-cap"></i> Graduation Project`,
-    image: "assets/AmanCity.png",
+    image: [
+      "assets/AmanCity_1.png",
+      "assets/AmanCity_2.png",
+      "assets/AmanCity_3.png",
+      "assets/AmanCity_4.png",
+      "assets/AmanCity_Poster.png",
+    ],
     description: `Developed as the Graduation Project, AmanCity is Egypt's first AI-powered urban and women's safety mobile application designed to replace fragmented emergency channels with a unified, real-time safety ecosystem. It integrates Computer Vision, Natural Language Processing, and machine learning to identify, analyze, and forecast incidents. Built with Flutter, the app empowers citizens to report public hazards by uploading geo-tagged images and videos, which are automatically analyzed to detect threats like fires, road accidents, weapons, and crimes, while filtering out fake or AI-generated media. The platform also scans social media feeds in real-time for crisis updates across Greater Cairo, displaying verified reports on an interactive safety map that highlights high-risk danger zones. Users can chat with a conversational safety assistant to get contextual advice (such as "Is this area safe right now?") and plan safe route recommendations that avoid active hazard zones. Additionally, the app features an emergency SOS system for women's safety that instantly triggers visual and audible device alarms while sharing a live, continuous location tracking feed directly with trusted contacts.`,
     technologies: [
       "Flutter",
@@ -456,7 +462,7 @@ const projects = [
   },
   {
     title: "Audoria",
-    image: ["assets/Audoria.png", "assets/Audoria 2.png"],
+    image: ["assets/Audoria_1.png", "assets/Audoria_2.png"],
     description: `Audoria is an AI-powered mobile educational assistant built to enable visually impaired students to learn independently through a fully voice-first experience. Developed using Flutter and Firebase, the app converts printed and digital materials into audio lessons using OCR and Text-to-Speech, while leveraging AI to generate summaries, quizzes, and real-time Q&A. Audoria features 100% hands-free navigation, a parent–child system with QR-based login, and performance insights for guardians, transforming inaccessible learning materials into an inclusive, interactive, and scalable learning platform.`,
     technologies: [
       "Flutter",
