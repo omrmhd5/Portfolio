@@ -416,15 +416,37 @@ const toolsMethodologies = [
 
 const projects = [
   {
+    title: "AmanCity",
+    badge: `<i class="fa-solid fa-graduation-cap"></i> Graduation Project`,
+    image: "assets/AmanCity.png",
+    description: `Developed as the Graduation Project, AmanCity is Egypt's first AI-powered urban and women's safety mobile application designed to replace fragmented emergency channels with a unified, real-time safety ecosystem. It integrates Computer Vision, Natural Language Processing, and machine learning to identify, analyze, and forecast incidents. Built with Flutter, the app empowers citizens to report public hazards by uploading geo-tagged images and videos, which are automatically analyzed to detect threats like fires, road accidents, weapons, and crimes, while filtering out fake or AI-generated media. The platform also scans social media feeds in real-time for crisis updates across Greater Cairo, displaying verified reports on an interactive safety map that highlights high-risk danger zones. Users can chat with a conversational safety assistant to get contextual advice (such as "Is this area safe right now?") and plan safe route recommendations that avoid active hazard zones. Additionally, the app features an emergency SOS system for women's safety that instantly triggers visual and audible device alarms while sharing a live, continuous location tracking feed directly with trusted contacts.`,
+    technologies: [
+      "Flutter",
+      "Node.js",
+      "Python",
+      "FastAPI",
+      "MongoDB",
+      "Computer Vision (YOLO26)",
+      "Machine Learning",
+      "Generative AI",
+    ],
+    links: {
+      code: "https://github.com/omrmhd5/AmanCity",
+      live: "#",
+      video: "https://youtu.be/0-Qayg2_9uc",
+    },
+    video: "#",
+  },
+  {
     title: "Huraymila Healthy City",
     image: "assets/Huraymila.png",
     description: `Huraymila Healthy City is a fully digital healthy-city management platform built for the city of Huraymila in Saudi Arabia to replace all paper-based standard submissions with a modern, centralized MERN-based system. The platform enables government agencies to upload compliance documents, track approval status, and manage all required standards through a unified Governor dashboard. It includes secure JWT-protected REST APIs with role-based access (Governor / Agency / Volunteer), a modern bilingual interface, and complete initiative and file management capabilities.The system introduced measurable improvements across operations—improving document retrieval by over 70%, raising agency submission efficiency by 50%, and cutting approval review time by more than 60% through a streamlined dashboard and centralized workflow. With real-time updates, interactive health indicators, a volunteer participation module, and an initiative management system, the platform provides a scalable digital foundation for healthy-city programs across multiple municipalities.`,
     technologies: [
-      "MongoDB",
-      "Express.js",
       "React.js",
-      "Node.js",
       "TailwindCSS",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
     ],
     links: {
       code: "https://github.com/omrmhd5/Huraymila",
@@ -434,7 +456,7 @@ const projects = [
   },
   {
     title: "Audoria",
-    image: "assets/Audoria.png",
+    image: ["assets/Audoria.png", "assets/Audoria 2.png"],
     description: `Audoria is an AI-powered mobile educational assistant built to enable visually impaired students to learn independently through a fully voice-first experience. Developed using Flutter and Firebase, the app converts printed and digital materials into audio lessons using OCR and Text-to-Speech, while leveraging AI to generate summaries, quizzes, and real-time Q&A. Audoria features 100% hands-free navigation, a parent–child system with QR-based login, and performance insights for guardians, transforming inaccessible learning materials into an inclusive, interactive, and scalable learning platform.`,
     technologies: [
       "Flutter",
@@ -456,11 +478,11 @@ const projects = [
     image: "assets/TW.png",
     description: `Developed a fully integrated web-based reporting system for Takween Al Watan, a Saudi company providing pest control services for government projects in Makkah. Delivered in just three days, the system digitized field reporting and replaced manual Excel workflows with a smart, automated solution. It allows 10+ field workers to submit structured inspection data, while admins access a secure dashboard with real-time statistics, advanced filters, and multi-format Excel export (daily, weekly, monthly). The platform improved data accuracy, eliminated 100% of manual tracking, and reduced daily processing time by over 60%, giving supervisors real-time visibility over field operations.`,
     technologies: [
-      "MongoDB",
-      "Express.js",
       "React.js",
-      "Node.js",
       "TailwindCSS",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
       "Microsoft Excel",
     ],
     links: {
@@ -473,7 +495,7 @@ const projects = [
     title: "Abdullah Bukhari and Partners Company",
     image: "assets/Bukhari.png",
     description: `Abdullah Bukhari Transport & Logistics is a modern, multilingual corporate website built to present the company’s transport and logistics services across Saudi Arabia. The platform showcases seven core services, including transport, logistics, Hajj and Umrah buses, heavy transport, car rental, logistics management, and digital marketing, through a responsive, bilingual (AR/EN) interface with dark/light mode support. Designed with a clean, SEO-friendly structure and smooth animations, the website improves content clarity and service discoverability, enhances user engagement, and provides a scalable digital presence aligned with enterprise branding and future growth.`,
-    technologies: ["TypeScript", "React.tsx", "TailwindCSS"],
+    technologies: ["React.tsx", "TailwindCSS", "TypeScript"],
     links: {
       code: "https://github.com/omrmhd5/Bukhari",
       live: "https://www.logistics-as.com/",
@@ -485,11 +507,11 @@ const projects = [
     image: "assets/OSTR.png",
     description: `OSTR is an interactive fashion website built with the MERN stack, offering a seamless shopping experience supporting 200+ products. It features secure JWT login, user/admin roles, and a full admin dashboard for managing products. Users can browse men's, women's, and kids' categories, design custom outfits, and shop via a complete cart, wishlist, and order system. The site includes responsive dark mode support, a secure checkout, and real-time database updates for all interactions.`,
     technologies: [
-      "MongoDB",
-      "Express.js",
       "React.js",
-      "Node.js",
       "TailwindCSS",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
     ],
     links: {
       code: "https://github.com/omrmhd5/OSTR",
@@ -502,11 +524,11 @@ const projects = [
     image: "assets/CPP.png",
     description: `Continental Premium Properties is a fully responsive real estate website built with the MERN stack supporting 100+ property listings, with both Arabic and English support. It offers dark/light modes, smooth performance across all devices, and direct contact with property owners. The admin dashboard allows secure management of listings—uploading, editing, deleting, and viewing properties with multiple images and detailed info.`,
     technologies: [
-      "MongoDB",
-      "Express.js",
       "React.js",
-      "Node.js",
       "TailwindCSS",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
     ],
     links: {
       code: "https://github.com/omrmhd5/Continental-Premium-Properties",
@@ -747,13 +769,27 @@ document.addEventListener("DOMContentLoaded", () => {
       ? project.description.substring(0, 100) + "..."
       : project.description;
 
+    let imageHTML = "";
+    if (Array.isArray(project.image)) {
+      imageHTML = `<div class="project-slideshow" data-project-idx="${idx}">
+        ${project.image
+          .map(
+            (img, imgIdx) =>
+              `<img src="${img}" class="${imgIdx === 0 ? "active" : ""}" alt="${project.title}" />`,
+          )
+          .join("")}
+      </div>`;
+    } else {
+      imageHTML = `<img src="${project.image}" alt="${project.title}" />`;
+    }
+
     const projectCard = `
     <div class="project-card" data-project-index="${idx}">
     <div class="project-image">
-      <img src="${project.image}" alt="${project.title}" />
+      ${imageHTML}
     </div>
     <div class="project-content">
-      <h3>${project.title}</h3>
+      <h3>${project.title} ${project.badge ? `<span class="project-badge">${project.badge}</span>` : ""}</h3>
       <p>${shortDescription}${
         isLongDescription
           ? ` <button class="read-more-btn" data-type="project" data-index="${idx}">Read More</button>`
@@ -917,13 +953,18 @@ document.addEventListener("DOMContentLoaded", () => {
       const project = projects[index];
       const hasLiveDemo = project.links.live !== "#";
       const hasVideo = project.video !== "#";
+      const hasVideoLink = project.links.video && project.links.video !== "#";
+
+      const headerImage = Array.isArray(project.image)
+        ? project.image[0]
+        : project.image;
 
       modalBody.innerHTML = `
         <div class="read-more-project">
           <div class="read-more-header">
-            <img src="${project.image}" alt="${project.title}" />
+            <img src="${headerImage}" alt="${project.title}" />
             <div class="read-more-title">
-              <h2>${project.title}</h2>
+              <h2>${project.title} ${project.badge ? `<span class="project-badge">${project.badge}</span>` : ""}</h2>
               <div class="read-more-tech">
                 ${project.technologies
                   .map((tech) => `<span>${tech}</span>`)
@@ -951,6 +992,13 @@ document.addEventListener("DOMContentLoaded", () => {
               hasVideo
                 ? `<a class="btn btn-video-preview-modal" data-project-idx="${index}">
               <i class="ri-play-circle-line"></i> Video Preview
+            </a>`
+                : ""
+            }
+            ${
+              hasVideoLink
+                ? `<a href="${project.links.video}" class="btn" target="_blank">
+              <i class="ri-play-circle-line"></i> Video
             </a>`
                 : ""
             }
@@ -1260,3 +1308,18 @@ window.addEventListener("resize", () => {
 
 window.addEventListener("scroll", activateNavLink);
 window.addEventListener("DOMContentLoaded", activateNavLink);
+
+// Slideshow functionality for multi-image projects
+window.addEventListener("DOMContentLoaded", () => {
+  const slideshows = document.querySelectorAll(".project-slideshow");
+  slideshows.forEach((slideshow) => {
+    const images = slideshow.querySelectorAll("img");
+    if (images.length <= 1) return;
+    let currentIdx = 0;
+    setInterval(() => {
+      images[currentIdx].classList.remove("active");
+      currentIdx = (currentIdx + 1) % images.length;
+      images[currentIdx].classList.add("active");
+    }, 3000); // Change image every 3 seconds
+  });
+});

@@ -33,22 +33,36 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Hide scrollbar for all browsers */
-html {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
 }
 
-html::-webkit-scrollbar {
-  display: none;
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 3px;
+  transition: var(--transition);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-color);
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-color) transparent;
 }
 
 body {
   background: var(--bg-color);
   color: var(--text-color);
   line-height: 1.6;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
 }
 
 /* Loading Overlay */
@@ -157,55 +171,6 @@ body {
 
 body::-webkit-scrollbar {
   display: none;
-}
-
-/* Show narrow scrollbar for PC screens only */
-@media screen and (min-width: 769px) {
-  html {
-    scrollbar-width: thin;
-    -ms-overflow-style: auto;
-  }
-
-  html::-webkit-scrollbar {
-    display: block;
-    width: 6px;
-  }
-
-  html::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  html::-webkit-scrollbar-thumb {
-    background: var(--primary-color);
-    border-radius: 3px;
-  }
-
-  html::-webkit-scrollbar-thumb:hover {
-    background: var(--secondary-color);
-  }
-
-  body {
-    scrollbar-width: thin;
-    -ms-overflow-style: auto;
-  }
-
-  body::-webkit-scrollbar {
-    display: block;
-    width: 6px;
-  }
-
-  body::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  body::-webkit-scrollbar-thumb {
-    background: var(--primary-color);
-    border-radius: 3px;
-  }
-
-  body::-webkit-scrollbar-thumb:hover {
-    background: var(--secondary-color);
-  }
 }
 
 a {
@@ -845,6 +810,29 @@ img {
   transform: scale(1.05);
 }
 
+.project-slideshow {
+  display: grid;
+  width: 100%;
+  height: 100%;
+}
+
+.project-slideshow img {
+  grid-area: 1 / 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out, transform 0.5s ease;
+}
+
+.project-slideshow img.active {
+  opacity: 1;
+}
+
+.project-card:hover .project-slideshow img {
+  transform: scale(1.05);
+}
+
 .project-content {
   padding: 2rem;
 }
@@ -853,6 +841,22 @@ img {
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 1rem;
+}
+
+.project-badge {
+  background: #e11d48; /* Premium Rose Red */
+  color: white;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  margin-left: 0.75rem;
+  vertical-align: middle;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.project-badge i {
+  margin-right: 0.35rem;
 }
 
 .project-content p {
@@ -2086,6 +2090,25 @@ img {
   max-height: 80vh;
   overflow-y: auto;
   padding: 2rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-color) transparent;
+}
+
+.read-more-modal-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.read-more-modal-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.read-more-modal-body::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 3px;
+}
+
+.read-more-modal-body::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-color);
 }
 
 /* Read More Project Styles */
