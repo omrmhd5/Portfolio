@@ -429,6 +429,8 @@ const projects = [
     technologies: [
       "Flutter",
       "Node.js",
+      "Express.js",
+      "Firebase",
       "Python",
       "FastAPI",
       "MongoDB",
