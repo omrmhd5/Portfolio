@@ -14,34 +14,41 @@ A fully responsive personal portfolio website built with HTML, CSS, and JavaScri
 ## Screenshots 📸
 
 * Hero Section
-  ![Screenshot 2025-07-01 025923](https://github.com/user-attachments/assets/5497f0d7-caf2-4fd7-adf5-524270a49fb6)
+  <img width="1918" height="895" alt="Hero Section" src="https://github.com/user-attachments/assets/7f96a21b-7c53-43b1-a3ad-9721fa8e3cea" />
 
 * Education Section
-  ![Screenshot 2025-07-01 213248](https://github.com/user-attachments/assets/a8c4fd78-05cf-4dca-84cc-a4ac9feb6aa2)
+  <img width="1918" height="915" alt="Education Section" src="https://github.com/user-attachments/assets/fafad43f-98a2-437a-9877-79fa7be8af7b" />
   
-  ![Screenshot 2025-07-01 213301](https://github.com/user-attachments/assets/681dd064-80ff-42f8-8500-07cfd2be054b)
-
-* Skills Section
-  ![Screenshot 2025-07-01 213317](https://github.com/user-attachments/assets/4f931a2a-901d-4890-a96e-5d1d455dfbc5)
-
-* Projects Section
-  ![Screenshot 2025-07-01 213331](https://github.com/user-attachments/assets/e250b796-9c2b-43ae-852a-634dc7a96f8a)
-  
-* Project Card
-  ![Screenshot 2025-07-01 213345](https://github.com/user-attachments/assets/4f22430b-e737-4d91-a6ea-a94814085a89)
+  <img width="1895" height="915" alt="Courses Section" src="https://github.com/user-attachments/assets/71bdf6da-434d-48dc-8d2d-1be7f48778f0" />
 
 * Experience Section
-  ![Screenshot 2025-07-01 213401](https://github.com/user-attachments/assets/34349809-df19-4b88-b410-87ca74d49212)
-
+  <img width="1918" height="912" alt="Experience Section" src="https://github.com/user-attachments/assets/410f5d48-189f-4243-89d1-c2d1f252891b" />
+  
 * Experience Card
-  ![Screenshot 2025-07-01 213418](https://github.com/user-attachments/assets/227641c7-aad1-49f3-9aa8-91876e15fde4)
+  <img width="1895" height="915" alt="Experience Card" src="https://github.com/user-attachments/assets/58ea4b02-208f-41e2-ad93-25632a24b42f" />
+
+* Skills Section
+  <img width="1918" height="915" alt="Skills Section" src="https://github.com/user-attachments/assets/06823408-cf3e-415e-bdfc-3c79a5dbbba4" />
+
+* Projects Section
+  <img width="1918" height="912" alt="Projects Section" src="https://github.com/user-attachments/assets/7ad04373-475a-4468-8d80-dcfa1f6b47f8" />
+  
+* Project Card
+  <img width="1918" height="916" alt="Project Card" src="https://github.com/user-attachments/assets/c4d6fd19-787d-4712-b2d5-dfb9647a6597" />
+
+* Testimonials Section
+  <img width="1918" height="915" alt="Testimonials Section" src="https://github.com/user-attachments/assets/bb93edf9-4ee0-4e21-8e9f-7750278d90eb" />
+
+* Awards Section
+  <img width="1918" height="912" alt="Awards Section" src="https://github.com/user-attachments/assets/7093796c-e200-4ae4-9629-1851cb5e86a1" />
 
 * Contact Section
-  ![Screenshot 2025-07-01 213427](https://github.com/user-attachments/assets/775bbacd-f093-4b4c-a224-9edb26c4dc43)
+  <img width="1918" height="912" alt="Contact Section" src="https://github.com/user-attachments/assets/ea2d9822-825c-42d5-8995-39624bca74f3" />
 
 * Mobile View
 * 
-  ![image](https://github.com/user-attachments/assets/19f27b5d-b51b-420a-972d-752dbb073a71)
+  <img width="350" height="725" alt="Mobile View" src="https://github.com/user-attachments/assets/c5ef1507-92f4-4e36-a081-58c1b4862905" />
+
 
 ## Technologies Used 🛠️
 
