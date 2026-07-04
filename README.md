@@ -40,6 +40,7 @@ A fully responsive personal portfolio website built with HTML, CSS, and JavaScri
   ![Screenshot 2025-07-01 213427](https://github.com/user-attachments/assets/775bbacd-f093-4b4c-a224-9edb26c4dc43)
 
 * Mobile View
+* 
   ![image](https://github.com/user-attachments/assets/19f27b5d-b51b-420a-972d-752dbb073a71)
 
 ## Technologies Used 🛠️
@@ -56,4 +57,6 @@ A fully responsive personal portfolio website built with HTML, CSS, and JavaScri
 
 👤 **Omar Mahmoud**
 📧 [omrmhd54@gmail.com](mailto:omrmhd54@gmail.com)
+💼 [LinkedIn](https://www.linkedin.com/in/omrmhd5/)
+🌐 [Portfolio](https://omarmahmoud.dev/)
 🔗 [GitHub](https://github.com/omrmhd5)
