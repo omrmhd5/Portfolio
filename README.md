@@ -51,7 +51,7 @@ A fully responsive personal portfolio website built with HTML, CSS, and JavaScri
 
 ## Live Demo 🚀
 
-[**View Live Demo**](https://omrmhd5.github.io/Portfolio/)
+[**View Live Demo**](https://omarmahmoud.dev/)
 
 ## Author
 
