@@ -425,6 +425,7 @@ const projects = [
       "assets/AmanCity_4.png",
       "assets/AmanCity_Poster.png",
     ],
+    summary: `Egypt's first AI-powered urban and women's safety platform, integrating computer vision, natural language processing, machine learning, OSINT social scanning, and predictive mapping to provide real-time hazard detection, safe routing, and live-tracking SOS support.`,
     description: `Developed as the Graduation Project, AmanCity is Egypt's first AI-powered urban and women's safety mobile application designed to replace fragmented emergency channels with a unified, real-time safety ecosystem. It integrates Computer Vision, Natural Language Processing, and Machine Learning to identify, analyze, and forecast incidents. Built with Flutter, the app empowers citizens to report public hazards by uploading geo-tagged images and videos, which are automatically analyzed to detect threats like fires, road accidents, floods, building damage, weapons, and crimes, after screening uploads via an AI-generated image detection gate to block fake media. The platform also scans social media feeds in real-time for crisis updates across Greater Cairo, displaying verified reports, active safety alerts, and nearby emergency POIs (hospitals, police, and fire stations) on an interactive safety map highlighting predictive risk hotspots using spatial clustering. Users can chat with a conversational safety assistant for context-aware safety advice (such as "Is this area safe right now?"), plan dynamic safe routes that avoid dangerous zones, and receive real-time push alerts when entering or approaching unsafe areas. Additionally, the app features a session-based SOS system for women's safety that instantly triggers alarms, starts flashlights, and shares a live, continuous location tracking feed directly with trusted contacts. Finally, the system includes a secure Web Command Dashboard for response authorities to monitor active hazards and track SOS alerts in real-time.`,
     technologies: [
       "Flutter",
@@ -448,6 +449,7 @@ const projects = [
   {
     title: "Huraymila Healthy City",
     image: "assets/Huraymila.png",
+    summary: `A centralized web portal and compliance dashboard designed for a Saudi municipality to digitize agency standards tracking, reducing document retrieval times by 70% and review cycles by 60%.`,
     description: `Huraymila Healthy City is a fully digital healthy-city management platform built for the city of Huraymila in Saudi Arabia to replace all paper-based standard submissions with a modern, centralized MERN-based system. The platform enables government agencies to upload compliance documents, track approval status, and manage all required standards through a unified Governor dashboard. It includes secure JWT-protected REST APIs with role-based access (Governor / Agency / Volunteer), a modern bilingual interface, and complete initiative and file management capabilities.The system introduced measurable improvements across operations—improving document retrieval by over 70%, raising agency submission efficiency by 50%, and cutting approval review time by more than 60% through a streamlined dashboard and centralized workflow. With real-time updates, interactive health indicators, a volunteer participation module, and an initiative management system, the platform provides a scalable digital foundation for healthy-city programs across multiple municipalities.`,
     technologies: [
       "React.js",
@@ -465,6 +467,7 @@ const projects = [
   {
     title: "Audoria",
     image: ["assets/Audoria_1.png", "assets/Audoria_2.png"],
+    summary: `An educational mobile application designed for visually impaired students, utilizing Google ML Kit OCR, voice-driven navigation, and AI text summaries to enable fully independent learning.`,
     description: `Audoria is an AI-powered mobile educational assistant built to enable visually impaired students to learn independently through a fully voice-first experience. Developed using Flutter and Firebase, the app converts printed and digital materials into audio lessons using OCR and Text-to-Speech, while leveraging AI to generate summaries, quizzes, and real-time Q&A. Audoria features 100% hands-free navigation, a parent–child system with QR-based login, and performance insights for guardians, transforming inaccessible learning materials into an inclusive, interactive, and scalable learning platform.`,
     technologies: [
       "Flutter",
@@ -484,6 +487,7 @@ const projects = [
   {
     title: "Pest Control Reporting System",
     image: "assets/TW.png",
+    summary: `A full-stack reporting system built in 3 days for a Saudi governmental contractor to digitize field inspection logs and automate dynamic Excel reporting, reducing processing times by 60%.`,
     description: `Developed a fully integrated web-based reporting system for Takween Al Watan, a Saudi company providing pest control services for government projects in Makkah. Delivered in just three days, the system digitized field reporting and replaced manual Excel workflows with a smart, automated solution. It allows 10+ field workers to submit structured inspection data, while admins access a secure dashboard with real-time statistics, advanced filters, and multi-format Excel export (daily, weekly, monthly). The platform improved data accuracy, eliminated 100% of manual tracking, and reduced daily processing time by over 60%, giving supervisors real-time visibility over field operations.`,
     technologies: [
       "React.js",
@@ -502,6 +506,7 @@ const projects = [
   {
     title: "Abdullah Bukhari and Partners Company",
     image: "assets/Bukhari.png",
+    summary: `A premium, responsive corporate portal designed to showcase transport and logistics services in Saudi Arabia, featuring full bilingual localization and an optimized, SEO-friendly layout.`,
     description: `Abdullah Bukhari Transport & Logistics is a modern, multilingual corporate website built to present the company’s transport and logistics services across Saudi Arabia. The platform showcases seven core services, including transport, logistics, Hajj and Umrah buses, heavy transport, car rental, logistics management, and digital marketing, through a responsive, bilingual (AR/EN) interface with dark/light mode support. Designed with a clean, SEO-friendly structure and smooth animations, the website improves content clarity and service discoverability, enhances user engagement, and provides a scalable digital presence aligned with enterprise branding and future growth.`,
     technologies: ["React.tsx", "TailwindCSS", "TypeScript"],
     links: {
@@ -513,6 +518,7 @@ const projects = [
   {
     title: "OSTR - Ecommerce Fashion Website",
     image: "assets/OSTR.png",
+    summary: `An interactive MERN-stack e-commerce store supporting 200+ products, featuring secure JWT role-based authentication, cart management, and a dynamic real-time administrative product dashboard.`,
     description: `OSTR is an interactive fashion website built with the MERN stack, offering a seamless shopping experience supporting 200+ products. It features secure JWT login, user/admin roles, and a full admin dashboard for managing products. Users can browse men's, women's, and kids' categories, design custom outfits, and shop via a complete cart, wishlist, and order system. The site includes responsive dark mode support, a secure checkout, and real-time database updates for all interactions.`,
     technologies: [
       "React.js",
@@ -530,6 +536,7 @@ const projects = [
   {
     title: "Continental Premium Properties",
     image: "assets/CPP.png",
+    summary: `A multilingual real estate listings platform built with the MERN stack, offering interactive property searches, dark/light modes, and a secure admin dashboard to manage listings.`,
     description: `Continental Premium Properties is a fully responsive real estate website built with the MERN stack supporting 100+ property listings, with both Arabic and English support. It offers dark/light modes, smooth performance across all devices, and direct contact with property owners. The admin dashboard allows secure management of listings—uploading, editing, deleting, and viewing properties with multiple images and detailed info.`,
     technologies: [
       "React.js",
@@ -987,8 +994,15 @@ document.addEventListener("DOMContentLoaded", () => {
               </div>
             </div>
           </div>
-          <div class="read-more-description">
-            <p>${project.description}</p>
+          <div class="read-more-description-wrapper" style="position: relative;">
+            <div style="display: flex; justify-content: flex-end; margin-bottom: 0.8rem;">
+              <button class="btn btn-secondary btn-summarize" data-state="full" style="font-size: 0.85rem; padding: 0.4rem 1rem; height: auto;">
+                <i class="fa-solid fa-compress"></i> Summarize
+              </button>
+            </div>
+            <div class="read-more-description">
+              <p class="description-text" style="line-height: 1.6; font-size: 0.95rem;">${project.description}</p>
+            </div>
           </div>
           <div class="read-more-links">
             <a href="${
@@ -1020,6 +1034,24 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
         </div>
       `;
+
+      // Summarize Toggle Handler
+      const summarizeBtn = modalBody.querySelector(".btn-summarize");
+      const descText = modalBody.querySelector(".description-text");
+      if (summarizeBtn && descText) {
+        summarizeBtn.addEventListener("click", () => {
+          const state = summarizeBtn.getAttribute("data-state");
+          if (state === "full") {
+            descText.innerHTML = project.summary || project.description;
+            summarizeBtn.innerHTML = `<i class="fa-solid fa-expand"></i> Show Full Details`;
+            summarizeBtn.setAttribute("data-state", "summary");
+          } else {
+            descText.innerHTML = project.description;
+            summarizeBtn.innerHTML = `<i class="fa-solid fa-compress"></i> Summarize`;
+            summarizeBtn.setAttribute("data-state", "full");
+          }
+        });
+      }
     } else if (type === "experience") {
       const exp = experience[index];
       const hasCertificate = exp.link !== "#";
