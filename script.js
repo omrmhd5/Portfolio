@@ -581,7 +581,7 @@ const experience = [
     company: "Full-Stack Software Engineer",
     icon: `<i class="ri-contract-line"></i>`,
     date: "April 2025 - Present",
-    description: `Engineered 6+ web applications for clients using the MERN stack, delivering responsive, secure, and scalable solutions. Designed user-friendly responsive UIs with React and TailwindCSS, improving client user engagement by up to 30%. Created Node.js RESTful APIs and MongoDB database structures for client projects. Consulted with 7+ clients to define requirements, align expectations, and ensure 100% delivery of high-quality projects on time and within scope through clear communication. Maintained clean, maintainable code with Git and SOLID best practices.`,
+    description: `Engineered 11+ web applications for clients using the MERN stack, delivering secure, scalable, and custom solutions for international clients. Designed user-friendly responsive UIs with React and TailwindCSS, improving client user engagement by up to 30%. Created Node.js RESTful APIs and MongoDB database structures for client projects. Consulted with 10+ clients to define requirements, align expectations, and ensure 100% delivery of high-quality projects on time and within scope through clear communication. Maintained clean, maintainable code with Git and SOLID best practices.`,
     link: "#",
   },
   {
@@ -590,7 +590,7 @@ const experience = [
     logo: "assets/DEPI.png",
     date: "July 2025 - December 2025",
     description:
-      "Developed cross-platform mobile apps using Flutter and Dart for Android and iOS. Implemented backend and real-time features with Firebase, applying clean code, unit testing, and Git/GitHub. Designed intuitive, responsive mobile interfaces based on UX/UI principles. Built professional readiness through Business English, freelancing skills, and career coaching, including portfolio building, proposal writing, and client communication.",
+      "Developed cross-platform mobile apps for Android and iOS using Flutter and Dart, focusing on intuitive responsive UI/UX principles. Implemented backend and real-time features with Firebase, applying clean code, unit testing, and Git/GitHub. Built professional readiness through Business English, freelancing skills, and career coaching, including portfolio building, proposal writing, and client communication.",
     link: "https://drive.google.com/file/d/1Tuo1JlRFoBJJTteGq9pHqOt7lDW7RJc2/view?usp=sharing",
   },
   {
