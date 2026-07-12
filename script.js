@@ -312,6 +312,10 @@ const backendApiSkills = [
 
 const aiMachineLearningSkills = [
   {
+    logo: `<svg xmlns="http://www.w3.org/2000/svg" height="4em" style="flex:none;line-height:1" viewBox="0 0 24 24" width="4em"><title>Gemini</title><path d="M20.616 10.835a14.147 14.147 0 01-4.45-3.001 14.111 14.111 0 01-3.678-6.452.503.503 0 00-.975 0 14.134 14.134 0 01-3.679 6.452 14.155 14.155 0 01-4.45 3.001c-.65.28-1.318.505-2.002.678a.502.502 0 000 .975c.684.172 1.35.397 2.002.677a14.147 14.147 0 014.45 3.001 14.112 14.112 0 013.679 6.453.502.502 0 00.975 0c.172-.685.397-1.351.677-2.003a14.145 14.145 0 013.001-4.45 14.113 14.113 0 016.453-3.678.503.503 0 000-.975 13.245 13.245 0 01-2.003-.678z" fill="#3186FF"/><path d="M20.616 10.835a14.147 14.147 0 01-4.45-3.001 14.111 14.111 0 01-3.678-6.452.503.503 0 00-.975 0 14.134 14.134 0 01-3.679 6.452 14.155 14.155 0 01-4.45 3.001c-.65.28-1.318.505-2.002.678a.502.502 0 000 .975c.684.172 1.35.397 2.002.677a14.147 14.147 0 014.45 3.001 14.112 14.112 0 013.679 6.453.502.502 0 00.975 0c.172-.685.397-1.351.677-2.003a14.145 14.145 0 013.001-4.45 14.113 14.113 0 016.453-3.678.503.503 0 000-.975 13.245 13.245 0 01-2.003-.678z" fill="url(#lobe-icons-gemini-0-_R_0_)"/><path d="M20.616 10.835a14.147 14.147 0 01-4.45-3.001 14.111 14.111 0 01-3.678-6.452.503.503 0 00-.975 0 14.134 14.134 0 01-3.679 6.452 14.155 14.155 0 01-4.45 3.001c-.65.28-1.318.505-2.002.678a.502.502 0 000 .975c.684.172 1.35.397 2.002.677a14.147 14.147 0 014.45 3.001 14.112 14.112 0 013.679 6.453.502.502 0 00.975 0c.172-.685.397-1.351.677-2.003a14.145 14.145 0 013.001-4.45 14.113 14.113 0 016.453-3.678.503.503 0 000-.975 13.245 13.245 0 01-2.003-.678z" fill="url(#lobe-icons-gemini-1-_R_0_)"/><path d="M20.616 10.835a14.147 14.147 0 01-4.45-3.001 14.111 14.111 0 01-3.678-6.452.503.503 0 00-.975 0 14.134 14.134 0 01-3.679 6.452 14.155 14.155 0 01-4.45 3.001c-.65.28-1.318.505-2.002.678a.502.502 0 000 .975c.684.172 1.35.397 2.002.677a14.147 14.147 0 014.45 3.001 14.112 14.112 0 013.679 6.453.502.502 0 00.975 0c.172-.685.397-1.351.677-2.003a14.145 14.145 0 013.001-4.45 14.113 14.113 0 016.453-3.678.503.503 0 000-.975 13.245 13.245 0 01-2.003-.678z" fill="url(#lobe-icons-gemini-2-_R_0_)"/><defs><linearGradient gradientUnits="userSpaceOnUse" id="lobe-icons-gemini-0-_R_0_" x1="7" x2="11" y1="15.5" y2="12"><stop stop-color="#08B962"/><stop offset="1" stop-color="#08B962" stop-opacity="0"/></linearGradient><linearGradient gradientUnits="userSpaceOnUse" id="lobe-icons-gemini-1-_R_0_" x1="8" x2="11.5" y1="5.5" y2="11"><stop stop-color="#F94543"/><stop offset="1" stop-color="#F94543" stop-opacity="0"/></linearGradient><linearGradient gradientUnits="userSpaceOnUse" id="lobe-icons-gemini-2-_R_0_" x1="3.5" x2="17.5" y1="13.5" y2="12"><stop stop-color="#FABC12"/><stop offset=".46" stop-color="#FABC12" stop-opacity="0"/></linearGradient></defs></svg>`,
+    name: "Generative AI<br>(Gemini, Grok)",
+  },
+  {
     logo: `<svg xmlns="http://www.w3.org/2000/svg" height="64" width="64" viewBox="0 0 512 512"><!--!Font Awesome Free v7.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path fill="#111f68" d="M383.5 10.8c61.8-.2 112.3 50.6 112.3 112.9-.2 2.7 0 0-.1 3.3l.3 .3c-1.5 89.9-53 168.4-127.4 208.5l0 52.8c0 62.6-51.1 113.5-113.7 112.9-62-.6-111.4-52.2-111.4-114.3l0-51.2c-40.7-21.9-74.5-55.2-97-95.6 23.2 16.5 51.7 26 82 25.9 78.6-.2 142.2-64 142.3-142.5 .1-62.3 50.5-112.7 112.9-112.9zm-255 225.8a112.9 112.9 0 1 1 0-225.8 112.9 112.9 0 1 1 0 225.8z"/></svg>`,
     name: "Computer Vision<br>(OpenCV, YOLO26)",
   },
@@ -320,10 +324,7 @@ const aiMachineLearningSkills = [
 `,
     name: "Machine Learning<br>(Scikit-Learn, Random Forests)",
   },
-  {
-    logo: `<svg xmlns="http://www.w3.org/2000/svg" height="4em" style="flex:none;line-height:1" viewBox="0 0 24 24" width="4em"><title>Gemini</title><path d="M20.616 10.835a14.147 14.147 0 01-4.45-3.001 14.111 14.111 0 01-3.678-6.452.503.503 0 00-.975 0 14.134 14.134 0 01-3.679 6.452 14.155 14.155 0 01-4.45 3.001c-.65.28-1.318.505-2.002.678a.502.502 0 000 .975c.684.172 1.35.397 2.002.677a14.147 14.147 0 014.45 3.001 14.112 14.112 0 013.679 6.453.502.502 0 00.975 0c.172-.685.397-1.351.677-2.003a14.145 14.145 0 013.001-4.45 14.113 14.113 0 016.453-3.678.503.503 0 000-.975 13.245 13.245 0 01-2.003-.678z" fill="#3186FF"/><path d="M20.616 10.835a14.147 14.147 0 01-4.45-3.001 14.111 14.111 0 01-3.678-6.452.503.503 0 00-.975 0 14.134 14.134 0 01-3.679 6.452 14.155 14.155 0 01-4.45 3.001c-.65.28-1.318.505-2.002.678a.502.502 0 000 .975c.684.172 1.35.397 2.002.677a14.147 14.147 0 014.45 3.001 14.112 14.112 0 013.679 6.453.502.502 0 00.975 0c.172-.685.397-1.351.677-2.003a14.145 14.145 0 013.001-4.45 14.113 14.113 0 016.453-3.678.503.503 0 000-.975 13.245 13.245 0 01-2.003-.678z" fill="url(#lobe-icons-gemini-0-_R_0_)"/><path d="M20.616 10.835a14.147 14.147 0 01-4.45-3.001 14.111 14.111 0 01-3.678-6.452.503.503 0 00-.975 0 14.134 14.134 0 01-3.679 6.452 14.155 14.155 0 01-4.45 3.001c-.65.28-1.318.505-2.002.678a.502.502 0 000 .975c.684.172 1.35.397 2.002.677a14.147 14.147 0 014.45 3.001 14.112 14.112 0 013.679 6.453.502.502 0 00.975 0c.172-.685.397-1.351.677-2.003a14.145 14.145 0 013.001-4.45 14.113 14.113 0 016.453-3.678.503.503 0 000-.975 13.245 13.245 0 01-2.003-.678z" fill="url(#lobe-icons-gemini-1-_R_0_)"/><path d="M20.616 10.835a14.147 14.147 0 01-4.45-3.001 14.111 14.111 0 01-3.678-6.452.503.503 0 00-.975 0 14.134 14.134 0 01-3.679 6.452 14.155 14.155 0 01-4.45 3.001c-.65.28-1.318.505-2.002.678a.502.502 0 000 .975c.684.172 1.35.397 2.002.677a14.147 14.147 0 014.45 3.001 14.112 14.112 0 013.679 6.453.502.502 0 00.975 0c.172-.685.397-1.351.677-2.003a14.145 14.145 0 013.001-4.45 14.113 14.113 0 016.453-3.678.503.503 0 000-.975 13.245 13.245 0 01-2.003-.678z" fill="url(#lobe-icons-gemini-2-_R_0_)"/><defs><linearGradient gradientUnits="userSpaceOnUse" id="lobe-icons-gemini-0-_R_0_" x1="7" x2="11" y1="15.5" y2="12"><stop stop-color="#08B962"/><stop offset="1" stop-color="#08B962" stop-opacity="0"/></linearGradient><linearGradient gradientUnits="userSpaceOnUse" id="lobe-icons-gemini-1-_R_0_" x1="8" x2="11.5" y1="5.5" y2="11"><stop stop-color="#F94543"/><stop offset="1" stop-color="#F94543" stop-opacity="0"/></linearGradient><linearGradient gradientUnits="userSpaceOnUse" id="lobe-icons-gemini-2-_R_0_" x1="3.5" x2="17.5" y1="13.5" y2="12"><stop stop-color="#FABC12"/><stop offset=".46" stop-color="#FABC12" stop-opacity="0"/></linearGradient></defs></svg>`,
-    name: "Generative AI<br>(Gemini, Grok)",
-  },
+
   {
     logo: `<svg xmlns="http://www.w3.org/2000/svg" height="64" width="64" viewBox="0 0 640 512"><!--!Font Awesome Free v7.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path fill="#74c1fc" d="M352 0c0-17.7-14.3-32-32-32S288-17.7 288 0l0 64-96 0c-53 0-96 43-96 96l0 224c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-224c0-53-43-96-96-96l-96 0 0-64zM160 368c0-13.3 10.7-24 24-24l32 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-32 0c-13.3 0-24-10.7-24-24zm120 0c0-13.3 10.7-24 24-24l32 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-32 0c-13.3 0-24-10.7-24-24zm120 0c0-13.3 10.7-24 24-24l32 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-32 0c-13.3 0-24-10.7-24-24zM224 176a48 48 0 1 1 0 96 48 48 0 1 1 0-96zm144 48a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zM64 224c0-17.7-14.3-32-32-32S0 206.3 0 224l0 96c0 17.7 14.3 32 32 32s32-14.3 32-32l0-96zm544-32c-17.7 0-32 14.3-32 32l0 96c0 17.7 14.3 32 32 32s32-14.3 32-32l0-96c0-17.7-14.3-32-32-32z"/></svg>`,
     name: "OSINT",
@@ -581,16 +582,15 @@ const experience = [
     company: "Full-Stack Software Engineer",
     icon: `<i class="ri-contract-line"></i>`,
     date: "April 2025 - Present",
-    description: `Engineered 11+ web applications for clients using the MERN stack, delivering secure, scalable, and custom solutions for international clients. Designed user-friendly responsive UIs with React and TailwindCSS, improving client user engagement by up to 30%. Created Node.js RESTful APIs and MongoDB database structures for client projects. Consulted with 10+ clients to define requirements, align expectations, and ensure 100% delivery of high-quality projects on time and within scope through clear communication. Maintained clean, maintainable code with Git and SOLID best practices.`,
+    description: `Engineered 11+ web applications for international clients using the MERN stack, delivering secure, scalable, and custom software solutions. Designed responsive, user-friendly UIs with React and TailwindCSS, improving client user engagement by up to 30%. Created Node.js RESTful APIs and optimized MongoDB database structures to ensure fast, reliable data delivery. Consulted with 10+ clients to define technical requirements, align expectations, and ensure 100% on-time project delivery within scope through clear communication.`,
     link: "#",
   },
   {
-    title: " Cross Platform Mobile App Developer",
+    title: "Cross Platform Mobile App Developer",
     company: "Digital Egypt Pioneers Initiative - DEPI",
     logo: "assets/DEPI.png",
     date: "July 2025 - December 2025",
-    description:
-      "Developed cross-platform mobile apps for Android and iOS using Flutter and Dart, focusing on intuitive responsive UI/UX principles. Implemented backend and real-time features with Firebase, applying clean code, unit testing, and Git/GitHub. Built professional readiness through Business English, freelancing skills, and career coaching, including portfolio building, proposal writing, and client communication.",
+    description: `Developed cross-platform mobile apps for Android and iOS using Flutter and Dart, focusing on intuitive, responsive UI/UX principles. Implemented backend and real-time features with Firebase, applying clean code, unit testing, and Git/GitHub. Built professional readiness through Business English, freelancing skills, and career coaching, including portfolio building, proposal writing, and client communication.`,
     link: "https://drive.google.com/file/d/1Tuo1JlRFoBJJTteGq9pHqOt7lDW7RJc2/view?usp=sharing",
   },
   {
@@ -598,7 +598,7 @@ const experience = [
     company: "Arab African International Bank",
     logo: "assets/AAIB.png",
     date: "September 2024 - October 2024",
-    description: `Partnered with cross-functional teams to build and deploy a customer feedback survey using Microsoft Customer Voice, integrated with CRM systems to generate strategic insights from over 2,000 responses. Cleaned and analyzed datasets of 200,000+ records with SQL to support stakeholder decision-making. Also contributed to digital transformation efforts by sharing fintech innovation ideas across banking departments.`,
+    description: `Partnered with cross-functional teams to build a customer feedback survey using Microsoft Customer Voice, integrating data into CRM systems from over 2,000 responses. Worked with analytics staff to cleanse and extract datasets of 200,000+ records using SQL analysis, generating strategic reporting to support executive stakeholder decision-making.`,
     link: "https://drive.google.com/file/d/15cIVfs0xZJi1iK8hmRtecFDVj1W1nQ5M/view?usp=drive_link",
   },
   {
@@ -606,7 +606,7 @@ const experience = [
     company: ".NFQ",
     logo: "assets/NFQL.png",
     date: "July 2024 - August 2024",
-    description: `Developed a full-stack To-Do web application using React, Laravel, and MySQL, implementing a responsive design with MVC architecture, DOM manipulation, and API integrations. Enhanced the deployment process through CI/CD pipelines, and applied clean code practices with SOLID principles to ensure a maintainable and scalable solution. Collaborated effectively with a team, leveraging clear communication and Git version control to deliver high-quality results efficiently.`,
+    description: `Developed a full-stack To-Do web application utilizing React, Laravel, and MySQL, implementing responsive design, API integrations, and MVC architecture. Optimized deployment processes by building automated CI/CD pipelines to ensure rapid, reliable production releases. Applied SOLID principles and clean code within a collaborative team environment, leveraging Git version control to deliver scalable software.`,
     link: "https://drive.google.com/file/d/1My0sywzeGF-LG_9OgunB21p17_KY3WrA/view?usp=drive_link",
   },
 ];
@@ -677,8 +677,8 @@ const awards = [
     organization: "Digital Egypt Pioneers Initiative - DEPI",
     date: "Apr 2026",
     description: [
-      "Recognized by the Ministry of Communications and Information Technology (MCIT) for outstanding achievement as a top-performing student across the Cairo governorate",
-      "Ranked among the top tier of 24,000 students nationwide within the Digital Egypt Pioneers Initiative",
+      "Recognized by the Ministry of Communications and Information Technology (MCIT) as a top-performing DEPI student across the Cairo governorate.",
+      "Ranked among the top tier of 24,000 students nationwide in the Digital Egypt Pioneers Initiative.",
     ],
     certificate:
       "https://drive.google.com/file/d/1cWYc3K1GlTZp7u_q5KlqUc-Uw8wTxM6X/view",
@@ -688,8 +688,8 @@ const awards = [
     organization: "Digital Egypt Pioneers Initiative - DEPI",
     date: "Jan 2026",
     description: [
-      "Awarded for outstanding leadership and exceptional contributions as a Team Leader from June to December 2025",
-      "Directed team coordination and communication to ensure project alignment and successful delivery in an industry-focused environment",
+      "Awarded for outstanding leadership and contributions as Team Leader from June to December 2025.",
+      "Led team coordination and communication to ensure project alignment and successful delivery.",
     ],
     certificate:
       "https://drive.google.com/file/d/1XFGgQiGEcp9t3XdgwslEnrvHVTqdjH4j/view",
@@ -699,16 +699,13 @@ const awards = [
     organization: "Amazon",
     date: "February 2025",
     description: [
-      "Analyzed limitations in Amazon's current forecasting model amid macroeconomic shifts",
-      "Proposed a machine learning forecasting system integrating real-time macroeconomic indicators",
-      "Created a dynamic, region-specific framework to improve long-term accuracy and agility",
-      "Planned full implementation strategy including data processing, model training, evaluation, and deployment",
+      "Analyzed limitations in Amazon's forecasting model and proposed a machine learning approach incorporating real-time macroeconomic indicators.",
+      "Designed a region-specific forecasting framework with an implementation strategy covering data processing, model training, evaluation, and deployment.",
     ],
     certificate:
       "https://drive.google.com/file/d/1MAImNQz7kj9RNUIEet8h_oLjCAMP87AU/view",
   },
 ];
-
 document.addEventListener("DOMContentLoaded", () => {
   const container = document.querySelector(".course-container");
   const skillContainers = document.getElementsByClassName("skill-items");
