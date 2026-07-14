@@ -195,18 +195,12 @@ const courses = [
 // NEW SKILL CATEGORIES (Move your SVGs here into the logo properties)
 const programmingLanguages = [
   {
-    logo: `<svg width="64" height="64" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M13.0164 2C10.8193 2 9.03825 3.72453 9.03825 5.85185V8.51852H15.9235V9.25926H5.97814C3.78107 9.25926 2 10.9838 2 13.1111L2 18.8889C2 21.0162 3.78107 22.7407 5.97814 22.7407H8.27322V19.4815C8.27322 17.3542 10.0543 15.6296 12.2514 15.6296H19.5956C21.4547 15.6296 22.9617 14.1704 22.9617 12.3704V5.85185C22.9617 3.72453 21.1807 2 18.9836 2H13.0164ZM12.0984 6.74074C12.8589 6.74074 13.4754 6.14378 13.4754 5.40741C13.4754 4.67103 12.8589 4.07407 12.0984 4.07407C11.3378 4.07407 10.7213 4.67103 10.7213 5.40741C10.7213 6.14378 11.3378 6.74074 12.0984 6.74074Z" fill="url(#paint0_linear_87_8204)"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M18.9834 30C21.1805 30 22.9616 28.2755 22.9616 26.1482V23.4815L16.0763 23.4815L16.0763 22.7408L26.0217 22.7408C28.2188 22.7408 29.9998 21.0162 29.9998 18.8889V13.1111C29.9998 10.9838 28.2188 9.25928 26.0217 9.25928L23.7266 9.25928V12.5185C23.7266 14.6459 21.9455 16.3704 19.7485 16.3704L12.4042 16.3704C10.5451 16.3704 9.03809 17.8296 9.03809 19.6296L9.03809 26.1482C9.03809 28.2755 10.8192 30 13.0162 30H18.9834ZM19.9015 25.2593C19.1409 25.2593 18.5244 25.8562 18.5244 26.5926C18.5244 27.329 19.1409 27.9259 19.9015 27.9259C20.662 27.9259 21.2785 27.329 21.2785 26.5926C21.2785 25.8562 20.662 25.2593 19.9015 25.2593Z" fill="url(#paint1_linear_87_8204)"></path> <defs> <linearGradient id="paint0_linear_87_8204" x1="12.4809" y1="2" x2="12.4809" y2="22.7407" gradientUnits="userSpaceOnUse"> <stop stop-color="#327EBD"></stop> <stop offset="1" stop-color="#1565A7"></stop> </linearGradient> <linearGradient id="paint1_linear_87_8204" x1="19.519" y1="9.25928" x2="19.519" y2="30" gradientUnits="userSpaceOnUse"> <stop stop-color="#FFDA4B"></stop> <stop offset="1" stop-color="#F9C600"></stop> </linearGradient> </defs> </g></svg>`,
-    name: "Python",
-  },
-  {
     logo: `<svg width="64px" height="64px" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M0 0h256v256H0V0z" fill="#F7DF1E"></path><path d="M67.312 213.932l19.59-11.856c3.78 6.701 7.218 12.371 15.465 12.371 7.905 0 12.89-3.092 12.89-15.12v-81.798h24.057v82.138c0 24.917-14.606 36.259-35.916 36.259-19.245 0-30.416-9.967-36.087-21.996M152.381 211.354l19.588-11.341c5.157 8.421 11.859 14.607 23.715 14.607 9.969 0 16.325-4.984 16.325-11.858 0-8.248-6.53-11.17-17.528-15.98l-6.013-2.58c-17.357-7.387-28.87-16.667-28.87-36.257 0-18.044 13.747-31.792 35.228-31.792 15.294 0 26.292 5.328 34.196 19.247L210.29 147.43c-4.125-7.389-8.591-10.31-15.465-10.31-7.046 0-11.514 4.468-11.514 10.31 0 7.217 4.468 10.14 14.778 14.608l6.014 2.577c20.45 8.765 31.963 17.7 31.963 37.804 0 21.654-17.012 33.51-39.867 33.51-22.339 0-36.774-10.654-43.819-24.574"></path></g></svg>`,
     name: "JavaScript",
   },
   {
-    logo: `<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="64" height="64" viewBox="0 0 48 48">
-<path fill="#1565c0" d="M10,12l3,25l-8.019-8.019c-1.189-1.189-1.508-2.996-0.796-4.52L10,12z"></path><path fill="#42a5f5" d="M27.319,6.319C26.474,5.474,25.329,5,24.135,5c-0.745,0-1.479,0.185-2.135,0.538L10,12v20.343 c0,1.061,0.421,2.078,1.172,2.828L13,37h22v-5l7-11L27.319,6.319z"></path><path fill="#1565c0" d="M10,12h21.343c1.061,0,2.078,0.421,2.828,1.172L42,21v16h-7L10,12z"></path><polygon fill="#85cbf8" points="35,37 13,37 19,43 35,43"></polygon>
-</svg>`,
-    name: "Dart",
+    logo: `<svg width="64" height="64" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M13.0164 2C10.8193 2 9.03825 3.72453 9.03825 5.85185V8.51852H15.9235V9.25926H5.97814C3.78107 9.25926 2 10.9838 2 13.1111L2 18.8889C2 21.0162 3.78107 22.7407 5.97814 22.7407H8.27322V19.4815C8.27322 17.3542 10.0543 15.6296 12.2514 15.6296H19.5956C21.4547 15.6296 22.9617 14.1704 22.9617 12.3704V5.85185C22.9617 3.72453 21.1807 2 18.9836 2H13.0164ZM12.0984 6.74074C12.8589 6.74074 13.4754 6.14378 13.4754 5.40741C13.4754 4.67103 12.8589 4.07407 12.0984 4.07407C11.3378 4.07407 10.7213 4.67103 10.7213 5.40741C10.7213 6.14378 11.3378 6.74074 12.0984 6.74074Z" fill="url(#paint0_linear_87_8204)"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M18.9834 30C21.1805 30 22.9616 28.2755 22.9616 26.1482V23.4815L16.0763 23.4815L16.0763 22.7408L26.0217 22.7408C28.2188 22.7408 29.9998 21.0162 29.9998 18.8889V13.1111C29.9998 10.9838 28.2188 9.25928 26.0217 9.25928L23.7266 9.25928V12.5185C23.7266 14.6459 21.9455 16.3704 19.7485 16.3704L12.4042 16.3704C10.5451 16.3704 9.03809 17.8296 9.03809 19.6296L9.03809 26.1482C9.03809 28.2755 10.8192 30 13.0162 30H18.9834ZM19.9015 25.2593C19.1409 25.2593 18.5244 25.8562 18.5244 26.5926C18.5244 27.329 19.1409 27.9259 19.9015 27.9259C20.662 27.9259 21.2785 27.329 21.2785 26.5926C21.2785 25.8562 20.662 25.2593 19.9015 25.2593Z" fill="url(#paint1_linear_87_8204)"></path> <defs> <linearGradient id="paint0_linear_87_8204" x1="12.4809" y1="2" x2="12.4809" y2="22.7407" gradientUnits="userSpaceOnUse"> <stop stop-color="#327EBD"></stop> <stop offset="1" stop-color="#1565A7"></stop> </linearGradient> <linearGradient id="paint1_linear_87_8204" x1="19.519" y1="9.25928" x2="19.519" y2="30" gradientUnits="userSpaceOnUse"> <stop stop-color="#FFDA4B"></stop> <stop offset="1" stop-color="#F9C600"></stop> </linearGradient> </defs> </g></svg>`,
+    name: "Python",
   },
   {
     logo: `<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="64" height="64" viewBox="0 0 48 48">
@@ -216,9 +210,9 @@ const programmingLanguages = [
   },
   {
     logo: `<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="64" height="64" viewBox="0 0 48 48">
-<path fill="#00549d" fill-rule="evenodd" d="M22.903,3.286c0.679-0.381,1.515-0.381,2.193,0 c3.355,1.883,13.451,7.551,16.807,9.434C42.582,13.1,43,13.804,43,14.566c0,3.766,0,15.101,0,18.867 c0,0.762-0.418,1.466-1.097,1.847c-3.355,1.883-13.451,7.551-16.807,9.434c-0.679,0.381-1.515,0.381-2.193,0 c-3.355-1.883-13.451-7.551-16.807-9.434C5.418,34.899,5,34.196,5,33.434c0-3.766,0-15.101,0-18.867 c0-0.762,0.418-1.466,1.097-1.847C9.451,10.837,19.549,5.169,22.903,3.286z" clip-rule="evenodd"></path><path fill="#0086d4" fill-rule="evenodd" d="M5.304,34.404C5.038,34.048,5,33.71,5,33.255 c0-3.744,0-15.014,0-18.759c0-0.758,0.417-1.458,1.094-1.836c3.343-1.872,13.405-7.507,16.748-9.38 c0.677-0.379,1.594-0.371,2.271,0.008c3.343,1.872,13.371,7.459,16.714,9.331c0.27,0.152,0.476,0.335,0.66,0.576L5.304,34.404z" clip-rule="evenodd"></path><path fill="#fff" fill-rule="evenodd" d="M24,10c7.727,0,14,6.273,14,14s-6.273,14-14,14 s-14-6.273-14-14S16.273,10,24,10z M24,17c3.863,0,7,3.136,7,7c0,3.863-3.137,7-7,7s-7-3.137-7-7C17,20.136,20.136,17,24,17z" clip-rule="evenodd"></path><path fill="#0075c0" fill-rule="evenodd" d="M42.485,13.205c0.516,0.483,0.506,1.211,0.506,1.784 c0,3.795-0.032,14.589,0.009,18.384c0.004,0.396-0.127,0.813-0.323,1.127L23.593,24L42.485,13.205z" clip-rule="evenodd"></path><path fill="#fff" fill-rule="evenodd" d="M31 21H33V27H31zM38 21H40V27H38z" clip-rule="evenodd"></path><path fill="#fff" fill-rule="evenodd" d="M29 23H35V25H29zM36 23H42V25H36z" clip-rule="evenodd"></path>
+<path fill="#1565c0" d="M10,12l3,25l-8.019-8.019c-1.189-1.189-1.508-2.996-0.796-4.52L10,12z"></path><path fill="#42a5f5" d="M27.319,6.319C26.474,5.474,25.329,5,24.135,5c-0.745,0-1.479,0.185-2.135,0.538L10,12v20.343 c0,1.061,0.421,2.078,1.172,2.828L13,37h22v-5l7-11L27.319,6.319z"></path><path fill="#1565c0" d="M10,12h21.343c1.061,0,2.078,0.421,2.828,1.172L42,21v16h-7L10,12z"></path><polygon fill="#85cbf8" points="35,37 13,37 19,43 35,43"></polygon>
 </svg>`,
-    name: "C++",
+    name: "Dart",
   },
   {
     logo: `<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="64" height="64" viewBox="0,0,255.99536,255.99536">
@@ -227,12 +221,10 @@ const programmingLanguages = [
     name: "PHP",
   },
   {
-    logo: `<svg fill="#e34c26" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64px" height="64px" viewBox="0 0 27.17 27.17" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path d="M1.609,0.008c0.013,0.129,0.023,0.248,0.033,0.367c0.103,1.153,0.203,2.307,0.307,3.459 c0.132,1.465,0.265,2.933,0.395,4.397c0.11,1.232,0.219,2.467,0.328,3.7c0.124,1.389,0.249,2.777,0.373,4.167 c0.109,1.231,0.218,2.467,0.328,3.7c0.134,1.502,0.27,3.002,0.398,4.504c0.008,0.097,0.039,0.138,0.135,0.164 c3.177,0.896,6.352,1.793,9.525,2.687c0.08,0.022,0.176,0.021,0.256,0c3.187-0.894,6.373-1.789,9.56-2.682 c0.109-0.031,0.143-0.078,0.15-0.185c0.068-0.837,0.146-1.673,0.219-2.509c0.082-0.922,0.166-1.846,0.248-2.77 c0.074-0.826,0.146-1.65,0.221-2.477c0.084-0.924,0.166-1.848,0.248-2.771c0.072-0.825,0.146-1.649,0.221-2.476 c0.082-0.92,0.164-1.84,0.246-2.76c0.074-0.828,0.146-1.656,0.223-2.486c0.082-0.92,0.164-1.84,0.246-2.76 c0.074-0.838,0.148-1.678,0.227-2.517C25.517,0.51,25.538,0.258,25.562,0C17.571,0.008,9.6,0.008,1.609,0.008z M20.831,7.965 c-3.82,0-7.638,0-11.47,0c0.09,1.033,0.179,2.056,0.267,3.082c3.649,0,7.287,0,10.938,0c-0.027,0.217-0.061,0.422-0.08,0.629 c-0.051,0.521-0.1,1.043-0.146,1.562c-0.084,0.943-0.166,1.892-0.248,2.835c-0.072,0.848-0.145,1.691-0.221,2.539 c-0.047,0.535-0.1,1.07-0.145,1.604c-0.008,0.084-0.062,0.086-0.111,0.101c-1.293,0.356-2.584,0.713-3.877,1.067 c-0.709,0.197-1.417,0.396-2.127,0.591c-0.032,0.01-0.076,0.004-0.11-0.007c-2.006-0.551-4.011-1.104-6.015-1.653 c-0.092-0.023-0.094-0.08-0.1-0.146c-0.051-0.644-0.102-1.283-0.15-1.927c-0.067-0.864-0.135-1.729-0.203-2.594 c-0.002-0.022-0.002-0.049-0.004-0.08c0.99,0,1.978,0,2.971,0c0.025,0.281,0.052,0.562,0.076,0.838 c0.044,0.49,0.088,0.979,0.13,1.472c0.004,0.056,0.021,0.078,0.075,0.094c1.076,0.287,2.15,0.578,3.228,0.867 c0.038,0.011,0.084,0.006,0.123-0.004c1.062-0.285,2.123-0.574,3.187-0.856c0.064-0.019,0.092-0.048,0.098-0.113 c0.117-1.254,0.236-2.51,0.357-3.763c0-0.004-0.002-0.009-0.004-0.023c-3.463,0-6.928,0-10.401,0C6.596,11.049,6.326,8.029,6.055,5 c5.025,0,10.028,0,15.057,0C21.021,5.988,20.925,6.971,20.831,7.965z"></path> </g> </g></svg>`,
-    name: "HTML",
-  },
-  {
-    logo: `<svg fill="#2965f1" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64px" height="64px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve" stroke="#2965f1"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="c133de6af664cd4f011a55de6b001b19"> <path display="inline" d="M483.111,0.501l-42.59,461.314l-184.524,49.684L71.47,461.815L28.889,0.501H483.111z M397.29,94.302 H255.831H111.866l6.885,55.708h137.08h7.7l-7.7,3.205l-132.07,55.006l4.38,54.453l127.69,0.414l68.438,0.217l-4.381,72.606 l-64.058,18.035v-0.057l-0.525,0.146l-61.864-15.617l-3.754-45.07h-0.205H132.1h-0.202l7.511,87.007l116.423,34.429v-0.062 l0.21,0.062l115.799-33.802l15.021-172.761h-131.03h-0.323l0.323-0.14l135.83-58.071L397.29,94.302z"> </path> </g> </g></svg>`,
-    name: "CSS",
+    logo: `<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="64" height="64" viewBox="0 0 48 48">
+<path fill="#00549d" fill-rule="evenodd" d="M22.903,3.286c0.679-0.381,1.515-0.381,2.193,0 c3.355,1.883,13.451,7.551,16.807,9.434C42.582,13.1,43,13.804,43,14.566c0,3.766,0,15.101,0,18.867 c0,0.762-0.418,1.466-1.097,1.847c-3.355,1.883-13.451,7.551-16.807,9.434c-0.679,0.381-1.515,0.381-2.193,0 c-3.355-1.883-13.451-7.551-16.807-9.434C5.418,34.899,5,34.196,5,33.434c0-3.766,0-15.101,0-18.867 c0-0.762,0.418-1.466,1.097-1.847C9.451,10.837,19.549,5.169,22.903,3.286z" clip-rule="evenodd"></path><path fill="#0086d4" fill-rule="evenodd" d="M5.304,34.404C5.038,34.048,5,33.71,5,33.255 c0-3.744,0-15.014,0-18.759c0-0.758,0.417-1.458,1.094-1.836c3.343-1.872,13.405-7.507,16.748-9.38 c0.677-0.379,1.594-0.371,2.271,0.008c3.343,1.872,13.371,7.459,16.714,9.331c0.27,0.152,0.476,0.335,0.66,0.576L5.304,34.404z" clip-rule="evenodd"></path><path fill="#fff" fill-rule="evenodd" d="M24,10c7.727,0,14,6.273,14,14s-6.273,14-14,14 s-14-6.273-14-14S16.273,10,24,10z M24,17c3.863,0,7,3.136,7,7c0,3.863-3.137,7-7,7s-7-3.137-7-7C17,20.136,20.136,17,24,17z" clip-rule="evenodd"></path><path fill="#0075c0" fill-rule="evenodd" d="M42.485,13.205c0.516,0.483,0.506,1.211,0.506,1.784 c0,3.795-0.032,14.589,0.009,18.384c0.004,0.396-0.127,0.813-0.323,1.127L23.593,24L42.485,13.205z" clip-rule="evenodd"></path><path fill="#fff" fill-rule="evenodd" d="M31 21H33V27H31zM38 21H40V27H38z" clip-rule="evenodd"></path><path fill="#fff" fill-rule="evenodd" d="M29 23H35V25H29zM36 23H42V25H36z" clip-rule="evenodd"></path>
+</svg>`,
+    name: "C++",
   },
 ];
 
@@ -253,7 +245,15 @@ const frontendMobileSkills = [
   },
   {
     logo: `<svg width="64px" height="64px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><title>file_type_tailwind</title><path d="M9,13.7q1.4-5.6,7-5.6c5.6,0,6.3,4.2,9.1,4.9q2.8.7,4.9-2.1-1.4,5.6-7,5.6c-5.6,0-6.3-4.2-9.1-4.9Q11.1,10.9,9,13.7ZM2,22.1q1.4-5.6,7-5.6c5.6,0,6.3,4.2,9.1,4.9q2.8.7,4.9-2.1-1.4,5.6-7,5.6c-5.6,0-6.3-4.2-9.1-4.9Q4.1,19.3,2,22.1Z" style="fill:#38bdf8"></path></g></svg>`,
-    name: "Tailwind CSS",
+    name: "TailwindCSS",
+  },
+  {
+    logo: `<svg fill="#e34c26" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64px" height="64px" viewBox="0 0 27.17 27.17" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path d="M1.609,0.008c0.013,0.129,0.023,0.248,0.033,0.367c0.103,1.153,0.203,2.307,0.307,3.459 c0.132,1.465,0.265,2.933,0.395,4.397c0.11,1.232,0.219,2.467,0.328,3.7c0.124,1.389,0.249,2.777,0.373,4.167 c0.109,1.231,0.218,2.467,0.328,3.7c0.134,1.502,0.27,3.002,0.398,4.504c0.008,0.097,0.039,0.138,0.135,0.164 c3.177,0.896,6.352,1.793,9.525,2.687c0.08,0.022,0.176,0.021,0.256,0c3.187-0.894,6.373-1.789,9.56-2.682 c0.109-0.031,0.143-0.078,0.15-0.185c0.068-0.837,0.146-1.673,0.219-2.509c0.082-0.922,0.166-1.846,0.248-2.77 c0.074-0.826,0.146-1.65,0.221-2.477c0.084-0.924,0.166-1.848,0.248-2.771c0.072-0.825,0.146-1.649,0.221-2.476 c0.082-0.92,0.164-1.84,0.246-2.76c0.074-0.828,0.146-1.656,0.223-2.486c0.082-0.92,0.164-1.84,0.246-2.76 c0.074-0.838,0.148-1.678,0.227-2.517C25.517,0.51,25.538,0.258,25.562,0C17.571,0.008,9.6,0.008,1.609,0.008z M20.831,7.965 c-3.82,0-7.638,0-11.47,0c0.09,1.033,0.179,2.056,0.267,3.082c3.649,0,7.287,0,10.938,0c-0.027,0.217-0.061,0.422-0.08,0.629 c-0.051,0.521-0.1,1.043-0.146,1.562c-0.084,0.943-0.166,1.892-0.248,2.835c-0.072,0.848-0.145,1.691-0.221,2.539 c-0.047,0.535-0.1,1.07-0.145,1.604c-0.008,0.084-0.062,0.086-0.111,0.101c-1.293,0.356-2.584,0.713-3.877,1.067 c-0.709,0.197-1.417,0.396-2.127,0.591c-0.032,0.01-0.076,0.004-0.11-0.007c-2.006-0.551-4.011-1.104-6.015-1.653 c-0.092-0.023-0.094-0.08-0.1-0.146c-0.051-0.644-0.102-1.283-0.15-1.927c-0.067-0.864-0.135-1.729-0.203-2.594 c-0.002-0.022-0.002-0.049-0.004-0.08c0.99,0,1.978,0,2.971,0c0.025,0.281,0.052,0.562,0.076,0.838 c0.044,0.49,0.088,0.979,0.13,1.472c0.004,0.056,0.021,0.078,0.075,0.094c1.076,0.287,2.15,0.578,3.228,0.867 c0.038,0.011,0.084,0.006,0.123-0.004c1.062-0.285,2.123-0.574,3.187-0.856c0.064-0.019,0.092-0.048,0.098-0.113 c0.117-1.254,0.236-2.51,0.357-3.763c0-0.004-0.002-0.009-0.004-0.023c-3.463,0-6.928,0-10.401,0C6.596,11.049,6.326,8.029,6.055,5 c5.025,0,10.028,0,15.057,0C21.021,5.988,20.925,6.971,20.831,7.965z"></path> </g> </g></svg>`,
+    name: "HTML",
+  },
+  {
+    logo: `<svg fill="#2965f1" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64px" height="64px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve" stroke="#2965f1"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="c133de6af664cd4f011a55de6b001b19"> <path display="inline" d="M483.111,0.501l-42.59,461.314l-184.524,49.684L71.47,461.815L28.889,0.501H483.111z M397.29,94.302 H255.831H111.866l6.885,55.708h137.08h7.7l-7.7,3.205l-132.07,55.006l4.38,54.453l127.69,0.414l68.438,0.217l-4.381,72.606 l-64.058,18.035v-0.057l-0.525,0.146l-61.864-15.617l-3.754-45.07h-0.205H132.1h-0.202l7.511,87.007l116.423,34.429v-0.062 l0.21,0.062l115.799-33.802l15.021-172.761h-131.03h-0.323l0.323-0.14l135.83-58.071L397.29,94.302z"> </path> </g> </g></svg>`,
+    name: "CSS",
   },
 ];
 
@@ -317,7 +317,7 @@ const aiMachineLearningSkills = [
   },
   {
     logo: `<svg xmlns="http://www.w3.org/2000/svg" height="64" width="64" viewBox="0 0 512 512"><!--!Font Awesome Free v7.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path fill="#111f68" d="M383.5 10.8c61.8-.2 112.3 50.6 112.3 112.9-.2 2.7 0 0-.1 3.3l.3 .3c-1.5 89.9-53 168.4-127.4 208.5l0 52.8c0 62.6-51.1 113.5-113.7 112.9-62-.6-111.4-52.2-111.4-114.3l0-51.2c-40.7-21.9-74.5-55.2-97-95.6 23.2 16.5 51.7 26 82 25.9 78.6-.2 142.2-64 142.3-142.5 .1-62.3 50.5-112.7 112.9-112.9zm-255 225.8a112.9 112.9 0 1 1 0-225.8 112.9 112.9 0 1 1 0 225.8z"/></svg>`,
-    name: "Computer Vision<br>(OpenCV, YOLO26)",
+    name: "Computer Vision<br>(OpenCV, YOLO)",
   },
   {
     logo: `<svg xmlns="http://www.w3.org/2000/svg" height="64" width="64" viewBox="0 0 128 128"><path fill="#f89939" d="M98.18 88.13c15.63-15.62 18.23-38.36 5.8-50.78-12.43-12.42-35.17-9.82-50.8 5.8-15.63 15.62-11.11 45.48-5.8 50.78 4.29 4.29 35.17 9.82 50.8-5.8Z"/><path fill="#3499cd" d="M34.04 65.56c-9.07-9.06-22.27-10.57-29.48-3.37-7.21 7.21-5.7 20.4 3.37 29.46 9.07 9.07 26.4 6.44 29.48 3.37 2.49-2.49 5.71-20.4-3.37-29.46Z"/><path fill="#010101" d="M123.82 85.68c-.58 0-.87-.35-.87-1.06 0-.53.35-1.69 1.04-3.46 1.01-2.59 1.52-4.45 1.52-5.58 0-.68-.2-1.25-.6-1.7-.4-.45-.9-.68-1.5-.68-.88 0-1.89.41-3.03 1.24-1.14.83-2.67 2.32-4.6 4.48.28-1.4.88-3.32 1.78-5.76l-4.31.83c-.98 2.12-1.69 4.03-2.13 5.73-.22.83-.38 1.69-.49 2.56-1.35 1.31-2.23 2.1-2.61 2.39-.39.29-.8.43-1.22.43-.39 0-.7-.15-.93-.44-.23-.29-.34-.69-.34-1.18 0-.53.1-1.14.3-1.83s.64-1.99 1.33-3.9l1.64-4.52-1.61.07c-1.46 2.78-3.17 4.28-5.13 4.49.53-1.38.8-2.44.8-3.18 0-.94-.46-1.41-1.38-1.41-1.09 0-1.94.51-2.55 1.54-.62 1.03-.93 2-.93 2.91s.51 1.55 1.52 2c-.66.97-1.4 1.88-2.2 2.74-.95.94-1.69 1.66-2.23 2.13-.55.49-1.06.73-1.52.73-.72 0-1.08-.51-1.08-1.52s.4-2.75 1.2-5.35l1.56-5.18h-.99l-3.61 2c-.59-1.35-1.62-2.03-3.09-2.03-1.17 0-2.51.5-4.03 1.49-1.52.99-2.77 2.28-3.74 3.89-.75 1.24-1.21 2.54-1.38 3.88-1.36 1.36-2.38 2.24-3.06 2.65-.71.42-1.45.63-2.23.63-1.99 0-3.22-1.15-3.69-3.45 5.19-1.52 7.78-3.5 7.78-5.94 0-.92-.33-1.66-.99-2.23-.66-.57-1.54-.85-2.63-.85-2.11 0-4.03 1.01-5.76 3.03-1.57 1.83-2.42 3.86-2.57 6.09-1.43 1.41-2.51 2.34-3.21 2.79-.72.46-1.4.69-2.03.69s-1.13-.3-1.5-.9c-.38-.6-.57-1.41-.57-2.44 0-.46.05-1.3.14-2.53 2.36-2.56 4.09-4.96 5.2-7.21 1.11-2.25 1.66-4.58 1.66-6.98 0-.85-.11-1.52-.33-2.02-.22-.5-.5-.75-.84-.75-.07 0-.18.02-.32.07l-4.49 1.66c-1.53 2.92-2.84 6.11-3.91 9.58-1.07 3.46-1.61 6.43-1.61 8.9 0 1.65.38 2.96 1.16 3.94.77.98 1.79 1.47 3.05 1.47 1.1 0 2.25-.35 3.46-1.05 1.21-.7 2.61-1.79 4.22-3.26s0-.02 0-.02c.19 1.11.65 2.04 1.37 2.8.99 1.02 2.28 1.54 3.88 1.54 1.44 0 2.75-.35 3.94-1.05 1.15-.67 2.44-1.72 3.88-3.11.12 1.04.46 1.94 1.03 2.71.73.97 1.61 1.46 2.64 1.46s2.09-.4 3.09-1.2c1-.8 2.08-2.05 3.26-3.73-.11 3.29.77 4.93 2.63 4.93.74 0 1.52-.27 2.33-.81s2.16-1.71 4.05-3.5c1.64-1.62 2.84-3.14 3.61-4.56 1.04-.18 1.99-.49 2.86-.94-1.78 2.79-2.67 5.02-2.67 6.68 0 .9.25 1.65.74 2.25.49.6 1.1.91 1.82.91 1.57 0 3.8-1.41 6.68-4.2 0 .22-.02.43-.02.65 0 .78.07 1.96.19 3.55l3.91-.92c0-1.06.02-1.9.05-2.53.06-.84.18-1.76.35-2.76.11-.59.38-1.15.81-1.68l.99-1.15c.36-.42.71-.8 1.02-1.13.37-.39.7-.72.99-.99.33-.29.62-.53.87-.69.27-.16.49-.25.65-.25.29 0 .44.19.44.57s-.28 1.26-.83 2.65c-1.04 2.59-1.56 4.52-1.56 5.78 0 .93.24 1.67.73 2.23.48.55 1.12.83 1.91.83 1.94 0 4.28-1.44 7-4.31V82.3c-1.93 2.27-3.32 3.41-4.18 3.41Zm-65.26-8.29c.8-3.91 1.62-6.94 2.45-9.11.83-2.17 1.47-3.26 1.9-3.26.2 0 .37.13.5.4.13.26.19.62.19 1.05 0 1.49-.46 3.26-1.4 5.33-.93 2.06-2.15 3.93-3.64 5.59Zm11.79-.98c.71-1.19 1.45-1.78 2.23-1.78.82 0 1.24.57 1.24 1.7 0 2.29-1.51 3.85-4.53 4.7 0-1.9.35-3.44 1.06-4.62Zm17.48 5.85c-1.04 2.01-2.16 3.01-3.33 3.01-.48 0-.88-.2-1.19-.59-.31-.39-.47-.91-.47-1.55 0-1.68.53-3.53 1.58-5.53 1.05-2 2.17-3 3.35-3 .49 0 .89.18 1.18.56.29.37.44.89.44 1.55 0 1.7-.52 3.55-1.56 5.56Z"/><path fill="#fff" d="M75.46 64.88c.15.21.22.48.22.8s-.09.61-.27.88-.44.49-.79.64c-.34.15-.73.23-1.16.23-.72 0-1.26-.15-1.64-.45s-.62-.74-.72-1.33l.93-.15c.05.37.2.66.43.85.24.2.57.3 1 .3s.75-.09.96-.26c.21-.17.31-.38.31-.62 0-.21-.09-.38-.28-.5-.13-.08-.45-.19-.96-.32-.69-.17-1.16-.32-1.43-.45s-.47-.3-.6-.53-.21-.47-.21-.74c0-.25.06-.47.17-.68.11-.21.27-.38.46-.52.15-.11.34-.2.59-.27.25-.07.52-.11.81-.11.43 0 .81.06 1.14.19.33.12.57.29.73.51.16.21.26.5.32.86l-.92.12c-.04-.28-.16-.51-.36-.67-.2-.16-.48-.24-.85-.24-.43 0-.74.07-.92.21-.18.14-.28.31-.28.5 0 .12.04.23.11.33.08.1.2.18.36.25.09.03.37.11.83.24.66.18 1.12.32 1.39.43.26.11.47.28.62.49Zm4.47 1.44c-.25.23-.55.34-.92.34-.46 0-.83-.17-1.11-.5s-.43-.88-.43-1.62.15-1.27.44-1.6.68-.51 1.15-.51c.31 0 .58.09.8.28.22.19.37.47.46.84l.91-.14c-.11-.56-.35-.99-.73-1.29-.38-.3-.87-.45-1.47-.45-.48 0-.91.11-1.32.34-.4.22-.71.56-.9 1.01-.2.45-.3.97-.3 1.57 0 .92.23 1.63.69 2.12.46.49 1.07.74 1.82.74.6 0 1.11-.18 1.53-.54.41-.36.67-.86.77-1.49l-.92-.12c-.07.47-.22.81-.47 1.04Zm2.19.98h.94v-5.52h-.94v5.52Zm0-6.55h.94v-1.08h-.94v1.08Zm6.73 1.02h-1.21l-2.22 2.25v-4.35h-.94v7.62h.94V65.1l.66-.63 1.83 2.82h1.16l-2.33-3.47 2.11-2.05Zm.96-1.02h.94v-1.08h-.94v1.08Zm0 6.55h.94v-5.52h-.94v5.52Zm4.41-.84c-.17.02-.31.04-.41.04-.14 0-.25-.02-.32-.07s-.13-.11-.16-.18c-.03-.08-.05-.25-.05-.51v-3.23h.94v-.73h-.94v-1.93l-.93.56v1.37h-.69v.73h.69v3.18c0 .56.04.93.11 1.1.08.18.21.32.39.42.19.11.45.16.79.16.21 0 .44-.03.71-.08l-.14-.83Z"/></svg>
@@ -411,7 +411,7 @@ const toolsMethodologies = [
 <path d="M344,232c4.4,0,8,3.6,8,8c0,4.4,3.6,8,8,8s8-3.6,8-8c0-13.2-10.8-24-24-24s-24,10.8-24,24v32c0,13.2,10.8,24,24,24  s24-10.8,24-24c0-4.4-3.6-8-8-8s-8,3.6-8,8c0,4.4-3.6,8-8,8s-8-3.6-8-8v-32C336,235.6,339.6,232,344,232z"/>
 <path d="M312,280h-24v-56c0-4.4-3.6-8-8-8s-8,3.6-8,8v64c0,4.4,3.6,8,8,8h32c4.4,0,8-3.6,8-8C320,283.6,316.4,280,312,280z"/>
 </svg>`,
-    name: "SDLC",
+    name: "Software Development Life Cycle (SDLC)",
   },
 ];
 
@@ -427,7 +427,7 @@ const projects = [
       "assets/AmanCity_Poster.png",
     ],
     summary: `Egypt's first AI-powered urban and women's safety platform, integrating computer vision, natural language processing, machine learning, OSINT social scanning, and predictive mapping to provide real-time hazard detection, safe routing, and live-tracking SOS support.`,
-    description: `Developed as the Graduation Project, AmanCity is Egypt's first AI-powered urban and women's safety mobile application designed to replace fragmented emergency channels with a unified, real-time safety ecosystem. It integrates Computer Vision, Natural Language Processing, and Machine Learning to identify, analyze, and forecast incidents. Built with Flutter, the app empowers citizens to report public hazards by uploading geo-tagged images and videos, which are automatically analyzed to detect threats like fires, road accidents, floods, building damage, weapons, and crimes, after screening uploads via an AI-generated image detection gate to block fake media. The platform also scans social media feeds in real-time for crisis updates across Greater Cairo, displaying verified reports, active safety alerts, and nearby emergency POIs (hospitals, police, and fire stations) on an interactive safety map highlighting predictive risk hotspots using spatial clustering. Users can chat with a conversational safety assistant for context-aware safety advice (such as "Is this area safe right now?"), plan dynamic safe routes that avoid dangerous zones, and receive real-time push alerts when entering or approaching unsafe areas. Additionally, the app features a session-based SOS system for women's safety that instantly triggers alarms, starts flashlights, and shares a live, continuous location tracking feed directly with trusted contacts. Finally, the system includes a secure Web Command Dashboard for response authorities to monitor active hazards and track SOS alerts in real-time.`,
+    description: `Developed as the Graduation Project, AmanCity is Egypt's first AI-powered urban and women's safety platform designed to help citizens detect hazards and access emergency assistance through a unified safety ecosystem. It integrates Computer Vision, Natural Language Processing, and Machine Learning to identify, analyze, and forecast incidents. Built with Flutter, the app empowers citizens to report public hazards by uploading geo-tagged images and videos, which are automatically analyzed to detect threats like fires, road accidents, floods, building damage, weapons, and crimes, after screening uploads via an AI-generated image detection gate to block fake media. The platform also scans social media feeds in real-time for crisis updates across Greater Cairo, displaying verified reports, active safety alerts, and nearby emergency POIs (hospitals, police, and fire stations) on an interactive safety map highlighting predictive risk hotspots using spatial clustering. Users can chat with a conversational safety assistant for context-aware safety advice (such as "Is this area safe right now?"), plan dynamic safe routes that avoid dangerous zones, and receive real-time push alerts when entering or approaching unsafe areas. Additionally, the app features a session-based SOS system for women's safety that instantly triggers alarms, starts flashlights, and shares a live, continuous location tracking feed directly with trusted contacts. Finally, the system includes a secure Web Command Dashboard for response authorities to monitor active hazards and track SOS alerts in real-time.`,
     technologies: [
       "Flutter",
       "Node.js",
@@ -451,7 +451,7 @@ const projects = [
     title: "Huraymila Healthy City",
     image: "assets/Huraymila.png",
     summary: `A centralized web portal and compliance dashboard designed for a Saudi municipality to digitize agency standards tracking, reducing document retrieval times by 70% and review cycles by 60%.`,
-    description: `Huraymila Healthy City is a fully digital healthy-city management platform built for the city of Huraymila in Saudi Arabia to replace all paper-based standard submissions with a modern, centralized MERN-based system. The platform enables government agencies to upload compliance documents, track approval status, and manage all required standards through a unified Governor dashboard. It includes secure JWT-protected REST APIs with role-based access (Governor / Agency / Volunteer), a modern bilingual interface, and complete initiative and file management capabilities.The system introduced measurable improvements across operations—improving document retrieval by over 70%, raising agency submission efficiency by 50%, and cutting approval review time by more than 60% through a streamlined dashboard and centralized workflow. With real-time updates, interactive health indicators, a volunteer participation module, and an initiative management system, the platform provides a scalable digital foundation for healthy-city programs across multiple municipalities.`,
+    description: `Huraymila Healthy City is a fully digital healthy-city management platform built for the city of Huraymila in Saudi Arabia to replace all paper-based standard submissions with a modern, centralized MERN-based system. The platform enables 18 government agencies to upload compliance documents, track approval status, and manage all required standards through a unified Governor dashboard. It includes secure JWT-protected REST APIs with role-based access (Governor / Agency / Volunteer), a modern bilingual interface, and complete initiative and file management capabilities. The system introduced measurable improvements across operations—improving document retrieval by over 70%, raising agency operational efficiency by 50%, and cutting approval review time by more than 60% through a streamlined dashboard and centralized workflow. With real-time updates, interactive health indicators, a volunteer participation module, and an initiative management system, the platform provides a scalable digital foundation for healthy-city programs across multiple municipalities.`,
     technologies: [
       "React.js",
       "TailwindCSS",
@@ -469,7 +469,7 @@ const projects = [
     title: "Audoria",
     image: ["assets/Audoria_1.png", "assets/Audoria_2.png"],
     summary: `An educational mobile application designed for visually impaired students, utilizing Google ML Kit OCR, voice-driven navigation, and AI text summaries to enable fully independent learning.`,
-    description: `Audoria is an AI-powered mobile educational assistant built to enable visually impaired students to learn independently through a fully voice-first experience. Developed using Flutter and Firebase, the app converts printed and digital materials into audio lessons using OCR and Text-to-Speech, while leveraging AI to generate summaries, quizzes, and real-time Q&A. Audoria features 100% hands-free navigation, a parent–child system with QR-based login, and performance insights for guardians, transforming inaccessible learning materials into an inclusive, interactive, and scalable learning platform.`,
+    description: `Audoria is an AI-powered mobile educational assistant built to enable visually impaired students to learn independently through a fully voice-first experience. Developed using Flutter and Firebase, the app converts printed and digital materials into audio lessons using OCR and Text-to-Speech, enabling hands-free access to document capture, summaries, quizzes, and AI chat. Audoria features 100% hands-free navigation, a parent–child system with QR-based login, and performance insights for guardians, transforming inaccessible learning materials into an inclusive, interactive, and scalable learning platform.`,
     technologies: [
       "Flutter",
       "Firebase",
@@ -489,7 +489,7 @@ const projects = [
     title: "Pest Control Reporting System",
     image: "assets/TW.png",
     summary: `A full-stack reporting system built in 3 days for a Saudi governmental contractor to digitize field inspection logs and automate dynamic Excel reporting, reducing processing times by 60%.`,
-    description: `Developed a fully integrated web-based reporting system for Takween Al Watan, a Saudi company providing pest control services for government projects in Makkah. Delivered in just three days, the system digitized field reporting and replaced manual Excel workflows with a smart, automated solution. It allows 10+ field workers to submit structured inspection data, while admins access a secure dashboard with real-time statistics, advanced filters, and multi-format Excel export (daily, weekly, monthly). The platform improved data accuracy, eliminated 100% of manual tracking, and reduced daily processing time by over 60%, giving supervisors real-time visibility over field operations.`,
+    description: `Developed a fully integrated web-based reporting system for Takween Al Watan, a Saudi company providing pest control services for government projects in Makkah. Delivered in just three days, the system digitized field reporting and replaced manual Excel workflows with a centralized digital workflow. It allows 10+ field workers to submit inspection data via a smart interface, while admins access a secure dashboard to monitor inspections, analyze data, and export dynamic Excel reports. The platform improved data accuracy, eliminated 100% of manual tracking, and reduced daily processing time by over 60%, giving supervisors real-time visibility over field operations.`,
     technologies: [
       "React.js",
       "TailwindCSS",
@@ -581,32 +581,32 @@ const experience = [
     title: "Freelancer",
     company: "Full-Stack Software Engineer",
     icon: `<i class="ri-contract-line"></i>`,
-    date: "April 2025 - Present",
-    description: `Engineered 11+ web applications for international clients using the MERN stack, delivering secure, scalable, and custom software solutions. Designed responsive, user-friendly UIs with React and TailwindCSS, improving client user engagement by up to 30%. Created Node.js RESTful APIs and optimized MongoDB database structures to ensure fast, reliable data delivery. Consulted with 10+ clients to define technical requirements, align expectations, and ensure 100% on-time project delivery within scope through clear communication.`,
+    date: "Apr 2025 – Present",
+    description: `Engineered 11+ custom web applications for international clients using the MERN stack, helping businesses digitize operations and solve problems with scalable software solutions. Designed responsive, user-friendly UIs with React and TailwindCSS, improving client user engagement by 30%. Created Node.js RESTful APIs and designed MongoDB database schemas for scalable, reliable applications. Consulted with 10+ clients to define technical requirements, align expectations, and ensure 100% on-time project delivery within scope.`,
     link: "#",
   },
   {
     title: "Cross Platform Mobile App Developer",
     company: "Digital Egypt Pioneers Initiative - DEPI",
     logo: "assets/DEPI.png",
-    date: "July 2025 - December 2025",
-    description: `Developed cross-platform mobile apps for Android and iOS using Flutter and Dart, focusing on intuitive, responsive UI/UX principles. Implemented backend and real-time features with Firebase, applying clean code, unit testing, and Git/GitHub. Built professional readiness through Business English, freelancing skills, and career coaching, including portfolio building, proposal writing, and client communication.`,
+    date: "Jul 2025 – Dec 2025",
+    description: `Developed cross-platform mobile apps for Android and iOS using Flutter and Dart, focusing on intuitive responsive UI/UX principles. Implemented backend and real-time features with Firebase, applying clean code, unit testing, and Git/GitHub. Enhanced professional skills through Business English, freelancing skills, career coaching, proposal writing, portfolio development, and client communication.`,
     link: "https://drive.google.com/file/d/1Tuo1JlRFoBJJTteGq9pHqOt7lDW7RJc2/view?usp=sharing",
   },
   {
     title: "Digital Innovation Intern",
-    company: "Arab African International Bank",
+    company: "Arab African International Bank (AAIB)",
     logo: "assets/AAIB.png",
-    date: "September 2024 - October 2024",
-    description: `Partnered with cross-functional teams to build a customer feedback survey using Microsoft Customer Voice, integrating data into CRM systems from over 2,000 responses. Worked with analytics staff to cleanse and extract datasets of 200,000+ records using SQL analysis, generating strategic reporting to support executive stakeholder decision-making.`,
+    date: "Sep 2024 – Oct 2024",
+    description: `Partnered with cross-functional teams to build a customer feedback survey using Microsoft Customer Voice, collecting 2,000+ responses and integrating insights into CRM systems. Worked with analytics staff to cleanse and extract datasets of 200,000+ records using SQL analysis, generating strategic reports to support executive stakeholder decision-making.`,
     link: "https://drive.google.com/file/d/15cIVfs0xZJi1iK8hmRtecFDVj1W1nQ5M/view?usp=drive_link",
   },
   {
     title: "Software Engineering Intern",
     company: ".NFQ",
     logo: "assets/NFQL.png",
-    date: "July 2024 - August 2024",
-    description: `Developed a full-stack To-Do web application utilizing React, Laravel, and MySQL, implementing responsive design, API integrations, and MVC architecture. Optimized deployment processes by building automated CI/CD pipelines to ensure rapid, reliable production releases. Applied SOLID principles and clean code within a collaborative team environment, leveraging Git version control to deliver scalable software.`,
+    date: "Jul 2024 – Aug 2024",
+    description: `Developed a full-stack To-Do web application utilizing React.js, Laravel, and MySQL, implementing responsive design, API integrations, and MVC architecture. Optimized deployment processes by building automated CI/CD pipelines to ensure rapid, reliable production releases. Applied SOLID principles and clean code within a collaborative team environment, leveraging Git version control to deliver scalable software.`,
     link: "https://drive.google.com/file/d/1My0sywzeGF-LG_9OgunB21p17_KY3WrA/view?usp=drive_link",
   },
 ];
@@ -673,12 +673,23 @@ const testimonials = [
 
 const awards = [
   {
+    title: "Amazon Transcend Semi-Finalist",
+    organization: "Amazon",
+    date: "Feb 2025",
+    description: [
+      "Analyzed limitations in Amazon's forecasting model and proposed a machine learning approach incorporating real-time macroeconomic indicators.",
+      "Designed a region-specific forecasting framework with an implementation strategy covering data processing, model training, evaluation, and deployment.",
+    ],
+    certificate:
+      "https://drive.google.com/file/d/1MAImNQz7kj9RNUIEet8h_oLjCAMP87AU/view",
+  },
+  {
     title: "Certificate of Recognition: Top Performer",
     organization: "Digital Egypt Pioneers Initiative - DEPI",
     date: "Apr 2026",
     description: [
       "Recognized by the Ministry of Communications and Information Technology (MCIT) as a top-performing DEPI student across the Cairo governorate.",
-      "Ranked among the top tier of 24,000 students nationwide in the Digital Egypt Pioneers Initiative.",
+      "Ranked among the top tier of 24,000 students nationwide within the Digital Egypt Pioneers Initiative.",
     ],
     certificate:
       "https://drive.google.com/file/d/1cWYc3K1GlTZp7u_q5KlqUc-Uw8wTxM6X/view",
@@ -688,22 +699,11 @@ const awards = [
     organization: "Digital Egypt Pioneers Initiative - DEPI",
     date: "Jan 2026",
     description: [
-      "Awarded for outstanding leadership and contributions as Team Leader from June to December 2025.",
-      "Led team coordination and communication to ensure project alignment and successful delivery.",
+      "Awarded for outstanding leadership and contributions as Team Leader from June–December 2025.",
+      "Led a multidisciplinary team, coordinating project planning, task allocation, and communication to ensure successful delivery.",
     ],
     certificate:
       "https://drive.google.com/file/d/1XFGgQiGEcp9t3XdgwslEnrvHVTqdjH4j/view",
-  },
-  {
-    title: "Amazon Transcend Semi-Finalist",
-    organization: "Amazon",
-    date: "February 2025",
-    description: [
-      "Analyzed limitations in Amazon's forecasting model and proposed a machine learning approach incorporating real-time macroeconomic indicators.",
-      "Designed a region-specific forecasting framework with an implementation strategy covering data processing, model training, evaluation, and deployment.",
-    ],
-    certificate:
-      "https://drive.google.com/file/d/1MAImNQz7kj9RNUIEet8h_oLjCAMP87AU/view",
   },
 ];
 document.addEventListener("DOMContentLoaded", () => {
