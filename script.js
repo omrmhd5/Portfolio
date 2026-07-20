@@ -582,11 +582,11 @@ const experience = [
     company: "Full-Stack Software Engineer",
     icon: `<i class="ri-contract-line"></i>`,
     date: "Apr 2025 – Present",
-    description: `Engineered 11+ custom web applications for international clients using the MERN stack, helping businesses digitize operations and solve problems with scalable software solutions. Designed responsive, user-friendly UIs with React and TailwindCSS, improving client user engagement by 30%. Created Node.js RESTful APIs and designed MongoDB database schemas for scalable, reliable applications. Consulted with 10+ clients to define technical requirements, align expectations, and ensure 100% on-time project delivery within scope.`,
+    description: `Engineered 12+ custom web applications for international clients using the MERN stack, helping organizations replace manual processes through efficient software solutions. Digitized and automated organizational workflows by developing platforms for document management, inspections, attendance, compliance tracking, and reporting; centralizing data and improving operational efficiency by up to 60%. Designed responsive, user-friendly interfaces with React and TailwindCSS while engineering secure Node.js RESTful APIs and MongoDB schemas for scalable, production-ready applications. Consulted with 11+ clients to define technical requirements, translate business needs into software solutions, and deliver 100% of projects on time and within scope.`,
     link: "#",
   },
   {
-    title: "Cross Platform Mobile App Developer",
+    title: "Cross Platform Mobile App Developer (Part-Time)",
     company: "Digital Egypt Pioneers Initiative - DEPI",
     logo: "assets/DEPI.png",
     date: "Jul 2025 – Dec 2025",
