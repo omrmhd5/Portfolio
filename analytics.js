@@ -32,11 +32,23 @@
     };
   }
 
-  function sendEvents(events) {
+  function sendEvents(events, preferBeacon) {
     if (!events.length) return;
 
     const body = JSON.stringify(events.length === 1 ? events[0] : events);
     const url = API_URL.replace(/\/$/, "") + "/api/events";
+
+    if (
+      preferBeacon &&
+      events.length === 1 &&
+      typeof navigator.sendBeacon === "function"
+    ) {
+      const sent = navigator.sendBeacon(
+        url,
+        new Blob([body], { type: "application/json" }),
+      );
+      if (sent) return;
+    }
 
     if (typeof fetch === "function") {
       fetch(url, {
@@ -56,7 +68,10 @@
     }
 
     if (navigator.sendBeacon) {
-      navigator.sendBeacon(url, new Blob([body], { type: "application/json" }));
+      navigator.sendBeacon(
+        url,
+        new Blob([body], { type: "application/json" }),
+      );
     }
   }
 
@@ -75,7 +90,14 @@
   }
 
   function track(eventType, eventName, metadata) {
-    queue.push(buildPayload(eventType, eventName, metadata));
+    const payload = buildPayload(eventType, eventName, metadata);
+
+    if (eventType === "click") {
+      sendEvents([payload], true);
+      return;
+    }
+
+    queue.push(payload);
     scheduleFlush();
   }
 
@@ -102,7 +124,7 @@
     if (platform) metadata.platform = platform;
 
     track("click", eventName, metadata);
-  });
+  }, true);
 
   window.addEventListener("pagehide", flushQueue);
   document.addEventListener("visibilitychange", function () {
