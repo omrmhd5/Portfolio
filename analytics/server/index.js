@@ -299,6 +299,20 @@ app.get("/health", (_req, res) => {
   res.json({ status: "ok" });
 });
 
+app.delete("/api/events", async (req, res) => {
+  if (!isAuthorized(req)) {
+    return res.status(401).json({ error: "Unauthorized" });
+  }
+
+  try {
+    const result = await pool.query("DELETE FROM events");
+    res.json({ success: true, deleted: result.rowCount ?? 0 });
+  } catch (err) {
+    console.error("DELETE /api/events error:", err);
+    res.status(500).json({ error: "Failed to clear events" });
+  }
+});
+
 app.post("/api/events", eventsLimiter, async (req, res) => {
   try {
     const payload = req.body;

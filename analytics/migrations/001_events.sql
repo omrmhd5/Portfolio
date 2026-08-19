@@ -15,4 +15,10 @@ CREATE INDEX IF NOT EXISTS idx_events_event_name ON events (event_name);
 
 ALTER TABLE events ENABLE ROW LEVEL SECURITY;
 
--- No public policies: only service-role / direct DB connections can read/write.
+-- Allow the Render API database role to read/write events
+CREATE POLICY "portfolio_analytics_all"
+  ON events
+  FOR ALL
+  TO portfolio_analytics
+  USING (true)
+  WITH CHECK (true);
