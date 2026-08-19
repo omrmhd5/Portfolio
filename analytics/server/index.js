@@ -7,7 +7,7 @@ const pool = require("./db");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const EVENT_TYPES = new Set(["page_view", "section_view", "click"]);
+const EVENT_TYPES = new Set(["page_view", "click"]);
 const CLICK_EVENTS = new Set([
   "resume",
   "live_demo",
@@ -18,19 +18,9 @@ const CLICK_EVENTS = new Set([
   "github",
   "linkedin",
 ]);
-const SECTION_EVENTS = new Set([
-  "hero",
-  "education",
-  "experience",
-  "skills",
-  "projects",
-  "testimonials",
-  "awards",
-  "contact",
-]);
 
 const DEFAULT_ORIGINS =
-  "https://omarmahmoud.dev,http://localhost:5500,http://127.0.0.1:5500";
+  "https://omarmahmoud.dev,https://www.omarmahmoud.dev,https://omarmahmoud-analytics.onrender.com,http://localhost:5500,http://127.0.0.1:5500,http://localhost:3000,http://127.0.0.1:3000";
 const allowedOrigins = (process.env.ALLOWED_ORIGINS || DEFAULT_ORIGINS)
   .split(",")
   .map((origin) => origin.trim())
@@ -42,7 +32,7 @@ app.use(
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
-        callback(new Error("Not allowed by CORS"));
+        callback(null, false);
       }
     },
   }),
@@ -97,9 +87,6 @@ function validateEvent(event) {
 
   if (event_type === "click" && !CLICK_EVENTS.has(event_name)) {
     return "Invalid click event_name";
-  }
-  if (event_type === "section_view" && !SECTION_EVENTS.has(event_name)) {
-    return "Invalid section_view event_name";
   }
   if (event_type === "page_view" && event_name !== "page_view") {
     return "page_view events must use event_name 'page_view'";
@@ -161,15 +148,6 @@ async function getStats(rangeDays) {
       COUNT(*) FILTER (WHERE event_type = 'page_view') AS views_all,
       COUNT(DISTINCT session_id) AS sessions_all
     FROM events
-  `;
-
-  const sectionViewsQuery = `
-    SELECT event_name, COUNT(*)::int AS count
-    FROM events
-    WHERE event_type = 'section_view'
-      AND created_at >= NOW() - $1::interval
-    GROUP BY event_name
-    ORDER BY count DESC
   `;
 
   const clickBreakdownQuery = `
@@ -239,7 +217,6 @@ async function getStats(rangeDays) {
 
   const [
     overviewResult,
-    sectionViewsResult,
     clickBreakdownResult,
     projectLeaderboardResult,
     socialByLocationResult,
@@ -247,7 +224,6 @@ async function getStats(rangeDays) {
     recentEventsResult,
   ] = await Promise.all([
     pool.query(overviewQuery),
-    pool.query(sectionViewsQuery, [interval]),
     pool.query(clickBreakdownQuery, [interval]),
     pool.query(projectLeaderboardQuery, [interval]),
     pool.query(socialByLocationQuery, [interval]),
@@ -260,7 +236,11 @@ async function getStats(rangeDays) {
   const projectTotals = {};
   for (const row of projectLeaderboardResult.rows) {
     if (!projectTotals[row.project]) {
-      projectTotals[row.project] = { project: row.project, total: 0, breakdown: {} };
+      projectTotals[row.project] = {
+        project: row.project,
+        total: 0,
+        breakdown: {},
+      };
     }
     projectTotals[row.project].total += row.count;
     projectTotals[row.project].breakdown[row.event_name] = row.count;
@@ -282,7 +262,6 @@ async function getStats(rangeDays) {
       viewsAll: Number(overviewRow.views_all || 0),
       sessionsAll: Number(overviewRow.sessions_all || 0),
     },
-    sectionViews: sectionViewsResult.rows,
     clickBreakdown: clickBreakdownResult.rows,
     projectLeaderboard,
     socialByLocation: socialByLocationResult.rows,
@@ -310,7 +289,10 @@ app.delete("/api/events", async (req, res) => {
       const fnResult = await pool.query("SELECT clear_all_events() AS deleted");
       deleted = Number(fnResult.rows[0]?.deleted ?? 0);
     } catch (fnErr) {
-      console.warn("clear_all_events() unavailable, falling back to DELETE:", fnErr.message);
+      console.warn(
+        "clear_all_events() unavailable, falling back to DELETE:",
+        fnErr.message,
+      );
       const deleteResult = await pool.query("DELETE FROM events");
       deleted = deleteResult.rowCount ?? 0;
     }
@@ -367,6 +349,12 @@ const dashboardPath = path.join(__dirname, "..", "dashboard");
 app.use("/dashboard", express.static(dashboardPath));
 app.get("/dashboard", (_req, res) => {
   res.sendFile(path.join(dashboardPath, "index.html"));
+});
+
+app.use((err, _req, res, _next) => {
+  console.error("Unhandled server error:", err);
+  if (res.headersSent) return;
+  res.status(500).json({ error: "Internal server error" });
 });
 
 app.listen(PORT, "0.0.0.0", () => {

@@ -1,6 +1,6 @@
 # Portfolio Analytics
 
-Privacy-focused analytics for [omarmahmoud.dev](https://omarmahmoud.dev). Tracks page views, section visibility, and key click events without third-party scripts.
+Privacy-focused analytics for [omarmahmoud.dev](https://omarmahmoud.dev). Tracks page views and key click events without third-party scripts.
 
 ## Architecture
 
@@ -79,7 +79,6 @@ Serve the repo root with any static server (e.g. Live Server on port 5500). Ensu
 | Type | Names |
 |------|-------|
 | `page_view` | `page_view` |
-| `section_view` | `hero`, `education`, `experience`, `skills`, `projects`, `testimonials`, `awards`, `contact` |
 | `click` | `resume`, `live_demo`, `video_preview`, `external_video`, `read_more`, `code`, `github`, `linkedin` |
 
 Project clicks include `metadata.project`. Social clicks include `metadata.location` (e.g. `navbar`, `contact`).
@@ -89,7 +88,6 @@ Project clicks include `metadata.project`. Social clicks include `metadata.locat
 Visit `https://your-service.onrender.com/dashboard`, sign in with `DASHBOARD_PASSWORD`, and view:
 
 - Overview cards (views/sessions for today, 7d, 30d, all time)
-- Section view bar chart
 - Click breakdown chart
 - Traffic over time
 - Project leaderboard

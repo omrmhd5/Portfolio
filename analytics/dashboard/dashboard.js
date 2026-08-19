@@ -17,11 +17,11 @@
   const clearModal = document.getElementById("clearModal");
   const toast = document.getElementById("toast");
   const lastUpdated = document.getElementById("lastUpdated");
+  const kpiHero = document.getElementById("kpiHero");
   const overviewGrid = document.getElementById("overviewGrid");
   const navLinks = document.querySelectorAll(".nav-link");
   const sectionIds = ["overview", "charts", "projects", "activity"];
 
-  let sectionChart = null;
   let clickChart = null;
   let trafficChart = null;
   let toastTimer = null;
@@ -35,17 +35,26 @@
   ).matches;
 
   const CHART_COLORS = {
-    primary: "#3b82f6",
-    accent: "#f59e0b",
-    success: "#22c55e",
-    purple: "#a78bfa",
+    primary: "#a78bfa",
+    accent: "#34d399",
+    tertiary: "#60a5fa",
+    warm: "#fbbf24",
     pink: "#f472b6",
-    cyan: "#22d3ee",
-    lime: "#a3e635",
+    cyan: "#2dd4bf",
     orange: "#fb923c",
+    magenta: "#e879f9",
   };
 
-  const chartPalette = Object.values(CHART_COLORS);
+  const chartPalette = [
+    CHART_COLORS.primary,
+    CHART_COLORS.accent,
+    CHART_COLORS.warm,
+    CHART_COLORS.tertiary,
+    CHART_COLORS.pink,
+    CHART_COLORS.cyan,
+    CHART_COLORS.orange,
+    CHART_COLORS.magenta,
+  ];
 
   const chartDefaults = {
     responsive: true,
@@ -53,37 +62,39 @@
     plugins: {
       legend: {
         labels: {
-          color: "#94a3b8",
-          font: { family: "'Fira Sans', sans-serif", size: 11 },
+          color: "#a1a1aa",
+          font: { family: "'Inter', sans-serif", size: 11 },
           boxWidth: 10,
-          padding: 12,
+          padding: 14,
         },
       },
       tooltip: {
-        backgroundColor: "#111827",
-        borderColor: "#243044",
+        backgroundColor: "#141416",
+        borderColor: "rgba(255, 255, 255, 0.1)",
         borderWidth: 1,
-        titleFont: { family: "'Fira Code', monospace", size: 11 },
-        bodyFont: { family: "'Fira Sans', sans-serif", size: 12 },
+        titleFont: { family: "'JetBrains Mono', monospace", size: 11 },
+        bodyFont: { family: "'Inter', sans-serif", size: 12 },
         padding: 10,
-        cornerRadius: 6,
+        cornerRadius: 8,
+        titleColor: "#fafafa",
+        bodyColor: "#a1a1aa",
       },
     },
     scales: {
       x: {
         ticks: {
-          color: "#64748b",
-          font: { family: "'Fira Code', monospace", size: 10 },
+          color: "#71717a",
+          font: { family: "'JetBrains Mono', monospace", size: 10 },
         },
-        grid: { color: "rgba(36, 48, 68, 0.6)", drawBorder: false },
+        grid: { color: "rgba(255, 255, 255, 0.04)", drawBorder: false },
       },
       y: {
         ticks: {
-          color: "#64748b",
-          font: { family: "'Fira Code', monospace", size: 10 },
+          color: "#71717a",
+          font: { family: "'JetBrains Mono', monospace", size: 10 },
           precision: 0,
         },
-        grid: { color: "rgba(36, 48, 68, 0.6)", drawBorder: false },
+        grid: { color: "rgba(255, 255, 255, 0.04)", drawBorder: false },
         beginAtZero: true,
       },
     },
@@ -117,8 +128,13 @@
 
   function showKpiSkeleton() {
     overviewGrid.setAttribute("aria-busy", "true");
+    kpiHero.setAttribute("aria-busy", "true");
     overviewGrid.classList.add("is-loading");
-    overviewGrid.innerHTML = Array.from({ length: 8 })
+    kpiHero.classList.add("is-loading");
+    kpiHero.innerHTML =
+      '<div class="kpi-skeleton hero" aria-hidden="true"></div>' +
+      '<div class="kpi-skeleton hero" aria-hidden="true"></div>';
+    overviewGrid.innerHTML = Array.from({ length: 6 })
       .map(function () {
         return '<div class="kpi-skeleton" aria-hidden="true"></div>';
       })
@@ -320,44 +336,78 @@
     return res.json();
   }
 
+  const EVENT_LABELS = {
+    page_view: "Page View",
+    resume: "Resume",
+    live_demo: "Live Demo",
+    video_preview: "Video Preview",
+    external_video: "External Video",
+    read_more: "Read More",
+    code: "Code",
+    github: "GitHub",
+    linkedin: "LinkedIn",
+    click: "Click",
+    mobile_menu: "Mobile Menu",
+    navbar: "Navbar",
+    footer: "Footer",
+    hero: "Hero",
+    contact: "Contact",
+    unknown: "Unknown",
+  };
+
   function formatEventName(name) {
-    return String(name).replace(/_/g, " ");
+    const key = String(name || "").toLowerCase();
+    if (EVENT_LABELS[key]) return EVENT_LABELS[key];
+
+    return key
+      .split("_")
+      .filter(Boolean)
+      .map(function (word) {
+        return word.charAt(0).toUpperCase() + word.slice(1);
+      })
+      .join(" ");
   }
 
   function eventTypeBadge(type) {
     const map = {
       click: "badge-click",
-      section_view: "badge-section",
       page_view: "badge-page",
     };
-    const safeType = escapeHtml(type);
     return (
       '<span class="badge ' +
       (map[type] || "") +
       '">' +
-      safeType +
+      escapeHtml(formatEventName(type)) +
       "</span>"
     );
   }
 
   function renderOverview(overview) {
+    kpiHero.innerHTML =
+      '<article class="kpi-hero-card featured-views">' +
+      '<div class="kpi-label">Views today</div>' +
+      '<div class="kpi-value">' +
+      Number(overview.viewsToday).toLocaleString() +
+      "</div></article>" +
+      '<article class="kpi-hero-card featured-sessions">' +
+      '<div class="kpi-label">Sessions today</div>' +
+      '<div class="kpi-value">' +
+      Number(overview.sessionsToday).toLocaleString() +
+      "</div></article>";
+
     const cards = [
-      { label: "Views Today", value: overview.viewsToday, highlight: true },
-      { label: "Sessions Today", value: overview.sessionsToday },
       { label: "Views · 7d", value: overview.views7d },
       { label: "Sessions · 7d", value: overview.sessions7d },
       { label: "Views · 30d", value: overview.views30d },
       { label: "Sessions · 30d", value: overview.sessions30d },
-      { label: "All-time Views", value: overview.viewsAll, highlight: true },
-      { label: "All-time Sessions", value: overview.sessionsAll },
+      { label: "All-time views", value: overview.viewsAll },
+      { label: "All-time sessions", value: overview.sessionsAll },
     ];
 
     overviewGrid.innerHTML = cards
       .map(function (card) {
         return (
-          '<article class="kpi-card' +
-          (card.highlight ? " highlight" : "") +
-          '">' +
+          '<article class="kpi-card">' +
           '<div class="kpi-label">' +
           card.label +
           "</div>" +
@@ -370,47 +420,20 @@
       .join("");
 
     if (!prefersReducedMotion) {
+      kpiHero.classList.remove("is-entering");
       overviewGrid.classList.remove("is-entering");
-      void overviewGrid.offsetWidth;
+      void kpiHero.offsetWidth;
+      kpiHero.classList.add("is-entering");
       overviewGrid.classList.add("is-entering");
       setTimeout(function () {
+        kpiHero.classList.remove("is-entering");
         overviewGrid.classList.remove("is-entering");
-      }, 400);
+      }, 450);
     }
   }
 
   function destroyChart(chart) {
     if (chart) chart.destroy();
-  }
-
-  function renderSectionChart(data) {
-    destroyChart(sectionChart);
-    const isEmpty = !data.length;
-    setChartEmpty("sectionChart", "sectionEmpty", isEmpty);
-    if (isEmpty) return;
-
-    const ctx = document.getElementById("sectionChart");
-    sectionChart = new Chart(ctx, {
-      type: "bar",
-      data: {
-        labels: data.map(function (d) {
-          return formatEventName(d.event_name);
-        }),
-        datasets: [
-          {
-            label: "Views",
-            data: data.map(function (d) {
-              return d.count;
-            }),
-            backgroundColor: "rgba(59, 130, 246, 0.75)",
-            borderColor: CHART_COLORS.primary,
-            borderWidth: 1,
-            borderRadius: 4,
-          },
-        ],
-      },
-      options: Object.assign({}, chartDefaults, { indexAxis: "y" }),
-    });
   }
 
   function renderClickChart(data) {
@@ -435,8 +458,8 @@
               return chartPalette[i % chartPalette.length];
             }),
             borderWidth: 2,
-            borderColor: "#111827",
-            hoverOffset: 6,
+            borderColor: "#141416",
+            hoverOffset: 5,
           },
         ],
       },
@@ -448,8 +471,8 @@
           legend: {
             position: "bottom",
             labels: {
-              color: "#94a3b8",
-              font: { family: "'Fira Sans', sans-serif", size: 10 },
+              color: "#a1a1aa",
+              font: { family: "'Inter', sans-serif", size: 10 },
               boxWidth: 10,
               padding: 8,
             },
@@ -483,7 +506,7 @@
               return d.views;
             }),
             borderColor: CHART_COLORS.primary,
-            backgroundColor: "rgba(59, 130, 246, 0.12)",
+            backgroundColor: "rgba(167, 139, 250, 0.12)",
             fill: true,
             tension: 0.35,
             borderWidth: 2,
@@ -496,7 +519,7 @@
               return d.sessions;
             }),
             borderColor: CHART_COLORS.accent,
-            backgroundColor: "rgba(245, 158, 11, 0.08)",
+            backgroundColor: "rgba(52, 211, 153, 0.08)",
             fill: true,
             tension: 0.35,
             borderWidth: 2,
@@ -558,7 +581,7 @@
           "<tr><td>" +
           escapeHtml(formatEventName(row.event_name)) +
           "</td><td>" +
-          escapeHtml(row.location) +
+          escapeHtml(formatEventName(row.location)) +
           "</td><td><strong>" +
           row.count +
           "</strong></td></tr>"
@@ -615,8 +638,9 @@
 
       renderOverview(stats.overview);
       overviewGrid.setAttribute("aria-busy", "false");
+      kpiHero.setAttribute("aria-busy", "false");
       overviewGrid.classList.remove("is-loading");
-      renderSectionChart(stats.sectionViews || []);
+      kpiHero.classList.remove("is-loading");
       renderClickChart(stats.clickBreakdown || []);
       renderTrafficChart(stats.trafficOverTime || []);
       renderProjectTable(stats.projectLeaderboard || []);
@@ -631,9 +655,14 @@
         });
     } catch (err) {
       overviewGrid.setAttribute("aria-busy", "false");
+      kpiHero.setAttribute("aria-busy", "false");
       overviewGrid.classList.remove("is-loading");
+      kpiHero.classList.remove("is-loading");
       if (err.message !== "Session expired") {
-        showToast("Could not load dashboard data. Check your connection and try again.", "error");
+        showToast(
+          "Could not load dashboard data. Check your connection and try again.",
+          "error",
+        );
       }
     } finally {
       dashboardLoading = false;
@@ -676,7 +705,8 @@
       });
 
       if (!res.ok) {
-        loginError.textContent = "Invalid password. Check your dashboard password and try again.";
+        loginError.textContent =
+          "Invalid password. Check your dashboard password and try again.";
         loginError.hidden = false;
         passwordInput.focus();
         return;
@@ -688,7 +718,8 @@
       initScrollSpy();
       await loadDashboard();
     } catch {
-      loginError.textContent = "Unable to reach the analytics server. Try again in a moment.";
+      loginError.textContent =
+        "Unable to reach the analytics server. Try again in a moment.";
       loginError.hidden = false;
     } finally {
       setButtonLoading(loginSubmitBtn, false);

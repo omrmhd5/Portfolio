@@ -5,7 +5,6 @@
   if (!API_URL) return;
 
   const SESSION_KEY = "portfolio_analytics_session";
-  const VIEWED_SECTIONS_KEY = "portfolio_analytics_viewed_sections";
 
   function getSessionId() {
     let sessionId = localStorage.getItem(SESSION_KEY);
@@ -17,27 +16,6 @@
       localStorage.setItem(SESSION_KEY, sessionId);
     }
     return sessionId;
-  }
-
-  function getViewedSections() {
-    try {
-      const raw = sessionStorage.getItem(VIEWED_SECTIONS_KEY);
-      return raw ? JSON.parse(raw) : [];
-    } catch {
-      return [];
-    }
-  }
-
-  function markSectionViewed(section) {
-    const viewed = getViewedSections();
-    if (!viewed.includes(section)) {
-      viewed.push(section);
-      sessionStorage.setItem(VIEWED_SECTIONS_KEY, JSON.stringify(viewed));
-    }
-  }
-
-  function hasViewedSection(section) {
-    return getViewedSections().includes(section);
   }
 
   const queue = [];
@@ -107,40 +85,6 @@
   window.trackAnalytics = track;
 
   track("page_view", "page_view", {});
-
-  const SECTION_IDS = [
-    "hero",
-    "education",
-    "experience",
-    "skills",
-    "projects",
-    "testimonials",
-    "awards",
-    "contact",
-  ];
-
-  if ("IntersectionObserver" in window) {
-    const observer = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (!entry.isIntersecting) return;
-          const sectionId = entry.target.id;
-          if (!SECTION_IDS.includes(sectionId)) return;
-          if (hasViewedSection(sectionId)) return;
-
-          markSectionViewed(sectionId);
-          track("section_view", sectionId, {});
-          observer.unobserve(entry.target);
-        });
-      },
-      { threshold: 0.35 },
-    );
-
-    SECTION_IDS.forEach(function (id) {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-  }
 
   document.addEventListener("click", function (e) {
     const el = e.target.closest("[data-analytics]");
