@@ -368,6 +368,127 @@
       .join(" ");
   }
 
+  const PLATFORM_LABELS = {
+    youtube: "YouTube",
+    drive: "Google Drive",
+  };
+
+  function formatPlatform(name) {
+    const key = String(name || "").toLowerCase();
+    if (PLATFORM_LABELS[key]) return PLATFORM_LABELS[key];
+    return formatEventName(key);
+  }
+
+  function renderPlatformCell(row) {
+    const meta = getRowMetadata(row);
+    const platform = meta.platform ? String(meta.platform) : "";
+
+    if (!platform) {
+      return '<span class="cell-muted">—</span>';
+    }
+
+    const slug = platform.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+    return (
+      '<span class="platform-tag platform-tag--' +
+      escapeHtml(slug) +
+      '">' +
+      escapeHtml(formatPlatform(platform)) +
+      "</span>"
+    );
+  }
+    const key = String(name || "").toLowerCase();
+    if (EVENT_LABELS[key]) return EVENT_LABELS[key];
+
+    return key
+      .split("_")
+      .filter(Boolean)
+      .map(function (word) {
+        return word.charAt(0).toUpperCase() + word.slice(1);
+      })
+      .join(" ");
+  }
+
+  const EVENT_TAG_SLUGS = {
+    live_demo: "live-demo",
+    code: "code",
+    video_preview: "video-preview",
+    external_video: "external-video",
+    read_more: "read-more",
+    resume: "resume",
+    github: "github",
+    linkedin: "linkedin",
+    page_view: "page-view",
+  };
+
+  function breakdownTagClass(eventName) {
+    const key = String(eventName || "").toLowerCase();
+    const slug = EVENT_TAG_SLUGS[key];
+    return slug ? "breakdown-tag--" + slug : "breakdown-tag--default";
+  }
+
+  function breakdownTagHtml(eventName, count) {
+    return (
+      '<span class="breakdown-tag ' +
+      breakdownTagClass(eventName) +
+      '">' +
+      escapeHtml(formatEventName(eventName)) +
+      ": " +
+      count +
+      "</span>"
+    );
+  }
+
+  function getRowMetadata(row) {
+    if (typeof row.metadata === "object" && row.metadata !== null) {
+      return row.metadata;
+    }
+    if (typeof row.metadata === "string" && row.metadata) {
+      try {
+        return JSON.parse(row.metadata);
+      } catch {
+        return {};
+      }
+    }
+    return {};
+  }
+
+  function getActivitySubject(row) {
+    const meta = getRowMetadata(row);
+
+    if (meta.project) {
+      return { text: String(meta.project), kind: "project" };
+    }
+
+    if (meta.experience) {
+      return { text: String(meta.experience), kind: "experience" };
+    }
+
+    if (row.event_type === "page_view") {
+      return { text: "Site visit", kind: "visit", muted: true };
+    }
+
+    return null;
+  }
+
+  function renderSubjectCell(row) {
+    const subject = getActivitySubject(row);
+
+    if (!subject) {
+      return '<span class="cell-muted">—</span>';
+    }
+
+    if (subject.muted) {
+      return '<span class="cell-muted">' + escapeHtml(subject.text) + "</span>";
+    }
+
+    const kindLabel =
+      subject.kind === "experience"
+        ? '<span class="subject-kind">Experience</span>'
+        : '<span class="subject-kind">Project</span>';
+
+    return kindLabel + "<strong>" + escapeHtml(subject.text) + "</strong>";
+  }
+
   function eventTypeBadge(type) {
     const map = {
       click: "badge-click",
@@ -545,13 +666,7 @@
       .map(function (row) {
         const tags = Object.entries(row.breakdown || {})
           .map(function (entry) {
-            return (
-              '<span class="breakdown-tag">' +
-              formatEventName(entry[0]) +
-              ": " +
-              entry[1] +
-              "</span>"
-            );
+            return breakdownTagHtml(entry[0], entry[1]);
           })
           .join("");
         return (
@@ -601,24 +716,20 @@
     tbody.innerHTML = data
       .map(function (row) {
         const time = new Date(row.created_at).toLocaleString();
-        const metadata =
-          typeof row.metadata === "object"
-            ? JSON.stringify(row.metadata)
-            : row.metadata || "{}";
-        const safeMeta = escapeHtml(metadata);
+        const subjectCell = renderSubjectCell(row);
+        const platformCell = renderPlatformCell(row);
+
         return (
-          "<tr><td>" +
-          escapeHtml(time) +
+          '<tr><td class="cell-subject">' +
+          subjectCell +
           "</td><td>" +
           eventTypeBadge(row.event_type) +
           "</td><td>" +
           escapeHtml(formatEventName(row.event_name)) +
           "</td><td>" +
-          escapeHtml(row.path || "—") +
-          '</td><td class="metadata-cell" title="' +
-          safeMeta +
-          '">' +
-          safeMeta +
+          platformCell +
+          '</td><td class="cell-time">' +
+          escapeHtml(time) +
           "</td></tr>"
         );
       })
