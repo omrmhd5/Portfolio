@@ -7,6 +7,7 @@
   const dashboardApp = document.getElementById("dashboardApp");
   const loginForm = document.getElementById("loginForm");
   const passwordInput = document.getElementById("passwordInput");
+  const loginSubmitBtn = document.getElementById("loginSubmitBtn");
   const loginError = document.getElementById("loginError");
   const rangeSelect = document.getElementById("rangeSelect");
   const refreshBtn = document.getElementById("refreshBtn");
@@ -18,11 +19,19 @@
   const lastUpdated = document.getElementById("lastUpdated");
   const overviewGrid = document.getElementById("overviewGrid");
   const navLinks = document.querySelectorAll(".nav-link");
+  const sectionIds = ["overview", "charts", "projects", "activity"];
 
   let sectionChart = null;
   let clickChart = null;
   let trafficChart = null;
   let toastTimer = null;
+  let toastHideTimer = null;
+  let modalCloseTimer = null;
+  let modalTrigger = null;
+
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
 
   const CHART_COLORS = {
     primary: "#3b82f6",
@@ -79,6 +88,110 @@
     },
   };
 
+  function escapeHtml(value) {
+    return String(value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
+
+  function setButtonLoading(button, loading, loadingLabel) {
+    if (!button) return;
+    button.disabled = loading;
+    button.classList.toggle("is-loading", loading);
+    button.setAttribute("aria-busy", loading ? "true" : "false");
+    const label = button.querySelector(".btn-label");
+    if (label && loadingLabel) {
+      if (!label.dataset.defaultLabel) {
+        label.dataset.defaultLabel = label.textContent;
+      }
+      label.textContent = loading ? loadingLabel : label.dataset.defaultLabel;
+    }
+  }
+
+  function showKpiSkeleton() {
+    overviewGrid.setAttribute("aria-busy", "true");
+    overviewGrid.classList.add("is-loading");
+    overviewGrid.innerHTML = Array.from({ length: 8 })
+      .map(function () {
+        return '<div class="kpi-skeleton" aria-hidden="true"></div>';
+      })
+      .join("");
+  }
+
+  function setChartEmpty(canvasId, emptyId, isEmpty) {
+    const canvas = document.getElementById(canvasId);
+    const empty = document.getElementById(emptyId);
+    if (!canvas || !empty) return;
+    canvas.hidden = isEmpty;
+    empty.hidden = !isEmpty;
+  }
+
+  function getModalFocusables() {
+    return clearModal.querySelectorAll(
+      'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+    );
+  }
+
+  function trapModalFocus(e) {
+    if (clearModal.hidden || !clearModal.classList.contains("is-open")) return;
+    if (e.key !== "Tab") return;
+
+    const focusables = Array.from(getModalFocusables());
+    if (!focusables.length) return;
+
+    const first = focusables[0];
+    const last = focusables[focusables.length - 1];
+
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  }
+
+  function setActiveNav(sectionId) {
+    navLinks.forEach(function (link) {
+      const href = link.getAttribute("href");
+      link.classList.toggle("active", href === "#" + sectionId);
+    });
+  }
+
+  function initScrollSpy() {
+    const sections = sectionIds
+      .map(function (id) {
+        return document.getElementById(id);
+      })
+      .filter(Boolean);
+
+    if (!sections.length || !("IntersectionObserver" in window)) return;
+
+    const observer = new IntersectionObserver(
+      function (entries) {
+        const visible = entries
+          .filter(function (entry) {
+            return entry.isIntersecting;
+          })
+          .sort(function (a, b) {
+            return b.intersectionRatio - a.intersectionRatio;
+          });
+
+        if (visible[0]) {
+          setActiveNav(visible[0].target.id);
+        }
+      },
+      { rootMargin: "-20% 0px -55% 0px", threshold: [0.1, 0.35, 0.6] },
+    );
+
+    sections.forEach(function (section) {
+      observer.observe(section);
+    });
+  }
+
   function getToken() {
     return sessionStorage.getItem(TOKEN_KEY);
   }
@@ -94,30 +207,102 @@
   function showLogin() {
     loginScreen.hidden = false;
     dashboardApp.hidden = true;
+    requestAnimationFrame(function () {
+      loginScreen.classList.add("is-visible");
+    });
   }
 
   function showDashboard() {
+    loginScreen.classList.remove("is-visible");
     loginScreen.hidden = true;
     dashboardApp.hidden = false;
   }
 
   function showToast(message, type) {
+    clearTimeout(toastTimer);
+    clearTimeout(toastHideTimer);
+
     toast.textContent = message;
     toast.className = "toast " + (type || "success");
     toast.hidden = false;
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(function () {
+    toast.classList.remove("is-hiding");
+
+    if (prefersReducedMotion) {
+      toast.classList.add("is-visible");
+      toastTimer = setTimeout(hideToast, 3200);
+      return;
+    }
+
+    requestAnimationFrame(function () {
+      toast.classList.add("is-visible");
+    });
+
+    toastTimer = setTimeout(hideToast, 3200);
+  }
+
+  function hideToast() {
+    toast.classList.remove("is-visible");
+    toast.classList.add("is-hiding");
+
+    const done = function () {
       toast.hidden = true;
-    }, 3200);
+      toast.classList.remove("is-hiding");
+      toast.removeEventListener("transitionend", done);
+    };
+
+    if (prefersReducedMotion) {
+      done();
+      return;
+    }
+
+    toast.addEventListener("transitionend", done, { once: true });
+    toastHideTimer = setTimeout(done, 220);
   }
 
   function openModal() {
+    clearTimeout(modalCloseTimer);
+    modalTrigger = document.activeElement;
     clearModal.hidden = false;
-    confirmClearBtn.focus();
+    clearModal.classList.remove("is-closing");
+    document.body.style.overflow = "hidden";
+    confirmClearBtn.disabled = false;
+
+    if (prefersReducedMotion) {
+      clearModal.classList.add("is-open");
+      confirmClearBtn.focus();
+      return;
+    }
+
+    requestAnimationFrame(function () {
+      clearModal.classList.add("is-open");
+      confirmClearBtn.focus();
+    });
   }
 
   function closeModal() {
-    clearModal.hidden = true;
+    if (clearModal.hidden) return;
+
+    clearModal.classList.remove("is-open");
+    document.body.style.overflow = "";
+
+    const finish = function () {
+      clearModal.hidden = true;
+      clearModal.classList.remove("is-closing");
+      clearModal.removeEventListener("transitionend", finish);
+      if (modalTrigger && typeof modalTrigger.focus === "function") {
+        modalTrigger.focus();
+      }
+      modalTrigger = null;
+    };
+
+    if (prefersReducedMotion) {
+      finish();
+      return;
+    }
+
+    clearModal.classList.add("is-closing");
+    clearModal.addEventListener("transitionend", finish, { once: true });
+    modalCloseTimer = setTimeout(finish, 200);
   }
 
   function authHeaders() {
@@ -165,7 +350,14 @@
       section_view: "badge-section",
       page_view: "badge-page",
     };
-    return '<span class="badge ' + (map[type] || "") + '">' + type + "</span>";
+    const safeType = escapeHtml(type);
+    return (
+      '<span class="badge ' +
+      (map[type] || "") +
+      '">' +
+      safeType +
+      "</span>"
+    );
   }
 
   function renderOverview(overview) {
@@ -196,6 +388,15 @@
         );
       })
       .join("");
+
+    if (!prefersReducedMotion) {
+      overviewGrid.classList.remove("is-entering");
+      void overviewGrid.offsetWidth;
+      overviewGrid.classList.add("is-entering");
+      setTimeout(function () {
+        overviewGrid.classList.remove("is-entering");
+      }, 400);
+    }
   }
 
   function destroyChart(chart) {
@@ -204,6 +405,10 @@
 
   function renderSectionChart(data) {
     destroyChart(sectionChart);
+    const isEmpty = !data.length;
+    setChartEmpty("sectionChart", "sectionEmpty", isEmpty);
+    if (isEmpty) return;
+
     const ctx = document.getElementById("sectionChart");
     sectionChart = new Chart(ctx, {
       type: "bar",
@@ -230,6 +435,10 @@
 
   function renderClickChart(data) {
     destroyChart(clickChart);
+    const isEmpty = !data.length;
+    setChartEmpty("clickChart", "clickEmpty", isEmpty);
+    if (isEmpty) return;
+
     const ctx = document.getElementById("clickChart");
     clickChart = new Chart(ctx, {
       type: "doughnut",
@@ -273,6 +482,10 @@
 
   function renderTrafficChart(data) {
     destroyChart(trafficChart);
+    const isEmpty = !data.length;
+    setChartEmpty("trafficChart", "trafficEmpty", isEmpty);
+    if (isEmpty) return;
+
     const ctx = document.getElementById("trafficChart");
     trafficChart = new Chart(ctx, {
       type: "line",
@@ -340,7 +553,7 @@
           .join("");
         return (
           "<tr><td><strong>" +
-          row.project +
+          escapeHtml(row.project) +
           "</strong></td><td>" +
           row.total +
           '</td><td><div class="breakdown-tags">' +
@@ -363,9 +576,9 @@
       .map(function (row) {
         return (
           "<tr><td>" +
-          formatEventName(row.event_name) +
+          escapeHtml(formatEventName(row.event_name)) +
           "</td><td>" +
-          row.location +
+          escapeHtml(row.location) +
           "</td><td><strong>" +
           row.count +
           "</strong></td></tr>"
@@ -389,20 +602,20 @@
           typeof row.metadata === "object"
             ? JSON.stringify(row.metadata)
             : row.metadata || "{}";
-        const safeMeta = metadata.replace(/"/g, "&quot;");
+        const safeMeta = escapeHtml(metadata);
         return (
           "<tr><td>" +
-          time +
+          escapeHtml(time) +
           "</td><td>" +
           eventTypeBadge(row.event_type) +
           "</td><td>" +
-          formatEventName(row.event_name) +
+          escapeHtml(formatEventName(row.event_name)) +
           "</td><td>" +
-          (row.path || "—") +
+          escapeHtml(row.path || "—") +
           '</td><td class="metadata-cell" title="' +
           safeMeta +
           '">' +
-          metadata +
+          safeMeta +
           "</td></tr>"
         );
       })
@@ -410,7 +623,8 @@
   }
 
   async function loadDashboard() {
-    refreshBtn.disabled = true;
+    setButtonLoading(refreshBtn, true, "Refreshing…");
+    showKpiSkeleton();
     dashboardApp.classList.add("loading-shimmer");
 
     try {
@@ -418,6 +632,8 @@
       const stats = await fetchStats(range);
 
       renderOverview(stats.overview);
+      overviewGrid.setAttribute("aria-busy", "false");
+      overviewGrid.classList.remove("is-loading");
       renderSectionChart(stats.sectionViews || []);
       renderClickChart(stats.clickBreakdown || []);
       renderTrafficChart(stats.trafficOverTime || []);
@@ -426,22 +642,27 @@
       renderEventsTable(stats.recentEvents || []);
 
       lastUpdated.textContent =
-        "Updated " + new Date().toLocaleTimeString();
+        "Updated " +
+        new Date().toLocaleString(undefined, {
+          dateStyle: "medium",
+          timeStyle: "short",
+        });
     } catch (err) {
+      overviewGrid.setAttribute("aria-busy", "false");
+      overviewGrid.classList.remove("is-loading");
       if (err.message !== "Session expired") {
-        showToast("Failed to load dashboard data", "error");
+        showToast("Could not load dashboard data. Check your connection and try again.", "error");
       }
     } finally {
-      refreshBtn.disabled = false;
+      setButtonLoading(refreshBtn, false);
       dashboardApp.classList.remove("loading-shimmer");
     }
   }
 
   async function handleClearAll() {
-    confirmClearBtn.disabled = true;
+    setButtonLoading(confirmClearBtn, true, "Deleting…");
     try {
       const result = await clearAllEvents();
-      closeModal();
       showToast(
         "Deleted " + (result.deleted || 0) + " events. Dashboard cleared.",
         "success",
@@ -452,7 +673,8 @@
         showToast("Failed to clear data. Try again.", "error");
       }
     } finally {
-      confirmClearBtn.disabled = false;
+      setButtonLoading(confirmClearBtn, false);
+      closeModal();
     }
   }
 
@@ -463,24 +685,30 @@
     const password = passwordInput.value.trim();
     if (!password) return;
 
+    setButtonLoading(loginSubmitBtn, true, "Signing in…");
+
     try {
       const res = await fetch("/api/stats?range=7d", {
         headers: { Authorization: "Bearer " + password },
       });
 
       if (!res.ok) {
-        loginError.textContent = "Invalid password. Please try again.";
+        loginError.textContent = "Invalid password. Check your dashboard password and try again.";
         loginError.hidden = false;
+        passwordInput.focus();
         return;
       }
 
       setToken(password);
       passwordInput.value = "";
       showDashboard();
+      initScrollSpy();
       await loadDashboard();
     } catch {
-      loginError.textContent = "Unable to connect. Please try again.";
+      loginError.textContent = "Unable to reach the analytics server. Try again in a moment.";
       loginError.hidden = false;
+    } finally {
+      setButtonLoading(loginSubmitBtn, false);
     }
   });
 
@@ -500,22 +728,27 @@
   });
 
   document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && !clearModal.hidden) closeModal();
+    if (e.key === "Escape" && !clearModal.hidden) {
+      closeModal();
+      return;
+    }
+    trapModalFocus(e);
   });
 
   navLinks.forEach(function (link) {
     link.addEventListener("click", function () {
-      navLinks.forEach(function (l) {
-        l.classList.remove("active");
-      });
-      link.classList.add("active");
+      setActiveNav(link.getAttribute("href").slice(1));
     });
   });
 
   if (getToken()) {
     showDashboard();
+    initScrollSpy();
     loadDashboard();
   } else {
-    showLogin();
+    loginScreen.hidden = false;
+    requestAnimationFrame(function () {
+      loginScreen.classList.add("is-visible");
+    });
   }
 })();

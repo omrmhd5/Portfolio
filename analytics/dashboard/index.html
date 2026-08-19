@@ -24,7 +24,6 @@
             <path d="M7 16l4-8 4 5 5-9" />
           </svg>
           <div>
-            <p class="login-eyebrow">Private Console</p>
             <h1>Portfolio Analytics</h1>
           </div>
         </div>
@@ -36,9 +35,9 @@
           placeholder="Enter password"
           autocomplete="current-password"
           required />
-        <button type="submit" class="btn btn-primary btn-block">
+        <button type="submit" class="btn btn-primary btn-block" id="loginSubmitBtn">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
-          Access Dashboard
+          <span class="btn-label">Access Dashboard</span>
         </button>
         <p id="loginError" class="form-error" hidden role="alert"></p>
       </form>
@@ -78,18 +77,19 @@
         <header class="topbar">
           <div class="topbar-left">
             <h2>Visitor Intelligence</h2>
-            <p id="lastUpdated" class="topbar-meta">—</p>
+            <p id="lastUpdated" class="topbar-meta" aria-live="polite">—</p>
           </div>
           <div class="topbar-actions">
+            <label class="sr-only" for="rangeSelect">Date range</label>
             <select id="rangeSelect" class="select" aria-label="Date range">
               <option value="7d" selected>Last 7 days</option>
               <option value="14d">Last 14 days</option>
               <option value="30d">Last 30 days</option>
               <option value="90d">Last 90 days</option>
             </select>
-            <button id="refreshBtn" type="button" class="btn btn-secondary">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
-              Refresh
+            <button id="refreshBtn" type="button" class="btn btn-secondary" aria-live="polite">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+              <span class="btn-label">Refresh</span>
             </button>
             <button id="clearAllBtn" type="button" class="btn btn-danger">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
@@ -101,15 +101,13 @@
         <section id="overview" class="section">
           <div class="section-head">
             <h3>Overview</h3>
-            <span class="section-tag">KPI snapshot</span>
           </div>
-          <div class="kpi-grid" id="overviewGrid"></div>
+          <div class="kpi-grid" id="overviewGrid" aria-busy="false"></div>
         </section>
 
         <section id="charts" class="section">
           <div class="section-head">
             <h3>Engagement</h3>
-            <span class="section-tag">Sections & clicks</span>
           </div>
           <div class="bento-grid">
             <article class="panel panel-span-2">
@@ -118,7 +116,8 @@
                 <span class="panel-hint">Views vs sessions</span>
               </div>
               <div class="chart-wrap chart-tall">
-                <canvas id="trafficChart"></canvas>
+                <canvas id="trafficChart" role="img" aria-label="Traffic over time chart"></canvas>
+                <p class="chart-empty" id="trafficEmpty" hidden>No traffic data for this range yet.</p>
               </div>
             </article>
             <article class="panel">
@@ -127,7 +126,8 @@
                 <span class="panel-hint">Scroll depth</span>
               </div>
               <div class="chart-wrap">
-                <canvas id="sectionChart"></canvas>
+                <canvas id="sectionChart" role="img" aria-label="Section views chart"></canvas>
+                <p class="chart-empty" id="sectionEmpty" hidden>No section views recorded yet.</p>
               </div>
             </article>
             <article class="panel">
@@ -136,7 +136,8 @@
                 <span class="panel-hint">Action mix</span>
               </div>
               <div class="chart-wrap">
-                <canvas id="clickChart"></canvas>
+                <canvas id="clickChart" role="img" aria-label="Click breakdown chart"></canvas>
+                <p class="chart-empty" id="clickEmpty" hidden>No clicks recorded yet.</p>
               </div>
             </article>
           </div>
@@ -145,7 +146,6 @@
         <section id="projects" class="section">
           <div class="section-head">
             <h3>Projects & Social</h3>
-            <span class="section-tag">Conversion paths</span>
           </div>
           <div class="bento-grid bento-equal">
             <article class="panel">
@@ -188,7 +188,6 @@
         <section id="activity" class="section">
           <div class="section-head">
             <h3>Recent Activity</h3>
-            <span class="section-tag">Last 50 events</span>
           </div>
           <article class="panel">
             <div class="table-wrap">
@@ -211,17 +210,19 @@
     </div>
 
     <!-- Clear confirmation modal -->
-    <div id="clearModal" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="clearModalTitle">
-      <div class="modal-backdrop" data-dismiss="modal"></div>
-      <div class="modal-card">
+    <div id="clearModal" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="clearModalTitle" aria-describedby="clearModalDesc">
+      <div class="modal-backdrop" data-dismiss="modal" tabindex="-1"></div>
+      <div class="modal-card" role="document">
         <div class="modal-icon modal-icon-danger" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
         </div>
         <h3 id="clearModalTitle">Clear all analytics data?</h3>
-        <p>This permanently deletes every recorded visit, click, and session. This cannot be undone.</p>
+        <p id="clearModalDesc">This permanently deletes every recorded visit, click, and session. This cannot be undone.</p>
         <div class="modal-actions">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button type="button" id="confirmClearBtn" class="btn btn-danger">Yes, delete everything</button>
+          <button type="button" id="confirmClearBtn" class="btn btn-danger">
+            <span class="btn-label">Yes, delete everything</span>
+          </button>
         </div>
       </div>
     </div>
