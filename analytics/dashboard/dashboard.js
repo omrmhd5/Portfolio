@@ -28,6 +28,7 @@
   let toastHideTimer = null;
   let modalCloseTimer = null;
   let modalTrigger = null;
+  let dashboardLoading = false;
 
   const prefersReducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)",
@@ -103,11 +104,14 @@
     button.classList.toggle("is-loading", loading);
     button.setAttribute("aria-busy", loading ? "true" : "false");
     const label = button.querySelector(".btn-label");
-    if (label && loadingLabel) {
-      if (!label.dataset.defaultLabel) {
-        label.dataset.defaultLabel = label.textContent;
-      }
-      label.textContent = loading ? loadingLabel : label.dataset.defaultLabel;
+    if (!label) return;
+    if (!label.dataset.defaultLabel) {
+      label.dataset.defaultLabel = label.textContent.trim();
+    }
+    if (loading && loadingLabel) {
+      label.textContent = loadingLabel;
+    } else {
+      label.textContent = label.dataset.defaultLabel;
     }
   }
 
@@ -205,11 +209,9 @@
   }
 
   function showLogin() {
-    loginScreen.hidden = false;
     dashboardApp.hidden = true;
-    requestAnimationFrame(function () {
-      loginScreen.classList.add("is-visible");
-    });
+    loginScreen.hidden = false;
+    loginScreen.classList.add("is-visible");
   }
 
   function showDashboard() {
@@ -601,6 +603,8 @@
   }
 
   async function loadDashboard() {
+    if (dashboardLoading) return;
+    dashboardLoading = true;
     setButtonLoading(refreshBtn, true, "Refreshing…");
     showKpiSkeleton();
     dashboardApp.classList.add("loading-shimmer");
@@ -632,12 +636,14 @@
         showToast("Could not load dashboard data. Check your connection and try again.", "error");
       }
     } finally {
+      dashboardLoading = false;
       setButtonLoading(refreshBtn, false);
       dashboardApp.classList.remove("loading-shimmer");
     }
   }
 
   async function handleClearAll() {
+    closeModal();
     setButtonLoading(confirmClearBtn, true, "Deleting…");
     try {
       const result = await clearAllEvents();
@@ -652,7 +658,6 @@
       }
     } finally {
       setButtonLoading(confirmClearBtn, false);
-      closeModal();
     }
   }
 
@@ -724,9 +729,6 @@
     initScrollSpy();
     loadDashboard();
   } else {
-    loginScreen.hidden = false;
-    requestAnimationFrame(function () {
-      loginScreen.classList.add("is-visible");
-    });
+    showLogin();
   }
 })();

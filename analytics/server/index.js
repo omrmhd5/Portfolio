@@ -305,8 +305,15 @@ app.delete("/api/events", async (req, res) => {
   }
 
   try {
-    const result = await pool.query("SELECT clear_all_events() AS deleted");
-    const deleted = Number(result.rows[0]?.deleted ?? 0);
+    let deleted = 0;
+    try {
+      const fnResult = await pool.query("SELECT clear_all_events() AS deleted");
+      deleted = Number(fnResult.rows[0]?.deleted ?? 0);
+    } catch (fnErr) {
+      console.warn("clear_all_events() unavailable, falling back to DELETE:", fnErr.message);
+      const deleteResult = await pool.query("DELETE FROM events");
+      deleted = deleteResult.rowCount ?? 0;
+    }
     res.json({ success: true, deleted });
   } catch (err) {
     console.error("DELETE /api/events error:", err);
