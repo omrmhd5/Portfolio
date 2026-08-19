@@ -56,10 +56,7 @@
     }
 
     if (navigator.sendBeacon) {
-      navigator.sendBeacon(
-        url,
-        new Blob([body], { type: "application/json" }),
-      );
+      navigator.sendBeacon(url, new Blob([body], { type: "application/json" }));
     }
   }
 
@@ -95,10 +92,12 @@
 
     const metadata = {};
     const project = el.getAttribute("data-project");
+    const company = el.getAttribute("data-company");
     const location = el.getAttribute("data-location");
     const platform = el.getAttribute("data-platform");
 
     if (project) metadata.project = project;
+    if (company) metadata.company = company;
     if (location) metadata.location = location;
     if (platform) metadata.platform = platform;
 

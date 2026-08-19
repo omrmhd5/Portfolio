@@ -343,6 +343,7 @@
     video_preview: "Video Preview",
     external_video: "External Video",
     read_more: "Read More",
+    view_certificate: "View Certificate",
     code: "Code",
     github: "GitHub",
     linkedin: "LinkedIn",
@@ -368,34 +369,11 @@
       .join(" ");
   }
 
-  const PLATFORM_LABELS = {
-    youtube: "YouTube",
-    drive: "Google Drive",
+  const STANDALONE_EVENT_TITLES = {
+    resume: "Resume",
+    github: "GitHub",
+    linkedin: "LinkedIn",
   };
-
-  function formatPlatform(name) {
-    const key = String(name || "").toLowerCase();
-    if (PLATFORM_LABELS[key]) return PLATFORM_LABELS[key];
-    return formatEventName(key);
-  }
-
-  function renderPlatformCell(row) {
-    const meta = getRowMetadata(row);
-    const platform = meta.platform ? String(meta.platform) : "";
-
-    if (!platform) {
-      return '<span class="cell-muted">—</span>';
-    }
-
-    const slug = platform.toLowerCase().replace(/[^a-z0-9]+/g, "-");
-    return (
-      '<span class="platform-tag platform-tag--' +
-      escapeHtml(slug) +
-      '">' +
-      escapeHtml(formatPlatform(platform)) +
-      "</span>"
-    );
-  }
 
   const EVENT_TAG_SLUGS = {
     live_demo: "live-demo",
@@ -403,6 +381,7 @@
     video_preview: "video-preview",
     external_video: "external-video",
     read_more: "read-more",
+    view_certificate: "view-certificate",
     resume: "resume",
     github: "github",
     linkedin: "linkedin",
@@ -441,41 +420,45 @@
     return {};
   }
 
-  function getActivitySubject(row) {
+  function getActivityTitle(row) {
     const meta = getRowMetadata(row);
+    const eventName = String(row.event_name || "").toLowerCase();
 
     if (meta.project) {
-      return { text: String(meta.project), kind: "project" };
+      return { text: String(meta.project) };
+    }
+
+    if (meta.company) {
+      return { text: String(meta.company) };
     }
 
     if (meta.experience) {
-      return { text: String(meta.experience), kind: "experience" };
+      return { text: String(meta.experience) };
     }
 
     if (row.event_type === "page_view") {
-      return { text: "Site visit", kind: "visit", muted: true };
+      return { text: "Site visit", muted: true };
+    }
+
+    if (STANDALONE_EVENT_TITLES[eventName]) {
+      return { text: STANDALONE_EVENT_TITLES[eventName] };
     }
 
     return null;
   }
 
-  function renderSubjectCell(row) {
-    const subject = getActivitySubject(row);
+  function renderTitleCell(row) {
+    const title = getActivityTitle(row);
 
-    if (!subject) {
+    if (!title) {
       return '<span class="cell-muted">—</span>';
     }
 
-    if (subject.muted) {
-      return '<span class="cell-muted">' + escapeHtml(subject.text) + "</span>";
+    if (title.muted) {
+      return '<span class="cell-muted">' + escapeHtml(title.text) + "</span>";
     }
 
-    const kindLabel =
-      subject.kind === "experience"
-        ? '<span class="subject-kind">Experience</span>'
-        : '<span class="subject-kind">Project</span>';
-
-    return kindLabel + "<strong>" + escapeHtml(subject.text) + "</strong>";
+    return "<strong>" + escapeHtml(title.text) + "</strong>";
   }
 
   function eventTypeBadge(type) {
@@ -698,25 +681,22 @@
     const tbody = document.querySelector("#eventsTable tbody");
     if (!data.length) {
       tbody.innerHTML =
-        '<tr class="empty-row"><td colspan="5">No events recorded yet</td></tr>';
+        '<tr class="empty-row"><td colspan="4">No events recorded yet</td></tr>';
       return;
     }
 
     tbody.innerHTML = data
       .map(function (row) {
         const time = new Date(row.created_at).toLocaleString();
-        const subjectCell = renderSubjectCell(row);
-        const platformCell = renderPlatformCell(row);
+        const titleCell = renderTitleCell(row);
 
         return (
-          '<tr><td class="cell-subject">' +
-          subjectCell +
+          '<tr><td class="cell-title">' +
+          titleCell +
           "</td><td>" +
           eventTypeBadge(row.event_type) +
           "</td><td>" +
           escapeHtml(formatEventName(row.event_name)) +
-          "</td><td>" +
-          platformCell +
           '</td><td class="cell-time">' +
           escapeHtml(time) +
           "</td></tr>"

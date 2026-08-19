@@ -909,7 +909,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ${
           hasCertificate
             ? `
-            <a href="${exp.link}" class="btn" target="_blank">
+            <a href="${exp.link}" class="btn" target="_blank" data-analytics="view_certificate" data-company="${exp.company}">
               <i class="fa-solid fa-certificate"></i> View Certificate
             </a>`
             : ""
@@ -1088,7 +1088,7 @@ document.addEventListener("DOMContentLoaded", () => {
             hasCertificate
               ? `
           <div class="read-more-links">
-            <a href="${exp.link}" class="btn" target="_blank">
+            <a href="${exp.link}" class="btn" target="_blank" data-analytics="view_certificate" data-company="${exp.company}">
               <i class="fa-solid fa-certificate"></i> View Certificate
             </a>
           </div>
@@ -1109,7 +1109,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       } else if (type === "experience") {
         window.trackAnalytics("click", "read_more", {
-          experience: experience[index].title,
+          company: experience[index].company,
           source: "experience",
         });
       }

@@ -14,6 +14,7 @@ const CLICK_EVENTS = new Set([
   "video_preview",
   "external_video",
   "read_more",
+  "view_certificate",
   "code",
   "github",
   "linkedin",
