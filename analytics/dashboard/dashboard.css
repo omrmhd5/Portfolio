@@ -814,15 +814,22 @@ td.metadata-cell {
 .modal {
   position: fixed;
   inset: 0;
-  z-index: 100;
-  display: flex;
+  z-index: 1000;
+  display: none;
   align-items: center;
   justify-content: center;
   padding: 1rem;
+  pointer-events: none;
 }
 
-.modal[hidden] {
+.modal:not(.is-open) {
   display: none !important;
+  pointer-events: none !important;
+}
+
+.modal.is-open {
+  display: flex;
+  pointer-events: auto;
 }
 
 .modal-backdrop {

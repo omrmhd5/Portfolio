@@ -136,7 +136,7 @@
   }
 
   function trapModalFocus(e) {
-    if (clearModal.hidden || !clearModal.classList.contains("is-open")) return;
+    if (!clearModal.classList.contains("is-open")) return;
     if (e.key !== "Tab") return;
 
     const focusables = Array.from(getModalFocusables());
@@ -262,47 +262,25 @@
   function openModal() {
     clearTimeout(modalCloseTimer);
     modalTrigger = document.activeElement;
-    clearModal.hidden = false;
     clearModal.classList.remove("is-closing");
+    clearModal.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
     confirmClearBtn.disabled = false;
-
-    if (prefersReducedMotion) {
-      clearModal.classList.add("is-open");
-      confirmClearBtn.focus();
-      return;
-    }
-
-    requestAnimationFrame(function () {
-      clearModal.classList.add("is-open");
-      confirmClearBtn.focus();
-    });
+    clearModal.classList.add("is-open");
+    confirmClearBtn.focus();
   }
 
   function closeModal() {
-    if (clearModal.hidden) return;
+    if (!clearModal.classList.contains("is-open")) return;
 
-    clearModal.classList.remove("is-open");
+    clearModal.classList.remove("is-open", "is-closing");
+    clearModal.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
 
-    const finish = function () {
-      clearModal.hidden = true;
-      clearModal.classList.remove("is-closing");
-      clearModal.removeEventListener("transitionend", finish);
-      if (modalTrigger && typeof modalTrigger.focus === "function") {
-        modalTrigger.focus();
-      }
-      modalTrigger = null;
-    };
-
-    if (prefersReducedMotion) {
-      finish();
-      return;
+    if (modalTrigger && typeof modalTrigger.focus === "function") {
+      modalTrigger.focus();
     }
-
-    clearModal.classList.add("is-closing");
-    clearModal.addEventListener("transitionend", finish, { once: true });
-    modalCloseTimer = setTimeout(finish, 200);
+    modalTrigger = null;
   }
 
   function authHeaders() {
@@ -728,7 +706,7 @@
   });
 
   document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && !clearModal.hidden) {
+    if (e.key === "Escape" && clearModal.classList.contains("is-open")) {
       closeModal();
       return;
     }

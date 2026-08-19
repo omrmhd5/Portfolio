@@ -305,8 +305,9 @@ app.delete("/api/events", async (req, res) => {
   }
 
   try {
-    const result = await pool.query("DELETE FROM events");
-    res.json({ success: true, deleted: result.rowCount ?? 0 });
+    const result = await pool.query("SELECT clear_all_events() AS deleted");
+    const deleted = Number(result.rows[0]?.deleted ?? 0);
+    res.json({ success: true, deleted });
   } catch (err) {
     console.error("DELETE /api/events error:", err);
     res.status(500).json({ error: "Failed to clear events" });
