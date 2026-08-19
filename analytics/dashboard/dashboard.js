@@ -396,17 +396,6 @@
       "</span>"
     );
   }
-    const key = String(name || "").toLowerCase();
-    if (EVENT_LABELS[key]) return EVENT_LABELS[key];
-
-    return key
-      .split("_")
-      .filter(Boolean)
-      .map(function (word) {
-        return word.charAt(0).toUpperCase() + word.slice(1);
-      })
-      .join(" ");
-  }
 
   const EVENT_TAG_SLUGS = {
     live_demo: "live-demo",
