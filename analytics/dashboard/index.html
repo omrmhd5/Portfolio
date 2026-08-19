@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio Analytics Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  </head>
+  <body>
+    <div id="loginScreen" class="login-screen">
+      <form id="loginForm" class="login-card">
+        <h1>Portfolio Analytics</h1>
+        <p>Enter your dashboard password to continue.</p>
+        <input
+          type="password"
+          id="passwordInput"
+          placeholder="Password"
+          autocomplete="current-password"
+          required />
+        <button type="submit">Sign In</button>
+        <p id="loginError" class="login-error" hidden></p>
+      </form>
+    </div>
+
+    <div id="dashboardApp" class="dashboard-app" hidden>
+      <header class="dashboard-header">
+        <div>
+          <h1>Portfolio Analytics</h1>
+          <p class="subtitle">Visitor insights for omarmahmoud.dev</p>
+        </div>
+        <div class="header-actions">
+          <select id="rangeSelect" aria-label="Date range">
+            <option value="7d" selected>Last 7 days</option>
+            <option value="14d">Last 14 days</option>
+            <option value="30d">Last 30 days</option>
+            <option value="90d">Last 90 days</option>
+          </select>
+          <button id="refreshBtn" type="button">Refresh</button>
+          <button id="logoutBtn" type="button" class="btn-secondary">Logout</button>
+        </div>
+      </header>
+
+      <section class="overview-grid" id="overviewGrid"></section>
+
+      <div class="charts-grid">
+        <article class="panel">
+          <h2>Section Views</h2>
+          <canvas id="sectionChart"></canvas>
+        </article>
+        <article class="panel">
+          <h2>Click Breakdown</h2>
+          <canvas id="clickChart"></canvas>
+        </article>
+      </div>
+
+      <div class="charts-grid">
+        <article class="panel panel-wide">
+          <h2>Traffic Over Time</h2>
+          <canvas id="trafficChart"></canvas>
+        </article>
+      </div>
+
+      <div class="tables-grid">
+        <article class="panel">
+          <h2>Project Leaderboard</h2>
+          <div class="table-wrap">
+            <table id="projectTable">
+              <thead>
+                <tr>
+                  <th>Project</th>
+                  <th>Total</th>
+                  <th>Breakdown</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </article>
+        <article class="panel">
+          <h2>Social Clicks by Location</h2>
+          <div class="table-wrap">
+            <table id="socialTable">
+              <thead>
+                <tr>
+                  <th>Platform</th>
+                  <th>Location</th>
+                  <th>Clicks</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </article>
+      </div>
+
+      <article class="panel panel-wide">
+        <h2>Recent Events</h2>
+        <div class="table-wrap">
+          <table id="eventsTable">
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Type</th>
+                <th>Name</th>
+                <th>Path</th>
+                <th>Metadata</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </article>
+    </div>
+
+    <script src="dashboard.js"></script>
+  </body>
+</html>

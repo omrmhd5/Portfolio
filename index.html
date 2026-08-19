@@ -83,10 +83,18 @@
 
       <div class="navbar_actions">
         <div class="navbar_socials">
-          <a href="https://github.com/omrmhd5" target="_blank"
+          <a
+            href="https://github.com/omrmhd5"
+            target="_blank"
+            data-analytics="github"
+            data-location="navbar"
             ><i class="ri-github-line"></i
           ></a>
-          <a href="https://www.linkedin.com/in/omrmhd5/" target="_blank"
+          <a
+            href="https://www.linkedin.com/in/omrmhd5/"
+            target="_blank"
+            data-analytics="linkedin"
+            data-location="navbar"
             ><i class="ri-linkedin-box-line"></i
           ></a>
         </div>
@@ -113,10 +121,18 @@
         <a href="#awards" class="mobile_link">Awards</a>
         <a href="#contact" class="mobile_link">Contact</a>
         <div class="mobile_socials">
-          <a href="https://github.com/omrmhd5" target="_blank"
+          <a
+            href="https://github.com/omrmhd5"
+            target="_blank"
+            data-analytics="github"
+            data-location="mobile_menu"
             ><i class="ri-github-line"></i
           ></a>
-          <a href="https://www.linkedin.com/in/omrmhd5/" target="_blank"
+          <a
+            href="https://www.linkedin.com/in/omrmhd5/"
+            target="_blank"
+            data-analytics="linkedin"
+            data-location="mobile_menu"
             ><i class="ri-linkedin-box-line"></i
           ></a>
         </div>
@@ -151,7 +167,10 @@
           solutions for organizations and individuals.
         </p>
         <div class="hero_actions">
-          <a href="https://flowcv.com/resume/9ws090uw2t" target="_blank">
+          <a
+            href="https://flowcv.com/resume/9ws090uw2t"
+            target="_blank"
+            data-analytics="resume">
             <button class="btn">
               <i class="fa-solid fa-file-pdf"></i> View My Resume
             </button></a
@@ -361,6 +380,8 @@
               href="https://www.linkedin.com/in/omrmhd5/"
               target="_blank"
               class="contact-link"
+              data-analytics="linkedin"
+              data-location="contact"
               >linkedin.com/in/omrmhd5</a
             >
           </div>
@@ -370,6 +391,8 @@
               href="https://github.com/omrmhd5"
               target="_blank"
               class="contact-link"
+              data-analytics="github"
+              data-location="contact"
               >github.com/omrmhd5</a
             >
           </div>
@@ -382,13 +405,17 @@
           <a
             href="https://github.com/omrmhd5"
             target="_blank"
-            class="social-link">
+            class="social-link"
+            data-analytics="github"
+            data-location="contact_socials">
             <i class="ri-github-line"></i>
           </a>
           <a
             href="https://www.linkedin.com/in/omrmhd5/"
             target="_blank"
-            class="social-link">
+            class="social-link"
+            data-analytics="linkedin"
+            data-location="contact_socials">
             <i class="ri-linkedin-box-line"></i>
           </a>
         </div>
@@ -411,6 +438,10 @@
       </div>
     </footer>
 
+    <script>
+      window.ANALYTICS_API_URL = "https://omarmahmoud-analytics.onrender.com";
+    </script>
+    <script src="analytics.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

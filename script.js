@@ -778,6 +778,13 @@ document.addEventListener("DOMContentLoaded", () => {
   databaseCloudSkills.forEach((skill) => renderSkill(skill, databaseContainer));
   toolsMethodologies.forEach((skill) => renderSkill(skill, toolsContainer));
 
+  function getVideoPlatform(url) {
+    if (!url || url === "#") return null;
+    if (/youtu(\.be|be\.com)/i.test(url)) return "youtube";
+    if (/drive\.google\.com/i.test(url)) return "drive";
+    return null;
+  }
+
   projects.forEach((project, idx) => {
     const hasLiveDemo = project.links.live !== "#";
     const hasVideo = project.video !== "#";
@@ -818,12 +825,12 @@ document.addEventListener("DOMContentLoaded", () => {
       ${project.technologies.map((tech) => `<span>${tech}</span>`).join("")}
       </div>
       <div class="project-links">
-      <a href="${project.links.code}" class="btn btn-secondary" target="_blank">
+      <a href="${project.links.code}" class="btn btn-secondary" target="_blank" data-analytics="code" data-project="${project.title}">
         <i class="ri-github-line"></i> Code
       </a>
       ${
         hasLiveDemo
-          ? `<a href="${project.links.live}" class="btn" target="_blank">
+          ? `<a href="${project.links.live}" class="btn" target="_blank" data-analytics="live_demo" data-project="${project.title}">
           <i class="ri-external-link-line"></i> Live Demo
           </a>`
           : ""
@@ -835,7 +842,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       ${
         hasVideoLink
-          ? `<a href="${project.links.video}" class="btn" target="_blank"><i class="ri-play-circle-line"></i> Video</a>`
+          ? `<a href="${project.links.video}" class="btn" target="_blank" data-analytics="external_video" data-project="${project.title}" data-platform="${getVideoPlatform(project.links.video) || ""}"><i class="ri-play-circle-line"></i> Video</a>`
           : ""
       }
       </div>
@@ -933,6 +940,13 @@ document.addEventListener("DOMContentLoaded", () => {
       modalBody.innerHTML = `<div class="video-placeholder">Video preview coming soon...</div>`;
     }
     videoModal.classList.add("open");
+
+    if (typeof window.trackAnalytics === "function") {
+      window.trackAnalytics("click", "video_preview", {
+        project: project.title,
+        source: "modal",
+      });
+    }
   }
 
   function closeVideoModal() {
@@ -1004,12 +1018,12 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="read-more-links">
             <a href="${
               project.links.code
-            }" class="btn btn-secondary" target="_blank">
+            }" class="btn btn-secondary" target="_blank" data-analytics="code" data-project="${project.title}">
               <i class="ri-github-line"></i> View Code
             </a>
             ${
               hasLiveDemo
-                ? `<a href="${project.links.live}" class="btn" target="_blank">
+                ? `<a href="${project.links.live}" class="btn" target="_blank" data-analytics="live_demo" data-project="${project.title}">
               <i class="ri-external-link-line"></i> Live Demo
             </a>`
                 : ""
@@ -1023,7 +1037,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             ${
               hasVideoLink
-                ? `<a href="${project.links.video}" class="btn" target="_blank">
+                ? `<a href="${project.links.video}" class="btn" target="_blank" data-analytics="external_video" data-project="${project.title}" data-platform="${getVideoPlatform(project.links.video) || ""}">
               <i class="ri-play-circle-line"></i> Video
             </a>`
                 : ""
@@ -1086,6 +1100,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     readMoreModal.classList.add("open");
+
+    if (typeof window.trackAnalytics === "function") {
+      if (type === "project") {
+        window.trackAnalytics("click", "read_more", {
+          project: projects[index].title,
+          source: "card",
+        });
+      } else if (type === "experience") {
+        window.trackAnalytics("click", "read_more", {
+          experience: experience[index].title,
+          source: "experience",
+        });
+      }
+    }
   }
 
   function closeReadMoreModal() {
@@ -1095,17 +1123,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Event listeners for read more buttons
   document.addEventListener("click", function (e) {
-    if (e.target.classList.contains("read-more-btn")) {
-      const type = e.target.getAttribute("data-type");
-      const index = e.target.getAttribute("data-index");
+    const readMoreBtn = e.target.closest(".read-more-btn");
+    if (readMoreBtn) {
+      const type = readMoreBtn.getAttribute("data-type");
+      const index = readMoreBtn.getAttribute("data-index");
       openReadMoreModal(type, parseInt(index));
     }
   });
 
   // Event listeners for video preview in modal
   document.addEventListener("click", function (e) {
-    if (e.target.classList.contains("btn-video-preview-modal")) {
-      const idx = e.target.getAttribute("data-project-idx");
+    const videoBtn = e.target.closest(".btn-video-preview-modal");
+    if (videoBtn) {
+      const idx = videoBtn.getAttribute("data-project-idx");
       closeReadMoreModal();
       setTimeout(() => openVideoModal(idx), 300);
     }
