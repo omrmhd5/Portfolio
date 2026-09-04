@@ -380,6 +380,12 @@ app.get("/api/stats", async (req, res) => {
 });
 
 const dashboardPath = path.join(__dirname, "..", "dashboard");
+
+app.get("/favicon.ico", (_req, res) => {
+  res.type("image/svg+xml");
+  res.sendFile(path.join(dashboardPath, "favicon.svg"));
+});
+
 app.use("/dashboard", express.static(dashboardPath));
 app.get("/dashboard", (_req, res) => {
   res.sendFile(path.join(dashboardPath, "index.html"));
