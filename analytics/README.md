@@ -6,21 +6,21 @@ Privacy-focused analytics for [omarmahmoud.dev](https://omarmahmoud.dev). Tracks
 
 - **Client tracker** (`analytics.js`) — runs on the portfolio site
 - **API server** (`analytics/server/`) — Express app on Render, writes to Postgres
-- **Database** — Supabase Postgres (`events` table)
+- **Database** — Neon Postgres (`events` table), region: Frankfurt (`aws-eu-central-1`)
 - **Dashboard** (`analytics/dashboard/`) — password-protected stats UI served at `/dashboard`
 
-## 1. Supabase setup
+## 1. Neon setup
 
-1. Create a Supabase project (or use an existing one).
-2. Open **SQL Editor** and run the migration:
+1. Create a Neon project (Frankfurt recommended to match Render).
+2. Run the schema migration in the SQL editor:
 
    ```
-   analytics/migrations/001_events.sql
+   analytics/migrations/005_neon_schema.sql
    ```
 
-3. Copy the **connection string** (Settings → Database → Connection string → URI). Use the pooler URI for serverless/Render if available.
+3. Copy the **pooled connection string** from the Neon dashboard (Settings → Connection string → Pooled, `sslmode=require`).
 
-RLS is enabled with no public policies, so only direct database connections (your Render service using `DATABASE_URL`) can read or write events.
+Only your Render service (via `DATABASE_URL`) should have database access. Do not expose the connection string publicly.
 
 ## 2. Render deployment
 
@@ -29,14 +29,14 @@ RLS is enabled with no public policies, so only direct database connections (you
 3. Set **Root Directory** to `analytics/server`.
 4. Configure environment variables:
 
-   | Variable | Description |
-   |----------|-------------|
-   | `DATABASE_URL` | Supabase Postgres connection string |
-   | `DASHBOARD_PASSWORD` | Password for `/dashboard` and `/api/stats` |
-   | `ALLOWED_ORIGINS` | Comma-separated CORS origins (default includes production + localhost) |
-   | `PORT` | Set automatically by Render |
+   | Variable             | Description                                                            |
+   | -------------------- | ---------------------------------------------------------------------- |
+   | `DATABASE_URL`       | Neon Postgres pooled connection string                                 |
+   | `DASHBOARD_PASSWORD` | Password for `/dashboard` and `/api/stats`                             |
+   | `ALLOWED_ORIGINS`    | Comma-separated CORS origins (default includes production + localhost) |
+   | `PORT`               | Set automatically by Render                                            |
 
-5. Deploy. Note your service URL, e.g. `https://portfolio-analytics.onrender.com`.
+5. Deploy. Note your service URL, e.g. `https://omarmahmoud-analytics.onrender.com`.
 
 ## 3. Portfolio site configuration
 
@@ -50,8 +50,6 @@ In `index.html`, set the analytics API base URL before scripts load:
 <script src="script.js"></script>
 ```
 
-Leave `ANALYTICS_API_URL` empty during local development to disable tracking.
-
 Redeploy the portfolio (GitHub Pages or your static host) after updating the URL.
 
 ## 4. Local development
@@ -60,11 +58,12 @@ Redeploy the portfolio (GitHub Pages or your static host) after updating the URL
 
 ```bash
 cd analytics/server
-cp ../../.env.example .env
-# Edit .env with your DATABASE_URL and DASHBOARD_PASSWORD
+# Create .env with DATABASE_URL (Neon) and DASHBOARD_PASSWORD
 npm install
 node index.js
 ```
+
+The server loads `analytics/server/.env` automatically via `loadEnv.js`.
 
 - Health check: `http://localhost:3000/health`
 - Dashboard: `http://localhost:3000/dashboard`
@@ -76,20 +75,30 @@ Serve the repo root with any static server (e.g. Live Server on port 5500). Ensu
 
 ## Tracked events
 
-| Type | Names |
-|------|-------|
-| `page_view` | `page_view` |
-| `click` | `resume`, `live_demo`, `video_preview`, `external_video`, `read_more`, `code`, `github`, `linkedin` |
+| Type        | Names                                                                                                                   |
+| ----------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `page_view` | `page_view`                                                                                                             |
+| `click`     | `resume`, `live_demo`, `video_preview`, `external_video`, `read_more`, `view_certificate`, `code`, `github`, `linkedin` |
 
-Project clicks include `metadata.project`. Social clicks include `metadata.location` (e.g. `navbar`, `contact`).
+Project clicks include `metadata.project`. Experience clicks include `metadata.company`. Social clicks include `metadata.location` (e.g. `navbar`, `contact`).
+
+Each event also stores `ip_address` and `country` (resolved server-side).
 
 ## Dashboard
 
 Visit `https://your-service.onrender.com/dashboard`, sign in with `DASHBOARD_PASSWORD`, and view:
 
 - Overview cards (views/sessions for today, 7d, 30d, all time)
+- Visitors by country
 - Click breakdown chart
 - Traffic over time
 - Project leaderboard
 - Social clicks by location
 - Recent events table
+
+## Migrations
+
+| File                  | Purpose                               |
+| --------------------- | ------------------------------------- |
+| `005_neon_schema.sql` | **Current** — full schema for Neon    |
+| `001`–`004`           | Legacy Supabase migrations (archived) |
