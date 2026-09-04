@@ -249,6 +249,23 @@
           </header>
           <div class="kpi-hero" id="kpiHero" aria-busy="false"></div>
           <div class="kpi-grid" id="overviewGrid" aria-busy="false"></div>
+          <article class="card card-countries" id="countriesPanel">
+            <div class="card-head">
+              <h4>Visitors by country</h4>
+              <span class="card-meta">Page views in selected range</span>
+            </div>
+            <div class="table-wrap">
+              <table id="countriesTable">
+                <thead>
+                  <tr>
+                    <th>Country</th>
+                    <th>Views</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </article>
         </section>
 
         <section id="charts" class="dash-section">
@@ -350,6 +367,8 @@
                     <th>Title</th>
                     <th>Type</th>
                     <th>Event</th>
+                    <th>Country</th>
+                    <th>IP</th>
                     <th>Time</th>
                   </tr>
                 </thead>

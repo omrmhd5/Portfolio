@@ -1,11 +1,16 @@
+require("./loadEnv");
+
 const express = require("express");
 const cors = require("cors");
 const rateLimit = require("express-rate-limit");
 const path = require("path");
 const pool = require("./db");
+const { getClientIp, lookupCountry } = require("./geo");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+app.set("trust proxy", true);
 
 const EVENT_TYPES = new Set(["page_view", "click"]);
 const CLICK_EVENTS = new Set([
@@ -105,15 +110,17 @@ function validateEvent(event) {
   return null;
 }
 
-async function insertEvents(events) {
+async function insertEvents(events, geo) {
+  const ip = geo?.ip || null;
+  const country = geo?.country || null;
   const client = await pool.connect();
   try {
     await client.query("BEGIN");
 
     for (const event of events) {
       await client.query(
-        `INSERT INTO events (session_id, event_type, event_name, metadata, path, referrer)
-         VALUES ($1, $2, $3, $4, $5, $6)`,
+        `INSERT INTO events (session_id, event_type, event_name, metadata, path, referrer, ip_address, country)
+         VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`,
         [
           event.session_id,
           event.event_type,
@@ -121,6 +128,8 @@ async function insertEvents(events) {
           JSON.stringify(event.metadata || {}),
           event.path || null,
           event.referrer || null,
+          ip,
+          country,
         ],
       );
     }
@@ -213,10 +222,24 @@ async function getStats(rangeDays) {
       metadata,
       path,
       referrer,
+      ip_address,
+      country,
       created_at
     FROM events
     ORDER BY created_at DESC
     LIMIT 100
+  `;
+
+  const countriesQuery = `
+    SELECT
+      COALESCE(country, 'Unknown') AS country,
+      COUNT(*)::int AS count
+    FROM events
+    WHERE created_at >= NOW() - $1::interval
+      AND event_type = 'page_view'
+    GROUP BY country
+    ORDER BY count DESC
+    LIMIT 12
   `;
 
   const interval = rangeInterval;
@@ -228,6 +251,7 @@ async function getStats(rangeDays) {
     socialByLocationResult,
     trafficOverTimeResult,
     recentEventsResult,
+    countriesResult,
   ] = await Promise.all([
     pool.query(overviewQuery),
     pool.query(clickBreakdownQuery, [interval]),
@@ -235,6 +259,7 @@ async function getStats(rangeDays) {
     pool.query(socialByLocationQuery, [interval]),
     pool.query(trafficOverTimeQuery, [interval]),
     pool.query(recentEventsQuery),
+    pool.query(countriesQuery, [interval]),
   ]);
 
   const overviewRow = overviewResult.rows[0] || {};
@@ -277,6 +302,7 @@ async function getStats(rangeDays) {
       sessions: row.sessions,
     })),
     recentEvents: recentEventsResult.rows,
+    visitorsByCountry: countriesResult.rows,
   };
 }
 
@@ -328,7 +354,9 @@ app.post("/api/events", eventsLimiter, async (req, res) => {
       }
     }
 
-    await insertEvents(events);
+    const ip = getClientIp(req);
+    const country = ip ? await lookupCountry(ip) : null;
+    await insertEvents(events, { ip, country });
     res.status(201).json({ success: true, count: events.length });
   } catch (err) {
     console.error("POST /api/events error:", err);

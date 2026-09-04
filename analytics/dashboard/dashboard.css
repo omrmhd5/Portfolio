@@ -954,6 +954,21 @@ td.metadata-cell {
   white-space: nowrap;
 }
 
+.cell-ip {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.card-countries {
+  margin-top: 0.625rem;
+}
+
+.card-countries .table-wrap {
+  border: none;
+}
+
 /* ── Modal ── */
 .modal {
   position: fixed;

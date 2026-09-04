@@ -677,11 +677,34 @@
       .join("");
   }
 
+  function renderCountriesTable(data) {
+    const tbody = document.querySelector("#countriesTable tbody");
+    if (!tbody) return;
+
+    if (!data.length) {
+      tbody.innerHTML =
+        '<tr class="empty-row"><td colspan="2">No country data for this range yet</td></tr>';
+      return;
+    }
+
+    tbody.innerHTML = data
+      .map(function (row) {
+        return (
+          "<tr><td>" +
+          escapeHtml(row.country) +
+          "</td><td><strong>" +
+          row.count +
+          "</strong></td></tr>"
+        );
+      })
+      .join("");
+  }
+
   function renderEventsTable(data) {
     const tbody = document.querySelector("#eventsTable tbody");
     if (!data.length) {
       tbody.innerHTML =
-        '<tr class="empty-row"><td colspan="4">No events recorded yet</td></tr>';
+        '<tr class="empty-row"><td colspan="6">No events recorded yet</td></tr>';
       return;
     }
 
@@ -689,6 +712,12 @@
       .map(function (row) {
         const time = new Date(row.created_at).toLocaleString();
         const titleCell = renderTitleCell(row);
+        const country = row.country
+          ? escapeHtml(row.country)
+          : '<span class="cell-muted">—</span>';
+        const ip = row.ip_address
+          ? '<span class="cell-ip">' + escapeHtml(row.ip_address) + "</span>"
+          : '<span class="cell-muted">—</span>';
 
         return (
           '<tr><td class="cell-title">' +
@@ -697,6 +726,10 @@
           eventTypeBadge(row.event_type) +
           "</td><td>" +
           escapeHtml(formatEventName(row.event_name)) +
+          "</td><td>" +
+          country +
+          "</td><td>" +
+          ip +
           '</td><td class="cell-time">' +
           escapeHtml(time) +
           "</td></tr>"
@@ -725,6 +758,7 @@
       renderTrafficChart(stats.trafficOverTime || []);
       renderProjectTable(stats.projectLeaderboard || []);
       renderSocialTable(stats.socialByLocation || []);
+      renderCountriesTable(stats.visitorsByCountry || []);
       renderEventsTable(stats.recentEvents || []);
 
       lastUpdated.textContent =
