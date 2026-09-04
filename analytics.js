@@ -5,6 +5,7 @@
   if (!API_URL) return;
 
   const SESSION_KEY = "portfolio_analytics_session";
+  const EVENTS_URL = API_URL.replace(/\/$/, "") + "/api/events";
 
   function getSessionId() {
     let sessionId = localStorage.getItem(SESSION_KEY);
@@ -32,47 +33,37 @@
     };
   }
 
-  function sendEvents(events, preferBeacon) {
+  function sendBeaconSafe(body) {
+    if (typeof navigator.sendBeacon !== "function") return false;
+    try {
+      return navigator.sendBeacon(
+        EVENTS_URL,
+        new Blob([body], { type: "text/plain" }),
+      );
+    } catch (err) {
+      return false;
+    }
+  }
+
+  function sendEvents(events) {
     if (!events.length) return;
 
     const body = JSON.stringify(events.length === 1 ? events[0] : events);
-    const url = API_URL.replace(/\/$/, "") + "/api/events";
-
-    if (
-      preferBeacon &&
-      events.length === 1 &&
-      typeof navigator.sendBeacon === "function"
-    ) {
-      const sent = navigator.sendBeacon(
-        url,
-        new Blob([body], { type: "application/json" }),
-      );
-      if (sent) return;
-    }
 
     if (typeof fetch === "function") {
-      fetch(url, {
+      fetch(EVENTS_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body,
         keepalive: true,
+        mode: "cors",
       }).catch(function () {
-        if (navigator.sendBeacon) {
-          navigator.sendBeacon(
-            url,
-            new Blob([body], { type: "application/json" }),
-          );
-        }
+        sendBeaconSafe(body);
       });
       return;
     }
 
-    if (navigator.sendBeacon) {
-      navigator.sendBeacon(
-        url,
-        new Blob([body], { type: "application/json" }),
-      );
-    }
+    sendBeaconSafe(body);
   }
 
   function flushQueue() {
@@ -93,7 +84,7 @@
     const payload = buildPayload(eventType, eventName, metadata);
 
     if (eventType === "click") {
-      sendEvents([payload], true);
+      sendEvents([payload]);
       return;
     }
 
@@ -105,26 +96,30 @@
 
   track("page_view", "page_view", {});
 
-  document.addEventListener("click", function (e) {
-    const el = e.target.closest("[data-analytics]");
-    if (!el) return;
+  document.addEventListener(
+    "click",
+    function (e) {
+      const el = e.target.closest("[data-analytics]");
+      if (!el) return;
 
-    const eventName = el.getAttribute("data-analytics");
-    if (!eventName) return;
+      const eventName = el.getAttribute("data-analytics");
+      if (!eventName) return;
 
-    const metadata = {};
-    const project = el.getAttribute("data-project");
-    const company = el.getAttribute("data-company");
-    const location = el.getAttribute("data-location");
-    const platform = el.getAttribute("data-platform");
+      const metadata = {};
+      const project = el.getAttribute("data-project");
+      const company = el.getAttribute("data-company");
+      const location = el.getAttribute("data-location");
+      const platform = el.getAttribute("data-platform");
 
-    if (project) metadata.project = project;
-    if (company) metadata.company = company;
-    if (location) metadata.location = location;
-    if (platform) metadata.platform = platform;
+      if (project) metadata.project = project;
+      if (company) metadata.company = company;
+      if (location) metadata.location = location;
+      if (platform) metadata.platform = platform;
 
-    track("click", eventName, metadata);
-  }, true);
+      track("click", eventName, metadata);
+    },
+    true,
+  );
 
   window.addEventListener("pagehide", flushQueue);
   document.addEventListener("visibilitychange", function () {

@@ -38,7 +38,12 @@ app.use(
     },
   }),
 );
-app.use(express.json({ limit: "32kb" }));
+app.use(
+  express.json({
+    limit: "32kb",
+    type: ["application/json", "text/plain"],
+  }),
+);
 
 const eventsLimiter = rateLimit({
   windowMs: 60 * 1000,
