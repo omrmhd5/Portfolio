@@ -915,6 +915,16 @@ img {
   background: #fff;
 }
 
+.read-more-bullets {
+  margin: 1rem 0 0;
+  padding-left: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
 .project-content {
   padding: 2rem;
 }

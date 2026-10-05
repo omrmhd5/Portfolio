@@ -491,6 +491,11 @@ const toolsMethodologies = [
   },
 ];
 
+function getProjectCoverImage(project) {
+  return Array.isArray(project.image) ? project.image[0] : project.image;
+}
+
+// image[0] (or the sole image) must be the project home / hero screenshot.
 const projects = [
   {
     title: "AmanCity",
@@ -502,8 +507,15 @@ const projects = [
       "assets/AmanCity_4.png",
       "assets/AmanCity_Poster.png",
     ],
-    summary: `Egypt's first AI-powered urban and women's safety platform, integrating computer vision, natural language processing, machine learning, OSINT social scanning, and predictive mapping to provide real-time hazard detection, safe routing, and live-tracking SOS support.`,
-    description: `Developed as the Graduation Project, AmanCity is Egypt's first AI-powered urban and women's safety platform designed to help citizens detect hazards and access emergency assistance through a unified safety ecosystem. It integrates Computer Vision, Natural Language Processing, and Machine Learning to identify, analyze, and forecast incidents. Built with Flutter, the app empowers citizens to report public hazards by uploading geo-tagged images and videos, which are automatically analyzed to detect threats like fires, road accidents, floods, building damage, weapons, and crimes, after screening uploads via an AI-generated image detection gate to block fake media. The platform also scans social media feeds in real-time for crisis updates across Greater Cairo, displaying verified reports, active safety alerts, and nearby emergency POIs (hospitals, police, and fire stations) on an interactive safety map highlighting predictive risk hotspots using spatial clustering. Users can chat with a conversational safety assistant for context-aware safety advice (such as "Is this area safe right now?"), plan dynamic safe routes that avoid dangerous zones, and receive real-time push alerts when entering or approaching unsafe areas. Additionally, the app features a session-based SOS system for women's safety that instantly triggers alarms, starts flashlights, and shares a live, continuous location tracking feed directly with trusted contacts. Finally, the system includes a secure Web Command Dashboard for response authorities to monitor active hazards and track SOS alerts in real-time.`,
+    autoplay: true,
+    description: `AmanCity is Egypt's first AI-powered urban and women's safety platform, built so citizens can report hazards and reach emergency help through one system instead of scattered channels. People upload geo-tagged photos and videos that are screened for fake media and checked for fires, accidents, floods, damage, weapons, and crimes. The same platform reads live social feeds across Greater Cairo, places verified alerts and nearby emergency points on a safety map, and lets users ask for advice, follow a safer route, or start an SOS that shares live location with trusted contacts, while authorities monitor hazards from a command dashboard.`,
+    summary: `Egypt's first multimodal AI urban and women's safety platform, replacing fragmented reporting. Citizens upload hazards, the system screens fake media and reads live social feeds, then maps risk hotspots, safer routes, and live SOS tracking for trusted contacts.`,
+    bullets: [
+      "Hazard detection on citizen uploads, with a validation gate that blocks AI-generated fake media before a report is accepted.",
+      "Live social-media scanning across Greater Cairo, shown with safety alerts, emergency points, and predicted risk hotspots.",
+      "Safety assistant, routes that avoid dangerous zones, and push alerts when someone nears an unsafe area.",
+      "SOS with alarm, flashlight, and continuous location sharing to trusted contacts, plus a command dashboard for response authorities.",
+    ],
     technologies: [
       "Flutter",
       "Node.js",
@@ -525,27 +537,59 @@ const projects = [
   },
   {
     title: "Huraymila Healthy City",
-    image: "assets/Huraymila.png",
-    summary: `A centralized web portal and compliance dashboard designed for a Saudi municipality to digitize agency standards tracking, reducing document retrieval times by 70% and review cycles by 60%.`,
-    description: `Huraymila Healthy City is a fully digital healthy-city management platform built for the city of Huraymila in Saudi Arabia to replace all paper-based standard submissions with a modern, centralized MERN-based system. The platform enables 18 government agencies to upload compliance documents, track approval status, and manage all required standards through a unified Governor dashboard. It includes secure JWT-protected REST APIs with role-based access (Governor / Agency / Volunteer), a modern bilingual interface, and complete initiative and file management capabilities. The system introduced measurable improvements across operations—improving document retrieval by over 70%, raising agency operational efficiency by 50%, and cutting approval review time by more than 60% through a streamlined dashboard and centralized workflow. With real-time updates, interactive health indicators, a volunteer participation module, and an initiative management system, the platform provides a scalable digital foundation for healthy-city programs across multiple municipalities.`,
+    image: [
+      "assets/huraymila/01-hero.png",
+      "assets/huraymila/02-vision.png",
+      "assets/huraymila/03-timeline.png",
+      "assets/huraymila/04-latest-news.png",
+      "assets/huraymila/05-health-indicators.png",
+      "assets/huraymila/06-standards-progress.png",
+      "assets/huraymila/07-community-network.png",
+      "assets/huraymila/08-about.png",
+      "assets/huraymila/09-about-huraymila.png",
+      "assets/huraymila/10-news.png",
+      "assets/huraymila/11-news-article.png",
+      "assets/huraymila/12-structure.png",
+      "assets/huraymila/13-login.png",
+      "assets/huraymila/14-governor-dashboard.png",
+      "assets/huraymila/15-agencies.png",
+      "assets/huraymila/16-standards.png",
+      "assets/huraymila/17-standard-evidence.png",
+      "assets/huraymila/18-agency-standards.png",
+      "assets/huraymila/19-mobile-home.png",
+    ],
+    description: `Huraymila Healthy City is a digital platform built for Huraymila, Saudi Arabia, to replace paper-based healthy-city standard submissions with one centralized system. Agencies submit compliance evidence and follow review status, the Governor approves or rejects from a unified dashboard, and volunteers join initiatives through scoped accounts, while a public site presents program news and city health indicators.`,
+    summary: `Healthy-city platform for Huraymila, Saudi Arabia, digitizing standards submission. Agencies upload compliance documents and track approval; the governor reviews submissions and follows initiatives from one dashboard. Document retrieval improved by 70%, agency submission efficiency by 50%, and review time cut by 60%.`,
+    bullets: [
+      "18 government agencies run standards submissions and approvals from one Governor dashboard instead of paper handoffs.",
+      "Improved document retrieval by over 70%, raised agency operational efficiency by 50%, and cut approval review time by more than 60%.",
+      "Bilingual public portal with news, success stories, and interactive health indicators for the wider healthy-city program.",
+      "JWT-protected REST APIs with role-based access for governors, agencies, and volunteers, plus initiative and file management.",
+    ],
     technologies: [
       "React.js",
-      "TailwindCSS",
+      "Tailwind CSS",
       "Node.js",
       "Express.js",
       "MongoDB",
     ],
     links: {
       code: "https://github.com/omrmhd5/Huraymila",
-      live: "https://huraymilahealth.com/",
+      live: "https://huraymila-demo.vercel.app/",
     },
-    video: "assets/Huraymila.mp4",
+    video: "assets/huraymila/huraymila-demo-en.mp4",
   },
   {
     title: "Audoria",
     image: ["assets/Audoria_1.png", "assets/Audoria_2.png"],
-    summary: `An educational mobile application designed for visually impaired students, utilizing Google ML Kit OCR, voice-driven navigation, and AI text summaries to enable fully independent learning.`,
-    description: `Audoria is an AI-powered mobile educational assistant built to enable visually impaired students to learn independently through a fully voice-first experience. Developed using Flutter and Firebase, the app converts printed and digital materials into audio lessons using OCR and Text-to-Speech, enabling hands-free access to document capture, summaries, quizzes, and AI chat. Audoria features 100% hands-free navigation, a parent–child system with QR-based login, and performance insights for guardians, transforming inaccessible learning materials into an inclusive, interactive, and scalable learning platform.`,
+    autoplay: true,
+    description: `Audoria is a voice-first educational assistant for visually impaired students, turning printed and digital materials into audio they can study without sighted help. A student captures a page, hears it read aloud, then gets a summary, a quiz, or an answer from chat, all by voice. Guardians join through a QR parent-child login to upload materials and follow learning progress.`,
+    summary: `Voice-first AI educational assistant for visually impaired students. It converts documents into audio with OCR and text-to-speech, then generates summaries, quizzes, and Q&A, with hands-free navigation and QR parent-child login.`,
+    bullets: [
+      "Hands-free navigation for document capture, summaries, quizzes, and AI chat.",
+      "OCR and text-to-speech turn images and PDFs into audio lessons, key topics, and quizzes.",
+      "QR parent-child login so guardians upload materials and track performance.",
+    ],
     technologies: [
       "Flutter",
       "Firebase",
@@ -563,40 +607,100 @@ const projects = [
   },
   {
     title: "Pest Control Reporting System",
-    image: "assets/TW.png",
-    summary: `A full-stack reporting system built in 3 days for a Saudi governmental contractor to digitize field inspection logs and automate dynamic Excel reporting, reducing processing times by 60%.`,
-    description: `Developed a fully integrated web-based reporting system for Takween Al Watan, a Saudi company providing pest control services for government projects in Makkah. Delivered in just three days, the system digitized field reporting and replaced manual Excel workflows with a centralized digital workflow. It allows 10+ field workers to submit inspection data via a smart interface, while admins access a secure dashboard to monitor inspections, analyze data, and export dynamic Excel reports. The platform improved data accuracy, eliminated 100% of manual tracking, and reduced daily processing time by over 60%, giving supervisors real-time visibility over field operations.`,
+    image: [
+      "assets/takween/01-home.png",
+      "assets/takween/02-field-worker.png",
+      "assets/takween/03-data-input-form.png",
+      "assets/takween/04-confirmation.png",
+      "assets/takween/05-login.png",
+      "assets/takween/06-admin-dashboard.png",
+      "assets/takween/07-weekly-report-view.png",
+      "assets/takween/08-weekly-excel-sheet.png",
+      "assets/takween/09-detailed-report-view.png",
+      "assets/takween/10-detailed-excel-sheet.png",
+      "assets/takween/11-mobile-view.png",
+    ],
+    description: `Pest Control Reporting System is a field reporting platform for Takween Al Watan, a Saudi contractor on government pest-control projects in Makkah, built to replace manual Excel logs. Field workers submit a structured inspection with no login, and admins review those reports, filter by date and location, and export daily, weekly, and monthly Excel files from a secure dashboard.`,
+    summary: `Reporting system for a Saudi government contractor. Field workers submit structured inspections, and admins monitor them and export Excel from one dashboard. Eliminated manual tracking and cut daily processing time by over 60%.`,
+    bullets: [
+      "10+ field workers submit inspection data through one digital workflow instead of spreadsheets.",
+      "Eliminated 100% of manual Excel tracking and reduced daily processing time by more than 60%.",
+      "Admin dashboard with live stats, date and location filters, and official daily, weekly, and monthly Excel exports.",
+      "Working system delivered in three days for active Makkah field operations.",
+    ],
     technologies: [
       "React.js",
       "TailwindCSS",
       "Node.js",
       "Express.js",
       "MongoDB",
-      "Microsoft Excel",
     ],
     links: {
       code: "https://github.com/omrmhd5/TakweenAlWatan",
-      live: "https://takween-al-watan.vercel.app/",
+      live: "https://takween-al-watan-demo.vercel.app/",
     },
-    video: "assets/TW.mp4",
+    video: "assets/takween/takween-al-watan-demo.mp4",
   },
   {
     title: "Abdullah Bukhari and Partners Company",
-    image: "assets/Bukhari.png",
-    summary: `A premium, responsive corporate portal designed to showcase transport and logistics services in Saudi Arabia, featuring full bilingual localization and an optimized, SEO-friendly layout.`,
-    description: `Abdullah Bukhari Transport & Logistics is a modern, multilingual corporate website built to present the company’s transport and logistics services across Saudi Arabia. The platform showcases seven core services, including transport, logistics, Hajj and Umrah buses, heavy transport, car rental, logistics management, and digital marketing, through a responsive, bilingual (AR/EN) interface with dark/light mode support. Designed with a clean, SEO-friendly structure and smooth animations, the website improves content clarity and service discoverability, enhances user engagement, and provides a scalable digital presence aligned with enterprise branding and future growth.`,
-    technologies: ["React.tsx", "TailwindCSS", "TypeScript"],
+    image: [
+      "assets/bukhari/01-home-hero.png",
+      "assets/bukhari/02-about.png",
+      "assets/bukhari/03-services.png",
+      "assets/bukhari/04-water-hero.png",
+      "assets/bukhari/05-water-content.png",
+      "assets/bukhari/06-transport-hero.png",
+      "assets/bukhari/07-transport-content.png",
+      "assets/bukhari/08-buses-hero.png",
+      "assets/bukhari/09-buses-content.png",
+      "assets/bukhari/10-trailer-hero.png",
+      "assets/bukhari/11-car-rental-hero.png",
+      "assets/bukhari/12-logistics-hero.png",
+      "assets/bukhari/13-digital-marketing.png",
+      "assets/bukhari/14-mobile-home.png",
+    ],
+    description: `Abdullah Bukhari Transport & Logistics is a corporate website for a Saudi transport company, so prospects can understand the business and get in touch from one place. Visitors move from the company story through dedicated service pages, partner proof, and quote or contact paths in Arabic or English.`,
+    summary: `Multilingual corporate website for Abdullah Bukhari Transport & Logistics in Saudi Arabia. It presents seven core services, partners, and quote paths in Arabic and English, with an SEO-structured layout for long-term search visibility.`,
+    bullets: [
+      "Seven services online: transport, logistics, Hajj and Umrah buses, heavy transport, car rental, logistics management, and digital marketing.",
+      "SEO-structured pages and a responsive bilingual interface for clearer service discoverability.",
+      "Partner and client showcase plus quote, careers, and contact paths for B2B credibility.",
+    ],
+    technologies: ["React.js", "TypeScript", "TailwindCSS"],
     links: {
       code: "https://github.com/omrmhd5/Bukhari",
       live: "https://www.logistics-as.com/",
     },
-    video: "assets/Bukhari.mp4",
+    video: "assets/bukhari/bukhari-demo.mp4",
   },
   {
     title: "OSTR - Ecommerce Fashion Website",
-    image: "assets/OSTR.png",
-    summary: `An interactive MERN-stack e-commerce store supporting 200+ products, featuring secure JWT role-based authentication, cart management, and a dynamic real-time administrative product dashboard.`,
-    description: `OSTR is an interactive fashion website built with the MERN stack, offering a seamless shopping experience supporting 200+ products. It features secure JWT login, user/admin roles, and a full admin dashboard for managing products. Users can browse men's, women's, and kids' categories, design custom outfits, and shop via a complete cart, wishlist, and order system. The site includes responsive dark mode support, a secure checkout, and real-time database updates for all interactions.`,
+    image: [
+      "assets/ostr/02-home-hero.png",
+      "assets/ostr/03-home-editorial.png",
+      "assets/ostr/04-home-reviews.png",
+      "assets/ostr/05-shop.png",
+      "assets/ostr/06-product.png",
+      "assets/ostr/07-product-related.png",
+      "assets/ostr/08-cart.png",
+      "assets/ostr/09-checkout.png",
+      "assets/ostr/10-wishlist.png",
+      "assets/ostr/11-profile.png",
+      "assets/ostr/12-new-hero.png",
+      "assets/ostr/13-new-explore.png",
+      "assets/ostr/14-new-bestsellers.png",
+      "assets/ostr/15-admin.png",
+      "assets/ostr/01-login.png",
+      "assets/ostr/16-login-ar.png",
+    ],
+    description: `OSTR is a fashion store where shoppers browse collections, open a product, save it, and confirm a cash order from one shop. Admins manage that same catalog, while customers keep a cart, wishlist, and order history on their account.`,
+    summary: `Ecommerce fashion store for browsing, saving, and cash checkout in one shop. Shoppers open a product, add it to the cart or wishlist, and confirm the order. Admins manage the same catalog of 200+ products.`,
+    bullets: [
+      "Catalog of 200+ products across men's, women's, and kids' categories, including custom outfit design.",
+      "Cart, wishlist, and cash checkout with order confirmation in one flow.",
+      "Admin dashboard to add and manage products on the live catalog.",
+      "Separate shopper and admin accounts for storefront and catalog control.",
+    ],
     technologies: [
       "React.js",
       "TailwindCSS",
@@ -606,16 +710,34 @@ const projects = [
     ],
     links: {
       code: "https://github.com/omrmhd5/OSTR",
-      live: "https://ostr-store.vercel.app/",
+      live: "https://ostr-demo.vercel.app/",
     },
-    video: "assets/OSTR.mp4",
+    video: "assets/ostr/ostr-demo.mp4",
   },
   {
     title: "Continental Premium Properties",
-    image: "assets/CPP.png",
-    summary: `A multilingual real estate listings platform built with the MERN stack, offering interactive property searches, dark/light modes, and a secure admin dashboard to manage listings.`,
-    description: `Continental Premium Properties is a fully responsive real estate website built with the MERN stack supporting 100+ property listings, with both Arabic and English support. It offers dark/light modes, smooth performance across all devices, and direct contact with property owners. The admin dashboard allows secure management of listings—uploading, editing, deleting, and viewing properties with multiple images and detailed info.`,
+    image: [
+      "assets/cpp/01-hero.png",
+      "assets/cpp/02-projects-page.png",
+      "assets/cpp/03-project-page.png",
+      "assets/cpp/04-media-center.png",
+      "assets/cpp/05-about-us.png",
+      "assets/cpp/06-contact-us.png",
+      "assets/cpp/07-admin-login.png",
+      "assets/cpp/08-admin-dashboard.png",
+      "assets/cpp/09-admin-projects.png",
+      "assets/cpp/10-add-project.png",
+      "assets/cpp/11-mobile-home.png",
+    ],
+    description: `Continental Premium Properties is a real estate site where visitors browse listings and contact owners directly. They filter properties, open a listing with its photos, and send an inquiry, while admins add, edit, and remove those listings from a secure dashboard.`,
+    summary: `Real estate platform for Continental Premium Properties with 100+ listings in English, Arabic, and French. Visitors browse properties and contact owners; admins manage listings, photos, and details from one dashboard.`,
+    bullets: [
+      "100+ property listings in English, Arabic, and French, with dark and light modes.",
+      "Listing pages with multiple images and direct owner contact.",
+      "Admin dashboard to upload, edit, and delete properties.",
+    ],
     technologies: [
+      "Next.js",
       "React.js",
       "TailwindCSS",
       "Node.js",
@@ -624,9 +746,9 @@ const projects = [
     ],
     links: {
       code: "https://github.com/omrmhd5/Continental-Premium-Properties",
-      live: "https://continental-premium-properties.vercel.app/",
+      live: "https://continental-premium-properties-demo.vercel.app/",
     },
-    video: "assets/CPP.mp4",
+    video: "assets/cpp/continental-premium-properties-demo.mp4",
   },
   // {
   //   title: ".NFQ To-Do App",
@@ -890,14 +1012,27 @@ document.addEventListener("DOMContentLoaded", () => {
     const hasVideo = project.video !== "#";
     const hasVideoLink = project.links.video && project.links.video !== "#";
 
-    const isLongDescription = project.description.length > 100;
-    const shortDescription = isLongDescription
-      ? project.description.substring(0, 100) + "..."
-      : project.description;
+    const fullDescription = project.description.trim();
+    const firstSentenceMatch = fullDescription.match(/^[\s\S]+?[.!?](?=\s|$)/);
+    const cardPreview = firstSentenceMatch
+      ? firstSentenceMatch[0]
+      : fullDescription;
+    const hasBullets =
+      Array.isArray(project.bullets) && project.bullets.length > 0;
+    const continuesInModal =
+      cardPreview.length < fullDescription.length || hasBullets;
+
+    const coverImage = getProjectCoverImage(project);
+    const galleryCount = Array.isArray(project.image)
+      ? project.image.length
+      : 0;
+    const useAutoplaySlideshow =
+      project.autoplay && Array.isArray(project.image) && galleryCount > 1;
 
     let imageHTML = "";
     let galleryHintHTML = "";
-    if (Array.isArray(project.image)) {
+
+    if (useAutoplaySlideshow) {
       imageHTML = `<div class="project-slideshow" data-project-idx="${idx}">
         ${project.image
           .map(
@@ -907,23 +1042,34 @@ document.addEventListener("DOMContentLoaded", () => {
           .join("")}
       </div>`;
 
-      if (project.image.length > 1) {
-        galleryHintHTML = `<div class="project-gallery-hint" aria-hidden="true">
+      const showDots = galleryCount <= 8;
+      galleryHintHTML = `<div class="project-gallery-hint" aria-hidden="true">
           <span class="project-gallery-badge">
-            <i class="ri-images-line"></i> ${project.image.length} photos
+            <i class="ri-images-line"></i> ${galleryCount} photos
           </span>
-          <div class="project-slideshow-dots">
+          ${
+            showDots
+              ? `<div class="project-slideshow-dots">
             ${project.image
               .map(
                 (_, dotIdx) =>
                   `<span class="project-slideshow-dot${dotIdx === 0 ? " active" : ""}"></span>`,
               )
               .join("")}
-          </div>
+          </div>`
+              : ""
+          }
         </div>`;
-      }
     } else {
-      imageHTML = `<img src="${project.image}" alt="${project.title}" />`;
+      imageHTML = `<img src="${coverImage}" alt="${project.title}" />`;
+      galleryHintHTML =
+        galleryCount > 1
+          ? `<div class="project-gallery-hint" aria-hidden="true">
+          <span class="project-gallery-badge">
+            <i class="ri-images-line"></i> ${galleryCount} photos
+          </span>
+        </div>`
+          : "";
     }
 
     const projectCard = `
@@ -934,8 +1080,8 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
     <div class="project-content">
       <h3>${project.title} ${project.badge ? `<span class="project-badge">${project.badge}</span>` : ""}</h3>
-      <p>${shortDescription}${
-        isLongDescription
+      <p>${cardPreview}${
+        continuesInModal
           ? ` <button class="read-more-btn" data-type="project" data-index="${idx}">Read More</button>`
           : ""
       }</p>
@@ -1272,9 +1418,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const hasVideo = project.video !== "#";
       const hasVideoLink = project.links.video && project.links.video !== "#";
 
-      const headerImage = Array.isArray(project.image)
-        ? project.image[0]
-        : project.image;
+      const headerImage = getProjectCoverImage(project);
 
       modalBody.innerHTML = `
         <div class="read-more-project">
@@ -1290,13 +1434,25 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
           </div>
           <div class="read-more-description-wrapper" style="position: relative;">
-            <div style="display: flex; justify-content: flex-end; margin-bottom: 0.8rem;">
+            ${
+              project.summary ||
+              (Array.isArray(project.bullets) && project.bullets.length > 0)
+                ? `<div style="display: flex; justify-content: flex-end; margin-bottom: 0.8rem;">
               <button class="btn btn-secondary btn-summarize" data-state="full" style="font-size: 0.85rem; padding: 0.4rem 1rem; height: auto;">
                 <i class="fa-solid fa-compress"></i> Summarize
               </button>
-            </div>
+            </div>`
+                : ""
+            }
             <div class="read-more-description">
               <p class="description-text" style="line-height: 1.6; font-size: 0.95rem;">${project.description}</p>
+              ${
+                Array.isArray(project.bullets) && project.bullets.length
+                  ? `<ul class="read-more-bullets">${project.bullets
+                      .map((bullet) => `<li>${bullet}</li>`)
+                      .join("")}</ul>`
+                  : ""
+              }
             </div>
           </div>
           <div class="read-more-links">
@@ -1333,15 +1489,20 @@ document.addEventListener("DOMContentLoaded", () => {
       // Summarize Toggle Handler
       const summarizeBtn = modalBody.querySelector(".btn-summarize");
       const descText = modalBody.querySelector(".description-text");
+      const bulletsEl = modalBody.querySelector(".read-more-bullets");
       if (summarizeBtn && descText) {
         summarizeBtn.addEventListener("click", () => {
           const state = summarizeBtn.getAttribute("data-state");
           if (state === "full") {
-            descText.innerHTML = project.summary || project.description;
+            if (project.summary) {
+              descText.innerHTML = project.summary;
+            }
+            if (bulletsEl) bulletsEl.style.display = "none";
             summarizeBtn.innerHTML = `<i class="fa-solid fa-expand"></i> Show Full Details`;
             summarizeBtn.setAttribute("data-state", "summary");
           } else {
             descText.innerHTML = project.description;
+            if (bulletsEl) bulletsEl.style.display = "";
             summarizeBtn.innerHTML = `<i class="fa-solid fa-compress"></i> Summarize`;
             summarizeBtn.setAttribute("data-state", "full");
           }
@@ -1667,7 +1828,7 @@ window.addEventListener("resize", () => {
 window.addEventListener("scroll", activateNavLink);
 window.addEventListener("DOMContentLoaded", activateNavLink);
 
-// Slideshow functionality for multi-image projects
+// Auto-rotate card previews for projects with autoplay: true (AmanCity, Audoria)
 window.addEventListener("DOMContentLoaded", () => {
   const slideshows = document.querySelectorAll(".project-slideshow");
   slideshows.forEach((slideshow) => {
