@@ -15,7 +15,7 @@ A fully responsive personal portfolio website built with HTML, CSS, and JavaScri
 
 **[▶ Watch site walkthrough](./docs/portfolio-demo.mp4)** (~1 min)
 
-Theme switch on the hero → education → experience (DEPI card) → skills → projects (Pest Control card and video preview) → testimonials → awards → contact.
+Theme switch on the hero → education → experience (Freelancer Read More, then slow scroll through DEPI) → skills → projects (Huraymila Read More, Summarize, and video preview) → testimonials (Safar Alshahrani) → awards → contact.
 
 ---
 
@@ -38,8 +38,8 @@ Theme switch on the hero → education → experience (DEPI card) → skills →
       <img width="100%" alt="Experience" src="./docs/screenshots/03-experience.png" />
     </td>
     <td width="50%" valign="top">
-      <strong>DEPI</strong><br />
-      <img width="100%" alt="DEPI experience card" src="./docs/screenshots/04-experience-depi.png" />
+      <strong>Freelancer Read More</strong><br />
+      <img width="100%" alt="Freelancer experience modal" src="./docs/screenshots/04-experience-freelancer.png" />
     </td>
   </tr>
   <tr>
@@ -54,12 +54,12 @@ Theme switch on the hero → education → experience (DEPI card) → skills →
   </tr>
   <tr>
     <td width="50%" valign="top">
-      <strong>Pest Control</strong><br />
-      <img width="100%" alt="Pest Control project card" src="./docs/screenshots/07-project-pest-control.png" />
+      <strong>Huraymila Healthy City</strong><br />
+      <img width="100%" alt="Huraymila Healthy City project modal" src="./docs/screenshots/07-project-huraymila.png" />
     </td>
     <td width="50%" valign="top">
       <strong>Testimonials</strong><br />
-      <img width="100%" alt="Basheer Shubeir Ahmed testimonial" src="./docs/screenshots/08-testimonials.png" />
+      <img width="100%" alt="Safar Alshahrani testimonial" src="./docs/screenshots/08-testimonials.png" />
     </td>
   </tr>
   <tr>
