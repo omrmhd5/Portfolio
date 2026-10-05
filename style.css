@@ -798,7 +798,10 @@ img {
 }
 
 .project-image {
+  position: relative;
+  overflow: hidden;
   object-fit: cover;
+  cursor: zoom-in;
 }
 
 .project-image img {
@@ -834,6 +837,82 @@ img {
 
 .project-card:hover .project-slideshow img {
   transform: scale(1.05);
+}
+
+.project-gallery-hint {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.75rem;
+  pointer-events: none;
+}
+
+.project-gallery-hint::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.42) 0%,
+    rgba(0, 0, 0, 0.12) 22%,
+    transparent 48%
+  );
+  pointer-events: none;
+}
+
+.project-gallery-badge {
+  position: relative;
+  z-index: 1;
+  align-self: flex-end;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.62);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(8px);
+}
+
+.project-gallery-badge i {
+  font-size: 0.95rem;
+}
+
+.project-slideshow-dots {
+  position: relative;
+  z-index: 1;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.38);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(6px);
+}
+
+.project-slideshow-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.45);
+  transition:
+    width 0.25s ease,
+    background 0.25s ease;
+}
+
+.project-slideshow-dot.active {
+  width: 18px;
+  background: #fff;
 }
 
 .project-content {
@@ -1448,6 +1527,10 @@ img {
     width: 100%;
   }
 
+  .hero_content h2 {
+    justify-content: center;
+  }
+
   .hero_actions {
     justify-content: center;
   }
@@ -1931,69 +2014,214 @@ img {
 .video-modal {
   display: none;
   position: fixed;
-  z-index: 2000;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
+  z-index: 2100;
+  inset: 0;
   justify-content: center;
   align-items: center;
 }
+
 .video-modal.open {
   display: flex;
 }
+
 .video-modal-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.7);
-  z-index: 1;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
 }
+
 .video-modal-content {
   position: relative;
-  z-index: 2;
-  background: var(--card-bg, #fff);
-  border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
-  padding: 2rem;
-  min-width: 320px;
-  max-width: 90vw;
-  min-height: 180px;
-  max-height: 80vh;
+  z-index: 1;
+  width: min(1100px, 94vw);
+  max-height: 92vh;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 1rem 1rem;
 }
+
 .video-modal-close {
-  background: none;
-  border: none;
-  font-size: 2rem;
-  color: var(--primary-color);
-  cursor: pointer;
   position: absolute;
-  top: 1rem;
-  right: 1rem;
-  z-index: 3;
-  transition: color 0.2s;
+  top: 0.25rem;
+  right: 0.25rem;
+  background: rgba(255, 255, 255, 0.12);
+  border: none;
+  color: #fff;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  font-size: 1.75rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s ease;
 }
+
 .video-modal-close:hover {
-  color: var(--secondary-color);
+  background: rgba(255, 255, 255, 0.22);
 }
+
+.video-modal-title {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+  margin: 0;
+  padding: 0 3rem;
+}
+
 .video-modal-body {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 150px;
-  margin-top: 2rem;
 }
+
+.video-modal-player {
+  width: 100%;
+  max-height: 72vh;
+  border-radius: 12px;
+  background: #000;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+
 .video-placeholder {
   text-align: center;
   padding: 2rem;
-  color: var(--text-light);
+  color: rgba(255, 255, 255, 0.75);
   font-style: italic;
+}
+
+@media screen and (max-width: 768px) {
+  .video-modal-title {
+    font-size: 1rem;
+    padding: 0 2.5rem;
+  }
+}
+
+/* Project Photo Slideshow Modal */
+.photo-slideshow-modal {
+  display: none;
+  position: fixed;
+  z-index: 2100;
+  inset: 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.photo-slideshow-modal.open {
+  display: flex;
+}
+
+.photo-slideshow-modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+}
+
+.photo-slideshow-modal-content {
+  position: relative;
+  z-index: 1;
+  width: min(1100px, 94vw);
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 1rem 1rem;
+}
+
+.photo-slideshow-modal-close {
+  position: absolute;
+  top: 0.25rem;
+  right: 0.25rem;
+  background: rgba(255, 255, 255, 0.12);
+  border: none;
+  color: #fff;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  font-size: 1.75rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.photo-slideshow-modal-close:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.photo-slideshow-modal-title {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+  margin: 0;
+  padding: 0 3rem;
+}
+
+.photo-slideshow-modal-body {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.photo-slideshow-modal-image {
+  width: 100%;
+  max-height: 72vh;
+  object-fit: contain;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+
+.photo-slideshow-nav {
+  flex-shrink: 0;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: none;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.photo-slideshow-nav:hover {
+  background: rgba(255, 255, 255, 0.24);
+  transform: scale(1.05);
+}
+
+.photo-slideshow-counter {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 768px) {
+  .photo-slideshow-modal-body {
+    gap: 0.35rem;
+  }
+
+  .photo-slideshow-nav {
+    width: 2.25rem;
+    height: 2.25rem;
+    font-size: 1.3rem;
+  }
+
+  .photo-slideshow-modal-title {
+    font-size: 1rem;
+    padding: 0 2.5rem;
+  }
 }
 
 /* Read More Button Styles */
