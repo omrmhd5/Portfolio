@@ -497,6 +497,7 @@ function getProjectCoverImage(project) {
 
 // image[0] (or the sole image) must be the project home / hero screenshot.
 const projects = [
+
   {
     title: "AmanCity",
     badge: `<i class="fa-solid fa-graduation-cap"></i> Graduation Project`,
@@ -535,6 +536,7 @@ const projects = [
     },
     video: "#",
   },
+
   {
     title: "Huraymila Healthy City",
     image: [
@@ -579,6 +581,7 @@ const projects = [
     },
     video: "assets/huraymila/huraymila-demo-en.mp4",
   },
+
   {
     title: "Audoria",
     image: ["assets/Audoria_1.png", "assets/Audoria_2.png"],
@@ -605,6 +608,44 @@ const projects = [
     },
     video: "#",
   },
+
+  {
+    title: "King Khalid Training Center",
+    image: [
+      "assets/king-khalid/02-daily-summary.png",
+      "assets/king-khalid/03-scan.png",
+      "assets/king-khalid/04-reports.png",
+      "assets/king-khalid/05-trainees.png",
+      "assets/king-khalid/06-violations.png",
+      "assets/king-khalid/07-disciplinary.png",
+      "assets/king-khalid/08-classes.png",
+      "assets/king-khalid/09-teacher-class.png",
+      "assets/king-khalid/01-login.png",
+      "assets/king-khalid/10-login-arabic.png",
+      "assets/king-khalid/11-mobile-login.png",
+    ],
+    description: `King Khalid Training Center is an attendance and classroom system that replaces paper roll call and handwritten class sheets. Staff scan a trainee ID for check-in and check-out, see who is on time, late, absent, or still inside, and teachers submit a daily class report, while admins keep the roster, shifts, violations, and schedules together.`,
+    summary: `Attendance and classroom system for King Khalid Training Center, replacing paper roll call and handwritten class sheets. Staff scan trainee IDs for check-in and check-out, and teachers file a daily class report. Shift attendance, absences, late arrivals, and missing check-outs sit on one screen, with Excel and PDF export.`,
+    bullets: [
+      "On-time and late status against the active shift grace period, using Asia/Riyadh time.",
+      "Reports for hours, absences, late arrivals, and missing check-outs, with search, shift filters, and Excel and PDF export.",
+      "Trainee roster with rank, specialization, shift, and class, plus bulk Excel import, violation records, and disciplinary requests.",
+      "A teacher page for one class to mark each student and submit the day's report, in English and Arabic with RTL.",
+    ],
+    technologies: [
+      "React.js",
+      "TypeScript",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+    ],
+    links: {
+      code: "https://github.com/omrmhd5/KingKhalidTrainingAttendanceSystem",
+      live: "https://king-khalid-training-attendance-system-demo.vercel.app/",
+    },
+    video: "assets/king-khalid/king-khalid-training-attendance-system-demo.mp4",
+  },
+
   {
     title: "Pest Control Reporting System",
     image: [
@@ -641,38 +682,139 @@ const projects = [
     },
     video: "assets/takween/takween-al-watan-demo.mp4",
   },
+
   {
-    title: "Abdullah Bukhari and Partners Company",
+    title: "Quiz Platform",
     image: [
-      "assets/bukhari/01-home-hero.png",
-      "assets/bukhari/02-about.png",
-      "assets/bukhari/03-services.png",
-      "assets/bukhari/04-water-hero.png",
-      "assets/bukhari/05-water-content.png",
-      "assets/bukhari/06-transport-hero.png",
-      "assets/bukhari/07-transport-content.png",
-      "assets/bukhari/08-buses-hero.png",
-      "assets/bukhari/09-buses-content.png",
-      "assets/bukhari/10-trailer-hero.png",
-      "assets/bukhari/11-car-rental-hero.png",
-      "assets/bukhari/12-logistics-hero.png",
-      "assets/bukhari/13-digital-marketing.png",
-      "assets/bukhari/14-mobile-home.png",
+      "assets/quiz-platform/15-dashboard-overview.png",
+      "assets/quiz-platform/02-students.png",
+      "assets/quiz-platform/03-quizzes.png",
+      "assets/quiz-platform/04-create-quiz.png",
+      "assets/quiz-platform/05-quiz-builder.png",
+      "assets/quiz-platform/06-quiz-edit.png",
+      "assets/quiz-platform/07-quiz-answer-key.png",
+      "assets/quiz-platform/08-quiz-live.png",
+      "assets/quiz-platform/09-join.png",
+      "assets/quiz-platform/10-student-quiz.png",
+      "assets/quiz-platform/11-student-results.png",
+      "assets/quiz-platform/12-session-stats.png",
+      "assets/quiz-platform/13-session-students.png",
+      "assets/quiz-platform/14-student-history.png",
+      "assets/quiz-platform/16-dashboard-charts.png",
+      "assets/quiz-platform/17-dashboard-sessions.png",
+      "assets/quiz-platform/18-dashboard-highlights.png",
+      "assets/quiz-platform/19-dashboard-top-results.png",
+      "assets/quiz-platform/01-login.png",
+      "assets/quiz-platform/20-login-arabic.png",
+      "assets/quiz-platform/21-mobile-login.png",
+      "assets/quiz-platform/22-mobile-join.png",
     ],
-    description: `Abdullah Bukhari Transport & Logistics is a corporate website for a Saudi transport company, so prospects can understand the business and get in touch from one place. Visitors move from the company story through dedicated service pages, partner proof, and quote or contact paths in Arabic or English.`,
-    summary: `Multilingual corporate website for Abdullah Bukhari Transport & Logistics in Saudi Arabia. It presents seven core services, partners, and quote paths in Arabic and English, with an SEO-structured layout for long-term search visibility.`,
+    description: `Quiz Platform is a classroom quiz system built to replace paper quizzes and manual grading. A teacher launches a multiple-choice session from one console, students join from their phones with a student ID, and scores, participation, and question stats appear on one dashboard as soon as attempts are submitted.`,
+    summary: `Classroom quiz platform replacing paper quizzes and manual grading. Teachers run live multiple-choice sessions and students join by ID from their phones. Results are 100% auto-graded on submit, with scores and participation available as soon as students finish.`,
     bullets: [
-      "Seven services online: transport, logistics, Hajj and Umrah buses, heavy transport, car rental, logistics management, and digital marketing.",
-      "SEO-structured pages and a responsive bilingual interface for clearer service discoverability.",
-      "Partner and client showcase plus quote, careers, and contact paths for B2B credibility.",
+      "Student roster with add, edit, search, and bulk import, plus quiz history for each student.",
+      "Quizzes built by hand or by paste, with one live session at a time and questions shuffled on every attempt.",
+      "Session and all-time analytics: participation, score range, most-missed questions, and dashboard charts.",
+      "English and Arabic with RTL. Students join with a registered ID and do not get a separate login.",
     ],
-    technologies: ["React.js", "TypeScript", "TailwindCSS"],
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "PostgreSQL",
+      "Drizzle ORM",
+    ],
     links: {
-      code: "https://github.com/omrmhd5/Bukhari",
-      live: "https://www.logistics-as.com/",
+      code: "https://github.com/omrmhd5/Quiz-Platform",
+      live: "https://quiz-platform-demo-kk.vercel.app/",
     },
-    video: "assets/bukhari/bukhari-demo.mp4",
+    video: "assets/quiz-platform/quiz-platform-demo.mp4",
   },
+
+  {
+    title: "Lab2Dent",
+    image: [
+      "assets/lab2dent/01-hero.png",
+      "assets/lab2dent/02-for-students.png",
+      "assets/lab2dent/03-offer-and-campus.png",
+      "assets/lab2dent/04-new-case-you.png",
+      "assets/lab2dent/05-new-case-work.png",
+      "assets/lab2dent/06-new-case-pay.png",
+      "assets/lab2dent/07-track.png",
+      "assets/lab2dent/08-track-result.png",
+      "assets/lab2dent/09-login.png",
+      "assets/lab2dent/10-orders.png",
+      "assets/lab2dent/11-order-detail.png",
+      "assets/lab2dent/12-categories.png",
+      "assets/lab2dent/13-category-detail.png",
+      "assets/lab2dent/14-universities.png",
+      "assets/lab2dent/15-staff.png",
+      "assets/lab2dent/16-settings.png",
+      "assets/lab2dent/17-home-arabic.png",
+      "assets/lab2dent/18-mobile-home.png",
+      "assets/lab2dent/19-mobile-track.png",
+    ],
+    description: `Lab2Dent is a dental case coordination platform for Egyptian dental students, built to replace campus-to-lab handoffs with one online flow. A student registers a university and work type, pays by Instapay with a receipt, and receives a tracking code. Desk staff confirm the case and assign it to the lab, and lab staff move the order forward from their own view.`,
+    summary: `Dental case platform for Lab2Dent, replacing campus-to-lab handoffs for Egyptian dental students. Students register, pay by Instapay, and follow one tracking code; desk and lab staff confirm, assign, and advance cases from role-based dashboards.`,
+    bullets: [
+      "Public service catalog and case registration with no student account, including listed pricing, optional add-ons, and an Instapay receipt on the order.",
+      "Nested service categories with custom fields and price add-ons, plus the university list and Instapay payment settings.",
+      "Role-based access for admin, desk, and lab, with order search, status and university filters, payment proof, and Excel export.",
+      "Category totals for confirmed work: orders, revenue, cost, and profit. English and Arabic with RTL, plus dark and light theme.",
+    ],
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "PostgreSQL",
+      "Drizzle ORM",
+    ],
+    links: {
+      code: "https://github.com/omrmhd5/Lab2Dent",
+      live: "https://lab2dent-demo.vercel.app/",
+    },
+    video: "assets/lab2dent/lab2dent-demo.mp4",
+  },
+
+  {
+    title: "Tool Tracker",
+    image: [
+      "assets/tooltracker/02-dashboard.png",
+      "assets/tooltracker/03-dashboard-due-soon.png",
+      "assets/tooltracker/04-operations.png",
+      "assets/tooltracker/05-checkout.png",
+      "assets/tooltracker/06-tools-by-customer.png",
+      "assets/tooltracker/07-history.png",
+      "assets/tooltracker/08-admin-tools.png",
+      "assets/tooltracker/09-admin-customers.png",
+      "assets/tooltracker/10-admin-users.png",
+      "assets/tooltracker/01-login.png",
+      "assets/tooltracker/11-login-arabic.png",
+      "assets/tooltracker/12-mobile-login.png",
+      "assets/tooltracker/13-mobile-dashboard.png",
+    ],
+    description: `Tool Tracker is an inventory and custody system built to replace paper logs and spreadsheets. Staff search the catalog, check tools out to a customer with a return date, record check-ins with notes, and review what is in stock, overdue, or due soon from one dashboard, with every handoff kept on an audit log.`,
+    summary: `Tool inventory and custody system replacing paper logs and spreadsheets. Staff check tools in and out with return dates and review in-stock, overdue, and due-soon assignments from one dashboard. Custody tracking is about 90% easier, with an audit trail on every handoff.`,
+    bullets: [
+      "Utilization counts for in stock, checked out, overdue, and due within 7 days, plus an overdue banner on every page.",
+      "Tools-by-customer view and a history log filtered by tool, customer, and date range.",
+      "Admin controls for the tool catalog, customers, and user roles.",
+      "English and Arabic with RTL on the login screen and inside the app.",
+    ],
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "PostgreSQL",
+      "Drizzle ORM",
+    ],
+    links: {
+      code: "https://github.com/omrmhd5/ToolTracker",
+      live: "https://tooltracker-demo.vercel.app/",
+    },
+    video: "assets/tooltracker/tooltracker-demo.mp4",
+  },
+
   {
     title: "OSTR - Ecommerce Fashion Website",
     image: [
@@ -714,6 +856,93 @@ const projects = [
     },
     video: "assets/ostr/ostr-demo.mp4",
   },
+
+  {
+    title: "Dough",
+    image: [
+      "assets/dough/01-home-hero.png",
+      "assets/dough/02-who-we-are.png",
+      "assets/dough/03-what-we-bake.png",
+      "assets/dough/04-featured-works.png",
+      "assets/dough/11-how-we-work.png",
+      "assets/dough/05-work-portfolio.png",
+      "assets/dough/12-case-study-overview.png",
+      "assets/dough/06-case-study-akleh.png",
+      "assets/dough/07-contact.png",
+      "assets/dough/08-uncle-dough.png",
+      "assets/dough/09-home-arabic.png",
+      "assets/dough/10-mobile-home.png",
+    ],
+    description: `Dough is a portfolio site for a Cairo creative agency, so prospects can see the brand, the services, and the client work in one place. Visitors move from the agency story through six disciplines and case studies, then start a project or apply to join the team, in English or Arabic.`,
+    summary: `Bilingual portfolio for Dough, a Cairo creative agency. It presents six service disciplines and six client case studies, with project and careers forms in English and Arabic, and an SEO-structured layout for long-term search visibility.`,
+    bullets: [
+      "Case studies for Akleh, LUX, HNDL, Farooja, Knorr, and Kufta, each with a challenge, an approach, and an outcome.",
+      "A Start a Project inquiry and a Join the Team form with resume upload, plus Instagram, WhatsApp, and the Cairo office.",
+      "English and Arabic with RTL, and a coming-soon page for the Uncle Dough sub-brand.",
+    ],
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
+    links: {
+      code: "https://github.com/omrmhd5/Dough",
+      live: "https://doughx.vercel.app/",
+    },
+    video: "assets/dough/dough-demo.mp4",
+  },
+  // {
+  //   title: ".NFQ To-Do App",
+  //   image: "assets/NFQ.png",
+  //   description: `.NFQ To-Do App is a full-stack task management web application built with React.js, Laravel, and MySQL. It features a responsive, interactive UI with real-time task updates to help users efficiently manage daily activities. The app follows MVC architecture, integrates APIs, and applies SOLID principles and clean code for scalable, maintainable development. CI/CD pipelines were used to streamline deployment, and version control was handled via Git in a collaborative environment to ensure high-quality delivery.`,
+  //   technologies: ["React.js", "CSS", "PHP", "Laravel", "MySQL"],
+  //   links: {
+  //     code: "https://github.com/omrmhd5/internship-todo-app",
+  //     live: "https://omar--omar-todo-application.netlify.app/",
+  //   },
+  //   video: "#",
+  // },
+  // {
+  //   title: "Gemini Clone",
+  //   image: "assets/Gemini.png",
+  //   description: `Gemini Clone is an AI chatbot inspired by Google Gemini, built using HTML, CSS, and JavaScript. It integrates the official Gemini API to deliver smooth, interactive conversations. The project features a clean, user-friendly chat interface with dark mode support, typing indicators, and smooth scrolling for an enhanced user experience.`,
+  //   technologies: ["HTML", "CSS", "JavaScript", "Gemini API Integration"],
+  //   links: {
+  //     code: "https://github.com/omrmhd5/Gemini-Clone",
+  //     live: "https://omrmhd5.github.io/Gemini-Clone/",
+  //   },
+  //   video: "assets/Gemini Clone.mp4",
+  // },
+
+  {
+    title: "Abdullah Bukhari and Partners Company",
+    image: [
+      "assets/bukhari/01-home-hero.png",
+      "assets/bukhari/02-about.png",
+      "assets/bukhari/03-services.png",
+      "assets/bukhari/04-water-hero.png",
+      "assets/bukhari/05-water-content.png",
+      "assets/bukhari/06-transport-hero.png",
+      "assets/bukhari/07-transport-content.png",
+      "assets/bukhari/08-buses-hero.png",
+      "assets/bukhari/09-buses-content.png",
+      "assets/bukhari/10-trailer-hero.png",
+      "assets/bukhari/11-car-rental-hero.png",
+      "assets/bukhari/12-logistics-hero.png",
+      "assets/bukhari/13-digital-marketing.png",
+      "assets/bukhari/14-mobile-home.png",
+    ],
+    description: `Abdullah Bukhari Transport & Logistics is a corporate website for a Saudi transport company, so prospects can understand the business and get in touch from one place. Visitors move from the company story through dedicated service pages, partner proof, and quote or contact paths in Arabic or English.`,
+    summary: `Multilingual corporate website for Abdullah Bukhari Transport & Logistics in Saudi Arabia. It presents seven core services, partners, and quote paths in Arabic and English, with an SEO-structured layout for long-term search visibility.`,
+    bullets: [
+      "Seven services online: transport, logistics, Hajj and Umrah buses, heavy transport, car rental, logistics management, and digital marketing.",
+      "SEO-structured pages and a responsive bilingual interface for clearer service discoverability.",
+      "Partner and client showcase plus quote, careers, and contact paths for B2B credibility.",
+    ],
+    technologies: ["React.js", "TypeScript", "TailwindCSS"],
+    links: {
+      code: "https://github.com/omrmhd5/Bukhari",
+      live: "https://www.logistics-as.com/",
+    },
+    video: "assets/bukhari/bukhari-demo.mp4",
+  },
+
   {
     title: "Continental Premium Properties",
     image: [
@@ -750,28 +979,6 @@ const projects = [
     },
     video: "assets/cpp/continental-premium-properties-demo.mp4",
   },
-  // {
-  //   title: ".NFQ To-Do App",
-  //   image: "assets/NFQ.png",
-  //   description: `.NFQ To-Do App is a full-stack task management web application built with React.js, Laravel, and MySQL. It features a responsive, interactive UI with real-time task updates to help users efficiently manage daily activities. The app follows MVC architecture, integrates APIs, and applies SOLID principles and clean code for scalable, maintainable development. CI/CD pipelines were used to streamline deployment, and version control was handled via Git in a collaborative environment to ensure high-quality delivery.`,
-  //   technologies: ["React.js", "CSS", "PHP", "Laravel", "MySQL"],
-  //   links: {
-  //     code: "https://github.com/omrmhd5/internship-todo-app",
-  //     live: "https://omar--omar-todo-application.netlify.app/",
-  //   },
-  //   video: "#",
-  // },
-  // {
-  //   title: "Gemini Clone",
-  //   image: "assets/Gemini.png",
-  //   description: `Gemini Clone is an AI chatbot inspired by Google Gemini, built using HTML, CSS, and JavaScript. It integrates the official Gemini API to deliver smooth, interactive conversations. The project features a clean, user-friendly chat interface with dark mode support, typing indicators, and smooth scrolling for an enhanced user experience.`,
-  //   technologies: ["HTML", "CSS", "JavaScript", "Gemini API Integration"],
-  //   links: {
-  //     code: "https://github.com/omrmhd5/Gemini-Clone",
-  //     live: "https://omrmhd5.github.io/Gemini-Clone/",
-  //   },
-  //   video: "assets/Gemini Clone.mp4",
-  // },
 ];
 
 const experience = [
@@ -836,6 +1043,14 @@ const experience = [
 // Testimonials Object
 const testimonials = [
   {
+    name: "Safar Alshahrani",
+    position: "Operations Officer, King Khalid Training Center",
+    avatar: "#",
+    text: "Excellent work from start to finish. The website was delivered professionally, and I am very satisfied with the final result. Communication was smooth and easy throughout the entire project, and what impressed me the most was the developer's ability to quickly understand my requirements and turn my ideas into exactly what I was looking for. Very professional, responsive, and easy to work with. I highly recommend him to anyone looking for someone who understands the client's needs and delivers high-quality work. I would definitely work with him again.",
+    rating: 5,
+    link: "https://www.upwork.com/freelancers/~0189f9e1b67040319f?mp_source=share",
+  },
+  {
     name: "Porto Reu",
     position: "CEO of Digital shield",
     avatar: "#",
@@ -895,23 +1110,12 @@ const testimonials = [
 
 const awards = [
   {
-    title: "Amazon Transcend Semi-Finalist",
-    organization: "Amazon",
-    date: "Feb 2025",
-    description: [
-      "Analyzed limitations in Amazon's forecasting model and proposed a machine learning approach incorporating real-time macroeconomic indicators.",
-      "Designed a region-specific forecasting framework with an implementation strategy covering data processing, model training, evaluation, and deployment.",
-    ],
-    certificate:
-      "https://drive.google.com/file/d/1MAImNQz7kj9RNUIEet8h_oLjCAMP87AU/view",
-  },
-  {
     title: "Certificate of Recognition: Top Performer",
     organization: "Digital Egypt Pioneers Initiative - DEPI",
     date: "Apr 2026",
     description: [
       "Recognized by the Ministry of Communications and Information Technology (MCIT) as a top-performing DEPI student across the Cairo governorate.",
-      "Ranked among the top tier of 24,000 students nationwide within the Digital Egypt Pioneers Initiative.",
+      "Ranked among the top tier of 24,000 students nationwide in the Digital Egypt Pioneers Initiative.",
     ],
     certificate:
       "https://drive.google.com/file/d/1cWYc3K1GlTZp7u_q5KlqUc-Uw8wTxM6X/view",
@@ -926,6 +1130,17 @@ const awards = [
     ],
     certificate:
       "https://drive.google.com/file/d/1XFGgQiGEcp9t3XdgwslEnrvHVTqdjH4j/view",
+  },
+  {
+    title: "Amazon Transcend Semi-Finalist",
+    organization: "Amazon",
+    date: "Feb 2025",
+    description: [
+      "Analyzed limitations in Amazon's forecasting model and proposed a machine learning approach incorporating real-time macroeconomic indicators.",
+      "Designed a region-specific forecasting framework with an implementation strategy covering data processing, model training, evaluation, and deployment.",
+    ],
+    certificate:
+      "https://drive.google.com/file/d/1MAImNQz7kj9RNUIEet8h_oLjCAMP87AU/view",
   },
 ];
 document.addEventListener("DOMContentLoaded", () => {

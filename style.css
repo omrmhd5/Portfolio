@@ -790,6 +790,9 @@ img {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   transition: var(--transition);
   border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .project-card:hover {
@@ -800,13 +803,17 @@ img {
 .project-image {
   position: relative;
   overflow: hidden;
-  object-fit: cover;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  flex-shrink: 0;
   cursor: zoom-in;
 }
 
 .project-image img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  display: block;
   transition: var(--transition);
 }
 
@@ -927,6 +934,9 @@ img {
 
 .project-content {
   padding: 2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .project-content h3 {
@@ -974,6 +984,8 @@ img {
 .project-links {
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: auto;
 }
 
 /* Testimonials Section */
