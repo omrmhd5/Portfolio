@@ -1256,6 +1256,33 @@ img {
   margin-bottom: 1rem;
 }
 
+.timeline-roles {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.timeline-role + .timeline-role {
+  padding-top: 1.75rem;
+  margin-top: 0.25rem;
+  border-top: 2px solid
+    color-mix(in srgb, var(--primary-color) 55%, var(--border-color));
+}
+
+.timeline-role h4 {
+  color: var(--primary-color);
+  font-weight: 500;
+  margin-bottom: 0.35rem;
+}
+
+.timeline-role .date {
+  margin-bottom: 0.75rem;
+}
+
+.timeline-role .btn {
+  margin-top: 0.75rem;
+}
+
 .timeline-content .description {
   margin-bottom: 1rem;
 }

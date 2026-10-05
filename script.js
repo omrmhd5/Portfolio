@@ -495,9 +495,54 @@ function getProjectCoverImage(project) {
   return Array.isArray(project.image) ? project.image[0] : project.image;
 }
 
+function promoteLazyImage(img) {
+  const deferred = img.getAttribute("data-lazy-src");
+  if (!deferred) return;
+  img.src = deferred;
+  img.removeAttribute("data-lazy-src");
+}
+
+function promoteLazyImages(root = document) {
+  root.querySelectorAll("img[data-lazy-src]").forEach(promoteLazyImage);
+}
+
+function buildProjectCardImgTag(
+  src,
+  alt,
+  { defer = false, className = "" } = {},
+) {
+  const classAttr = className ? ` class="${className}"` : "";
+  if (defer) {
+    return `<img${classAttr} data-lazy-src="${src}" alt="${alt}" loading="lazy" decoding="async" />`;
+  }
+  return `<img${classAttr} src="${src}" alt="${alt}" loading="lazy" decoding="async" />`;
+}
+
+const cardSlideshowTimers = new WeakMap();
+
+function startCardSlideshowAutoplay(slideshow) {
+  if (cardSlideshowTimers.has(slideshow)) return;
+
+  const imageArea = slideshow.closest(".project-image");
+  const images = slideshow.querySelectorAll("img");
+  const dots = imageArea?.querySelectorAll(".project-slideshow-dot") ?? [];
+  if (images.length <= 1) return;
+
+  let currentIdx = 0;
+  const timer = setInterval(() => {
+    images[currentIdx].classList.remove("active");
+    if (dots[currentIdx]) dots[currentIdx].classList.remove("active");
+    currentIdx = (currentIdx + 1) % images.length;
+    promoteLazyImage(images[currentIdx]);
+    images[currentIdx].classList.add("active");
+    if (dots[currentIdx]) dots[currentIdx].classList.add("active");
+  }, 3000);
+
+  cardSlideshowTimers.set(slideshow, timer);
+}
+
 // image[0] (or the sole image) must be the project home / hero screenshot.
 const projects = [
-
   {
     title: "AmanCity",
     badge: `<i class="fa-solid fa-graduation-cap"></i> Graduation Project`,
@@ -996,24 +1041,28 @@ const experience = [
     link: "#",
   },
   {
-    title: "Agentic AI and Generative AI System Developer (Part-Time)",
     company: "Digital Egypt Pioneers Initiative - DEPI",
     logo: "assets/DEPI.png",
-    date: "Jul 2026 – Present",
-    bullets: ["Enrolled in DEPI's Agentic AI and Generative AI Systems track."],
-    link: "#",
-  },
-  {
-    title: "Cross Platform Mobile App Developer (Part-Time)",
-    company: "Digital Egypt Pioneers Initiative - DEPI",
-    logo: "assets/DEPI.png",
-    date: "Jul 2025 – Dec 2025",
-    bullets: [
-      "Developed cross-platform mobile apps for Android and iOS using Flutter and Dart, focusing on intuitive responsive UI/UX principles.",
-      "Implemented backend and real-time features with Firebase, applying clean code, unit testing, and Git/GitHub.",
-      "Enhanced professional skills through Business English, freelancing skills, career coaching, proposal writing, portfolio development, and client communication.",
+    roles: [
+      {
+        title: "Agentic AI and Generative AI System Developer (Part-Time)",
+        date: "Jul 2026 – Present",
+        bullets: [
+          "Enrolled in DEPI's Agentic AI and Generative AI Systems track.",
+        ],
+        link: "#",
+      },
+      {
+        title: "Cross Platform Mobile App Developer (Part-Time)",
+        date: "Jul 2025 – Dec 2025",
+        bullets: [
+          "Developed cross-platform mobile apps for Android and iOS using Flutter and Dart, focusing on intuitive responsive UI/UX principles.",
+          "Implemented backend and real-time features with Firebase, applying clean code, unit testing, and Git/GitHub.",
+          "Enhanced professional skills through Business English, freelancing skills, career coaching, proposal writing, portfolio development, and client communication.",
+        ],
+        link: "https://drive.google.com/file/d/1Tuo1JlRFoBJJTteGq9pHqOt7lDW7RJc2/view?usp=sharing",
+      },
     ],
-    link: "https://drive.google.com/file/d/1Tuo1JlRFoBJJTteGq9pHqOt7lDW7RJc2/view?usp=sharing",
   },
   {
     title: "Digital Innovation Intern",
@@ -1243,6 +1292,7 @@ document.addEventListener("DOMContentLoaded", () => {
       : 0;
     const useAutoplaySlideshow =
       project.autoplay && Array.isArray(project.image) && galleryCount > 1;
+    const deferCardMedia = idx >= 4;
 
     let imageHTML = "";
     let galleryHintHTML = "";
@@ -1250,9 +1300,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (useAutoplaySlideshow) {
       imageHTML = `<div class="project-slideshow" data-project-idx="${idx}">
         ${project.image
-          .map(
-            (img, imgIdx) =>
-              `<img src="${img}" class="${imgIdx === 0 ? "active" : ""}" alt="${project.title}" />`,
+          .map((img, imgIdx) =>
+            buildProjectCardImgTag(img, project.title, {
+              defer: imgIdx === 0 ? deferCardMedia : true,
+              className: imgIdx === 0 ? "active" : "",
+            }),
           )
           .join("")}
       </div>`;
@@ -1276,7 +1328,9 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         </div>`;
     } else {
-      imageHTML = `<img src="${coverImage}" alt="${project.title}" />`;
+      imageHTML = buildProjectCardImgTag(coverImage, project.title, {
+        defer: deferCardMedia,
+      });
       galleryHintHTML =
         galleryCount > 1
           ? `<div class="project-gallery-hint" aria-hidden="true">
@@ -1357,6 +1411,7 @@ document.addEventListener("DOMContentLoaded", () => {
         projectCards.forEach((card) => {
           card.style.display = "";
           card.classList.remove("hidden-project");
+          promoteLazyImages(card);
         });
         this.parentElement.style.display = "none";
       });
@@ -1368,42 +1423,87 @@ document.addEventListener("DOMContentLoaded", () => {
       .join("")}</ul>`;
   }
 
-  experience.forEach((exp, idx) => {
-    const hasCertificate = exp.link !== "#";
-    const firstBullet = exp.bullets[0] || "";
-    const hasMore = exp.bullets.length > 1 || firstBullet.length > 70;
+  function getExperienceSnippet(bullets) {
+    const firstBullet = bullets[0] || "";
+    const hasMore = bullets.length > 1 || firstBullet.length > 70;
     const shortDescription =
       firstBullet.length > 70
-        ? firstBullet.substring(0, 70) + "..."
+        ? `${firstBullet.substring(0, 70)}...`
         : firstBullet;
+    return { shortDescription, hasMore };
+  }
 
-    const experienceItem = `
+  function renderExperienceReadMoreButton(expIdx, roleIdx = null) {
+    const roleAttr = roleIdx === null ? "" : ` data-role-index="${roleIdx}"`;
+    return `<button class="read-more-btn" data-type="experience" data-index="${expIdx}"${roleAttr}>Read More</button>`;
+  }
+
+  function renderExperienceCertificate(link, company) {
+    if (link === "#") return "";
+    return `
+            <a href="${link}" class="btn" target="_blank" data-analytics="view_certificate" data-company="${company}">
+              <i class="fa-solid fa-certificate"></i> View Certificate
+            </a>`;
+  }
+
+  experience.forEach((exp, idx) => {
+    const headerIcon = exp.icon
+      ? exp.icon
+      : `<img src="${exp.logo}" alt="${exp.company}" loading="lazy" decoding="async"> `;
+
+    if (Array.isArray(exp.roles) && exp.roles.length) {
+      const rolesHTML = exp.roles
+        .map((role, roleIdx) => {
+          const { shortDescription, hasMore } = getExperienceSnippet(
+            role.bullets,
+          );
+          const showReadMore = hasMore || role.bullets.length > 0;
+          return `
+        <div class="timeline-role">
+          <h4>${role.title}</h4>
+          <p class="date">${role.date}</p>
+          <p class="description">${shortDescription}${
+            showReadMore
+              ? ` ${renderExperienceReadMoreButton(idx, roleIdx)}`
+              : ""
+          }</p>
+          ${renderExperienceCertificate(role.link, exp.company)}
+        </div>`;
+        })
+        .join("");
+
+      experienceContainer.innerHTML += `
     <div class="timeline-item">
       <div class="timeline-dot"></div>
       <div class="timeline-content">
         <div class="timeline-header">
-        ${exp.icon ? exp.icon : `<img src="${exp.logo}" alt="${exp.company}"> `}
+          ${headerIcon}
+          <h3>${exp.company}</h3>
+        </div>
+        <div class="timeline-roles">${rolesHTML}</div>
+      </div>
+    </div>`;
+      return;
+    }
+
+    const { shortDescription, hasMore } = getExperienceSnippet(exp.bullets);
+
+    experienceContainer.innerHTML += `
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-header">
+        ${headerIcon}
           <h3>${exp.company}</h3>
         </div>
         <h4>${exp.title}</h4>
         <p class="date">${exp.date}</p>
         <p class="description">${shortDescription}${
-          hasMore
-            ? ` <button class="read-more-btn" data-type="experience" data-index="${idx}">Read More</button>`
-            : ""
+          hasMore ? ` ${renderExperienceReadMoreButton(idx)}` : ""
         }</p>
-        ${
-          hasCertificate
-            ? `
-            <a href="${exp.link}" class="btn" target="_blank" data-analytics="view_certificate" data-company="${exp.company}">
-              <i class="fa-solid fa-certificate"></i> View Certificate
-            </a>`
-            : ""
-        }
+        ${renderExperienceCertificate(exp.link, exp.company)}
       </div>
     </div>`;
-
-    experienceContainer.innerHTML += experienceItem;
   });
 
   // Modal for video preview
@@ -1424,7 +1524,10 @@ document.addEventListener("DOMContentLoaded", () => {
     videoModal.querySelector(".video-modal-title").textContent = project.title;
 
     if (project.video && project.video !== "#") {
-      modalBody.innerHTML = `<video class="video-modal-player" src="${project.video}" controls autoplay></video>`;
+      modalBody.innerHTML = `<video class="video-modal-player" controls autoplay preload="none" playsinline></video>`;
+      const player = modalBody.querySelector(".video-modal-player");
+      player.src = project.video;
+      player.load();
     } else {
       modalBody.innerHTML = `<div class="video-placeholder">Video preview coming soon...</div>`;
     }
@@ -1440,6 +1543,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function closeVideoModal() {
+    const player = videoModal.querySelector(".video-modal-player");
+    if (player) {
+      player.pause();
+      player.removeAttribute("src");
+      player.load();
+    }
     videoModal.classList.remove("open");
     videoModal.querySelector(".video-modal-body").innerHTML = "";
     if (!document.querySelector(".photo-slideshow-modal.open")) {
@@ -1564,15 +1673,18 @@ document.addEventListener("DOMContentLoaded", () => {
     updatePhotoSlideshowView();
   }
 
-  document.addEventListener("click", function (e) {
-    const imageArea = e.target.closest(".project-image-trigger");
-    if (!imageArea) return;
-
+  function openProjectPhotoSlideshow(imageArea) {
     const card = imageArea.closest(".project-card");
     if (!card) return;
 
     const projectIdx = parseInt(card.getAttribute("data-project-index"), 10);
     openPhotoSlideshow(projectIdx, getActiveCardSlideIndex(imageArea));
+  }
+
+  document.addEventListener("click", function (e) {
+    const imageArea = e.target.closest(".project-image-trigger");
+    if (!imageArea) return;
+    openProjectPhotoSlideshow(imageArea);
   });
 
   document.addEventListener("keydown", function (e) {
@@ -1580,12 +1692,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!imageArea) return;
     if (e.key !== "Enter" && e.key !== " ") return;
     e.preventDefault();
-
-    const card = imageArea.closest(".project-card");
-    if (!card) return;
-
-    const projectIdx = parseInt(card.getAttribute("data-project-index"), 10);
-    openPhotoSlideshow(projectIdx, getActiveCardSlideIndex(imageArea));
+    openProjectPhotoSlideshow(imageArea);
   });
 
   photoSlideshowModal
@@ -1624,7 +1731,7 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>`;
   document.body.appendChild(readMoreModal);
 
-  function openReadMoreModal(type, index) {
+  function openReadMoreModal(type, index, roleIndex = null) {
     const modalBody = readMoreModal.querySelector(".read-more-modal-body");
 
     if (type === "project") {
@@ -1725,7 +1832,15 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     } else if (type === "experience") {
       const exp = experience[index];
-      const hasCertificate = exp.link !== "#";
+      const role =
+        Array.isArray(exp.roles) && roleIndex !== null
+          ? exp.roles[roleIndex]
+          : null;
+      const title = role ? role.title : exp.title;
+      const date = role ? role.date : exp.date;
+      const bullets = role ? role.bullets : exp.bullets;
+      const link = role ? role.link : exp.link;
+      const hasCertificate = link !== "#";
 
       modalBody.innerHTML = `
         <div class="read-more-experience">
@@ -1733,22 +1848,22 @@ document.addEventListener("DOMContentLoaded", () => {
             ${
               exp.icon
                 ? exp.icon
-                : `<img src="${exp.logo}" alt="${exp.company}">`
+                : `<img src="${exp.logo}" alt="${exp.company}" loading="lazy" decoding="async">`
             }
             <div class="read-more-title">
               <h2>${exp.company}</h2>
-              <h3>${exp.title}</h3>
-              <p class="date">${exp.date}</p>
+              <h3>${title}</h3>
+              <p class="date">${date}</p>
             </div>
           </div>
           <div class="read-more-description">
-            ${renderExperienceBullets(exp.bullets)}
+            ${renderExperienceBullets(bullets)}
           </div>
           ${
             hasCertificate
               ? `
           <div class="read-more-links">
-            <a href="${exp.link}" class="btn" target="_blank" data-analytics="view_certificate" data-company="${exp.company}">
+            <a href="${link}" class="btn" target="_blank" data-analytics="view_certificate" data-company="${exp.company}">
               <i class="fa-solid fa-certificate"></i> View Certificate
             </a>
           </div>
@@ -1768,8 +1883,14 @@ document.addEventListener("DOMContentLoaded", () => {
           source: "card",
         });
       } else if (type === "experience") {
+        const exp = experience[index];
+        const role =
+          Array.isArray(exp.roles) && roleIndex !== null
+            ? exp.roles[roleIndex]
+            : null;
         window.trackAnalytics("click", "read_more", {
-          company: experience[index].company,
+          company: exp.company,
+          role: role ? role.title : exp.title,
           source: "experience",
         });
       }
@@ -1787,7 +1908,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (readMoreBtn) {
       const type = readMoreBtn.getAttribute("data-type");
       const index = readMoreBtn.getAttribute("data-index");
-      openReadMoreModal(type, parseInt(index));
+      const roleIndexAttr = readMoreBtn.getAttribute("data-role-index");
+      const roleIndex =
+        roleIndexAttr === null ? null : parseInt(roleIndexAttr, 10);
+      openReadMoreModal(type, parseInt(index, 10), roleIndex);
     }
   });
 
@@ -1819,7 +1943,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ? `<div class="testimonial-avatar-svg">
            <i class="ri-user-line"></i>
          </div>`
-        : `<img src="${testimonial.avatar}" alt="${testimonial.name}" class="testimonial-avatar" 
+        : `<img src="${testimonial.avatar}" alt="${testimonial.name}" class="testimonial-avatar" loading="lazy" decoding="async"
            onerror="this.src='https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&h=150&fit=crop&crop=face'">`;
 
     const positionElement =
@@ -1970,6 +2094,11 @@ document.addEventListener("DOMContentLoaded", () => {
       awardsContainer.innerHTML += awardCard;
     });
   }
+
+  // AmanCity + Audoria: card slideshow autoplay on load (extra slides still lazy until shown)
+  document.querySelectorAll(".project-slideshow").forEach((slideshow) => {
+    startCardSlideshowAutoplay(slideshow);
+  });
 });
 
 // Navbar active section highlight
@@ -2042,23 +2171,3 @@ window.addEventListener("resize", () => {
 
 window.addEventListener("scroll", activateNavLink);
 window.addEventListener("DOMContentLoaded", activateNavLink);
-
-// Auto-rotate card previews for projects with autoplay: true (AmanCity, Audoria)
-window.addEventListener("DOMContentLoaded", () => {
-  const slideshows = document.querySelectorAll(".project-slideshow");
-  slideshows.forEach((slideshow) => {
-    const imageArea = slideshow.closest(".project-image");
-    const images = slideshow.querySelectorAll("img");
-    const dots = imageArea?.querySelectorAll(".project-slideshow-dot") ?? [];
-    if (images.length <= 1) return;
-
-    let currentIdx = 0;
-    setInterval(() => {
-      images[currentIdx].classList.remove("active");
-      if (dots[currentIdx]) dots[currentIdx].classList.remove("active");
-      currentIdx = (currentIdx + 1) % images.length;
-      images[currentIdx].classList.add("active");
-      if (dots[currentIdx]) dots[currentIdx].classList.add("active");
-    }, 3000);
-  });
-});
