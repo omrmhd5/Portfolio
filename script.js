@@ -688,7 +688,8 @@ const projects = [
       code: "https://github.com/omrmhd5/KingKhalidTrainingAttendanceSystem",
       live: "https://king-khalid-training-attendance-system-demo.vercel.app/",
     },
-    video: "assets/projects/king-khalid/king-khalid-training-attendance-system-demo.mp4",
+    video:
+      "assets/projects/king-khalid/king-khalid-training-attendance-system-demo.mp4",
   },
 
   {
@@ -990,7 +991,6 @@ const projects = [
     ],
     technologies: [
       "Next.js",
-      "React.js",
       "TailwindCSS",
       "Node.js",
       "Express.js",
