@@ -667,8 +667,8 @@ const projects = [
   {
     title: "King Khalid Training Center",
     image: [
-      "assets/projects/king-khalid/02-daily-summary.png",
       "assets/projects/king-khalid/03-scan.png",
+      "assets/projects/king-khalid/02-daily-summary.png",
       "assets/projects/king-khalid/04-reports.png",
       "assets/projects/king-khalid/05-trainees.png",
       "assets/projects/king-khalid/06-violations.png",
