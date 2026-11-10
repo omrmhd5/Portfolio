@@ -945,7 +945,7 @@ const projects = [
     technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
     links: {
       code: "https://github.com/omrmhd5/Dough",
-      live: "https://doughx.vercel.app/",
+      live: "https://www.xdough.com",
     },
     video: "assets/projects/dough/dough-demo.mp4",
   },
